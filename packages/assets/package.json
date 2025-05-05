@@ -1,0 +1,19 @@
+{
+  "name": "@ibexa/design-system-assets",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cross-env": "^7.0.3"
+  },
+  "scripts": {
+    "prettier:test": "yarn prettier \"./src/**/*.scss\" --check",
+    "prettier:fix": "yarn prettier:test --write",
+    "test": "yarn prettier:test",
+    "fix": "yarn prettier:fix",
+    "build:clear": "rm -rf dist/*",
+    "build:copy": "mkdir -p dist && cp -r src/font src/img src/scss dist/",
+    "build:css": "sass src/scss/styles.scss dist/css/styles.css --style=compressed --no-source-map",
+    "build": "yarn build:clear && yarn build:copy && yarn build:css"
+  }
+}

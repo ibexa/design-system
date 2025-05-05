@@ -1,0 +1,3 @@
+@use '../packages/assets/src/scss/styles' with (
+    $assets-base-path: '../packages/assets/src/'
+);

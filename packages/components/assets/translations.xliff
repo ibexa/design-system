@@ -1,0 +1,34 @@
+<xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="ibexa_react_components" datatype="plaintext" source-language="en" target-language="en">
+    <body>
+      <trans-unit id="content_edit.autosave.status_off.message">
+        <source>Autosave is off, draft not created</source>
+        <target>Autosave is off, draft not created</target>
+      </trans-unit>
+      <trans-unit id="content_edit.autosave.status_on.message">
+        <source>Autosave is on, draft created</source>
+        <target>Autosave is on, draft created</target>
+      </trans-unit>
+      <trans-unit id="content_edit.autosave.status_saving.message">
+        <source>Saving</source>
+        <target>Saving</target>
+      </trans-unit>
+      <trans-unit id="content_edit.autosave.status_saved.message.full">
+        <source>Autosave is on, draft saved %time%</source>
+        <target>Autosave is on, draft saved %time%</target>
+      </trans-unit>
+      <trans-unit id="content_edit.autosave.status_error.message">
+        <source>Saving error</source>
+        <target>Saving error</target>
+      </trans-unit>
+      <trans-unit id="ibexa.expander.label.collapse">
+        <source>Hide</source>
+        <target>Hide</target>
+      </trans-unit>
+      <trans-unit id="ibexa.expander.label.expand">
+        <source>Show</source>
+        <target>Show</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
