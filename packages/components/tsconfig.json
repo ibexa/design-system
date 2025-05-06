@@ -1,8 +1,4 @@
 {
-    "extends": ["./tsconfig.eslint.json"],
-    "exclude": ["src/**/*.stories.ts", "src/**/*.stories.tsx"],
-    "compilerOptions": {
-        "declaration": true,
-        "outDir": "dist"
-    }
+    "extends": "../../tsconfig.json",
+    "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
