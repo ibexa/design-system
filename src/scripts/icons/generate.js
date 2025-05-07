@@ -1,7 +1,7 @@
 import SVGSymbol from './svg.symbol.js';
 import SVGIcon from './svg.icon.js';
 import SVGAllIcons from './svg.all.icons.js';
-import config from './config.ts';
+import config from './config.js';
 import { getIconsList } from './helpers.js';
 
 export const generateAllIconsFile = async () => {

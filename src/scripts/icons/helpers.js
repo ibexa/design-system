@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import config from './config.ts';
+import config from './config.js';
 
 export const getIconsList = () => {
     const inputPath = config.get('inputPath');

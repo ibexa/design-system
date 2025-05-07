@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 
-import config from './config.ts';
+import config from './config.js';
 
 export default class SVGSymbol {
     constructor() {

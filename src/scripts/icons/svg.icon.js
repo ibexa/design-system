@@ -4,7 +4,7 @@ import path from 'path';
 import { JSDOM } from 'jsdom';
 
 import { countArrayElements } from './helpers.js';
-import config from './config.ts';
+import config from './config.js';
 
 export default class SVGIcon {
     constructor(filepath) {

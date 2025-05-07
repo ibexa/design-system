@@ -3,7 +3,7 @@ import fs from 'fs';
 import { JSDOM } from 'jsdom';
 import prettier from 'prettier';
 
-import config from './config.ts';
+import config from './config.js';
 
 export default class SVGAllIcons {
     constructor() {
