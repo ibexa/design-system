@@ -16,7 +16,7 @@ const Icon = ({ cssClass = '', name, customPath, size = undefined }: IconProps) 
     const linkHref = customPath ?? getIconPath(name);
 
     return (
-        <svg className={classes}>
+        <svg aria-label={name} className={classes} role="img">
             <use xlinkHref={linkHref} />
         </svg>
     );

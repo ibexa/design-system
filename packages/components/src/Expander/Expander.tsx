@@ -20,6 +20,9 @@ const Expander = ({ onClick, collapseLabel = '', expandLabel = '', hasIcon = tru
         'ibexa-expander--has-label': label !== '',
         'ibexa-expander--is-expanded': isExpanded,
     });
+    const extraAria = {
+        'aria-expanded': isExpanded,
+    };
     const renderExpanderIcon = () => {
         if (!hasIcon) {
             return null;
@@ -30,6 +33,8 @@ const Expander = ({ onClick, collapseLabel = '', expandLabel = '', hasIcon = tru
 
     return (
         <Button
+            ariaLabel={label}
+            extraAria={extraAria}
             extraClasses={extraClasses}
             onClick={() => {
                 onClick(!isExpanded);

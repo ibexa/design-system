@@ -196,6 +196,7 @@ $btns-sizes: (
         border-color: var(--ibexa-active-border-color);
     }
 
+    &.ibexa-btn--disabled,
     &.disabled,
     &[disabled],
     &:disabled {

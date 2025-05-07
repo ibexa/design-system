@@ -58,7 +58,7 @@ export const Secondary: Story = {
 export const SecondaryDisabled: Story = {
     name: 'Secondary (Disabled)',
     args: {
-        type: 'primary',
+        type: 'secondary',
         children: 'Button label',
         disabled: true,
     },
@@ -68,11 +68,24 @@ export const SecondaryWithHTML: Story = {
     name: 'Secondary with HTML',
     args: {
         type: 'secondary',
+        ariaLabel: 'Button label',
         children: (
             <>
                 <b>Button</b>&nbsp;<u>Label</u>
             </>
         ),
+    },
+};
+
+export const SecondaryWithExtraAria: Story = {
+    name: 'Secondary with extra aria attributes',
+    args: {
+        type: 'secondary',
+        children: 'Button label',
+        disabled: false,
+        extraAria: {
+            'aria-expanded': false,
+        },
     },
 };
 
