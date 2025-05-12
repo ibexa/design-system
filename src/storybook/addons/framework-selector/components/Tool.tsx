@@ -41,3 +41,5 @@ export const Tool = memo(() => {
         </>
     );
 });
+
+Tool.displayName = 'Tool';

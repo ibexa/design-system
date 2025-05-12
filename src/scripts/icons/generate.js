@@ -1,11 +1,14 @@
+import fs from 'fs';
+
 import SVGSymbol from './svg.symbol.js';
 import SVGIcon from './svg.icon.js';
 import SVGAllIcons from './svg.all.icons.js';
 import config from './config.js';
-import { getIconsList } from './helpers.js';
+import { getIconsList, changeFileExtension } from './helpers.js';
 
 export const generateAllIconsFile = async () => {
     const showWarnings = config.get('showWarnings');
+    const outputPathAllIcons = config.get('outputPathAllIcons');
     const iconsList = getIconsList();
 
     const svgAllIcons = new SVGAllIcons();
@@ -27,4 +30,22 @@ export const generateAllIconsFile = async () => {
 
     await svgAllIcons.generateHTML();
     svgAllIcons.saveFile();
+
+    console.log('\x1b[32m%s\x1b[0m', `SVG with all icons generated successfully in ${outputPathAllIcons}`); // eslint-disable-line no-console
+};
+
+export const generateJSONIconsList = () => {
+    const iconsList = getIconsList();
+    const iconsNamesList = iconsList.map((filepath) => {
+        const svgIcon = new SVGIcon(filepath);
+        const id = svgIcon.getID();
+
+        return id;
+    });
+    const iconsNamesListStringified = JSON.stringify(iconsNamesList, null, 2);
+    const iconsJSONFile = changeFileExtension(config.get('outputPathAllIcons'), 'json');
+
+    fs.writeFileSync(iconsJSONFile, iconsNamesListStringified);
+
+    console.log('\x1b[32m%s\x1b[0m', `JSON with icons list generated successfully in ${iconsJSONFile}`); // eslint-disable-line no-console
 };

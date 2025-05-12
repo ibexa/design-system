@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { generateAllIconsFile } from '../src/scripts/icons/generate.js';
+import { generateAllIconsFile, generateJSONIconsList } from '../src/scripts/icons/generate.js';
 import { testForForbiddenAttributes } from '../src/scripts/icons/test.js';
 import config from '../src/scripts/icons/config.js';
 
@@ -18,10 +18,11 @@ switch (type) {
         break;
     case 'generate-all-icons':
         generateAllIconsFile();
+        generateJSONIconsList();
 
         break;
     default:
-        console.log('Invalid argument. Use "test" or "generate".');
+        console.error('Invalid argument. Use "test" or "generate".');
 
         break;
 }

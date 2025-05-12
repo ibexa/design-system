@@ -20,3 +20,16 @@ export const countArrayElements = (array) => {
         return output;
     }, {});
 };
+
+export const changeFileExtension = (filename, newExtension) => {
+    const filenameDir = path.dirname(filename);
+    const filenameExt = path.extname(filename);
+    const filenameBase = path.basename(filename, filenameExt);
+    const filenameNewExt = path.format({
+        dir: filenameDir,
+        name: filenameBase,
+        ext: newExtension,
+    });
+
+    return filenameNewExt;
+};
