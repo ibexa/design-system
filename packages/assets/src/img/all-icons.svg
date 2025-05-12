@@ -570,7 +570,7 @@
     ></path>
   </symbol>
   <symbol
-    id="arrow-carret-down"
+    id="arrow-caret-down"
     viewBox="0 0 32 32"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -586,7 +586,7 @@
     </defs>
   </symbol>
   <symbol
-    id="arrow-carret-left"
+    id="arrow-caret-left"
     viewBox="0 0 32 32"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -602,7 +602,7 @@
     </defs>
   </symbol>
   <symbol
-    id="arrow-carret-right"
+    id="arrow-caret-right"
     viewBox="0 0 32 32"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -618,7 +618,7 @@
     </defs>
   </symbol>
   <symbol
-    id="arrow-carret-up"
+    id="arrow-caret-up"
     viewBox="0 0 32 32"
     xmlns="http://www.w3.org/2000/svg"
   >

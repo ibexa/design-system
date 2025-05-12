@@ -8,7 +8,7 @@ import { createCssClassNames } from '../internal/shared/css.class.names';
 import { ExpanderProps } from './Expander.types';
 
 const ICONS_MAP = {
-    caret: 'caret-down',
+    caret: 'arrow-caret-down',
     triangle: 'arrow-down',
 } as const;
 

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import Icon from './Icon';
-import { IconSizeValues } from './Icon.types';
+import { ICON_SIZE_VALUES } from './Icon.types';
 
 const meta: Meta<typeof Icon> = {
     component: Icon,
@@ -20,7 +20,8 @@ const meta: Meta<typeof Icon> = {
             control: 'text',
         },
         size: {
-            options: Object.values(IconSizeValues),
+            control: 'select',
+            options: Object.values(ICON_SIZE_VALUES),
         },
     },
 };

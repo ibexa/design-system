@@ -1,9 +1,12 @@
 import { ReactNode } from 'react';
 
+export const BUTTON_TYPE_VALUES = ['primary', 'secondary', 'tertiary', 'black-secondary', 'black-tertiary'] as const;
+export const BUTTON_SIZE_VALUES = ['large', 'small', 'extra-small'] as const;
+
 interface ButtonSharedProps {
     onClick: React.MouseEventHandler<HTMLButtonElement>;
-    type?: 'primary' | 'secondary' | 'tertiary' | 'black-secondary' | 'black-tertiary';
-    size?: 'large' | 'small' | 'extra-small';
+    type?: (typeof BUTTON_TYPE_VALUES)[number];
+    size?: (typeof BUTTON_SIZE_VALUES)[number];
     disabled?: boolean;
     extraClasses?: string;
     extraAria?: Record<`aria-${string}`, boolean | number | string>;

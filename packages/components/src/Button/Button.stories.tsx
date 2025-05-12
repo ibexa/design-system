@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Button from './Button';
+import { BUTTON_SIZE_VALUES, BUTTON_TYPE_VALUES } from './Button.types';
 
 const meta: Meta<typeof Button> = {
     component: Button,
@@ -14,9 +15,11 @@ const meta: Meta<typeof Button> = {
     argTypes: {
         size: {
             control: 'select',
+            options: Object.values(BUTTON_SIZE_VALUES),
         },
         type: {
             control: 'select',
+            options: Object.values(BUTTON_TYPE_VALUES),
         },
         extraClasses: {
             control: 'text',

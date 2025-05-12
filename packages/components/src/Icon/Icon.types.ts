@@ -1,8 +1,8 @@
-export const IconSizeValues = ['tiny', 'tiny-small', 'small', 'small-medium', 'medium', 'medium-large', 'large', 'extra-large'] as const;
+export const ICON_SIZE_VALUES = ['tiny', 'tiny-small', 'small', 'small-medium', 'medium', 'medium-large', 'large', 'extra-large'] as const;
 
 interface IconSharedProps {
     cssClass?: string;
-    size: (typeof IconSizeValues)[number] | undefined;
+    size: (typeof ICON_SIZE_VALUES)[number] | undefined;
 }
 interface IconCustomPathProps extends IconSharedProps {
     customPath: string;

@@ -18,6 +18,7 @@ const meta: Meta<typeof Expander> = {
         },
         type: {
             control: 'select',
+            options: ['caret', 'triangle'],
         },
     },
     args: { onClick: action('on-click') },
