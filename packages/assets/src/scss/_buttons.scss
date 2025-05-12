@@ -158,7 +158,7 @@ $btns-sizes: (
     'extra-small': calculateRem(10px) calculateRem(15px) calculateRem(4px) calculateRem(8px),
 );
 
-.ibexa-btn {
+.ids-btn {
     display: inline-flex;
     white-space: nowrap;
     padding: calculateRem(14px) calculateRem(15px);
@@ -168,42 +168,42 @@ $btns-sizes: (
     font-size: $text-font-size-m;
     line-height: calculateRem(18px);
     cursor: pointer;
-    color: var(--ibexa-default-text-color);
-    fill: var(--ibexa-default-text-color);
-    background: var(--ibexa-default-bg-color);
-    border: calculateRem(1px) solid var(--ibexa-default-border-color);
+    color: var(--ids-default-text-color);
+    fill: var(--ids-default-text-color);
+    background: var(--ids-default-bg-color);
+    border: calculateRem(1px) solid var(--ids-default-border-color);
     transition: all 1s $admin-transition;
 
     &:focus {
-        color: var(--ibexa-focus-text-color);
-        fill: var(--ibexa-focus-text-color);
-        background: var(--ibexa-focus-bg-color);
-        border-color: var(--ibexa-focus-border-color);
-        box-shadow: var(--ibexa-focus-box-shadow);
+        color: var(--ids-focus-text-color);
+        fill: var(--ids-focus-text-color);
+        background: var(--ids-focus-bg-color);
+        border-color: var(--ids-focus-border-color);
+        box-shadow: var(--ids-focus-box-shadow);
     }
 
     &:hover {
-        color: var(--ibexa-hover-text-color);
-        fill: var(--ibexa-hover-text-color);
-        background: var(--ibexa-hover-bg-color);
-        border-color: var(--ibexa-hover-border-color);
+        color: var(--ids-hover-text-color);
+        fill: var(--ids-hover-text-color);
+        background: var(--ids-hover-bg-color);
+        border-color: var(--ids-hover-border-color);
     }
 
     &:active {
-        color: var(--ibexa-active-text-color);
-        fill: var(--ibexa-active-text-color);
-        background: var(--ibexa-active-bg-color);
-        border-color: var(--ibexa-active-border-color);
+        color: var(--ids-active-text-color);
+        fill: var(--ids-active-text-color);
+        background: var(--ids-active-bg-color);
+        border-color: var(--ids-active-border-color);
     }
 
-    &.ibexa-btn--disabled,
+    &.ids-btn--disabled,
     &.disabled,
     &[disabled],
     &:disabled {
-        color: var(--ibexa-disabled-text-color);
-        fill: var(--ibexa-disabled-text-color);
-        background: var(--ibexa-disabled-bg-color);
-        border-color: var(--ibexa-disabled-border-color);
+        color: var(--ids-disabled-text-color);
+        fill: var(--ids-disabled-text-color);
+        background: var(--ids-disabled-bg-color);
+        border-color: var(--ids-disabled-border-color);
         box-shadow: none;
         pointer-events: none;
     }

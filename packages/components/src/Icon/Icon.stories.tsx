@@ -111,6 +111,6 @@ export const IconCssClass: Story = {
     name: 'Icon with css class',
     args: {
         name: 'bookmark',
-        cssClass: 'ibexa-icon ibexa-icon--primary',
+        cssClass: 'ids-icon ids-icon--primary',
     },
 };

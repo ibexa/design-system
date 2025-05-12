@@ -39,7 +39,7 @@ export const ExpanderIsNotExpanded: Story = {
         await step('Initial state - not expanded', async () => {
             const expander = canvas.getByRole('button');
 
-            await expect(expander).not.toHaveClass('ibexa-expander--is-expanded');
+            await expect(expander).not.toHaveClass('ids-expander--is-expanded');
             await expect(expander).toHaveAttribute('aria-expanded', 'false');
         });
 
@@ -65,7 +65,7 @@ export const ExpanderIsExpanded: Story = {
         await step('Initial state - expanded', async () => {
             const expander = canvas.getByRole('button');
 
-            await expect(expander).toHaveClass('ibexa-expander--is-expanded');
+            await expect(expander).toHaveClass('ids-expander--is-expanded');
             await expect(expander).toHaveAttribute('aria-expanded', 'true');
         });
 

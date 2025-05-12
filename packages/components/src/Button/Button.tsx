@@ -15,10 +15,10 @@ const Button = ({
     onClick,
 }: ButtonProps) => {
     const classes = createCssClassNames({
-        'ibexa-btn': true,
-        [`ibexa-btn--${type}`]: !!type,
-        [`ibexa-btn--${size}`]: !!size,
-        'ibexa-btn--disabled': disabled,
+        'ids-btn': true,
+        [`ids-btn--${type}`]: !!type,
+        [`ids-btn--${size}`]: !!size,
+        'ids-btn--disabled': disabled,
         [extraClasses]: true,
     });
     const btnAriaLabel = ariaLabel ?? (typeof children === 'string' ? children : undefined);

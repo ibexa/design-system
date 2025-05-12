@@ -40,7 +40,7 @@ export const TestActive: Story = {
         await step('Button is clickable', async () => {
             const btn = canvas.getByText('Button label');
 
-            await expect(btn).not.toHaveClass('ibexa-btn--disabled');
+            await expect(btn).not.toHaveClass('ids-btn--disabled');
             await expect(btn).toHaveAttribute('aria-disabled', 'false');
 
             await userEvent.click(btn);
@@ -63,7 +63,7 @@ export const TestDisabled: Story = {
         await step('Button is not clickable', async () => {
             const btn = canvas.getByText('Button label');
 
-            await expect(btn).toHaveClass('ibexa-btn--disabled');
+            await expect(btn).toHaveClass('ids-btn--disabled');
             await expect(btn).toHaveAttribute('aria-disabled', 'true');
             await expect(btn).toHaveStyle({ pointerEvents: 'none' });
         });

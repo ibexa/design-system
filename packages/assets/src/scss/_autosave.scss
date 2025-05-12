@@ -1,7 +1,7 @@
 @use 'functions' as *;
 @use 'variables' as *;
 
-.ibexa-autosave {
+.ids-autosave {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,7 +9,7 @@
     font-size: $text-font-size-s;
     transition: all $admin-transition-duration $admin-transition;
 
-    .ibexa-icon {
+    .ids-icon {
         fill: $color-neutral-160;
         margin-right: calculateRem(8px);
     }
@@ -26,7 +26,7 @@
     &--error {
         color: $color-error-80;
 
-        .ibexa-icon {
+        .ids-icon {
             fill: $color-error-80;
         }
     }
