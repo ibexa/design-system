@@ -32,7 +32,7 @@ export default class SVGAllIcons {
     async generateHTML() {
         let outputHTML = this.domElement.outerHTML;
         outputHTML = this.addXMLTag(outputHTML);
-        outputHTML = await this.prettiefyHTML(outputHTML);
+        // outputHTML = await this.prettiefyHTML(outputHTML);
 
         this.html = outputHTML;
     }
