@@ -26,11 +26,6 @@ export default class SVGSymbol {
             this.domElement.setAttribute(name, value);
         });
 
-        const width = parseInt(svgDOMElement.getAttribute('width'), 10);
-        const height = parseInt(svgDOMElement.getAttribute('height'), 10);
-
-        this.domElement.setAttribute('viewBox', `0 0 ${width} ${height}`);
-
         return this;
     }
 

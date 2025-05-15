@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { generateAllIconsFile, generateJSONIconsList } from '../src/scripts/icons/generate.js';
+import { generateCleanIconsFiles, generateAllIconsFile, generateJSONIconsList } from '../src/scripts/icons/generate.js';
 import { testForForbiddenAttributes } from '../src/scripts/icons/test.js';
 import config from '../src/scripts/icons/config.js';
 
@@ -14,6 +14,10 @@ const type = process.argv[2];
 switch (type) {
     case 'test-icons':
         testForForbiddenAttributes();
+
+        break;
+    case 'generate-clean-icons':
+        generateCleanIconsFiles();
 
         break;
     case 'generate-all-icons':

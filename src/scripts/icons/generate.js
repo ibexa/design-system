@@ -6,6 +6,20 @@ import SVGAllIcons from './svg.all.icons.js';
 import config from './config.js';
 import { getIconsList, changeFileExtension } from './helpers.js';
 
+export const generateCleanIconsFiles = async () => {
+    const iconsList = getIconsList();
+
+    await iconsList.forEach(async (filepath) => {
+        const svgIcon = new SVGIcon(filepath);
+
+        svgIcon.removeAttributes();
+        await svgIcon.generateHTML();
+        svgIcon.saveFile();
+    });
+
+    console.log('\x1b[32m%s\x1b[0m', 'Clean SVG icons generated successfully'); // eslint-disable-line no-console
+};
+
 export const generateAllIconsFile = async () => {
     const showWarnings = config.get('showWarnings');
     const outputPathAllIcons = config.get('outputPathAllIcons');

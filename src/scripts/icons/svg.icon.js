@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import { JSDOM } from 'jsdom';
+import prettier from 'prettier';
 
 import { countArrayElements } from './helpers.js';
 import config from './config.js';
@@ -44,4 +45,43 @@ export default class SVGIcon {
 
         return output;
     };
+
+    removeAttributes = () => {
+        this.hasRemovedAttributes = false;
+
+        const forbiddenAttributes = config.get('forbiddenAttributes');
+        const selector = forbiddenAttributes.map((attribute) => `[${attribute}]`).join(',');
+        const svgDOMElement = this.getSVGDOMElement();
+        const elementsToModify = Array.from(svgDOMElement.querySelectorAll(selector));
+
+        if (forbiddenAttributes.find((attribute) => svgDOMElement.hasAttribute(attribute))) {
+            elementsToModify.unshift(svgDOMElement);
+        }
+
+        elementsToModify.forEach((node) => {
+            forbiddenAttributes.forEach((attribute) => {
+                node.removeAttribute(attribute);
+
+                this.hasRemovedAttributes = true;
+            });
+        });
+
+        return this;
+    };
+
+    prettiefyHTML(output) {
+        return prettier.format(output, { parser: 'html' });
+    }
+
+    async generateHTML() {
+        const svgDOMElement = this.getSVGDOMElement();
+        let outputHTML = svgDOMElement.outerHTML;
+        outputHTML = await this.prettiefyHTML(outputHTML);
+
+        this.html = outputHTML;
+    }
+
+    saveFile() {
+        fs.writeFileSync(this.filepath, this.html);
+    }
 }
