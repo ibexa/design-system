@@ -66,6 +66,9 @@ export default class SVGIcon {
             });
         });
 
+        svgDOMElement.removeAttribute('width');
+        svgDOMElement.removeAttribute('height');
+
         return this;
     };
 
