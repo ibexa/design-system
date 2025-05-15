@@ -62,7 +62,7 @@ echo "# Removing yarn.lock"
 rm -rf "yarn.lock"
 
 echo "# Installing dependendencies"
-yarn install
+yarn install --prod
 yarn run packages:build
 
 echo "# Removing Storybook and dev files"
@@ -83,6 +83,7 @@ check_process "create the branch '$TMP_BRANCH'"
 
 echo "# Commiting"
 git add .storybook packages scripts src stories types tsconfig.json eslint.config.js > /dev/null
+git add packages/**/dist -f > /dev/null
 git commit -q -m "Version $VERSION"
 check_process "commit the assets"
 
