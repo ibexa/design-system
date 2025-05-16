@@ -17,7 +17,9 @@ const IconsList = () => {
                     <td className="ids-table__cell" style={{ padding: '10px' }}>
                         <Icon name={iconName} size="large" />
                     </td>
-                    <td className="ids-table__cell" style={{ padding: '10px' }}>{iconName}</td>
+                    <td className="ids-table__cell" style={{ padding: '10px' }}>
+                        {iconName}
+                    </td>
                 </tr>
             );
         });
