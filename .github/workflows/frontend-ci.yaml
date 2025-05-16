@@ -1,0 +1,46 @@
+name: Frontend tests
+
+on:
+    push:
+        branches:
+            - main
+            - '[0-9]+.[0-9]+'
+    pull_request: ~
+
+jobs:
+    storybook-tests:
+        name: Storybook tests
+        runs-on: 'ubuntu-24.04'
+        timeout-minutes: 5
+
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '18'
+            - run: yarn install
+            - run: yarn storybook:test
+    assets-tests:
+        name: Assets tests
+        runs-on: 'ubuntu-24.04'
+        timeout-minutes: 5
+
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '18'
+            - run: yarn install
+            - run: yarn assets:test
+    components-tests:
+        name: Components tests
+        runs-on: 'ubuntu-24.04'
+        timeout-minutes: 5
+
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '18'
+            - run: yarn install
+            - run: yarn components:test

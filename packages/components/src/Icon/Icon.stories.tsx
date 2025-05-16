@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Icon from './Icon';
 import { ICON_SIZE_VALUES } from './Icon.types';
+import Icon from './Icon';
 
 const meta: Meta<typeof Icon> = {
     component: Icon,

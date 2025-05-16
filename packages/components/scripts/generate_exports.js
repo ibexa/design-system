@@ -18,11 +18,9 @@ componentsPaths
         packageJsonExports[`./${name}`] = `./dist/${name}/index.js`;
     });
 
-contextComponentsPaths
-    .forEach((name) => {
-        packageJsonExports[`./context/${name}`] = `./dist/context/${name}/index.js`;
-    });
-
+contextComponentsPaths.forEach((name) => {
+    packageJsonExports[`./context/${name}`] = `./dist/context/${name}/index.js`;
+});
 
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 
@@ -30,4 +28,4 @@ packageJson.exports = packageJsonExports;
 
 fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
-console.log('Updated package.json with exports field.');
+console.log('Updated package.json with exports field.'); // eslint-disable-line no-console
