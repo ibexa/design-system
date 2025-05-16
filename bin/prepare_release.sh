@@ -62,7 +62,7 @@ echo "# Removing yarn.lock"
 rm -rf "yarn.lock"
 
 echo "# Installing dependendencies"
-yarn install --prod
+yarn install
 yarn run packages:build
 
 echo "# Removing Storybook and dev files"
