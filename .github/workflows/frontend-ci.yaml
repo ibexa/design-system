@@ -1,4 +1,4 @@
-name: Frontend tests
+name: Code Quality Tests
 
 on:
     push:
@@ -8,8 +8,8 @@ on:
     pull_request: ~
 
 jobs:
-    storybook-tests:
-        name: Storybook tests
+    infra-tests:
+        name: Infrastructure Setup Tests
         runs-on: 'ubuntu-24.04'
         timeout-minutes: 5
 
@@ -19,9 +19,9 @@ jobs:
               with:
                   node-version: '18'
             - run: yarn install
-            - run: yarn storybook:test
+            - run: yarn infra:test
     assets-tests:
-        name: Assets tests
+        name: Assets Tests
         runs-on: 'ubuntu-24.04'
         timeout-minutes: 5
 
@@ -33,7 +33,7 @@ jobs:
             - run: yarn install
             - run: yarn assets:test
     components-tests:
-        name: Components tests
+        name: Components Tests
         runs-on: 'ubuntu-24.04'
         timeout-minutes: 5
 
