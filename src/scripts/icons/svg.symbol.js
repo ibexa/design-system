@@ -41,6 +41,12 @@ export default class SVGSymbol {
         this.hasRemovedAttributes = false;
 
         const forbiddenAttributes = config.get('forbiddenAttributes');
+        const omitForbiddenIconsIcons = config.get('omitForbiddenIconsIcons');
+
+        if (omitForbiddenIconsIcons.includes(this.domElement.id)) {
+            return this;
+        }
+
         const selector = forbiddenAttributes.map((attribute) => `[${attribute}]`).join(',');
         const elementsToModify = Array.from(this.domElement.querySelectorAll(selector));
 

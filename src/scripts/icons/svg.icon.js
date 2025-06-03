@@ -50,6 +50,12 @@ export default class SVGIcon {
         this.hasRemovedAttributes = false;
 
         const forbiddenAttributes = config.get('forbiddenAttributes');
+        const omitForbiddenIconsIcons = config.get('omitForbiddenIconsIcons');
+
+        if (omitForbiddenIconsIcons.includes(this.getID())) {
+            return this;
+        }
+
         const selector = forbiddenAttributes.map((attribute) => `[${attribute}]`).join(',');
         const svgDOMElement = this.getSVGDOMElement();
         const elementsToModify = Array.from(svgDOMElement.querySelectorAll(selector));
@@ -60,15 +66,6 @@ export default class SVGIcon {
 
         elementsToModify.forEach((node) => {
             forbiddenAttributes.forEach((attribute) => {
-                if (attribute === 'fill') {
-                    const fillValue = node.getAttribute(attribute);
-                    const isUrlFill = fillValue.indexOf('url(', 0);
-
-                    if (isUrlFill) {
-                        return;
-                    }
-                }
-
                 node.removeAttribute(attribute);
 
                 this.hasRemovedAttributes = true;

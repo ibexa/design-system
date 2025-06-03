@@ -8,6 +8,7 @@ config.setConfig('showWarnings', true);
 config.setConfig('inputPath', path.resolve('./packages/assets/src/img/icons'));
 config.setConfig('outputPathAllIcons', path.resolve('./packages/assets/src/img/all-icons.svg'));
 config.setConfig('forbiddenAttributes', ['fill']);
+config.setConfig('omitForbiddenIconsIcons', ['qa-admin', 'qa-catalog', 'qa-click', 'qa-clipboard', 'qa-cloud', 'qa-company', 'qa-editor', 'qa-file', 'qa-form-check', 'qa-info', 'qa-product', 'qa-store']);
 
 const type = process.argv[2];
 
