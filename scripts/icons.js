@@ -7,7 +7,7 @@ import config from '../src/scripts/icons/config.js';
 config.setConfig('showWarnings', true);
 config.setConfig('inputPath', path.resolve('./packages/assets/src/img/icons'));
 config.setConfig('outputPathAllIcons', path.resolve('./packages/assets/src/img/all-icons.svg'));
-config.setConfig('forbiddenAttributes', ['fill', 'fill-rule', 'clip-rule']);
+config.setConfig('forbiddenAttributes', ['fill']);
 
 const type = process.argv[2];
 

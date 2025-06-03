@@ -60,6 +60,15 @@ export default class SVGIcon {
 
         elementsToModify.forEach((node) => {
             forbiddenAttributes.forEach((attribute) => {
+                if (attribute === 'fill') {
+                    const fillValue = node.getAttribute(attribute);
+                    const isUrlFill = fillValue.indexOf('url(', 0);
+
+                    if (isUrlFill) {
+                        return;
+                    }
+                }
+
                 node.removeAttribute(attribute);
 
                 this.hasRemovedAttributes = true;
