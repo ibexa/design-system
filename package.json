@@ -1,6 +1,6 @@
 {
   "name": "@ibexa/design-system",
-  "version": "1.0.1",
+  "version": "1.0.0-alpha2",
   "main": "index.js",
   "repository": "git@github.com:GrabowskiM/design-system.git",
   "author": "Michał Grabowski <michal.grabowski@ibexa.co>",
@@ -13,8 +13,8 @@
   ],
   "peerDependencies": {
     "prop-types": "^15.8.1",
-    "react-dom": "^18.2.0",
-    "react": "^18.2.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.27.0",
