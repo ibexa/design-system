@@ -1,5 +1,4 @@
 import React from 'react';
-import { StoryFn } from '@storybook/react';
 
 import AssetsProvider from '../packages/components/src/context/Assets/Assets';
 import TranslatorProvider from '../packages/components/src/context/Translator/Translator';
@@ -23,7 +22,9 @@ const Translator = {
     },
 };
 
-export const ContextDecorator = (Story: StoryFn) => (
+export const ContextDecorator = (
+    Story: any, // eslint-disable-line @typescript-eslint/no-explicit-any
+) => (
     <AssetsProvider value={Assets}>
         <TranslatorProvider value={Translator}>
             <Story />
