@@ -1,13 +1,9 @@
 import React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, fn, userEvent, within } from 'storybook/test';
-
-import { sleep } from '../../../../src/utils/test';
+import { expect, fn, userEvent, waitFor, within } from 'storybook/test';
 
 import Accordion from './Accordion';
-
-const ANIMATION_TIMEOUT = 2000;
 
 const meta: Meta<typeof Accordion> = {
     component: Accordion,
@@ -83,11 +79,12 @@ export const TestExpandHide: Story = {
         await step('Hide content', async () => {
             await userEvent.click(canvas.getByText('Hide'));
 
-            await sleep(ANIMATION_TIMEOUT);
+            await waitFor(async () => {
+                const content = canvas.queryByText('Lorem ipsum dolor sit amet', { exact: false });
 
-            const content = canvas.queryByText('Lorem ipsum dolor sit amet', { exact: false });
+                await expect(content).toBeNull();
+            }, { timeout: 5000, interval: 500, container: canvasElement });
 
-            await expect(content).toBeNull();
             await expect(args.onHandleExpand).toHaveBeenLastCalledWith(false);
         });
     },
