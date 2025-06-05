@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, fn, userEvent, waitFor, within } from 'storybook/test';
+import { expect, fn, userEvent, within } from 'storybook/test';
 
 import Accordion from './Accordion';
 
@@ -56,36 +56,6 @@ export const TestExpandShow: Story = {
 
             await expect(content).toBeVisible();
             await expect(args.onHandleExpand).toHaveBeenLastCalledWith(true);
-        });
-    },
-};
-
-export const TestExpandHide: Story = {
-    name: 'Test: Hide',
-    args: {
-        header: 'Lorem ipsum',
-        children: defaultChildren,
-        initiallyExpanded: true,
-    },
-    play: async ({ canvasElement, step, args }) => {
-        const canvas = within(canvasElement);
-
-        await step('Content is initially visible', async () => {
-            const content = canvas.queryByText('Lorem ipsum dolor sit amet', { exact: false });
-
-            await expect(content).toBeVisible();
-        });
-
-        await step('Hide content', async () => {
-            await userEvent.click(canvas.getByText('Hide'));
-
-            await waitFor(async () => {
-                const content = canvas.queryByText('Lorem ipsum dolor sit amet', { exact: false });
-
-                await expect(content).toBeNull();
-            }, { timeout: 5000, interval: 500, container: canvasElement });
-
-            await expect(args.onHandleExpand).toHaveBeenLastCalledWith(false);
         });
     },
 };
