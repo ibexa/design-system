@@ -48,9 +48,9 @@ const Accordion = ({ children, header, initiallyExpanded = false, onHandleExpand
         }, FAKE_TIMEOUT_RERENDER);
     };
     const mainClassName = createCssClassNames({
-        'ibexa-accordion': true,
-        'ibexa-accordion--is-animating': isAnimating,
-        'ibexa-accordion--is-expanded': isExpanded,
+        'ids-accordion': true,
+        'ids-accordion--is-animating': isAnimating,
+        'ids-accordion--is-expanded': isExpanded,
     });
 
     useEffect(() => {
@@ -59,8 +59,8 @@ const Accordion = ({ children, header, initiallyExpanded = false, onHandleExpand
 
     return (
         <div className={mainClassName}>
-            <div className="ibexa-accordion__header">
-                <div className="ibexa-accordion__header-content">{header}</div>
+            <div className="ids-accordion__header">
+                <div className="ids-accordion__header-content">{header}</div>
                 <Expander
                     collapseLabel={collapseLabel}
                     expandLabel={expandLabel}
@@ -70,7 +70,7 @@ const Accordion = ({ children, header, initiallyExpanded = false, onHandleExpand
                     type="triangle"
                 />
             </div>
-            <div className="ibexa-accordion__content" ref={accordionContentRef}>
+            <div className="ids-accordion__content" ref={accordionContentRef}>
                 {isExpanded || isAnimating ? children : null}
             </div>
         </div>

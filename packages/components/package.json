@@ -1,15 +1,15 @@
 {
-  "name": "@ibexa/design-system-components",
-  "version": "1.0.0",
+  "name": "@ibexa/ids-components",
+  "version": "1.0.0-alpha2",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "cross-env": "^7.0.3"
   },
   "scripts": {
-    "prettier:test": "yarn prettier \"./src/**/*.{js,ts,jsx,tsx}\" --check",
+    "prettier:test": "yarn prettier \"./scripts/*.js\" \"./src/**/*.{js,ts,jsx,tsx}\" --check",
     "prettier:fix": "yarn prettier:test --write",
-    "eslint:test": "yarn eslint \"./src/**/*.{js,ts,jsx,tsx}\"",
+    "eslint:test": "yarn eslint \"./scripts/*.js\" \"./src/**/*.{js,ts,jsx,tsx}\"",
     "eslint:fix": "yarn eslint:test --fix",
     "ts:test": "yarn tsc --noEmit",
     "test": "yarn prettier:test && yarn eslint:test && yarn ts:test",
@@ -18,7 +18,7 @@
     "generate-exports": "node ./scripts/generate_exports.js",
     "build:clear": "rm -rf dist/*",
     "build:js": "babel src --out-dir dist --delete-dir-on-start --extensions \".js,.ts,.jsx,.tsx\"",
-    "build:types": "tsc --emitDeclarationOnly",
+    "build:types": "tsc --emitDeclarationOnly --project tsconfig.build.json",
     "build": "yarn build:clear && yarn build:js && yarn build:types && yarn generate-exports"
   },
   "exports": {

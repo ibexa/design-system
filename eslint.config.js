@@ -1,11 +1,11 @@
-import ibexaConfig from 'eslint-config-ibexa/eslint';
+import getIbexaConfig from '@ibexa/eslint-config/eslint';
 
 export default [
-    ...ibexaConfig,
+    ...getIbexaConfig(),
     {
         files: ['**/*.stories.js', '**/*.stories.jsx', '**/*.stories.ts', '**/*.stories.tsx'],
         rules: {
-            "sort-keys": "off",
+            'sort-keys': 'off',
         },
     },
 ];

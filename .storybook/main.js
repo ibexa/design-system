@@ -3,12 +3,10 @@ const path = require('path');
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
-    stories: ['../packages/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+    stories: ['../packages/**/*.stories.@(js|jsx|mjs|ts|tsx)', '../stories/*.stories.@(js|jsx|mjs|ts|tsx)'],
     staticDirs: ['../packages/assets/src/'],
     addons: [
         '@storybook/addon-webpack5-compiler-swc',
-        '@storybook/addon-essentials',
-        '@storybook/addon-interactions',
         '@storybook/addon-a11y',
         'storybook-addon-pseudo-states',
         {

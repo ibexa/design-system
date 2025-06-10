@@ -1,3 +1,12 @@
 {
-    "extends": "./tsconfig.eslint.json"
+    "extends": "@ibexa/ts-config",
+    "compilerOptions": {
+        "target": "es2024",
+        "resolveJsonModule": true,
+        "typeRoots": [
+            "./types",
+            "./node_modules/@types"
+        ]
+    },
+    "include": ["src/**/*", ".storybook/*", "types/*", "stories/*"]
 }

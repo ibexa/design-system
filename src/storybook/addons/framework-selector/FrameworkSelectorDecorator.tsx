@@ -47,6 +47,7 @@ const getIframeSrc = (id: string, args: argsType) => {
     return twigUrl;
 };
 
+// eslint-disable-next-line ibexa/max-lines-per-function-jsx
 const FrameworkSelectorDecorator = (
     StoryFn: StoryFunction<Renderer>,
     context: StoryContext<Renderer>,

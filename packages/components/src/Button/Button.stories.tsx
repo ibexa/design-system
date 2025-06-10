@@ -1,8 +1,9 @@
 import React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
+import { BUTTON_SIZE_VALUES, BUTTON_TYPE_VALUES } from './Button.types';
 import Button from './Button';
 
 const meta: Meta<typeof Button> = {
@@ -14,9 +15,11 @@ const meta: Meta<typeof Button> = {
     argTypes: {
         size: {
             control: 'select',
+            options: Object.values(BUTTON_SIZE_VALUES),
         },
         type: {
             control: 'select',
+            options: Object.values(BUTTON_TYPE_VALUES),
         },
         extraClasses: {
             control: 'text',
@@ -58,7 +61,7 @@ export const Secondary: Story = {
 export const SecondaryDisabled: Story = {
     name: 'Secondary (Disabled)',
     args: {
-        type: 'primary',
+        type: 'secondary',
         children: 'Button label',
         disabled: true,
     },
@@ -68,11 +71,24 @@ export const SecondaryWithHTML: Story = {
     name: 'Secondary with HTML',
     args: {
         type: 'secondary',
+        ariaLabel: 'Button label',
         children: (
             <>
                 <b>Button</b>&nbsp;<u>Label</u>
             </>
         ),
+    },
+};
+
+export const SecondaryWithExtraAria: Story = {
+    name: 'Secondary with extra aria attributes',
+    args: {
+        type: 'secondary',
+        children: 'Button label',
+        disabled: false,
+        extraAria: {
+            'aria-expanded': false,
+        },
     },
 };
 

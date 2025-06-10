@@ -9,14 +9,14 @@ import { IconProps } from './Icon.types';
 const Icon = ({ cssClass = '', name, customPath, size = undefined }: IconProps) => {
     const { getIconPath }: { getIconPath: GetIconPathType } = useContext<AssetsType>(AssetsContext);
     const classes = createCssClassNames({
-        'ibexa-icon': true,
-        [`ibexa-icon--${size ?? ''}`]: !!size,
+        'ids-icon': true,
+        [`ids-icon--${size ?? ''}`]: !!size,
         [cssClass]: !!cssClass,
     });
     const linkHref = customPath ?? getIconPath(name);
 
     return (
-        <svg className={classes}>
+        <svg aria-label={name} className={classes} role="img">
             <use xlinkHref={linkHref} />
         </svg>
     );

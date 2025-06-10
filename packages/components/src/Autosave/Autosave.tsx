@@ -18,9 +18,9 @@ export const AUTOSAVE_STATUS = {
 const Autosave = ({ isDarkMode = false, isEnabled = true, status = 'on', lastSavedTime }: AutosaveProps) => {
     const Translator = useContext(TranslatorContext);
     const classes = createCssClassNames({
-        'ibexa-autosave': true,
-        'ibexa-autosave--error': status === AUTOSAVE_STATUS.ERROR,
-        'ibexa-autosave--light': isDarkMode,
+        'ids-autosave': true,
+        'ids-autosave--error': status === AUTOSAVE_STATUS.ERROR,
+        'ids-autosave--light': isDarkMode,
     });
     const tooltipMessage = 'content.autosave.turn_off.message';
     const getIconName = () => {
@@ -66,8 +66,8 @@ const Autosave = ({ isDarkMode = false, isEnabled = true, status = 'on', lastSav
 
     return (
         <div className={classes} title={isEnabled ? tooltipMessage : undefined}>
-            <Icon cssClass="ibexa-icon" name={getIconName()} size="small" />
-            <div className="ibexa-autosave__status-message">{getStatusMessage()}</div>
+            <Icon cssClass="ids-icon" name={getIconName()} size="small" />
+            <div className="ids-autosave__status-message">{getStatusMessage()}</div>
         </div>
     );
 };

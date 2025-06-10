@@ -1,6 +1,6 @@
 {
-  "name": "@ibexa/design-system-assets",
-  "version": "1.0.0",
+  "name": "@ibexa/ids-assets",
+  "version": "1.0.0-alpha2",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {

@@ -3,19 +3,19 @@
 
 @mixin button-state($variables, $prefix) {
     @if list.length($variables) >= 1 {
-        --ibexa-#{$prefix}-text-color: #{list.nth($variables, 1)};
+        --ids-#{$prefix}-text-color: #{list.nth($variables, 1)};
     }
 
     @if list.length($variables) >= 2 {
-        --ibexa-#{$prefix}-bg-color: #{list.nth($variables, 2)};
+        --ids-#{$prefix}-bg-color: #{list.nth($variables, 2)};
     }
 
     @if list.length($variables) >= 3 {
-        --ibexa-#{$prefix}-border-color: #{list.nth($variables, 3)};
+        --ids-#{$prefix}-border-color: #{list.nth($variables, 3)};
     }
 
     @if list.length($variables) >= 4 {
-        --ibexa-#{$prefix}-box-shadow: #{list.nth($variables, 4)};
+        --ids-#{$prefix}-box-shadow: #{list.nth($variables, 4)};
     }
 }
 

@@ -65,5 +65,5 @@ files.forEach((filepath) => {
 jsToXliff12(translations).then((xliffFileContent) => {
     fs.writeFileSync('./assets/translations.xliff', xliffFileContent, 'utf-8');
 
-    console.log('Updated translations.');
+    console.log('Updated translations.'); // eslint-disable-line no-console
 });

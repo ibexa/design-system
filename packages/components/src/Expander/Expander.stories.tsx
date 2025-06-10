@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import Expander from './Expander';
 
@@ -18,6 +18,7 @@ const meta: Meta<typeof Expander> = {
         },
         type: {
             control: 'select',
+            options: ['caret', 'triangle'],
         },
     },
     args: { onClick: action('on-click') },

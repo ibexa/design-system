@@ -8,28 +8,33 @@ import { createCssClassNames } from '../internal/shared/css.class.names';
 import { ExpanderProps } from './Expander.types';
 
 const ICONS_MAP = {
-    caret: 'caret-down',
+    caret: 'arrow-caret-down',
     triangle: 'arrow-down',
 } as const;
 
 const Expander = ({ onClick, collapseLabel = '', expandLabel = '', hasIcon = true, isExpanded = false, type = 'caret' }: ExpanderProps) => {
     const label = isExpanded ? collapseLabel : expandLabel;
     const extraClasses = createCssClassNames({
-        'ibexa-expander': true,
-        'ibexa-expander--has-icon': hasIcon,
-        'ibexa-expander--has-label': label !== '',
-        'ibexa-expander--is-expanded': isExpanded,
+        'ids-expander': true,
+        'ids-expander--has-icon': hasIcon,
+        'ids-expander--has-label': label !== '',
+        'ids-expander--is-expanded': isExpanded,
     });
+    const extraAria = {
+        'aria-expanded': isExpanded,
+    };
     const renderExpanderIcon = () => {
         if (!hasIcon) {
             return null;
         }
 
-        return <Icon cssClass="ibexa-icon" name={ICONS_MAP[type]} size="small" />;
+        return <Icon cssClass="ids-icon" name={ICONS_MAP[type]} size="small" />;
     };
 
     return (
         <Button
+            ariaLabel={label}
+            extraAria={extraAria}
             extraClasses={extraClasses}
             onClick={() => {
                 onClick(!isExpanded);
