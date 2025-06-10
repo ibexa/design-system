@@ -11,7 +11,7 @@ const meta: Meta<typeof Button> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs'],
+    tags: ['autodocs', 'foundation', 'buttons'],
     argTypes: {
         size: {
             control: 'select',

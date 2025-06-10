@@ -8,7 +8,7 @@ const meta: Meta<typeof Expander> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs'],
+    tags: ['autodocs', 'buttons'],
     argTypes: {
         hasIcon: {
             control: 'boolean',

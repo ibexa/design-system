@@ -10,7 +10,7 @@ const meta: Meta<typeof Accordion> = {
     parameters: {
         layout: 'padded',
     },
-    tags: ['autodocs'],
+    tags: ['autodocs', 'secondary'],
     argTypes: {
         initiallyExpanded: {
             control: 'boolean',
