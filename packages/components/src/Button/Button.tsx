@@ -5,14 +5,14 @@ import { createCssClassNames } from '../internal/shared/css.class.names';
 import { ButtonProps } from './Button.types';
 
 const Button = ({
-    type = 'primary',
-    size = 'large',
-    ariaLabel,
-    extraAria = {},
-    children,
-    disabled = false,
-    extraClasses = '',
     onClick,
+    children,
+    ariaLabel,
+    disabled = false,
+    extraAria = {},
+    extraClasses = '',
+    size = 'large',
+    type = 'primary',
 }: ButtonProps) => {
     const classes = createCssClassNames({
         'ids-btn': true,
