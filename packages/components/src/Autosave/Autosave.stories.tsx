@@ -7,7 +7,7 @@ const meta: Meta<typeof Autosave> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs'],
+    tags: ['autodocs', 'in-frequent'],
     argTypes: {
         isDarkMode: {
             control: 'boolean',

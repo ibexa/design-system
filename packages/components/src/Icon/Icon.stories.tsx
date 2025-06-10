@@ -8,7 +8,7 @@ const meta: Meta<typeof Icon> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs'],
+    tags: ['autodocs', 'foundation'],
     argTypes: {
         name: {
             control: 'text',
