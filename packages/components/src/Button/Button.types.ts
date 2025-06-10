@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+import { ExtraAriaType } from '../../../../types/general';
+
 export const BUTTON_TYPE_VALUES = ['primary', 'secondary', 'tertiary', 'black-secondary', 'black-tertiary'] as const;
 export const BUTTON_SIZE_VALUES = ['large', 'small', 'extra-small'] as const;
 
@@ -9,7 +11,7 @@ interface ButtonSharedProps {
     size?: (typeof BUTTON_SIZE_VALUES)[number];
     disabled?: boolean;
     extraClasses?: string;
-    extraAria?: Record<`aria-${string}`, boolean | number | string>;
+    extraAria?: ExtraAriaType;
 }
 
 interface ButtonHTMLProps extends ButtonSharedProps {
