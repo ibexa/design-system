@@ -1,5 +1,7 @@
 export const ICON_SIZE_VALUES = ['tiny', 'tiny-small', 'small', 'small-medium', 'medium', 'medium-large', 'large', 'extra-large'] as const;
 
+export type IconSizeType = (typeof ICON_SIZE_VALUES)[number];
+
 interface IconSharedProps {
     cssClass?: string;
     size: (typeof ICON_SIZE_VALUES)[number] | undefined;

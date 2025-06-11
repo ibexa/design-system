@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
-import { BaseAttributes } from '@ids-types/general';
+import { BaseComponentAttributes } from '@ids-types/general';
 
-export interface FormLabelProps extends Exclude<BaseAttributes, 'extraAria'> {
+export interface FormLabelProps extends BaseComponentAttributes {
     children: ReactNode;
     htmlFor: string;
     error?: boolean;
