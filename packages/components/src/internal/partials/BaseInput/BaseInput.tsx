@@ -17,6 +17,7 @@ const BaseInput = ({
     id = undefined,
     required = false,
     size = 'basic',
+    title = '',
     value = '',
 }: BaseInputProps) => {
     const componentGeneratedNumberId = useGenerateSimpleNumberId();
@@ -39,6 +40,7 @@ const BaseInput = ({
             disabled={disabled}
             id={componentId}
             name={name}
+            title={title}
             type={type}
             value={value}
             {...extraInputAttrs}
