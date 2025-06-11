@@ -6,6 +6,7 @@ const config = {
     stories: ['../packages/**/*.stories.@(js|jsx|mjs|ts|tsx)', '../stories/*.stories.@(js|jsx|mjs|ts|tsx)'],
     staticDirs: ['../packages/assets/src/'],
     addons: [
+        '@storybook/addon-docs',
         '@storybook/addon-webpack5-compiler-swc',
         '@storybook/addon-a11y',
         'storybook-addon-pseudo-states',
