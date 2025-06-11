@@ -1,5 +1,5 @@
 import { BaseAttributes } from '@ids-types/general';
-import { BaseInputTypesType } from '../internal/partials/BaseInput/BaseInput.types';
+import { BaseInputTypesType } from '@ids-internal/partials/BaseInput/BaseInput.types';
 
 export const INPUT_SIZE_VALUES = ['basic', 'small'] as const;
 export const INPUT_TYPE_VALUES = ['text', 'password', 'email', 'number', 'tel', 'search', 'url'] as const satisfies BaseInputTypesType[];

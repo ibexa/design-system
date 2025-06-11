@@ -51,6 +51,12 @@ const config = {
             use: ['raw-loader'],
         });
 
+        webpackConfig.resolve.alias = {
+            ...webpackConfig.resolve.alias,
+            '@ids-context': path.resolve(__dirname, '../packages/components/src/context'),
+            '@ids-internal': path.resolve(__dirname, '../packages/components/src/internal'),
+        };
+
         webpackConfig.plugins.push(new NodePolyfillPlugin());
 
         return webpackConfig;

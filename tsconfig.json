@@ -8,7 +8,8 @@
             "./node_modules/@types"
         ],
         "paths": {
-            "@ids-internals/*": ["./packages/components/src/internals/*"],
+            "@ids-context/*": ["./packages/components/src/context/*"],
+            "@ids-internal/*": ["./packages/components/src/internal/*"],
             "@ids-types/*": ["./types/*"]
         }
     },

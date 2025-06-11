@@ -15,7 +15,7 @@ $input-sizes: (
 );
 
 .ids-input {
-    border-radius: calculateRem(8px);
+    border-radius: $border-radius-medium;
     background: var(--ids-input-default-bg-color, #{$color-neutral-10});
     border: calculateRem(1px) solid var(--ids-input-default-border-color, #{$color-neutral-80});
     color: var(--ids-input-default-text-color, #{$color-neutral-240});
