@@ -6,14 +6,13 @@
 $input-sizes: (
     'small': (
         'font-size': $text-font-size-s,
-        'padding': calculateRem(7px) calculateRem(16px) calculateRem(7px)
+        'padding': calculateRem(7px) calculateRem(16px) calculateRem(7px),
     ),
     'basic': (
         'font-size': $text-font-size-m,
-        'padding': calculateRem(9px) calculateRem(16px) calculateRem(10px)
-    )
+        'padding': calculateRem(9px) calculateRem(16px) calculateRem(10px),
+    ),
 );
-
 
 .ids-input {
     border-radius: calculateRem(8px);
@@ -28,7 +27,7 @@ $input-sizes: (
             padding: map.get($properties, 'padding');
         }
     }
-    
+
     &.ids-input--error {
         background: var(--ids-input-error-bg-color, #{$color-error-20});
         border-color: var(--ids-input-error-border-color, #{$color-error-80});

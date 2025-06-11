@@ -20,6 +20,7 @@ const Input = ({
     readOnly = false,
     required = false,
     size = 'basic',
+    title = '',
     type = 'text',
     value = '',
 }: InputTextProps) => {
@@ -31,13 +32,13 @@ const Input = ({
     };
     const componentOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         onChange(event.target.value, event);
-    }
+    };
     const componentOnFocus = (event: React.FocusEvent<HTMLInputElement>) => {
         onFocus(event);
-    }
+    };
     const componentOnInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         onInput(event.target.value, event);
-    }
+    };
 
     return (
         <BaseInput
@@ -57,6 +58,7 @@ const Input = ({
             name={name}
             required={required}
             size={size}
+            title={title}
             type={type}
             value={value}
         />

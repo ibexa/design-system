@@ -72,5 +72,8 @@
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook"
   },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "yarn@1.22.22",
+  "dependencies": {
+    "babel-plugin-module-resolver": "^5.0.2"
+  }
 }

@@ -22,6 +22,9 @@ const meta: Meta<typeof InputText> = {
         extraClasses: {
             control: 'text',
         },
+        title: {
+            control: 'text',
+        },
         value: {
             control: 'text',
         },
