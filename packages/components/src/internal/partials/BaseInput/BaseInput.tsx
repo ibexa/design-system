@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { createCssClassNames } from '../../shared/css.class.names';
-import { useGenerateSimpleNumberId } from '../../hooks/generators';
+import { createCssClassNames } from '@ids-internal/shared/css.class.names';
+import { useGenerateSimpleNumberId } from '@ids-internal/hooks/generators';
 
 import { BaseInputProps } from './BaseInput.types';
 

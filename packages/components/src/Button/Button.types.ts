@@ -7,9 +7,9 @@ export const BUTTON_SIZE_VALUES = ['large', 'small', 'extra-small'] as const;
 
 interface ButtonSharedProps extends BaseAttributes {
     onClick: React.MouseEventHandler<HTMLButtonElement>;
-    type?: (typeof BUTTON_TYPE_VALUES)[number];
-    size?: (typeof BUTTON_SIZE_VALUES)[number];
     disabled?: boolean;
+    size?: (typeof BUTTON_SIZE_VALUES)[number];
+    type?: (typeof BUTTON_TYPE_VALUES)[number];
 }
 
 interface ButtonHTMLProps extends ButtonSharedProps {

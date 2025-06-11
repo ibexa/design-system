@@ -16,7 +16,7 @@
     }
 
     &__content {
-        transition: height $admin-transition-duration $admin-transition;
+        transition: height $transition-duration $transition-timing-function;
         overflow: hidden;
         height: 0;
         display: none;

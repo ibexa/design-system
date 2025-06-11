@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 
 import Expander from '../Expander';
-import { TranslatorContext } from '../context/Translator';
+import { TranslatorContext } from '@ids-context/Translator';
 
-import { createCssClassNames } from '../internal/shared/css.class.names';
+import { createCssClassNames } from '@ids-internal/shared/css.class.names';
 
 import { AccordionProps } from './Accordion.types';
 

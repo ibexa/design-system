@@ -2,8 +2,13 @@
 @forward 'variables/shadows';
 @forward 'variables/typography';
 
+@use 'functions/calculate.rem' as *;
+
 // Ibexa transition function
-$admin-transition: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
-$admin-transition-duration: 0.4s !default;
+$transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
+$transition-duration: 0.4s !default;
+
+// Various component variables
+$border-radius-medium: calculateRem(8px) !default;
 
 $assets-base-path: '/' !default;

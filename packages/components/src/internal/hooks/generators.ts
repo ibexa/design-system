@@ -1,6 +1,6 @@
 import { useMemo, useRef } from 'react';
 
-import { generateSimpleNumberId } from '../shared/generators';
+import { generateSimpleNumberId } from '@ids-internal/shared/generators';
 
 export const useGenerateSimpleNumberId = () => {
     const isIdAlreadyGenerated = useRef(false);

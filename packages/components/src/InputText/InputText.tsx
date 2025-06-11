@@ -1,7 +1,7 @@
 import React from 'react';
 
-import BaseInput from '../internal/partials/BaseInput';
-import { createCssClassNames } from '../internal/shared/css.class.names';
+import BaseInput from '@ids-internal/partials/BaseInput';
+import { createCssClassNames } from '@ids-internal/shared/css.class.names';
 
 import { InputTextProps } from './InputText.types';
 
