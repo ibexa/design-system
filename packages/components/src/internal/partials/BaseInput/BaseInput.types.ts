@@ -1,6 +1,6 @@
 import { HTMLInputTypeAttribute, InputHTMLAttributes } from 'react';
 
-import { BaseAttributes } from '@ids-types/general';
+import { BaseComponentAttributes } from '@ids-types/general';
 
 export const INPUT_TYPE_VALUES = [
     'text',
@@ -17,7 +17,7 @@ export const INPUT_TYPE_VALUES = [
 
 export type BaseInputTypesType = (typeof INPUT_TYPE_VALUES)[number];
 
-interface BaseInputPropsProps extends Exclude<BaseAttributes, 'extraAria'> {
+interface BaseInputPropsProps extends BaseComponentAttributes {
     name: string;
     disabled?: boolean;
     error?: boolean;

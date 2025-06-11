@@ -1,7 +1,10 @@
 export type ExtraAriaType = Record<`aria-${string}`, boolean | number | string>;
 
-export interface BaseAttributes {
+export interface BaseComponentAttributes {
     extraClasses?: string;
-    extraAria?: ExtraAriaType;
     title?: string;
+};
+
+export interface BaseComponentAriaAttributes extends BaseComponentAttributes {
+    extraAria?: ExtraAriaType;
 };

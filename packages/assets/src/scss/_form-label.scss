@@ -1,6 +1,6 @@
 @use 'variables' as *;
 
-.ids-label {
+.ids-form-label {
     font-size: $text-font-size-s;
     color: var(--ids-form-label-default-text-color, #{$color-neutral-160});
 

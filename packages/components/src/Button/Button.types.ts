@@ -1,15 +1,17 @@
 import { ReactNode } from 'react';
 
-import { BaseAttributes } from '@ids-types/general';
+import { BaseComponentAriaAttributes } from '@ids-types/general';
 
-export const BUTTON_TYPE_VALUES = ['primary', 'secondary', 'tertiary', 'black-secondary', 'black-tertiary'] as const;
 export const BUTTON_SIZE_VALUES = ['large', 'small', 'extra-small'] as const;
+export const BUTTON_TYPE_VALUES = ['primary', 'secondary', 'tertiary', 'black-secondary', 'black-tertiary'] as const;
 
-interface ButtonSharedProps extends BaseAttributes {
+export type ButtonSizeType = (typeof BUTTON_SIZE_VALUES)[number];
+export type ButtonTypesType = (typeof BUTTON_TYPE_VALUES)[number];
+interface ButtonSharedProps extends BaseComponentAriaAttributes {
     onClick: React.MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
-    size?: (typeof BUTTON_SIZE_VALUES)[number];
-    type?: (typeof BUTTON_TYPE_VALUES)[number];
+    size?: ButtonSizeType;
+    type?: ButtonTypesType;
 }
 
 interface ButtonHTMLProps extends ButtonSharedProps {
