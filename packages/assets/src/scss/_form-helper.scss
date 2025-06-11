@@ -1,0 +1,39 @@
+@use 'sass:list';
+@use 'functions' as *;
+@use 'variables' as *;
+
+$helper-types:
+    'default' $color-neutral-160,
+    'warning' $color-warning-90,
+    'error' $color-error-80,
+    'info' $color-info-90,
+    'success' $color-success-80;
+
+.ids-form-helper {
+    $self: &;
+
+    font-size: $text-font-size-m;
+    color: #{list.nth($helper-types, 1)};
+    display: flex;
+    align-items: center;
+
+    &__icon-wrapper {
+        padding-right: calculateRem(4px);
+        display: flex;
+        align-items: center;
+    }
+
+    &--small {
+        font-size: $text-font-size-s;
+    }
+
+    @each $name, $color in $helper-types {
+        &--#{$name} {
+            color: $color;
+
+            #{$self}__icon {
+                fill: $color;
+            }
+        }
+    }
+}
