@@ -21,7 +21,14 @@ interface IframeMethods {
 }
 type IframeMessageData = IframeResize | IframeMethods;
 
-const getStoryId = (kind: string) => kind.replace('components/src/', '').toLowerCase();
+const camelCaseToSnakeCase = (str: string) => str
+    .replace(/([a-z])([A-Z])/g, '$1_$2')
+    .toLowerCase();
+const getStoryId = (kind: string) => {
+    const storyId = kind.replace('components/src/', '');
+
+    return camelCaseToSnakeCase(storyId);
+};
 const getIframeSrc = (id: string, args: argsType) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const storyProperties = Object.entries(args).reduce((accumulator: argsType, [propertyName, propertyValue]: [string, any]) => {
@@ -30,6 +37,7 @@ const getIframeSrc = (id: string, args: argsType) => {
             return accumulator;
         }
 
+        const properyFinalName = camelCaseToSnakeCase(propertyName);
         let propertyFinalValue = propertyValue;
 
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -37,7 +45,7 @@ const getIframeSrc = (id: string, args: argsType) => {
             propertyFinalValue = renderToString(propertyValue);
         }
 
-        return { ...accumulator, [propertyName]: propertyFinalValue };
+        return { ...accumulator, [properyFinalName]: propertyFinalValue };
         /* eslint-enable @typescript-eslint/no-unsafe-assignment */
     }, {});
     const storyPropertiesStringified = JSON.stringify(storyProperties);
@@ -54,6 +62,7 @@ const FrameworkSelectorDecorator = (
 ): Renderer['storyResult'] | React.JSX.Element => {
     const [globals] = useGlobals();
     const [args] = useArgs();
+    const iframeWrapperRef = useRef<HTMLDivElement>(null);
     const iframeRef = useRef<HTMLIFrameElement>(null);
     const { title }: { title: string } = context;
     const renderTwigSelector = () => {
@@ -61,27 +70,31 @@ const FrameworkSelectorDecorator = (
         const twigUrl = getIframeSrc(storyId, args);
 
         return (
-            <iframe
-                id={storyId}
-                ref={iframeRef}
-                src={twigUrl}
-                style={{
-                    border: 0,
-                }}
-                title={storyId}
-            />
+            <div ref={iframeWrapperRef} style={{ overflow: 'hidden' }}>
+                <iframe
+                    id={storyId}
+                    key={twigUrl}
+                    ref={iframeRef}
+                    src={twigUrl}
+                    style={{
+                        border: 0,
+                    }}
+                    title={storyId}
+                />
+            </div>
         );
     };
     const handleIframeEvent = (event: MessageEvent<IframeMessageData>) => {
         const { data, source }: { data: IframeMessageData; source: MessageEventSource | null } = event;
 
-        if (iframeRef.current === null || source !== iframeRef.current.contentWindow) {
+        if (iframeWrapperRef.current === null || iframeRef.current === null || source !== iframeRef.current.contentWindow) {
             return;
         }
 
         if (data.width && data.height) {
             iframeRef.current.style.width = `${data.width.toString()}px`;
             iframeRef.current.style.height = `${data.height.toString()}px`;
+            iframeWrapperRef.current.style.height = `${data.height.toString()}px`;
         }
 
         if (data.method) {
