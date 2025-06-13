@@ -2,18 +2,15 @@
 @use 'functions' as *;
 @use 'variables' as *;
 
-$helper-types:
+$helper-text-types:
     'default' $color-neutral-160,
-    'warning' $color-warning-90,
-    'error' $color-error-80,
-    'info' $color-info-90,
-    'success' $color-success-80;
+    'error' $color-error-80;
 
-.ids-form-helper {
+.ids-helper-text {
     $self: &;
 
     font-size: $text-font-size-m;
-    color: #{list.nth($helper-types, 1)};
+    color: #{list.nth($helper-text-types, 1)};
     display: flex;
     align-items: center;
 
@@ -23,11 +20,7 @@ $helper-types:
         align-items: center;
     }
 
-    &--small {
-        font-size: $text-font-size-s;
-    }
-
-    @each $name, $color in $helper-types {
+    @each $name, $color in $helper-text-types {
         &--#{$name} {
             color: $color;
 
