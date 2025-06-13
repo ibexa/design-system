@@ -1,12 +1,12 @@
 @use 'functions/calculate.rem' as *;
-@use 'variables';
+@use 'variables' as *;
 
 html {
     font-size: $base-font-size;
-    line-height: 1.5;
+    line-height: $base-line-height;
     letter-spacing: calculateRem(0.12px);
 }
 
 body {
-    font-family: variables.$font-family;
+    font-family: $font-family;
 }
