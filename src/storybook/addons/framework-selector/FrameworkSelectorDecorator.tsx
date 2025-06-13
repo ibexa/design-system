@@ -4,7 +4,7 @@ import { renderToString } from 'react-dom/server';
 import type { Renderer, StoryContext, PartialStoryFn as StoryFunction } from 'storybook/internal/types';
 import { useArgs, useGlobals } from 'storybook/internal/preview-api';
 
-import { FRAMEWORK } from './constants';
+import { FRAMEWORK, ROUTES } from './constants';
 
 type argsType = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 interface IframeResize {
@@ -23,6 +23,12 @@ type IframeMessageData = IframeResize | IframeMethods;
 
 const getStoryId = (kind: string) => kind.replace('components/src/', '').toLowerCase();
 const getIframeSrc = (id: string, args: argsType) => {
+    const baseUrl = process.env.TWIG_COMPONENTS_BASE_URL;
+
+    if (baseUrl === undefined || baseUrl === '') {
+        throw new Error('TWIG_COMPONENTS_BASE_URL environment variable is not set.');
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const storyProperties = Object.entries(args).reduce((accumulator: argsType, [propertyName, propertyValue]: [string, any]) => {
         /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -41,10 +47,11 @@ const getIframeSrc = (id: string, args: argsType) => {
         /* eslint-enable @typescript-eslint/no-unsafe-assignment */
     }, {});
     const storyPropertiesStringified = JSON.stringify(storyProperties);
-    const urlParams = new URLSearchParams({ properties: storyPropertiesStringified });
-    const twigUrl = `${process.env.TWIG_COMPONENTS_URL ?? ''}/${id}?${urlParams}`;
+    const previewUrl = new URL(`${ROUTES.PREVIEW}/${id}`, baseUrl);
 
-    return twigUrl;
+    previewUrl.searchParams.set('properties', storyPropertiesStringified);
+
+    return previewUrl.toString();
 };
 
 // eslint-disable-next-line ibexa/max-lines-per-function-jsx
@@ -55,14 +62,15 @@ const FrameworkSelectorDecorator = (
     const [globals] = useGlobals();
     const [args] = useArgs();
     const iframeRef = useRef<HTMLIFrameElement>(null);
-    const { title }: { title: string } = context;
+    const { id, title }: { id: string; title: string } = context;
     const renderTwigSelector = () => {
         const storyId = getStoryId(title);
         const twigUrl = getIframeSrc(storyId, args);
 
         return (
             <iframe
-                id={storyId}
+                className="twig-preview"
+                id={`twig-preview-${id}`}
                 ref={iframeRef}
                 src={twigUrl}
                 style={{

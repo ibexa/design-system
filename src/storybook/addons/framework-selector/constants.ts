@@ -13,3 +13,8 @@ export const EVENTS = {
     REQUEST: `${ADDON_ID}/request`,
     RESULT: `${ADDON_ID}/result`,
 };
+
+export const ROUTES = {
+    PREVIEW: 'storybook/preview',
+    STATUS: 'storybook/status',
+};
