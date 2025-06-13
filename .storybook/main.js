@@ -6,6 +6,7 @@ const config = {
     stories: ['../packages/**/*.stories.@(js|jsx|mjs|ts|tsx)', '../stories/*.stories.@(js|jsx|mjs|ts|tsx)'],
     staticDirs: ['../packages/assets/src/'],
     addons: [
+        '@storybook/addon-docs',
         '@storybook/addon-webpack5-compiler-swc',
         '@storybook/addon-a11y',
         'storybook-addon-pseudo-states',
@@ -49,6 +50,12 @@ const config = {
             test: /\.xliff$/,
             use: ['raw-loader'],
         });
+
+        webpackConfig.resolve.alias = {
+            ...webpackConfig.resolve.alias,
+            '@ids-context': path.resolve(__dirname, '../packages/components/src/context'),
+            '@ids-internal': path.resolve(__dirname, '../packages/components/src/internal'),
+        };
 
         webpackConfig.plugins.push(new NodePolyfillPlugin());
 

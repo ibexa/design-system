@@ -7,7 +7,7 @@
     justify-content: center;
     color: $color-neutral-160;
     font-size: $text-font-size-s;
-    transition: all $admin-transition-duration $admin-transition;
+    transition: all $transition-duration $transition-timing-function;
 
     .ids-icon {
         fill: $color-neutral-160;

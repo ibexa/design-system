@@ -1,18 +1,19 @@
 import React from 'react';
 
-import { createCssClassNames } from '../internal/shared/css.class.names';
+import { createCssClassNames } from '@ids-internal/shared/css.class.names';
 
 import { ButtonProps } from './Button.types';
 
 const Button = ({
-    type = 'primary',
-    size = 'large',
-    ariaLabel,
-    extraAria = {},
-    children,
-    disabled = false,
-    extraClasses = '',
     onClick,
+    children,
+    ariaLabel,
+    disabled = false,
+    extraAria = {},
+    extraClasses = '',
+    size = 'large',
+    title = '',
+    type = 'primary',
 }: ButtonProps) => {
     const classes = createCssClassNames({
         'ids-btn': true,
@@ -31,6 +32,7 @@ const Button = ({
             disabled={disabled}
             onClick={onClick}
             role="button"
+            title={title}
             type="button"
             {...extraAria}
         >
