@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { BaseComponentAttributes } from '@ids-types/general';
 
-export interface FormLabelProps extends BaseComponentAttributes {
+export interface LabelProps extends BaseComponentAttributes {
     children: ReactNode;
     htmlFor: string;
     error?: boolean;

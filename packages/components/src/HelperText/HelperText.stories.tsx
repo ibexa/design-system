@@ -2,15 +2,20 @@ import React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import FormLabel from './FormLabel';
+import { HELPER_TEXT_TYPE_VALUES } from './HelperText.types';
+import HelperText from './HelperText';
 
-const meta: Meta<typeof FormLabel> = {
-    component: FormLabel,
+const meta: Meta<typeof HelperText> = {
+    component: HelperText,
     parameters: {
         layout: 'centered',
     },
     tags: ['autodocs'],
     argTypes: {
+        type: {
+            control: 'select',
+            options: Object.values(HELPER_TEXT_TYPE_VALUES),
+        },
         extraClasses: {
             control: 'text',
         },
@@ -22,13 +27,12 @@ const meta: Meta<typeof FormLabel> = {
 
 export default meta;
 
-type Story = StoryObj<typeof FormLabel>;
+type Story = StoryObj<typeof HelperText>;
 
 export const Default: Story = {
     name: 'Default',
     args: {
         children: 'Lorem Ipsum',
-        htmlFor: 'default-input',
     },
 };
 
@@ -37,19 +41,11 @@ export const withHTML: Story = {
     args: {
         children: (
             <>
-                <b>Lorem</b>&nbsp;<u>Ipsum</u>
+                <b>Lorem</b>
+                <br />
+                <u>Ipsum</u>
             </>
         ),
-        htmlFor: 'default-input',
-    },
-};
-
-export const Required: Story = {
-    name: 'Required',
-    args: {
-        children: 'Lorem Ipsum',
-        htmlFor: 'default-input',
-        required: true,
     },
 };
 
@@ -57,8 +53,6 @@ export const Error: Story = {
     name: 'Error',
     args: {
         children: 'Lorem Ipsum',
-        htmlFor: 'default-input',
-        error: true,
-        required: true,
+        type: 'error',
     },
 };
