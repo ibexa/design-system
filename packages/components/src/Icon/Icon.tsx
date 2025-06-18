@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 
-import { AssetsContext, AssetsType, GetIconPathType } from '../context/Assets';
+import { AssetsContext, AssetsType, GetIconPathType } from '@ids-context/Assets';
 
-import { createCssClassNames } from '../internal/shared/css.class.names';
+import { createCssClassNames } from '@ids-internal/shared/css.class.names';
 
 import { IconProps } from './Icon.types';
 

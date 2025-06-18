@@ -6,7 +6,12 @@
         "typeRoots": [
             "./types",
             "./node_modules/@types"
-        ]
+        ],
+        "paths": {
+            "@ids-context/*": ["./packages/components/src/context/*"],
+            "@ids-internal/*": ["./packages/components/src/internal/*"],
+            "@ids-types/*": ["./types/*"]
+        }
     },
     "include": ["src/**/*", ".storybook/*", "types/*", "stories/*"]
 }
