@@ -94,7 +94,7 @@ $btns-types: (
             transparent,
         ),
     ),
-    'black-secondary': (
+    'secondary-alt': (
         'default': (
             $color-neutral-240,
             transparent,
@@ -122,7 +122,7 @@ $btns-types: (
             $color-neutral-60,
         ),
     ),
-    'black-tertiary': (
+    'tertiary-alt': (
         'default': (
             $color-neutral-240,
             transparent,
@@ -153,7 +153,7 @@ $btns-types: (
 );
 
 $btns-sizes: (
-    'large': calculateRem(14px) calculateRem(18px) calculateRem(11px) calculateRem(12px),
+    'medium': calculateRem(14px) calculateRem(18px) calculateRem(11px) calculateRem(12px),
     'small': calculateRem(14px) calculateRem(18px) calculateRem(7px) calculateRem(16px),
     'extra-small': calculateRem(10px) calculateRem(15px) calculateRem(4px) calculateRem(8px),
 );

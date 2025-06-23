@@ -93,11 +93,19 @@ export const IconLarge: Story = {
     },
 };
 
-export const IconExtraLarge: Story = {
-    name: 'Icon Extra-Large',
+export const IconLargeHuge: Story = {
+    name: 'Icon Large-Huge',
     args: {
         name: 'bookmark',
-        size: 'extra-large',
+        size: 'large-huge',
+    },
+};
+
+export const IconHuge: Story = {
+    name: 'Icon Huge',
+    args: {
+        name: 'bookmark',
+        size: 'huge',
     },
 };
 

@@ -9,7 +9,7 @@ const Label = ({ children, htmlFor, error = false, extraClasses = '', required =
         'ids-label': true,
         'ids-label--error': error,
         'ids-label--required': required,
-        [extraClasses]: true,
+        [extraClasses]: !!extraClasses,
     });
 
     return (

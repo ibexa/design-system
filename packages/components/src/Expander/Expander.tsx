@@ -40,7 +40,7 @@ const Expander = ({ onClick, collapseLabel = '', expandLabel = '', hasIcon = tru
                 onClick(!isExpanded);
             }}
             size="small"
-            type="black-tertiary"
+            type="tertiary-alt"
         >
             {label}
             {renderExpanderIcon()}

@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 
 import { BaseComponentAriaAttributes } from '@ids-types/general';
 
-export const BUTTON_SIZE_VALUES = ['large', 'small', 'extra-small'] as const;
-export const BUTTON_TYPE_VALUES = ['primary', 'secondary', 'tertiary', 'black-secondary', 'black-tertiary'] as const;
+export const BUTTON_SIZE_VALUES = ['medium', 'small', 'extra-small'] as const;
+export const BUTTON_TYPE_VALUES = ['primary', 'secondary', 'tertiary', 'secondary-alt', 'tertiary-alt'] as const;
 
 export type ButtonSizeType = (typeof BUTTON_SIZE_VALUES)[number];
 export type ButtonTypesType = (typeof BUTTON_TYPE_VALUES)[number];

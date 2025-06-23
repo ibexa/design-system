@@ -11,16 +11,16 @@ const Button = ({
     disabled = false,
     extraAria = {},
     extraClasses = '',
-    size = 'large',
+    size = 'medium',
     title = '',
     type = 'primary',
 }: ButtonProps) => {
     const classes = createCssClassNames({
         'ids-btn': true,
-        [`ids-btn--${type}`]: !!type,
-        [`ids-btn--${size}`]: !!size,
+        [`ids-btn--${type}`]: true,
+        [`ids-btn--${size}`]: true,
         'ids-btn--disabled': disabled,
-        [extraClasses]: true,
+        [extraClasses]: !!extraClasses,
     });
     const btnAriaLabel = ariaLabel ?? (typeof children === 'string' ? children : undefined);
 

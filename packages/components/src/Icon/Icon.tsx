@@ -6,11 +6,11 @@ import { createCssClassNames } from '@ids-internal/shared/css.class.names';
 
 import { IconProps } from './Icon.types';
 
-const Icon = ({ cssClass = '', name, customPath, size = undefined }: IconProps) => {
+const Icon = ({ cssClass = '', name, customPath, size = 'small' }: IconProps) => {
     const { getIconPath }: { getIconPath: GetIconPathType } = useContext<AssetsType>(AssetsContext);
     const classes = createCssClassNames({
         'ids-icon': true,
-        [`ids-icon--${size ?? ''}`]: !!size,
+        [`ids-icon--${size}`]: true,
         [cssClass]: !!cssClass,
     });
     const linkHref = customPath ?? getIconPath(name);
