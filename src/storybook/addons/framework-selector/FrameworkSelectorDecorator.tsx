@@ -21,9 +21,7 @@ interface IframeMethods {
 }
 type IframeMessageData = IframeResize | IframeMethods;
 
-const camelCaseToSnakeCase = (str: string) => str
-    .replace(/([a-z])([A-Z])/g, '$1_$2')
-    .toLowerCase();
+const camelCaseToSnakeCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1_$2').toLowerCase();
 const getStoryId = (kind: string) => {
     const storyId = kind.replace('components/src/', '');
 
