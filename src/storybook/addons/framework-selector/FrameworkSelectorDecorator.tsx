@@ -35,7 +35,7 @@ const getIframeSrc = (id: string, args: argsType) => {
             return accumulator;
         }
 
-        const properyFinalName = camelCaseToSnakeCase(propertyName);
+        const propertyFinalName = camelCaseToSnakeCase(propertyName);
         let propertyFinalValue = propertyValue;
 
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -43,7 +43,7 @@ const getIframeSrc = (id: string, args: argsType) => {
             propertyFinalValue = renderToString(propertyValue);
         }
 
-        return { ...accumulator, [properyFinalName]: propertyFinalValue };
+        return { ...accumulator, [propertyFinalName]: propertyFinalValue };
         /* eslint-enable @typescript-eslint/no-unsafe-assignment */
     }, {});
     const storyPropertiesStringified = JSON.stringify(storyProperties);
