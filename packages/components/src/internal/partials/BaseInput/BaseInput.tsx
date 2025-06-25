@@ -9,7 +9,6 @@ const INPUT_ID_PREFIX = 'ids-input-';
 
 const BaseInput = ({
     name,
-    type,
     disabled = false,
     error = false,
     extraClasses = '',
@@ -18,6 +17,7 @@ const BaseInput = ({
     required = false,
     size = 'medium',
     title = '',
+    type = 'text',
     value = '',
 }: BaseInputProps) => {
     const componentGeneratedNumberId = useGenerateSimpleNumberId();
