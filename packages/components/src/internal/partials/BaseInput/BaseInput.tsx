@@ -9,7 +9,6 @@ const INPUT_ID_PREFIX = 'ids-input-';
 
 const BaseInput = ({
     name,
-    type,
     disabled = false,
     error = false,
     extraClasses = '',
@@ -18,18 +17,19 @@ const BaseInput = ({
     required = false,
     size = 'medium',
     title = '',
+    type = 'text',
     value = '',
 }: BaseInputProps) => {
     const componentGeneratedNumberId = useGenerateSimpleNumberId();
     const componentId = id ?? `${INPUT_ID_PREFIX}${componentGeneratedNumberId.toString()}`;
     const classes = createCssClassNames({
         'ids-input': true,
-        [`ids-input--${type}`]: !!type,
-        [`ids-input--${size}`]: !!size,
+        [`ids-input--${type}`]: true,
+        [`ids-input--${size}`]: true,
         'ids-input--disabled': disabled,
         'ids-input--error': error,
         'ids-input--required': required,
-        [extraClasses]: true,
+        [extraClasses]: !!extraClasses,
     });
 
     return (
