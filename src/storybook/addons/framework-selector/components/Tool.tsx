@@ -47,7 +47,7 @@ export const Tool = memo(() => {
                 Open Twig preview
             </IconButton>
         );
-    }, [isTwigActive]);
+    }, [isTwigActive, isLocked]);
 
     useEffect(() => {
         const baseUrl = process.env.TWIG_COMPONENTS_BASE_URL;
