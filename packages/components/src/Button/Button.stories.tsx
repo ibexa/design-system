@@ -95,7 +95,7 @@ export const SecondaryWithExtraAria: Story = {
 export const BlackSecondary: Story = {
     name: 'Black Secondary',
     args: {
-        type: 'black-secondary',
+        type: 'secondary-alt',
         children: 'Button label',
         disabled: false,
     },
@@ -104,7 +104,7 @@ export const BlackSecondary: Story = {
 export const BlackSecondarySmall: Story = {
     name: 'Black Secondary (Small)',
     args: {
-        type: 'black-secondary',
+        type: 'secondary-alt',
         children: 'Button label',
         size: 'small',
     },
@@ -113,7 +113,7 @@ export const BlackSecondarySmall: Story = {
 export const BlackSecondaryExtraSmall: Story = {
     name: 'Black Secondary (Extra Small)',
     args: {
-        type: 'black-secondary',
+        type: 'secondary-alt',
         children: 'Button label',
         size: 'extra-small',
     },

@@ -24,12 +24,12 @@ const BaseInput = ({
     const componentId = id ?? `${INPUT_ID_PREFIX}${componentGeneratedNumberId.toString()}`;
     const classes = createCssClassNames({
         'ids-input': true,
-        [`ids-input--${type}`]: !!type,
-        [`ids-input--${size}`]: !!size,
+        [`ids-input--${type}`]: true,
+        [`ids-input--${size}`]: true,
         'ids-input--disabled': disabled,
         'ids-input--error': error,
         'ids-input--required': required,
-        [extraClasses]: true,
+        [extraClasses]: !!extraClasses,
     });
 
     return (
