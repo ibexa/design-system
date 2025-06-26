@@ -17,7 +17,7 @@ export interface InputTextProps extends BaseComponentAriaAttributes {
     error?: boolean;
     id?: string;
     placeholder?: string;
-    readonly?: boolean;
+    readOnly?: boolean;
     required?: boolean;
     size?: InputTextSizeType;
     type?: InputTextTypesType;
