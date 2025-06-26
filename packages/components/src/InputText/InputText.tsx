@@ -17,7 +17,7 @@ const Input = ({
     extraClasses = '',
     id = undefined,
     placeholder = '',
-    readonly = false,
+    readOnly = false,
     required = false,
     size = 'medium',
     title = '',
@@ -51,7 +51,7 @@ const Input = ({
                 onFocus: componentOnFocus,
                 onInput: componentOnInput,
                 placeholder,
-                readOnly: readonly,
+                readOnly,
                 ...extraAria,
             }}
             id={id}
