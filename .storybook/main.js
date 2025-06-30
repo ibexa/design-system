@@ -63,7 +63,7 @@ const config = {
     },
     env: (envConfig) => ({
         ...envConfig,
-        TWIG_COMPONENTS_URL: 'http://localhost:8000/storybook/preview',
+        TWIG_COMPONENTS_BASE_URL: 'http://localhost:8000',
     }),
 };
 export default config;
