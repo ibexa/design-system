@@ -11,6 +11,7 @@ const Button = ({
     disabled = false,
     extraAria = {},
     extraClasses = '',
+    iconOnly = false,
     size = 'medium',
     title = '',
     type = 'primary',
@@ -20,6 +21,7 @@ const Button = ({
         [`ids-btn--${type}`]: true,
         [`ids-btn--${size}`]: true,
         'ids-btn--disabled': disabled,
+        'ids-btn--icon-only': iconOnly,
         [extraClasses]: !!extraClasses,
     });
     const btnAriaLabel = ariaLabel ?? (typeof children === 'string' ? children : undefined);

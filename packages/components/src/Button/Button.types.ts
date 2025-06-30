@@ -10,6 +10,7 @@ export type ButtonTypesType = (typeof BUTTON_TYPE_VALUES)[number];
 interface ButtonSharedProps extends BaseComponentAriaAttributes {
     onClick: React.MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
+    iconOnly?: boolean;
     size?: ButtonSizeType;
     type?: ButtonTypesType;
 }
