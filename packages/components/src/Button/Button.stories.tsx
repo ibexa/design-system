@@ -36,7 +36,11 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-const getChildrenWithHTML = (size: IconSizeType = 'small') => <><Icon name="edit" size={size} /> Button label</>;
+const getChildrenWithHTML = (size: IconSizeType = 'small') => (
+    <>
+        <Icon name="edit" size={size} /> Button label
+    </>
+);
 
 /***** Primary *****/
 
