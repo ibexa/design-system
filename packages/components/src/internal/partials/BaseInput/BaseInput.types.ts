@@ -28,8 +28,8 @@ interface BaseInputPropsProps extends BaseComponentAttributes {
 }
 
 interface BaseInputVisibleProps extends BaseInputPropsProps {
-    type: Exclude<BaseInputTypesType, 'hidden'>;
     required: boolean;
+    type?: Exclude<BaseInputTypesType, 'hidden'>;
     extraInputAttrs?: Omit<InputHTMLAttributes<HTMLInputElement>, keyof BaseInputVisibleProps>;
 }
 
