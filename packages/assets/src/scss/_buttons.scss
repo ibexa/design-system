@@ -154,13 +154,11 @@ $btns-types: (
 
 $btns-sizes: (
     'medium': (
-        'font': $text-font-size-m,
         'height': calculateRem(40px),
         'padding-x': calculateRem(16px),
         'icon-padding': calculateRem(8px),
     ),
     'small': (
-        'font': $text-font-size-xs,
         'height': calculateRem(32px),
         'padding-x': calculateRem(12px),
         'icon-padding': calculateRem(4px),
@@ -175,6 +173,7 @@ $btns-sizes: (
     outline: none;
     border-radius: $border-radius-medium;
     text-decoration: none;
+    font-size: $text-font-size-m;
     cursor: pointer;
     color: var(--ids-default-text-color);
     fill: var(--ids-default-text-color);
@@ -238,7 +237,6 @@ $btns-sizes: (
 
     @each $name, $values in $btns-sizes {
         &--#{$name} {
-            font-size: map.get($values, 'font');
             height: map.get($values, 'height');
             padding: 0 map.get($values, 'padding-x');
 
