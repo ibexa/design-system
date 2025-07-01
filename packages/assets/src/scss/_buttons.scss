@@ -154,37 +154,27 @@ $btns-types: (
 
 $btns-sizes: (
     'medium': (
-        'font': calculateRem(14px),
-        'line-height': calculateRem(20px),
-        'padding-y': calculateRem(10px),
-        'padding-x': calculateRem(12px),
-        'gap': calculateRem(8px),
+        'font': $text-font-size-m,
+        'height': calculateRem(40px),
+        'padding-x': calculateRem(16px),
+        'icon-padding': calculateRem(8px),
     ),
     'small': (
-        'font': calculateRem(14px),
-        'line-height': calculateRem(18px),
-        'padding-y': calculateRem(7px),
-        'padding-x': calculateRem(16px),
-        'gap': calculateRem(4px),
-    ),
-    'extra-small': (
-        'font': calculateRem(10px),
-        'line-height': calculateRem(15px),
-        'padding-y': calculateRem(4px),
-        'padding-x': calculateRem(8px),
-        'gap': calculateRem(4px),
+        'font': $text-font-size-xs,
+        'height': calculateRem(32px),
+        'padding-x': calculateRem(12px),
+        'icon-padding': calculateRem(4px),
     ),
 );
 
 .ids-btn {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
     white-space: nowrap;
-    padding: calculateRem(14px) calculateRem(15px);
     outline: none;
     border-radius: $border-radius-medium;
     text-decoration: none;
-    font-size: $text-font-size-m;
-    line-height: calculateRem(18px);
     cursor: pointer;
     color: var(--ids-default-text-color);
     fill: var(--ids-default-text-color);
@@ -226,6 +216,14 @@ $btns-sizes: (
         pointer-events: none;
     }
 
+    &__icon {
+        line-height: 0;
+    }
+
+    &__label {
+        line-height: $base-line-height;
+    }
+
     @each $name, $states in $btns-types {
         &--#{$name} {
             @include mixins.button-variant(
@@ -241,24 +239,21 @@ $btns-sizes: (
     @each $name, $values in $btns-sizes {
         &--#{$name} {
             font-size: map.get($values, 'font');
-            line-height: map.get($values, 'line-height');
-            padding: map.get($values, 'padding-y') map.get($values, 'padding-x');
-
-            .ids-icon:first-child {
-                margin: auto map.get($values, 'gap') auto 0;
-            }
+            height: map.get($values, 'height');
+            padding: 0 map.get($values, 'padding-x');
 
             &.ids-btn--icon-only {
-                padding: map.get($values, 'padding-y');
+                width: map.get($values, 'height');
+                padding: 0;
+            }
 
-                .ids-icon {
-                    margin-right: 0;
-                }
+            .ids-btn__icon + .ids-btn__label {
+                padding-left: map.get($values, 'icon-padding');
             }
 
             &.ids-btn--tertiary,
             &.ids-btn--tertiary-alt {
-                padding: map.get($values, 'padding-y') 0;
+                padding: 0;
             }
         }
     }
