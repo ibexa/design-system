@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
@@ -35,6 +37,28 @@ const meta: Meta<typeof InputText> = {
         onFocus: action('on-focus'),
         onInput: action('on-input'),
     },
+    decorators: [
+        (Story, { args }) => {
+            const [value, setValue] = useState(args.value ?? '');
+            const onChange = (changedValue: string, event?: React.ChangeEvent<HTMLInputElement>) => {
+                setValue(changedValue);
+
+                if (args.onChange) {
+                    args.onChange(changedValue, event);
+                }
+            };
+
+            return (
+                <Story
+                    args={{
+                        ...args,
+                        onChange,
+                        value,
+                    }}
+                />
+            );
+        },
+    ],
 };
 
 export default meta;
