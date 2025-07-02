@@ -1,4 +1,4 @@
-import { BaseComponentAriaAttributes } from '@ids-types/general';
+import { BaseComponentAriaAttributes, ComponentEntryDataType } from '@ids-types/general';
 import { BaseInputTypesType } from '@ids-internal/partials/BaseInput/BaseInput.types';
 
 export const INPUT_SIZE_VALUES = ['medium', 'small'] as const;
@@ -10,13 +10,14 @@ export type InputTextTypesType = (typeof INPUT_TYPE_VALUES)[number];
 export interface InputTextProps extends BaseComponentAriaAttributes {
     name: string;
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
-    onChange?: (value: string, event: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (value: string, event?: React.ChangeEvent<HTMLInputElement>) => void;
     onFocus?: React.FocusEventHandler<HTMLInputElement>;
-    onInput?: (value: string, event: React.ChangeEvent<HTMLInputElement>) => void;
+    onInput?: (value: string, event?: React.ChangeEvent<HTMLInputElement>) => void;
     disabled?: boolean;
     error?: boolean;
     id?: string;
     placeholder?: string;
+    processActions?: (actions: ComponentEntryDataType[]) => ComponentEntryDataType[];
     readOnly?: boolean;
     required?: boolean;
     size?: InputTextSizeType;
