@@ -26,7 +26,7 @@ export const TestActive: Story = {
         const canvas = within(canvasElement);
 
         await step('Button is clickable', async () => {
-            const btn = canvas.getByText('Button label');
+            const btn = canvas.getByRole('button');
 
             await expect(btn).not.toHaveClass('ids-btn--disabled');
             await expect(btn).toHaveAttribute('aria-disabled', 'false');
@@ -47,7 +47,7 @@ export const TestDisabled: Story = {
         const canvas = within(canvasElement);
 
         await step('Button is not clickable', async () => {
-            const btn = canvas.getByText('Button label');
+            const btn = canvas.getByRole('button');
 
             await expect(btn).toHaveClass('ids-btn--disabled');
             await expect(btn).toHaveAttribute('aria-disabled', 'true');
