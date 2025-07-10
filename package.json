@@ -1,6 +1,6 @@
 {
   "name": "@ibexa/design-system",
-  "version": "1.0.0-beta2",
+  "version": "1.0.0-rc1",
   "main": "index.js",
   "repository": "git@github.com:GrabowskiM/design-system.git",
   "author": "Michał Grabowski <michal.grabowski@ibexa.co>",
