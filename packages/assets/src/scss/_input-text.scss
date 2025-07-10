@@ -1,3 +1,5 @@
+@use 'functions' as *;
+
 .ids-input-text {
     position: relative;
 
@@ -6,5 +8,16 @@
         right: 0;
         top: 0;
         height: 100%;
+        padding-right: calculateRem(16px);
+        display: flex;
+        align-items: center;
+    }
+
+    &__action {
+        line-height: 0;
+
+        &--hidden {
+            display: none;
+        }
     }
 }

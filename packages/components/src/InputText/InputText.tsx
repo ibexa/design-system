@@ -4,6 +4,7 @@ import BaseInput from '@ids-internal/partials/BaseInput';
 import ClearBtn from '../ui/ClearBtn';
 import { createCssClassNames } from '@ids-internal/shared/css.class.names';
 
+import { ComponentEntryDataType } from '@ids-types/general';
 import { InputTextProps } from './InputText.types';
 
 const Input = ({
@@ -18,7 +19,7 @@ const Input = ({
     extraClasses = '',
     id = undefined,
     placeholder = '',
-    processActions = (actions) => actions,
+    processActions = (actions): ComponentEntryDataType[] => actions,
     readOnly = false,
     required = false,
     size = 'medium',
@@ -44,7 +45,7 @@ const Input = ({
     const componentOnInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         onInput(event.target.value, event);
     };
-    const actions = useMemo(() => {
+    const actions = useMemo((): ComponentEntryDataType[] => {
         const baseActions = [];
 
         if (value) {
@@ -83,7 +84,7 @@ const Input = ({
         const actionsWidth = actionsRef.current?.offsetWidth ?? 0;
 
         setSourcePadding(actionsWidth);
-    }, []);
+    }, [value]);
 
     return (
         <div className={inputTextExtraClasses}>

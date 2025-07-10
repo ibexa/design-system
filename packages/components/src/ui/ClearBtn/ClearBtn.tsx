@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 
 import Button from '../../Button';
-import Icon from '../../Icon';
 import { TranslatorContext } from '@ids-context/Translator';
 
 import { createCssClassNames } from '@ids-internal/shared/css.class.names';
@@ -20,13 +19,12 @@ const ClearBtn = ({ onClick, disabled = false }: ClearBtnProps) => {
             ariaLabel={clearMsg}
             disabled={disabled}
             extraClasses={extraClasses}
+            icon="discard"
             onClick={onClick}
             size="small"
             title={clearMsg}
             type="tertiary-alt"
-        >
-            <Icon name="discard" size="small" />
-        </Button>
+        />
     );
 };
 
