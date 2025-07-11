@@ -63,7 +63,7 @@ const Input = ({
         }
 
         return processActions(baseActions);
-    }, [processActions, value]);
+    }, [disabled, onChange, processActions, value]);
     const renderActions = () => {
         if (actions.length === 0) {
             return null;
