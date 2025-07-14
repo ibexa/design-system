@@ -8,8 +8,10 @@
 @use 'fonts';
 @use 'icons';
 @use 'input';
-@use 'input-text';
 @use 'label';
 @use 'helper-text';
+@use 'form-control';
+
+@use 'inputs/input-text';
 
 @use 'ui/clear-btn';
