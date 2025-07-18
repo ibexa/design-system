@@ -29,7 +29,7 @@ const Input = ({
 }: InputTextProps) => {
     const actionsRef = useRef<HTMLDivElement>(null);
     const [sourcePadding, setSourcePadding] = useState(0);
-    const inputTextExtraClasses = createCssClassNames({
+    const inputTextClassName = createCssClassNames({
         'ids-input-text': true,
         [extraClasses]: true,
     });
@@ -46,7 +46,7 @@ const Input = ({
         onInput(event.target.value, event);
     };
     const actions = useMemo((): ComponentEntryDataType[] => {
-        const baseActions = [];
+        const baseActions: ComponentEntryDataType[] = [];
 
         if (value) {
             baseActions.push({
@@ -87,7 +87,7 @@ const Input = ({
     }, [value]);
 
     return (
-        <div className={inputTextExtraClasses}>
+        <div className={inputTextClassName}>
             <div className="ids-input-text__source">
                 <BaseInput
                     disabled={disabled}
@@ -111,7 +111,7 @@ const Input = ({
                     value={value}
                 />
             </div>
-            <div className="ids-input-text__actions">{renderActions()}</div>
+            {renderActions()}
         </div>
     );
 };
