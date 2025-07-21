@@ -9,10 +9,10 @@ import { ExpanderProps } from './Expander.types';
 
 const ICONS_MAP = {
     caret: 'arrow-caret-down',
-    triangle: 'arrow-down',
+    chevron: 'arrow-chevron-down',
 } as const;
 
-const Expander = ({ onClick, collapseLabel = '', expandLabel = '', hasIcon = true, isExpanded = false, type = 'caret' }: ExpanderProps) => {
+const Expander = ({ onClick, type, collapseLabel = '', expandLabel = '', hasIcon = true, isExpanded = false }: ExpanderProps) => {
     const label = isExpanded ? collapseLabel : expandLabel;
     const extraClasses = createCssClassNames({
         'ids-expander': true,

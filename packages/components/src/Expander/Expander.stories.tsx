@@ -18,7 +18,7 @@ const meta: Meta<typeof Expander> = {
         },
         type: {
             control: 'select',
-            options: ['caret', 'triangle'],
+            options: ['caret', 'chevron'],
         },
     },
     args: { onClick: action('on-click') },
@@ -31,26 +31,28 @@ type Story = StoryObj<typeof Expander>;
 export const Default: Story = {
     name: 'Default',
     args: {
-        collapseLabel: 'Show more',
-        expandLabel: 'Show less',
+        collapseLabel: 'Show less',
+        expandLabel: 'Show more',
+        type: 'caret',
     },
 };
 
 export const NoIcon: Story = {
     name: 'No Icon',
     args: {
-        collapseLabel: 'Show more',
-        expandLabel: 'Show less',
+        collapseLabel: 'Show less',
+        expandLabel: 'Show more',
+        type: 'caret',
         hasIcon: false,
     },
 };
 
-export const Triangle: Story = {
-    name: 'Triangle',
+export const Chevron: Story = {
+    name: 'Chevron',
     args: {
-        collapseLabel: 'Show more',
-        expandLabel: 'Show less',
-        type: 'triangle',
+        collapseLabel: 'Show less',
+        expandLabel: 'Show more',
+        type: 'chevron',
     },
 };
 
@@ -58,14 +60,16 @@ export const NoLabel: Story = {
     name: 'No Label',
     args: {
         hasIcon: true,
+        type: 'caret',
     },
 };
 
 export const isExpanded: Story = {
     name: 'Is Expanded',
     args: {
-        collapseLabel: 'Show more',
-        expandLabel: 'Show less',
+        collapseLabel: 'Show less',
+        expandLabel: 'Show more',
+        type: 'caret',
         isExpanded: true,
     },
 };
