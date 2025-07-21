@@ -26,7 +26,10 @@
     "./Autosave": "./dist/Autosave/index.js",
     "./Button": "./dist/Button/index.js",
     "./Expander": "./dist/Expander/index.js",
+    "./HelperText": "./dist/HelperText/index.js",
     "./Icon": "./dist/Icon/index.js",
+    "./InputText": "./dist/InputText/index.js",
+    "./Label": "./dist/Label/index.js",
     "./context/Assets": "./dist/context/Assets/index.js",
     "./context/Translator": "./dist/context/Translator/index.js"
   }
