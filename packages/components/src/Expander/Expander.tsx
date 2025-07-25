@@ -14,7 +14,7 @@ const ICONS_MAP = {
 
 const Expander = ({ onClick, type, collapseLabel = '', expandLabel = '', hasIcon = true, isExpanded = false }: ExpanderProps) => {
     const label = isExpanded ? collapseLabel : expandLabel;
-    const extraClasses = createCssClassNames({
+    const componentClassName = createCssClassNames({
         'ids-expander': true,
         'ids-expander--has-icon': hasIcon,
         'ids-expander--has-label': label !== '',
@@ -28,14 +28,14 @@ const Expander = ({ onClick, type, collapseLabel = '', expandLabel = '', hasIcon
             return null;
         }
 
-        return <Icon cssClass="ids-icon" name={ICONS_MAP[type]} size="small" />;
+        return <Icon name={ICONS_MAP[type]} size="small" />;
     };
 
     return (
         <Button
             ariaLabel={label}
             extraAria={extraAria}
-            extraClasses={extraClasses}
+            className={componentClassName}
             onClick={() => {
                 onClick(!isExpanded);
             }}

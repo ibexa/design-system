@@ -3,11 +3,11 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import { BUTTON_SIZE_VALUES, BUTTON_TYPE_VALUES } from './Button.types';
-import Button from './Button';
+import { ICON_BUTTON_SIZE_VALUES, ICON_BUTTON_TYPE_VALUES } from './IconButton.types';
+import IconButton from './IconButton';
 
-const meta: Meta<typeof Button> = {
-    component: Button,
+const meta: Meta<typeof IconButton> = {
+    component: IconButton,
     parameters: {
         layout: 'centered',
     },
@@ -15,11 +15,11 @@ const meta: Meta<typeof Button> = {
     argTypes: {
         size: {
             control: 'select',
-            options: Object.values(BUTTON_SIZE_VALUES),
+            options: Object.values(ICON_BUTTON_SIZE_VALUES),
         },
         type: {
             control: 'select',
-            options: Object.values(BUTTON_TYPE_VALUES),
+            options: Object.values(ICON_BUTTON_TYPE_VALUES),
         },
         className: {
             control: 'text',
@@ -30,7 +30,7 @@ const meta: Meta<typeof Button> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof IconButton>;
 
 /***** Primary *****/
 
@@ -39,15 +39,6 @@ export const Primary: Story = {
     args: {
         type: 'primary',
         icon: 'edit',
-        children: 'Button label',
-    },
-};
-
-export const PrimaryTextOnly: Story = {
-    name: 'Primary / Text only',
-    args: {
-        type: 'primary',
-        children: 'Button label',
     },
 };
 
@@ -56,7 +47,6 @@ export const PrimaryDisabled: Story = {
     args: {
         type: 'primary',
         icon: 'edit',
-        children: 'Button label',
         disabled: true,
     },
 };
@@ -68,15 +58,6 @@ export const Secondary: Story = {
     args: {
         type: 'secondary',
         icon: 'edit',
-        children: 'Button label',
-    },
-};
-
-export const SecondaryTextOnly: Story = {
-    name: 'Secondary / Text only',
-    args: {
-        type: 'secondary',
-        children: 'Button label',
     },
 };
 
@@ -85,7 +66,6 @@ export const SecondaryDisabled: Story = {
     args: {
         type: 'secondary',
         icon: 'edit',
-        children: 'Button label',
         disabled: true,
     },
 };
@@ -97,15 +77,6 @@ export const Tertiary: Story = {
     args: {
         type: 'tertiary',
         icon: 'edit',
-        children: 'Button label',
-    },
-};
-
-export const TertiaryTextOnly: Story = {
-    name: 'Tertiary / Text only',
-    args: {
-        type: 'tertiary',
-        children: 'Button label',
     },
 };
 
@@ -114,7 +85,6 @@ export const TertiaryDisabled: Story = {
     args: {
         type: 'tertiary',
         icon: 'edit',
-        children: 'Button label',
         disabled: true,
     },
 };
@@ -126,15 +96,6 @@ export const SecondaryAlt: Story = {
     args: {
         type: 'secondary-alt',
         icon: 'edit',
-        children: 'Button label',
-    },
-};
-
-export const SecondaryAltTextOnly: Story = {
-    name: 'Secondary Alt / Text only',
-    args: {
-        type: 'secondary-alt',
-        children: 'Button label',
     },
 };
 
@@ -143,7 +104,6 @@ export const SecondaryAltDisabled: Story = {
     args: {
         type: 'secondary-alt',
         icon: 'edit',
-        children: 'Button label',
         disabled: true,
     },
 };
@@ -156,16 +116,6 @@ export const SecondaryAltSmall: Story = {
         type: 'secondary-alt',
         size: 'small',
         icon: 'edit',
-        children: 'Button label',
-    },
-};
-
-export const SecondaryAltSmallTextOnly: Story = {
-    name: 'Secondary Alt Small / Text only',
-    args: {
-        type: 'secondary-alt',
-        size: 'small',
-        children: 'Button label',
     },
 };
 
@@ -175,39 +125,18 @@ export const TertiaryAltSmall: Story = {
     name: 'Tertiary Alt Small / Default',
     args: {
         type: 'tertiary-alt',
-        size: 'small',
-        children: 'Button label',
-    },
-};
-
-export const TertiaryAltSmallTextOnly: Story = {
-    name: 'Tertiary Alt Small / Text only',
-    args: {
-        type: 'tertiary-alt',
-        size: 'small',
         icon: 'edit',
-        children: 'Button label',
+        size: 'small',
     },
 };
 
 /***** Varia *****/
 
-export const VariaLongChildren: Story = {
-    name: 'Varia / Long children',
+export const VariaWithAriaLabel: Story = {
+    name: 'Varia / With aria-label',
     args: {
         type: 'primary',
-        children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed lorem magna',
-    },
-};
-
-export const VariaHTMLChildren: Story = {
-    name: 'Varia / HTML children',
-    args: {
-        type: 'primary',
-        children: (
-            <>
-                <b>Button</b>&nbsp;<i>label</i>
-            </>
-        ),
+        icon: 'edit',
+        ariaLabel: 'Edit Button',
     },
 };

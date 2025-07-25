@@ -16,7 +16,7 @@ const meta: Meta<typeof HelperText> = {
             control: 'select',
             options: Object.values(HELPER_TEXT_TYPE_VALUES),
         },
-        extraClasses: {
+        className: {
             control: 'text',
         },
         title: {

@@ -11,7 +11,7 @@ const meta: Meta<typeof Label> = {
     },
     tags: ['autodocs'],
     argTypes: {
-        extraClasses: {
+        className: {
             control: 'text',
         },
         title: {

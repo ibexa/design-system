@@ -25,7 +25,7 @@ const camelCaseToSnakeCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1
 const getStoryId = (kind: string) => {
     const storyId = kind.replace('components/src/', '');
 
-    return camelCaseToSnakeCase(storyId);
+    return storyId;
 };
 const getIframeSrc = (id: string, args: argsType) => {
     const baseUrl = process.env.TWIG_COMPONENTS_BASE_URL;
