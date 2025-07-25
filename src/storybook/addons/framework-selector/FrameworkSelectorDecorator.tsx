@@ -21,7 +21,6 @@ interface IframeMethods {
 }
 type IframeMessageData = IframeResize | IframeMethods;
 
-const camelCaseToSnakeCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1_$2').toLowerCase();
 const getStoryId = (kind: string) => {
     const storyId = kind.replace('components/src/', '');
 
@@ -41,7 +40,6 @@ const getIframeSrc = (id: string, args: argsType) => {
             return accumulator;
         }
 
-        const propertyFinalName = camelCaseToSnakeCase(propertyName);
         let propertyFinalValue = propertyValue;
 
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -49,7 +47,7 @@ const getIframeSrc = (id: string, args: argsType) => {
             propertyFinalValue = renderToString(propertyValue);
         }
 
-        return { ...accumulator, [propertyFinalName]: propertyFinalValue };
+        return { ...accumulator, [propertyName]: propertyFinalValue };
         /* eslint-enable @typescript-eslint/no-unsafe-assignment */
     }, {});
     const storyPropertiesStringified = JSON.stringify(storyProperties);

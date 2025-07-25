@@ -33,14 +33,14 @@ type Story = StoryObj<typeof CustomIcon>;
 export const Default: Story = {
     name: 'Default',
     args: {
-        path: '/bundles/ibexaadminuiassets/vendors/ids-assets/dist/img/all-icons.svg#browse',
+        path: './img/all-icons.svg#bookmarks',
     },
 };
 
 export const WithName: Story = {
     name: 'Icon with name',
     args: {
-        path: '/bundles/ibexaadminuiassets/vendors/ids-assets/dist/img/all-icons.svg#browse',
-        name: 'browse',
+        path: './img/all-icons.svg#bookmarks',
+        name: 'Bookmarks Button',
     },
 };
