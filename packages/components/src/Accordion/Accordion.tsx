@@ -67,7 +67,7 @@ const Accordion = ({ children, header, initiallyExpanded = false, onHandleExpand
                     hasIcon={true}
                     isExpanded={isExpanded}
                     onClick={changeExpanded}
-                    type="triangle"
+                    type="caret"
                 />
             </div>
             <div className="ids-accordion__content" ref={accordionContentRef}>

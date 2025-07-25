@@ -21,7 +21,7 @@ const meta: Meta<typeof InputText> = {
             control: 'select',
             options: Object.values(INPUT_TYPE_VALUES),
         },
-        extraClasses: {
+        className: {
             control: 'text',
         },
         title: {

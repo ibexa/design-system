@@ -13,10 +13,7 @@ const meta: Meta<typeof Icon> = {
         name: {
             control: 'text',
         },
-        customPath: {
-            control: 'text',
-        },
-        cssClass: {
+        className: {
             control: 'text',
         },
         size: {
@@ -33,14 +30,14 @@ type Story = StoryObj<typeof Icon>;
 export const IconNamed: Story = {
     name: 'Icon',
     args: {
-        name: 'bookmark',
+        name: 'favourite-outline',
     },
 };
 
 export const IconTiny: Story = {
     name: 'Icon Tiny',
     args: {
-        name: 'bookmark',
+        name: 'favourite-outline',
         size: 'tiny',
     },
 };
@@ -48,7 +45,7 @@ export const IconTiny: Story = {
 export const IconTinySmall: Story = {
     name: 'Icon Tiny-Small',
     args: {
-        name: 'bookmark',
+        name: 'favourite-outline',
         size: 'tiny-small',
     },
 };
@@ -56,7 +53,7 @@ export const IconTinySmall: Story = {
 export const IconSmall: Story = {
     name: 'Icon Small',
     args: {
-        name: 'bookmark',
+        name: 'favourite-outline',
         size: 'small',
     },
 };
@@ -64,7 +61,7 @@ export const IconSmall: Story = {
 export const IconSmallMedium: Story = {
     name: 'Icon Small-Medium',
     args: {
-        name: 'bookmark',
+        name: 'favourite-outline',
         size: 'small-medium',
     },
 };
@@ -72,7 +69,7 @@ export const IconSmallMedium: Story = {
 export const IconMedium: Story = {
     name: 'Icon Medium',
     args: {
-        name: 'bookmark',
+        name: 'favourite-outline',
         size: 'medium',
     },
 };
@@ -80,7 +77,7 @@ export const IconMedium: Story = {
 export const IconMediumLarge: Story = {
     name: 'Icon Medium-Large',
     args: {
-        name: 'bookmark',
+        name: 'favourite-outline',
         size: 'medium-large',
     },
 };
@@ -88,7 +85,7 @@ export const IconMediumLarge: Story = {
 export const IconLarge: Story = {
     name: 'Icon Large',
     args: {
-        name: 'bookmark',
+        name: 'favourite-outline',
         size: 'large',
     },
 };
@@ -96,7 +93,7 @@ export const IconLarge: Story = {
 export const IconLargeHuge: Story = {
     name: 'Icon Large-Huge',
     args: {
-        name: 'bookmark',
+        name: 'favourite-outline',
         size: 'large-huge',
     },
 };
@@ -104,22 +101,15 @@ export const IconLargeHuge: Story = {
 export const IconHuge: Story = {
     name: 'Icon Huge',
     args: {
-        name: 'bookmark',
+        name: 'favourite-outline',
         size: 'huge',
-    },
-};
-
-export const IconCustomPath: Story = {
-    name: 'Icon with custom path',
-    args: {
-        customPath: './img/all-icons.svg#browse',
     },
 };
 
 export const IconCssClass: Story = {
     name: 'Icon with css class',
     args: {
-        name: 'bookmark',
-        cssClass: 'ids-icon ids-icon--primary',
+        name: 'favourite-outline',
+        className: 'ids-icon ids-icon--primary',
     },
 };

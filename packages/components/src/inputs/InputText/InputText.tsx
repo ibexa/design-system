@@ -16,7 +16,7 @@ const Input = ({
     disabled = false,
     error = false,
     extraAria = {},
-    extraClasses = '',
+    className = '',
     id = undefined,
     placeholder = '',
     processActions = (actions): ComponentEntryDataType[] => actions,
@@ -31,7 +31,7 @@ const Input = ({
     const [sourcePadding, setSourcePadding] = useState(0);
     const inputTextClassName = createCssClassNames({
         'ids-input-text': true,
-        [extraClasses]: true,
+        [className]: true,
     });
     const componentOnBlur = (event: React.FocusEvent<HTMLInputElement>) => {
         onBlur(event);

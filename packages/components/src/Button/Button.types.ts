@@ -1,34 +1,22 @@
-import { ReactNode } from 'react';
+import { BaseButtonProps } from '@ids-internal/partials/BaseButton/BaseButton.types';
 
-import { BaseComponentAriaAttributes } from '@ids-types/general';
+export {
+    BASE_BUTTON_SIZE_VALUES as BUTTON_SIZE_VALUES,
+    BASE_BUTTON_TYPE_VALUES as BUTTON_TYPE_VALUES,
+    type BaseButtonSizeType as ButtonSizeType,
+    type BaseButtonTypesType as ButtonTypesType,
+} from '@ids-internal/partials/BaseButton/BaseButton.types';
 
-export const BUTTON_SIZE_VALUES = ['medium', 'small'] as const;
-export const BUTTON_TYPE_VALUES = ['primary', 'secondary', 'tertiary', 'secondary-alt', 'tertiary-alt'] as const;
-
-export type ButtonSizeType = (typeof BUTTON_SIZE_VALUES)[number];
-export type ButtonTypesType = (typeof BUTTON_TYPE_VALUES)[number];
-interface ButtonSharedProps extends BaseComponentAriaAttributes {
-    onClick: React.MouseEventHandler<HTMLButtonElement>;
-    disabled?: boolean;
-    size?: ButtonSizeType;
-    type?: ButtonTypesType;
-}
-
-interface ButtonIconOnlyProps extends ButtonSharedProps {
-    icon: string;
-    ariaLabel?: string;
-    children?: never;
+interface ButtonSharedProps extends BaseButtonProps {
+    icon?: string;
 }
 
 interface ButtonHTMLProps extends ButtonSharedProps {
     ariaLabel: string;
-    children: ReactNode;
-    icon?: string;
 }
-interface ButtonStringProps extends ButtonSharedProps {
-    children: string;
+interface ButtonStringProps extends Omit<ButtonSharedProps, 'ariaLabel'> {
     ariaLabel?: string;
-    icon?: string;
+    children: string;
 }
 
-export type ButtonProps = ButtonIconOnlyProps | ButtonHTMLProps | ButtonStringProps;
+export type ButtonProps = ButtonHTMLProps | ButtonStringProps;

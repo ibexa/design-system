@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import Button from './Button';
+import IconButton from './IconButton';
 
-const meta: Meta<typeof Button> = {
-    component: Button,
+const meta: Meta<typeof IconButton> = {
+    component: IconButton,
     parameters: {
         layout: 'centered',
     },
@@ -16,22 +16,19 @@ const meta: Meta<typeof Button> = {
         type: {
             control: 'select',
         },
-        className: {
-            control: 'text',
-        },
     },
     args: { onClick: fn() },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof IconButton>;
 
 export const TestActive: Story = {
     name: 'Primary',
     args: {
         type: 'primary',
-        children: 'Button label',
+        icon: 'edit',
         disabled: false,
     },
     play: async ({ canvasElement, step, args }) => {
@@ -54,7 +51,7 @@ export const TestDisabled: Story = {
     name: 'Disabled',
     args: {
         type: 'primary',
-        children: 'Button label',
+        icon: 'edit',
         disabled: true,
     },
     play: async ({ canvasElement, step }) => {

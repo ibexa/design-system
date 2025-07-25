@@ -11,7 +11,7 @@ const BaseInput = ({
     name,
     disabled = false,
     error = false,
-    extraClasses = '',
+    className = '',
     extraInputAttrs = {},
     id = undefined,
     required = false,
@@ -22,21 +22,21 @@ const BaseInput = ({
 }: BaseInputProps) => {
     const componentGeneratedNumberId = useGenerateSimpleNumberId();
     const componentId = id ?? `${INPUT_ID_PREFIX}${componentGeneratedNumberId.toString()}`;
-    const classes = createCssClassNames({
+    const componentClassName = createCssClassNames({
         'ids-input': true,
         [`ids-input--${type}`]: true,
         [`ids-input--${size}`]: true,
         'ids-input--disabled': disabled,
         'ids-input--error': error,
         'ids-input--required': required,
-        [extraClasses]: !!extraClasses,
+        [className]: !!className,
     });
 
     return (
         <input
             aria-invalid={error}
             aria-required={required}
-            className={classes}
+            className={componentClassName}
             disabled={disabled}
             id={componentId}
             name={name}
