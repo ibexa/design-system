@@ -12,13 +12,7 @@ const ICON_SIZE_MAPPING: Record<IconButtonSizeType, IconSizeType> = {
     small: 'tiny-small',
 } as const;
 
-const IconButton = ({
-    ariaLabel,
-    className = '',
-    icon = '',
-    size = 'medium',
-    ...restProps
-}: IconButtonProps) => {
+const IconButton = ({ ariaLabel, className = '', icon = '', size = 'medium', ...restProps }: IconButtonProps) => {
     const componentClassName = createCssClassNames({
         'ids-btn--icon-only': true,
         [className]: !!className,
@@ -34,12 +28,7 @@ const IconButton = ({
     };
 
     return (
-        <BaseButton
-            ariaLabel={ariaLabel ?? icon}
-            className={componentClassName}
-            size={size}
-            {...restProps}
-        >
+        <BaseButton ariaLabel={ariaLabel ?? icon} className={componentClassName} size={size} {...restProps}>
             {renderIcon()}
         </BaseButton>
     );

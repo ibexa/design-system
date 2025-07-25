@@ -34,8 +34,8 @@ const Expander = ({ onClick, type, collapseLabel = '', expandLabel = '', hasIcon
     return (
         <Button
             ariaLabel={label}
-            extraAria={extraAria}
             className={componentClassName}
+            extraAria={extraAria}
             onClick={() => {
                 onClick(!isExpanded);
             }}

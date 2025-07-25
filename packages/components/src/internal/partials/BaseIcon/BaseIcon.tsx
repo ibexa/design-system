@@ -4,7 +4,7 @@ import { createCssClassNames } from '@ids-internal/shared/css.class.names';
 
 import { BaseIconProps } from './BaseIcon.types';
 
-const Icon = ({ path, className = '', name='', size = 'small' }: BaseIconProps) => {
+const Icon = ({ path, className = '', name = '', size = 'small' }: BaseIconProps) => {
     const componentClassName = createCssClassNames({
         'ids-icon': true,
         [`ids-icon--${size}`]: true,

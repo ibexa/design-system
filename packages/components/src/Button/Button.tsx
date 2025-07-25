@@ -11,13 +11,7 @@ const ICON_SIZE_MAPPING: Record<ButtonSizeType, IconSizeType> = {
     small: 'tiny-small',
 } as const;
 
-const Button = ({
-    ariaLabel,
-    children,
-    icon,
-    size = 'medium',
-    ...restProps
-}: ButtonProps) => {
+const Button = ({ ariaLabel, children, icon, size = 'medium', ...restProps }: ButtonProps) => {
     const getBtnAriaLabel = () => {
         if (ariaLabel) {
             return ariaLabel;
@@ -40,11 +34,7 @@ const Button = ({
     };
 
     return (
-        <BaseButton
-            ariaLabel={getBtnAriaLabel()}
-            size={size}
-            {...restProps}
-        >
+        <BaseButton ariaLabel={getBtnAriaLabel()} size={size} {...restProps}>
             {renderIcon()}
             <div className="ids-btn__label">{children}</div>
         </BaseButton>

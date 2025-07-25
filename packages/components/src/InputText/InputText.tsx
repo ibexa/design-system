@@ -1,7 +1,6 @@
 import React from 'react';
 
 import BaseInput from '@ids-internal/partials/BaseInput';
-import { createCssClassNames } from '@ids-internal/shared/css.class.names';
 
 import { InputTextProps } from './InputText.types';
 
@@ -39,9 +38,9 @@ const Input = ({
 
     return (
         <BaseInput
+            className={className}
             disabled={disabled}
             error={error}
-            className={className}
             extraInputAttrs={{
                 onBlur: componentOnBlur,
                 onChange: componentOnChange,
