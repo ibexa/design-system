@@ -8,8 +8,9 @@ const meta: Meta<typeof InputTextStateful> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['dev'],
+    tags: ['!dev'],
     args: {
+        name: 'default-input',
         onBlur: fn(),
         onChange: fn(),
         onFocus: fn(),
@@ -21,11 +22,8 @@ export default meta;
 
 type Story = StoryObj<typeof InputTextStateful>;
 
-export const Events: Story = {
-    name: 'Events',
-    args: {
-        name: 'default-input',
-    },
+export const Default: Story = {
+    name: 'Default',
     play: async ({ canvasElement, step, args }) => {
         const canvas = within(canvasElement);
         const input = canvas.getByRole('textbox');

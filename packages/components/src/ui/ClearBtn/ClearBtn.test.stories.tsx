@@ -9,7 +9,6 @@ const meta: Meta<typeof Expander> = {
         layout: 'centered',
     },
     tags: ['!dev'],
-    argTypes: {},
     args: { onClick: fn() },
 };
 
@@ -17,8 +16,8 @@ export default meta;
 
 type Story = StoryObj<typeof Expander>;
 
-export const TestActive: Story = {
-    name: 'Primary',
+export const TestEnabled: Story = {
+    name: 'Enabled',
     args: {
         disabled: false,
     },

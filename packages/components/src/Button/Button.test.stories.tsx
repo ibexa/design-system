@@ -9,29 +9,20 @@ const meta: Meta<typeof Button> = {
         layout: 'centered',
     },
     tags: ['!dev'],
-    argTypes: {
-        size: {
-            control: 'select',
-        },
-        type: {
-            control: 'select',
-        },
-        className: {
-            control: 'text',
-        },
+    args: { 
+        type: 'primary',
+        children: 'Button label',
+        onClick: fn(),
     },
-    args: { onClick: fn() },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-export const TestActive: Story = {
-    name: 'Primary',
+export const TestEnabled: Story = {
+    name: 'Enabled',
     args: {
-        type: 'primary',
-        children: 'Button label',
         disabled: false,
     },
     play: async ({ canvasElement, step, args }) => {
@@ -53,8 +44,6 @@ export const TestActive: Story = {
 export const TestDisabled: Story = {
     name: 'Disabled',
     args: {
-        type: 'primary',
-        children: 'Button label',
         disabled: true,
     },
     play: async ({ canvasElement, step }) => {
