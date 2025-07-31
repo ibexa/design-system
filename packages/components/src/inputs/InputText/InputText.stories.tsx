@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
 import { INPUT_SIZE_VALUES, INPUT_TYPE_VALUES } from './InputText.types';
-import InputText from './InputText';
+import { InputTextStateful } from './InputText';
 
-const meta: Meta<typeof InputText> = {
-    component: InputText,
+const meta: Meta<typeof InputTextStateful> = {
+    component: InputTextStateful,
     parameters: {
         layout: 'centered',
     },
@@ -37,33 +35,11 @@ const meta: Meta<typeof InputText> = {
         onFocus: action('on-focus'),
         onInput: action('on-input'),
     },
-    decorators: [
-        (Story, { args }) => {
-            const [value, setValue] = useState(args.value ?? '');
-            const onChange = (changedValue: string, event?: React.ChangeEvent<HTMLInputElement>) => {
-                setValue(changedValue);
-
-                if (args.onChange) {
-                    args.onChange(changedValue, event);
-                }
-            };
-
-            return (
-                <Story
-                    args={{
-                        ...args,
-                        onChange,
-                        value,
-                    }}
-                />
-            );
-        },
-    ],
 };
 
 export default meta;
 
-type Story = StoryObj<typeof InputText>;
+type Story = StoryObj<typeof InputTextStateful>;
 
 export const Empty: Story = {
     name: 'Empty',
