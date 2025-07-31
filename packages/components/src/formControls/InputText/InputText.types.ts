@@ -5,7 +5,7 @@ import { HelperTextProps } from '../../HelperText/HelperText.types';
 import { LabelProps } from '../../Label/Label.types';
 
 export interface InputTextProps extends BaseComponentAttributes {
-    input: Omit<InputTextProps, 'error' | 'name' | 'onChange' | 'value'>;
+    input: Omit<BasicInputTextProps, 'error' | 'name' | 'onChange' | 'value'>;
     name: BasicInputTextProps['name'];
     helperText?: HelperTextProps['children'];
     helperTextExtra?: Omit<HelperTextProps, 'children' | 'type'>;
@@ -14,4 +14,4 @@ export interface InputTextProps extends BaseComponentAttributes {
     onChange?: BasicInputTextProps['onChange'];
     onValidate?: (isValid: boolean, messages: string[]) => void;
     value?: BasicInputTextProps['value'];
-};
+}

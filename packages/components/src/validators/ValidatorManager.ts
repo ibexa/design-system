@@ -4,7 +4,7 @@ import BaseValidator from './BaseValidator';
 
 interface ValidatorManagerOptions {
     translator: TranslatorType;
-};
+}
 
 export default class ValidatorManager {
     private _validators: BaseValidator[];

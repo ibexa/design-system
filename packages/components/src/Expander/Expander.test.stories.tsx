@@ -9,10 +9,10 @@ const meta: Meta<typeof Expander> = {
         layout: 'centered',
     },
     tags: ['!dev'],
-    args: { 
+    args: {
         collapseLabel: 'Show more',
         expandLabel: 'Show less',
-        onClick: fn() 
+        onClick: fn(),
     },
 };
 

@@ -9,10 +9,11 @@ const meta: Meta<typeof IconButton> = {
         layout: 'centered',
     },
     tags: ['!dev'],
-    args: { 
+    args: {
         type: 'primary',
         icon: 'edit',
-        onClick: fn() },
+        onClick: fn(),
+    },
 };
 
 export default meta;

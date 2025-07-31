@@ -41,7 +41,7 @@ export const NotRequired: Story = {
 
         await step('InputText handles clear event', async () => {
             await userEvent.click(clearBtn);
-            
+
             await expect(args.onChange).toHaveBeenLastCalledWith('');
             await expect(input).toHaveValue('');
             await expect(args.onValidate).toHaveBeenCalledWith(true, []);
@@ -76,7 +76,7 @@ export const Required: Story = {
 
         await step('InputText handles clear event', async () => {
             await userEvent.click(clearBtn);
-            
+
             await expect(args.onChange).toHaveBeenLastCalledWith('');
             await expect(input).toHaveValue('');
             await expect(args.onValidate).toHaveBeenLastCalledWith(false, expect.anything());

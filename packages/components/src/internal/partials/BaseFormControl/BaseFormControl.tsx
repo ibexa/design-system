@@ -21,9 +21,7 @@ const BaseFormControl = ({ children, className = '', helperText, label }: BaseFo
 
         return (
             <div className="ids-form-control__label-wrapper">
-                <Label {...labelProps}>
-                    {labelContent}
-                </Label>
+                <Label {...labelProps}>{labelContent}</Label>
             </div>
         );
     };
@@ -36,9 +34,7 @@ const BaseFormControl = ({ children, className = '', helperText, label }: BaseFo
 
         return (
             <div className="ids-form-control__helper-text-wrapper">
-                <HelperText {...helperTextProps}>
-                    {helperTextContent}
-                </HelperText>
+                <HelperText {...helperTextProps}>{helperTextContent}</HelperText>
             </div>
         );
     };
@@ -46,9 +42,7 @@ const BaseFormControl = ({ children, className = '', helperText, label }: BaseFo
     return (
         <div className={classes}>
             {renderLabel()}
-            <div className="ids-form-control__source-wrapper">
-                {children}
-            </div>
+            <div className="ids-form-control__source-wrapper">{children}</div>
             {renderHelperText()}
         </div>
     );

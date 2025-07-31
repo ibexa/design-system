@@ -7,7 +7,7 @@ import { createCssClassNames } from '@ids-internal/shared/css.class.names';
 import useValidatorManager from '@ids-internal/hooks/useValidatorManager';
 import withStateValue from '@ids-internal/hoc/withStateValue';
 
-import { FormControlInputTextProps } from './InputText.types';
+import { InputTextProps } from './InputText.types';
 
 const FormControlInputText = ({
     helperText,
@@ -19,7 +19,7 @@ const FormControlInputText = ({
     onChange = () => undefined,
     onValidate = () => undefined,
     value,
-}: FormControlInputTextProps) => {
+}: InputTextProps) => {
     const validatorManager = useValidatorManager();
     const { isValid, messages } = validatorManager.validate(value);
     const className = createCssClassNames({
@@ -27,7 +27,7 @@ const FormControlInputText = ({
     });
     const helperTextProps = {
         children: isValid ? helperText : messages.join(', '),
-        type: isValid ? 'default' as const : 'error' as const,
+        type: isValid ? ('default' as const) : ('error' as const),
         ...helperTextExtra,
     };
     const labelProps = {
@@ -61,11 +61,7 @@ const FormControlInputText = ({
     }, [isValid, messages, onValidate]);
 
     return (
-        <BaseFormControl
-            className={className}
-            helperText={helperTextProps}
-            label={labelProps}
-        >
+        <BaseFormControl className={className} helperText={helperTextProps} label={labelProps}>
             <InputText {...inputProps} />
         </BaseFormControl>
     );

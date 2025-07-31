@@ -9,4 +9,4 @@ export interface BaseFormControlProps extends BaseComponentAttributes {
     children: ReactNode;
     helperText?: HelperTextProps;
     label?: LabelProps;
-};
+}
