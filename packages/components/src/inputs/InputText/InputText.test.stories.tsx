@@ -65,7 +65,7 @@ export const Default: Story = {
 
         await step('InputText handles clear event', async () => {
             await userEvent.click(clearBtn);
-            
+
             await expect(args.onChange).toHaveBeenLastCalledWith('');
             await expect(input).toHaveValue('');
         });
