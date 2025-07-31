@@ -9,18 +9,11 @@ const meta: Meta<typeof Expander> = {
         layout: 'centered',
     },
     tags: ['!dev'],
-    argTypes: {
-        hasIcon: {
-            control: 'boolean',
-        },
-        isExpanded: {
-            control: 'boolean',
-        },
-        type: {
-            control: 'select',
-        },
+    args: { 
+        collapseLabel: 'Show more',
+        expandLabel: 'Show less',
+        onClick: fn() 
     },
-    args: { onClick: fn() },
 };
 
 export default meta;
@@ -30,8 +23,6 @@ type Story = StoryObj<typeof Expander>;
 export const ExpanderIsNotExpanded: Story = {
     args: {
         isExpanded: false,
-        collapseLabel: 'Show more',
-        expandLabel: 'Show less',
     },
     play: async ({ canvasElement, step, args }) => {
         const canvas = within(canvasElement);
@@ -56,8 +47,6 @@ export const ExpanderIsNotExpanded: Story = {
 export const ExpanderIsExpanded: Story = {
     args: {
         isExpanded: true,
-        collapseLabel: 'Show more',
-        expandLabel: 'Show less',
     },
     play: async ({ canvasElement, step, args }) => {
         const canvas = within(canvasElement);

@@ -11,11 +11,6 @@ const meta: Meta<typeof Accordion> = {
         layout: 'padded',
     },
     tags: ['!dev'],
-    argTypes: {
-        initiallyExpanded: {
-            control: 'boolean',
-        },
-    },
     args: { onHandleExpand: fn() },
 };
 
