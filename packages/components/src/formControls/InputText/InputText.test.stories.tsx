@@ -8,7 +8,7 @@ const meta: Meta<typeof InputTextStateful> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['dev', 'test'],
+    tags: ['!dev'],
     args: {
         name: 'default-input',
         onChange: fn(),
