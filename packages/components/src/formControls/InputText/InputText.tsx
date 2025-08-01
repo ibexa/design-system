@@ -12,6 +12,7 @@ import { InputTextProps } from './InputText.types';
 const FormControlInputText = ({
     helperText,
     helperTextExtra = {},
+    id,
     input = {},
     label,
     labelExtra = {},
@@ -33,12 +34,14 @@ const FormControlInputText = ({
     const labelProps = {
         children: label,
         error: !isValid,
-        required: input.required,
+        htmlFor: id,
+        required: input.required ?? false,
         ...labelExtra,
     };
     const inputProps = {
         ...input,
         error: !isValid,
+        id,
         name,
         onChange,
         value,

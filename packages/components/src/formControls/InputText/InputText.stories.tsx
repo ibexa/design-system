@@ -21,6 +21,7 @@ const meta: Meta<typeof InputTextStateful> = {
         },
     },
     args: {
+        id: 'default-input',
         name: 'default-input',
         onChange: action('on-change'),
         onValidate: action('on-validate'),
