@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import InputText from './InputText';
+import { InputTextStateful } from './InputText';
 
-const meta: Meta<typeof InputText> = {
-    component: InputText,
+const meta: Meta<typeof InputTextStateful> = {
+    component: InputTextStateful,
     parameters: {
         layout: 'centered',
     },
@@ -20,7 +20,7 @@ const meta: Meta<typeof InputText> = {
 
 export default meta;
 
-type Story = StoryObj<typeof InputText>;
+type Story = StoryObj<typeof InputTextStateful>;
 
 export const Default: Story = {
     name: 'Default',
@@ -58,6 +58,15 @@ export const Default: Story = {
             await expect(args.onFocus).toHaveBeenCalledTimes(numberOfExpectedFocusCalls);
             await expect(args.onChange).toHaveBeenCalledTimes(insertTextLength);
             await expect(args.onInput).toHaveBeenCalledTimes(insertTextLength);
+        });
+
+        const clearBtn = canvas.getByRole('button');
+
+        await step('InputText handles clear event', async () => {
+            await userEvent.click(clearBtn);
+
+            await expect(args.onChange).toHaveBeenLastCalledWith('');
+            await expect(input).toHaveValue('');
         });
     },
 };
