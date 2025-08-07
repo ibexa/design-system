@@ -1,7 +1,7 @@
 interface ExpanderSharedProps {
     onClick: (isExpanded: boolean) => void;
     isExpanded?: boolean;
-    type: 'caret' | 'triangle';
+    type: 'caret' | 'chevron';
 }
 
 interface ExpanderWithoutLabelProps extends ExpanderSharedProps {

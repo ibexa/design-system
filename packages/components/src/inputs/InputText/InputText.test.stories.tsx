@@ -16,7 +16,7 @@ const meta: Meta<typeof InputText> = {
         type: {
             control: 'select',
         },
-        extraClasses: {
+        className: {
             control: 'text',
         },
     },

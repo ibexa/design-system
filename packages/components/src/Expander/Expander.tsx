@@ -9,12 +9,12 @@ import { ExpanderProps } from './Expander.types';
 
 const ICONS_MAP = {
     caret: 'arrow-caret-down',
-    triangle: 'arrow-down',
+    chevron: 'arrow-chevron-down',
 } as const;
 
-const Expander = ({ onClick, collapseLabel = '', expandLabel = '', hasIcon = true, isExpanded = false, type = 'caret' }: ExpanderProps) => {
+const Expander = ({ onClick, type, collapseLabel = '', expandLabel = '', hasIcon = true, isExpanded = false }: ExpanderProps) => {
     const label = isExpanded ? collapseLabel : expandLabel;
-    const extraClasses = createCssClassNames({
+    const componentClassName = createCssClassNames({
         'ids-expander': true,
         'ids-expander--has-icon': hasIcon,
         'ids-expander--has-label': label !== '',
@@ -28,14 +28,14 @@ const Expander = ({ onClick, collapseLabel = '', expandLabel = '', hasIcon = tru
             return null;
         }
 
-        return <Icon cssClass="ids-icon" name={ICONS_MAP[type]} size="small" />;
+        return <Icon name={ICONS_MAP[type]} size="small" />;
     };
 
     return (
         <Button
             ariaLabel={label}
+            className={componentClassName}
             extraAria={extraAria}
-            extraClasses={extraClasses}
             onClick={() => {
                 onClick(!isExpanded);
             }}

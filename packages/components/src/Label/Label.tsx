@@ -4,16 +4,16 @@ import { createCssClassNames } from '@ids-internal/shared/css.class.names';
 
 import { LabelProps } from './Label.types';
 
-const Label = ({ children, htmlFor, error = false, extraClasses = '', required = false, title = '' }: LabelProps) => {
-    const classes = createCssClassNames({
+const Label = ({ children, htmlFor, error = false, className = '', required = false, title = '' }: LabelProps) => {
+    const componentClassName = createCssClassNames({
         'ids-label': true,
         'ids-label--error': error,
         'ids-label--required': required,
-        [extraClasses]: !!extraClasses,
+        [className]: !!className,
     });
 
     return (
-        <label className={classes} htmlFor={htmlFor} title={title}>
+        <label className={componentClassName} htmlFor={htmlFor} title={title}>
             {children}
         </label>
     );

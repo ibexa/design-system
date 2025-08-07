@@ -21,7 +21,6 @@ interface BaseInputPropsProps extends BaseComponentAttributes {
     name: string;
     disabled?: boolean;
     error?: boolean;
-    extraClasses?: string;
     id?: string;
     size?: string;
     value?: string | number;
