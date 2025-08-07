@@ -9,26 +9,20 @@ const meta: Meta<typeof IconButton> = {
         layout: 'centered',
     },
     tags: ['!dev'],
-    argTypes: {
-        size: {
-            control: 'select',
-        },
-        type: {
-            control: 'select',
-        },
+    args: {
+        type: 'primary',
+        icon: 'edit',
+        onClick: fn(),
     },
-    args: { onClick: fn() },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof IconButton>;
 
-export const TestActive: Story = {
-    name: 'Primary',
+export const TestEnabled: Story = {
+    name: 'Enabled',
     args: {
-        type: 'primary',
-        icon: 'edit',
         disabled: false,
     },
     play: async ({ canvasElement, step, args }) => {
@@ -50,8 +44,6 @@ export const TestActive: Story = {
 export const TestDisabled: Story = {
     name: 'Disabled',
     args: {
-        type: 'primary',
-        icon: 'edit',
         disabled: true,
     },
     play: async ({ canvasElement, step }) => {
