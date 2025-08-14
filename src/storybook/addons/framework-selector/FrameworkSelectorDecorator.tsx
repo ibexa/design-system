@@ -60,8 +60,8 @@ const getIframeSrc = (id: string, args: argsType) => {
 
 // eslint-disable-next-line ibexa/max-lines-per-function-jsx
 const FrameworkSelectorDecorator = (
-    StoryFn: StoryFunction<Renderer>,
-    context: StoryContext<Renderer>,
+    StoryFn: StoryFunction,
+    context: StoryContext,
 ): Renderer['storyResult'] | React.JSX.Element => {
     const [globals] = useGlobals();
     const [args] = useArgs();
