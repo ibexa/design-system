@@ -66,7 +66,7 @@ const Autosave = ({ isDarkMode = false, isEnabled = true, status = 'on', lastSav
 
     return (
         <div className={classes} title={isEnabled ? tooltipMessage : undefined}>
-            <Icon cssClass="ids-icon" name={getIconName()} size="small" />
+            <Icon className="ids-icon" name={getIconName()} size="small" />
             <div className="ids-autosave__status-message">{getStatusMessage()}</div>
         </div>
     );
