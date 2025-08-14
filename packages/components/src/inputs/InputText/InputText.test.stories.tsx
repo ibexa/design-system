@@ -9,18 +9,8 @@ const meta: Meta<typeof InputText> = {
         layout: 'centered',
     },
     tags: ['!dev'],
-    argTypes: {
-        size: {
-            control: 'select',
-        },
-        type: {
-            control: 'select',
-        },
-        className: {
-            control: 'text',
-        },
-    },
     args: {
+        name: 'default-input',
         onBlur: fn(),
         onChange: fn(),
         onFocus: fn(),
@@ -32,26 +22,29 @@ export default meta;
 
 type Story = StoryObj<typeof InputText>;
 
-export const TestActive: Story = {
-    name: 'Events',
-    args: {
-        name: 'default-input',
-    },
+export const Default: Story = {
+    name: 'Default',
     play: async ({ canvasElement, step, args }) => {
         const canvas = within(canvasElement);
         const input = canvas.getByRole('textbox');
 
         await step('InputText handles focus event', async () => {
             await expect(args.onFocus).not.toHaveBeenCalled();
+
             await userEvent.click(input);
+
             await expect(args.onFocus).toHaveBeenCalledOnce();
+
             await userEvent.click(input);
+
             await expect(args.onFocus).toHaveBeenCalledOnce();
         });
 
         await step('InputText handles blur event', async () => {
             await expect(args.onBlur).not.toHaveBeenCalled();
+
             await userEvent.click(canvasElement);
+
             await expect(args.onBlur).toHaveBeenCalledOnce();
         });
 
@@ -61,6 +54,7 @@ export const TestActive: Story = {
             const numberOfExpectedFocusCalls = 2;
 
             await userEvent.type(input, insertText);
+
             await expect(args.onFocus).toHaveBeenCalledTimes(numberOfExpectedFocusCalls);
             await expect(args.onChange).toHaveBeenCalledTimes(insertTextLength);
             await expect(args.onInput).toHaveBeenCalledTimes(insertTextLength);

@@ -1,24 +1,23 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import Expander from './ClearBtn';
+import ClearBtn from './ClearBtn';
 
-const meta: Meta<typeof Expander> = {
-    component: Expander,
+const meta: Meta<typeof ClearBtn> = {
+    component: ClearBtn,
     parameters: {
         layout: 'centered',
     },
     tags: ['!dev'],
-    argTypes: {},
     args: { onClick: fn() },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Expander>;
+type Story = StoryObj<typeof ClearBtn>;
 
-export const TestActive: Story = {
-    name: 'Primary',
+export const TestEnabled: Story = {
+    name: 'Enabled',
     args: {
         disabled: false,
     },

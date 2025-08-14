@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import Expander from './ClearBtn';
+import ClearBtn from './ClearBtn';
 
-const meta: Meta<typeof Expander> = {
-    component: Expander,
+const meta: Meta<typeof ClearBtn> = {
+    component: ClearBtn,
     parameters: {
         layout: 'centered',
     },
@@ -15,7 +15,7 @@ const meta: Meta<typeof Expander> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Expander>;
+type Story = StoryObj<typeof ClearBtn>;
 
 export const Default: Story = {
     name: 'Default',
