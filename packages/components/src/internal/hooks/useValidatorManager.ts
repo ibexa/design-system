@@ -5,9 +5,9 @@ import { TranslatorContext } from '@ids-context/Translator';
 import BaseValidator from '../../validators/BaseValidator';
 import ValidatorManager from '../../validators/ValidatorManager';
 
-export default (validators: BaseValidator[] = []) => {
+export default <T>(validators: BaseValidator<T>[] = []) => {
     const translator = useContext(TranslatorContext);
-    const validatorManagerInstance = useRef(new ValidatorManager(validators, { translator }));
+    const validatorManagerInstance = useRef(new ValidatorManager<T>(validators, { translator }));
 
     return validatorManagerInstance.current;
 };

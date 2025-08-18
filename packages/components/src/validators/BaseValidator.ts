@@ -1,6 +1,7 @@
 import { TranslatorType } from '@ids-context/Translator';
 
-export default abstract class BaseValidator {
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
+export default abstract class BaseValidator<T> {
     protected _translator!: TranslatorType;
 
     setTranslator(translator: TranslatorType) {
@@ -9,7 +10,5 @@ export default abstract class BaseValidator {
 
     abstract getErrorMessage(): string;
 
-    abstract validate(_value: unknown): boolean;
+    abstract validate(_value: T): boolean;
 }
-
-export type BaseValidatorType = typeof BaseValidator;
