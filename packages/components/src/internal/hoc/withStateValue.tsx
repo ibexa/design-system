@@ -28,6 +28,8 @@ export default (WrappedComponent: FC<any>) => {
         );
     };
 
+    WrapperComponent.displayName = `withStateValue(${WrappedComponent.displayName ?? WrappedComponent.name})`;
+
     return WrapperComponent;
 };
 /* eslint-enable @typescript-eslint/no-explicit-any */
