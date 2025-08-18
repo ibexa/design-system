@@ -1,0 +1,66 @@
+@use '../functions' as *;
+@use '../variables' as *;
+
+.ids-checkbox {
+    .ids-input--checkbox {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: calculateRem(16px);
+        height: calculateRem(16px);
+        border-radius: calculateRem(2px);
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        position: relative;
+
+        &::after {
+            content: ' ';
+            position: absolute;
+            top: calculateRem(2px);
+            left: calculateRem(2px);
+            display: block;
+            width: calculateRem(8px);
+            height: calculateRem(5px);
+            border-left: calculateRem(2px) solid transparent;
+            border-bottom: calculateRem(2px) solid transparent;
+            transform: rotate(-45deg);
+        }
+
+        &:checked {
+            border-color: var(--ids-input-checkbox-checked-border-color, #{$color-primary-80});
+            background-color: var(--ids-input-checkbox-checked-bg-color, #{$color-primary-80});
+
+            &::after {
+                border-color: var(--ids-input-checkbox-checked-text-color, #{$color-neutral-10});
+            }
+
+            &:disabled {
+                border-color: var(--ids-input-checkbox-checked-disabled-bg-color, #{$color-primary-60});
+                background-color: var(--ids-input-checkbox-checked-disabled-bg-color, #{$color-primary-60});
+
+                &::after {
+                    border-color: var(--ids-input-checkbox-checked-text-color, #{$color-neutral-10});
+                }
+            }
+        }
+
+        &:indeterminate {
+            border-color: var(--ids-input-checkbox-checked-border-color, #{$color-primary-80});
+            background-color: var(--ids-input-checkbox-checked-bg-color, #{$color-primary-80});
+
+            &:disabled {
+                border-color: var(--ids-input-checkbox-checked-disabled-bg-color, #{$color-primary-60});
+                background-color: var(--ids-input-checkbox-checked-disabled-bg-color, #{$color-primary-60});
+            }
+
+            &::after {
+                border-color: var(--ids-input-checkbox-checked-text-color, #{$color-neutral-10});
+                background-color: var(--ids-input-checkbox-checked-text-color, #{$color-neutral-10});
+                height: calculateRem(2px);
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}
