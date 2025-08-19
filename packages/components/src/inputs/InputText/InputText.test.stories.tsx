@@ -58,6 +58,7 @@ export const Default: Story = {
             await expect(args.onFocus).toHaveBeenCalledTimes(numberOfExpectedFocusCalls);
             await expect(args.onChange).toHaveBeenCalledTimes(insertTextLength);
             await expect(args.onInput).toHaveBeenCalledTimes(insertTextLength);
+            await expect(input).toHaveValue(insertText);
         });
 
         const clearBtn = canvas.getByRole('button');
