@@ -3,11 +3,12 @@ import React, { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import BaseInput from '@ids-internal/partials/BaseInput';
 import ClearBtn from '../../ui/ClearBtn';
 import { createCssClassNames } from '@ids-internal/shared/css.class.names';
+import withStateValue from '@ids-internal/hoc/withStateValue';
 
 import { ComponentEntryDataType } from '@ids-types/general';
 import { InputTextProps } from './InputText.types';
 
-const Input = ({
+const InputText = ({
     name,
     onBlur = () => undefined,
     onChange = () => undefined,
@@ -116,4 +117,6 @@ const Input = ({
     );
 };
 
-export default Input;
+export default InputText;
+
+export const InputTextStateful = withStateValue<string | number>(InputText);
