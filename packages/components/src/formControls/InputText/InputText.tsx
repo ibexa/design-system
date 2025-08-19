@@ -19,9 +19,9 @@ const FormControlInputText = ({
     name,
     onChange = () => undefined,
     onValidate = () => undefined,
-    value,
+    value = '',
 }: FormControlInputTextProps) => {
-    const validatorManager = useValidatorManager();
+    const validatorManager = useValidatorManager<string | number>();
     const { isValid, messages } = validatorManager.validate(value);
     const className = createCssClassNames({
         'ids-form-control--input-text': true,
