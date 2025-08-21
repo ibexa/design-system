@@ -22,44 +22,47 @@
             display: block;
             width: calculateRem(8px);
             height: calculateRem(5px);
-            border-left: calculateRem(2px) solid transparent;
-            border-bottom: calculateRem(2px) solid transparent;
+            border-left: calculateRem(2px) solid $color-neutral-10;
+            border-bottom: calculateRem(2px) solid $color-neutral-10;
             transform: rotate(-45deg);
         }
 
-        &:checked {
-            border-color: var(--ids-input-checkbox-checked-border-color, #{$color-primary-80});
-            background-color: var(--ids-input-checkbox-checked-bg-color, #{$color-primary-80});
+        &:checked,
+        &:indeterminate {
+            border-color: $color-primary-80;
+            background-color: $color-primary-80;
 
             &::after {
-                border-color: var(--ids-input-checkbox-checked-text-color, #{$color-neutral-10});
+                border-color: $color-neutral-10;
             }
 
             &:disabled {
-                border-color: var(--ids-input-checkbox-checked-disabled-bg-color, #{$color-primary-60});
-                background-color: var(--ids-input-checkbox-checked-disabled-bg-color, #{$color-primary-60});
+                border-color: $color-primary-60;
+                background-color: $color-primary-60;
+            }
+
+            &.ids-input--error {
+                border-color: $color-error-80;
+                background-color: $color-error-80;
 
                 &::after {
-                    border-color: var(--ids-input-checkbox-checked-text-color, #{$color-neutral-10});
+                    border-color: $color-neutral-10;
                 }
             }
         }
 
         &:indeterminate {
-            border-color: var(--ids-input-checkbox-checked-border-color, #{$color-primary-80});
-            background-color: var(--ids-input-checkbox-checked-bg-color, #{$color-primary-80});
-
-            &:disabled {
-                border-color: var(--ids-input-checkbox-checked-disabled-bg-color, #{$color-primary-60});
-                background-color: var(--ids-input-checkbox-checked-disabled-bg-color, #{$color-primary-60});
-            }
-
             &::after {
-                border-color: var(--ids-input-checkbox-checked-text-color, #{$color-neutral-10});
-                background-color: var(--ids-input-checkbox-checked-text-color, #{$color-neutral-10});
+                background-color: $color-neutral-10;
                 height: calculateRem(2px);
                 top: 50%;
                 transform: translateY(-50%);
+            }
+
+            &.ids-input--error {
+                &::after {
+                    background-color: $color-neutral-10;
+                }
             }
         }
     }

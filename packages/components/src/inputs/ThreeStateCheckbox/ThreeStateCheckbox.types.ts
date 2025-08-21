@@ -1,5 +1,13 @@
 import { CheckboxProps } from '../Checkbox';
 
-export interface ThreeStateCheckboxProps extends CheckboxProps {
-    indeterminate?: boolean;
+interface ThreeStateCheckboxIsIndeterminateProps extends CheckboxProps {
+    indeterminate: true;
+    value: false;
 }
+
+interface ThreeStateCheckboxIsNotIndeterminateProps extends CheckboxProps {
+    indeterminate: false;
+    value: boolean;
+}
+
+export type ThreeStateCheckboxProps = ThreeStateCheckboxIsIndeterminateProps | ThreeStateCheckboxIsNotIndeterminateProps;

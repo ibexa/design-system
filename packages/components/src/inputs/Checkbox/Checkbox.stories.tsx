@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import Checkbox from './Checkbox';
+import { CheckboxStateful } from './Checkbox';
 
-const meta: Meta<typeof Checkbox> = {
-    component: Checkbox,
+const meta: Meta<typeof CheckboxStateful> = {
+    component: CheckboxStateful,
     parameters: {
         layout: 'centered',
     },
@@ -17,7 +17,7 @@ const meta: Meta<typeof Checkbox> = {
             control: 'text',
         },
         value: {
-            control: 'text',
+            control: 'boolean',
         },
     },
     args: {
@@ -30,7 +30,7 @@ const meta: Meta<typeof Checkbox> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Checkbox>;
+type Story = StoryObj<typeof CheckboxStateful>;
 
 export const Empty: Story = {
     name: 'Empty',
@@ -59,7 +59,7 @@ export const Checked: Story = {
     name: 'Checked',
     args: {
         name: 'default-input',
-        checked: true,
+        value: true,
     },
 };
 
@@ -67,8 +67,8 @@ export const CheckedDisabled: Story = {
     name: 'Checked (Disabled)',
     args: {
         name: 'default-input',
-        checked: true,
         disabled: true,
+        value: true,
     },
 };
 
@@ -76,7 +76,7 @@ export const CheckedError: Story = {
     name: 'Checked (Error)',
     args: {
         name: 'default-input',
-        checked: true,
         error: true,
+        value: true,
     },
 };

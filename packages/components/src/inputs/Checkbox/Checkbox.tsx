@@ -2,6 +2,7 @@ import React from 'react';
 
 import BaseInput from '@ids-internal/partials/BaseInput';
 import { createCssClassNames } from '@ids-internal/shared/css.class.names';
+import withStateValue from '@ids-internal/hoc/withStateValue';
 
 import { CheckboxProps } from './Checkbox.types';
 
@@ -11,7 +12,6 @@ const Checkbox = ({
     onChange = () => undefined,
     onFocus = () => undefined,
     onInput = () => undefined,
-    checked = false,
     className = '',
     disabled = false,
     error = false,
@@ -20,7 +20,7 @@ const Checkbox = ({
     ref,
     required = false,
     title = '',
-    value = '',
+    value = false,
 }: CheckboxProps) => {
     const checkboxClassName = createCssClassNames({
         'ids-checkbox': true,
@@ -45,7 +45,7 @@ const Checkbox = ({
                 disabled={disabled}
                 error={error}
                 extraInputAttrs={{
-                    checked,
+                    checked: value,
                     onBlur: componentOnBlur,
                     onChange: componentOnChange,
                     onFocus: componentOnFocus,
@@ -58,10 +58,11 @@ const Checkbox = ({
                 required={required}
                 title={title}
                 type="checkbox"
-                value={value}
             />
         </div>
     );
 };
 
 export default Checkbox;
+
+export const CheckboxStateful = withStateValue<boolean>(Checkbox);
