@@ -8,11 +8,10 @@ export interface CheckboxProps extends BaseComponentAriaAttributes {
     onChange?: (value: boolean, event?: React.ChangeEvent<HTMLInputElement>) => void;
     onFocus?: React.FocusEventHandler<HTMLInputElement>;
     onInput?: (value: boolean, event?: React.ChangeEvent<HTMLInputElement>) => void;
-    checked?: boolean;
     disabled?: boolean;
     error?: boolean;
     id?: string;
     ref?: Ref<HTMLInputElement>;
     required?: boolean;
-    value?: string | number;
+    value?: boolean;
 }

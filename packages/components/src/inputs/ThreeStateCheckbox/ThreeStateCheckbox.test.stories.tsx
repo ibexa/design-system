@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import ThreeStateCheckbox from './ThreeStateCheckbox';
+import { ThreeStateCheckboxStateful } from './ThreeStateCheckbox';
 
-const meta: Meta<typeof ThreeStateCheckbox> = {
-    component: ThreeStateCheckbox,
+const meta: Meta<typeof ThreeStateCheckboxStateful> = {
+    component: ThreeStateCheckboxStateful,
     parameters: {
         layout: 'centered',
     },
@@ -20,7 +20,7 @@ const meta: Meta<typeof ThreeStateCheckbox> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ThreeStateCheckbox>;
+type Story = StoryObj<typeof ThreeStateCheckboxStateful>;
 
 const NUMBER_OF_CLICKS_FOCUS = 2;
 

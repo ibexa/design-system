@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import Checkbox from './Checkbox';
+import { CheckboxStateful } from './Checkbox';
 
-const meta: Meta<typeof Checkbox> = {
-    component: Checkbox,
+const meta: Meta<typeof CheckboxStateful> = {
+    component: CheckboxStateful,
     parameters: {
         layout: 'centered',
     },
@@ -20,7 +20,7 @@ const meta: Meta<typeof Checkbox> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Checkbox>;
+type Story = StoryObj<typeof CheckboxStateful>;
 
 const NUMBER_OF_CLICKS_FOCUS = 2;
 

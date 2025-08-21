@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import Checkbox from './ThreeStateCheckbox';
+import { ThreeStateCheckboxStateful } from './ThreeStateCheckbox';
 
-const meta: Meta<typeof Checkbox> = {
-    component: Checkbox,
+const meta: Meta<typeof ThreeStateCheckboxStateful> = {
+    component: ThreeStateCheckboxStateful,
     parameters: {
         layout: 'centered',
     },
@@ -17,7 +17,7 @@ const meta: Meta<typeof Checkbox> = {
             control: 'text',
         },
         value: {
-            control: 'text',
+            control: 'boolean',
         },
     },
     args: {
@@ -30,7 +30,7 @@ const meta: Meta<typeof Checkbox> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Checkbox>;
+type Story = StoryObj<typeof ThreeStateCheckboxStateful>;
 
 export const Empty: Story = {
     name: 'Empty',
@@ -59,7 +59,6 @@ export const Indeterminate: Story = {
     name: 'Indeterminate',
     args: {
         name: 'default-input',
-        checked: true,
         indeterminate: true,
     },
 };
@@ -68,7 +67,6 @@ export const IndeterminateDisabled: Story = {
     name: 'Indeterminate (Disabled)',
     args: {
         name: 'default-input',
-        checked: true,
         indeterminate: true,
         disabled: true,
     },
@@ -78,7 +76,6 @@ export const IndeterminateError: Story = {
     name: 'Indeterminate (Error)',
     args: {
         name: 'default-input',
-        checked: true,
         indeterminate: true,
         error: true,
     },
@@ -88,7 +85,7 @@ export const Checked: Story = {
     name: 'Checked',
     args: {
         name: 'default-input',
-        checked: true,
+        value: true,
     },
 };
 
@@ -96,8 +93,8 @@ export const CheckedDisabled: Story = {
     name: 'Checked (Disabled)',
     args: {
         name: 'default-input',
-        checked: true,
         disabled: true,
+        value: true,
     },
 };
 
@@ -105,7 +102,7 @@ export const CheckedError: Story = {
     name: 'Checked (Error)',
     args: {
         name: 'default-input',
-        checked: true,
         error: true,
+        value: true,
     },
 };
