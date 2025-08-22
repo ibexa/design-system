@@ -4,7 +4,7 @@
 
 .ids-three-state-checkbox {
     @extend .ids-checkbox;
-    
+
     .ids-input--checkbox:indeterminate {
         @include checkbox-mixins.checkbox-active-state;
 
