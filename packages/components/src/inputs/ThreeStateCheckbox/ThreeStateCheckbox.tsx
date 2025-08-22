@@ -11,10 +11,14 @@ const ThreeStateCheckbox = ({ className = '', indeterminate = false, ...restProp
         'ids-checkbox--three-state': true,
         [className]: true,
     });
+    const inputClassName = createCssClassNames({
+        'ids-input--indeterminate': indeterminate,
+    });
 
     return (
         <Checkbox
             className={checkboxClassName}
+            inputClassName={inputClassName}
             ref={(node) => {
                 if (node) {
                     node.indeterminate = indeterminate; // eslint-disable-line no-param-reassign
