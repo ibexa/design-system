@@ -1,0 +1,24 @@
+@use '../functions' as *;
+@use '../variables' as *;
+@use './checkbox' as checkbox-mixins;
+
+.ids-three-state-checkbox {
+    @extend .ids-checkbox;
+    
+    .ids-input--checkbox:indeterminate {
+        @include checkbox-mixins.checkbox-active-state;
+
+        &::after {
+            background-color: $color-neutral-10;
+            height: calculateRem(2px);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &.ids-input--error {
+            &::after {
+                background-color: $color-neutral-10;
+            }
+        }
+    }
+}
