@@ -1,14 +1,19 @@
 import BaseValidator from '../../validators/BaseValidator';
 
-export interface ValidateReturnType {
+export interface ValidationResult {
     isValid: boolean;
     messages: string[];
 }
 
-export const validateInput = <T>(value: T, validators: BaseValidator<T>[]): ValidateReturnType => {
+export const validateInput = <T>(value: T, validators: BaseValidator<T>[]): ValidationResult => {
     const errors = validators
-        .filter((validator: BaseValidator<T>) => !validator.validate(value))
-        .map((validator: BaseValidator<T>) => validator.getErrorMessage());
+        .reduce((errorsAcc: string[], validator) => {
+            if (!validator.validate(value)) {
+                return [...errorsAcc, validator.getErrorMessage()];
+            }
+
+            return errorsAcc;
+        }, []);
 
     return { isValid: !errors.length, messages: errors };
 };
