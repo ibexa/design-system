@@ -6,14 +6,13 @@ export interface ValidationResult {
 }
 
 export const validateInput = <T>(value: T, validators: BaseValidator<T>[]): ValidationResult => {
-    const errors = validators
-        .reduce((errorsAcc: string[], validator) => {
-            if (!validator.validate(value)) {
-                return [...errorsAcc, validator.getErrorMessage()];
-            }
+    const errors = validators.reduce((errorsAcc: string[], validator) => {
+        if (!validator.validate(value)) {
+            return [...errorsAcc, validator.getErrorMessage()];
+        }
 
-            return errorsAcc;
-        }, []);
+        return errorsAcc;
+    }, []);
 
     return { isValid: !errors.length, messages: errors };
 };
