@@ -17,6 +17,7 @@ const Checkbox = ({
     error = false,
     extraAria = {},
     id = undefined,
+    inputClassName = '',
     ref,
     required = false,
     title = '',
@@ -42,6 +43,7 @@ const Checkbox = ({
     return (
         <div className={checkboxClassName}>
             <BaseInput
+                className={inputClassName}
                 disabled={disabled}
                 error={error}
                 extraInputAttrs={{

@@ -11,6 +11,7 @@ export interface CheckboxProps extends BaseComponentAriaAttributes {
     disabled?: boolean;
     error?: boolean;
     id?: string;
+    inputClassName?: string;
     ref?: Ref<HTMLInputElement>;
     required?: boolean;
     value?: boolean;

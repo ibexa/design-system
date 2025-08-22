@@ -22,8 +22,8 @@
             display: block;
             width: calculateRem(8px);
             height: calculateRem(5px);
-            border-left: calculateRem(2px) solid $color-neutral-10;
-            border-bottom: calculateRem(2px) solid $color-neutral-10;
+            border-left: calculateRem(2px) solid transparent;
+            border-bottom: calculateRem(2px) solid transparent;
             transform: rotate(-45deg);
         }
 
