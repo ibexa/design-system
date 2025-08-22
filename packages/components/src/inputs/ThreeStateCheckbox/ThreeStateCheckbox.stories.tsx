@@ -16,7 +16,7 @@ const meta: Meta<typeof ThreeStateCheckboxStateful> = {
         title: {
             control: 'text',
         },
-        value: {
+        checked: {
             control: 'boolean',
         },
     },
@@ -85,7 +85,7 @@ export const Checked: Story = {
     name: 'Checked',
     args: {
         name: 'default-input',
-        value: true,
+        checked: true,
     },
 };
 
@@ -94,7 +94,7 @@ export const CheckedDisabled: Story = {
     args: {
         name: 'default-input',
         disabled: true,
-        value: true,
+        checked: true,
     },
 };
 
@@ -103,6 +103,6 @@ export const CheckedError: Story = {
     args: {
         name: 'default-input',
         error: true,
-        value: true,
+        checked: true,
     },
 };

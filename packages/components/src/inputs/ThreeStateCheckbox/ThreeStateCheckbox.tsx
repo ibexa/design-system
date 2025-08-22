@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Checkbox from '../Checkbox';
+import BaseCheckbox from '@ids-internal/partials/BaseCheckbox';
 import { createCssClassNames } from '@ids-internal/shared/css.class.names';
-import withStateValue from '@ids-internal/hoc/withStateValue';
+import withStateChecked from '@ids-internal/hoc/withStateChecked';
 
 import { ThreeStateCheckboxProps } from './ThreeStateCheckbox.types';
 
 const ThreeStateCheckbox = ({ className = '', indeterminate = false, ...restProps }: ThreeStateCheckboxProps) => {
     const checkboxClassName = createCssClassNames({
-        'ids-checkbox--three-state': true,
+        'ids-three-state-checkbox': true,
         [className]: true,
     });
     const inputClassName = createCssClassNames({
@@ -16,7 +16,7 @@ const ThreeStateCheckbox = ({ className = '', indeterminate = false, ...restProp
     });
 
     return (
-        <Checkbox
+        <BaseCheckbox
             className={checkboxClassName}
             inputClassName={inputClassName}
             ref={(node) => {
@@ -31,4 +31,4 @@ const ThreeStateCheckbox = ({ className = '', indeterminate = false, ...restProp
 
 export default ThreeStateCheckbox;
 
-export const ThreeStateCheckboxStateful = withStateValue<boolean>(ThreeStateCheckbox);
+export const ThreeStateCheckboxStateful = withStateChecked(ThreeStateCheckbox);
