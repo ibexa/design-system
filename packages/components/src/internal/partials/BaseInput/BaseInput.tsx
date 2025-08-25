@@ -14,6 +14,7 @@ const BaseInput = ({
     className = '',
     extraInputAttrs = {},
     id = undefined,
+    ref,
     required = false,
     size = 'medium',
     title = '',
@@ -40,6 +41,7 @@ const BaseInput = ({
             disabled={disabled}
             id={componentId}
             name={name}
+            ref={ref}
             title={title}
             type={type}
             value={value}
