@@ -1,0 +1,27 @@
+@use 'variables' as *;
+@use 'functions' as *;
+
+.ids-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $badge-size-medium;
+    height: $badge-size-medium;
+    border-radius: $badge-size-medium;
+    background: $color-error-80;
+    opacity: 1;
+    cursor: pointer;
+    color: $color-neutral-10;
+    font-size: $text-font-size-xs;
+    transition: all 0.2s ease-in-out;
+
+    &--small {
+        min-width: $badge-size-small;
+        height: $badge-size-small;
+        border-radius: $badge-size-small;
+    }
+
+    &--expanded {
+        padding: 0 calculateRem(3px);
+    }
+}
