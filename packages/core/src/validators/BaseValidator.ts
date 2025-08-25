@@ -1,4 +1,4 @@
-import { TranslatorType } from '@ids-context/Translator';
+import { TranslatorType } from '../types/translator';
 
 export default abstract class BaseValidator<T> {
     protected _translator: TranslatorType;

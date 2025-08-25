@@ -1,7 +1,7 @@
 import React from 'react';
 
 import BaseButton from '@ids-internal/partials/BaseButton';
-import { createCssClassNames } from '@ids-internal/shared/css.class.names';
+import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
 import Icon, { IconSizeType } from '../Icon';
 
