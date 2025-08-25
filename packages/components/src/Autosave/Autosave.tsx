@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import Icon from '../Icon';
 import { TranslatorContext } from '../context/Translator';
 
-import { createCssClassNames } from '../internal/shared/css.class.names';
+import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
 import { AutosaveProps } from './Autosave.types';
 

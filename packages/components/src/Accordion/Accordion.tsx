@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import Expander from '../Expander';
 import { TranslatorContext } from '@ids-context/Translator';
 
-import { createCssClassNames } from '@ids-internal/shared/css.class.names';
+import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
 import { AccordionProps } from './Accordion.types';
 

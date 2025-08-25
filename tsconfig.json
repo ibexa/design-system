@@ -8,6 +8,7 @@
             "./node_modules/@types"
         ],
         "paths": {
+            "@ibexa/ids-core/*": ["./packages/core/src/*"],
             "@ids-context/*": ["./packages/components/src/context/*"],
             "@ids-internal/*": ["./packages/components/src/internal/*"],
             "@ids-types/*": ["./types/*"]

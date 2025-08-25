@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useMemo, useRef, useState } from 'react';
 
 import BaseInput from '@ids-internal/partials/BaseInput';
 import ClearBtn from '../../ui/ClearBtn';
-import { createCssClassNames } from '@ids-internal/shared/css.class.names';
+import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 import withStateValue from '@ids-internal/hoc/withStateValue';
 
 import { ComponentEntryDataType } from '@ids-types/general';

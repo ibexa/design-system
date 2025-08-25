@@ -2,7 +2,7 @@ import React from 'react';
 
 import Icon from '../Icon';
 
-import { createCssClassNames } from '@ids-internal/shared/css.class.names';
+import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
 import { HelperTextProps } from './HelperText.types';
 

@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import IconButton from '../../IconButton';
 import { TranslatorContext } from '@ids-context/Translator';
 
-import { createCssClassNames } from '@ids-internal/shared/css.class.names';
+import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
 import { ClearBtnProps } from './ClearBtn.types';
 
