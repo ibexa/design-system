@@ -1,3 +1,3 @@
 import { BaseSelectionInputProps } from '@ids-internal/partials/BaseSelectionInput';
 
-export type CheckboxProps = Omit<BaseSelectionInputProps, 'type'>;
+export type RadioButtonProps = Omit<BaseSelectionInputProps, 'type'>;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BaseCheckbox from '@ids-internal/partials/BaseCheckbox';
+import BaseSelectionInput from '@ids-internal/partials/BaseSelectionInput';
 import { createCssClassNames } from '@ids-internal/shared/css.class.names';
 import withStateChecked from '@ids-internal/hoc/withStateChecked';
 
@@ -12,7 +12,7 @@ const Checkbox = ({ className = '', ...restProps }: CheckboxProps) => {
         [className]: true,
     });
 
-    return <BaseCheckbox {...restProps} className={checkboxClassName} />;
+    return <BaseSelectionInput {...restProps} className={checkboxClassName} type="checkbox" />;
 };
 
 export default Checkbox;

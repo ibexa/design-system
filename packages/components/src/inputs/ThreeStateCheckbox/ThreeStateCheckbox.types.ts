@@ -1,11 +1,11 @@
-import { BaseCheckboxProps } from '@ids-internal/partials/BaseCheckbox';
+import { BaseSelectionInputProps } from '@ids-internal/partials/BaseSelectionInput';
 
-interface ThreeStateCheckboxIsIndeterminateProps extends BaseCheckboxProps {
+interface ThreeStateCheckboxIsIndeterminateProps extends Omit<BaseSelectionInputProps, 'type'> {
     indeterminate: true;
     checked: false;
 }
 
-interface ThreeStateCheckboxIsNotIndeterminateProps extends BaseCheckboxProps {
+interface ThreeStateCheckboxIsNotIndeterminateProps extends Omit<BaseSelectionInputProps, 'type'> {
     indeterminate: false;
     checked: boolean;
 }
