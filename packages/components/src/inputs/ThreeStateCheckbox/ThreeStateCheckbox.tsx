@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BaseCheckbox from '@ids-internal/partials/BaseCheckbox';
+import BaseSelectionInput from '@ids-internal/partials/BaseSelectionInput';
 import { createCssClassNames } from '@ids-internal/shared/css.class.names';
 import withStateChecked from '@ids-internal/hoc/withStateChecked';
 
@@ -16,7 +16,7 @@ const ThreeStateCheckbox = ({ className = '', indeterminate = false, ...restProp
     });
 
     return (
-        <BaseCheckbox
+        <BaseSelectionInput
             className={checkboxClassName}
             inputClassName={inputClassName}
             ref={(node) => {
@@ -24,6 +24,7 @@ const ThreeStateCheckbox = ({ className = '', indeterminate = false, ...restProp
                     node.indeterminate = indeterminate; // eslint-disable-line no-param-reassign
                 }
             }}
+            type="checkbox"
             {...restProps}
         />
     );
