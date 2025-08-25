@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BaseCheckbox from '@ids-internal/partials/BaseCheckbox';
+import BaseChoiceInput from '@ids-internal/partials/BaseChoiceInput';
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 import withStateChecked from '@ids-internal/hoc/withStateChecked';
 
@@ -12,7 +12,7 @@ const Checkbox = ({ className = '', ...restProps }: CheckboxProps) => {
         [className]: true,
     });
 
-    return <BaseCheckbox {...restProps} className={checkboxClassName} />;
+    return <BaseChoiceInput {...restProps} className={checkboxClassName} type="checkbox" />;
 };
 
 export default Checkbox;

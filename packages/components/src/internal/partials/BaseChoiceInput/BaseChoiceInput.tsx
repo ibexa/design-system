@@ -2,10 +2,11 @@ import React from 'react';
 
 import BaseInput from '@ids-internal/partials/BaseInput';
 
-import { BaseCheckboxProps } from './BaseCheckbox.types';
+import { BaseChoiceInputProps } from './BaseChoiceInput.types';
 
-const Checkbox = ({
+const BaseChoiceInput = ({
     name,
+    type,
     onBlur = () => undefined,
     onChange = () => undefined,
     onFocus = () => undefined,
@@ -21,7 +22,7 @@ const Checkbox = ({
     required = false,
     title = '',
     value = '',
-}: BaseCheckboxProps) => {
+}: BaseChoiceInputProps) => {
     const componentOnBlur = (event: React.FocusEvent<HTMLInputElement>) => {
         onBlur(event);
     };
@@ -54,11 +55,11 @@ const Checkbox = ({
                 ref={ref}
                 required={required}
                 title={title}
-                type="checkbox"
+                type={type}
                 value={value}
             />
         </div>
     );
 };
 
-export default Checkbox;
+export default BaseChoiceInput;

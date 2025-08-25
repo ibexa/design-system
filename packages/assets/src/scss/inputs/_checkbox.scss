@@ -1,5 +1,6 @@
 @use '../functions' as *;
 @use '../variables' as *;
+@use '../mixins/choice-inputs' as *;
 
 @mixin checkbox-active-state {
     border-color: $color-primary-80;
@@ -26,15 +27,9 @@
 
 .ids-checkbox {
     .ids-input--checkbox {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        width: calculateRem(16px);
-        height: calculateRem(16px);
+        @include choice-input-base;
+
         border-radius: calculateRem(2px);
-        padding: 0;
-        margin: 0;
-        cursor: pointer;
         position: relative;
 
         &::after {

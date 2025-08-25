@@ -1,9 +1,15 @@
 import { Ref } from 'react';
 
 import { BaseComponentAriaAttributes } from '@ids-types/general';
+import { BaseInputTypesType } from '../BaseInput/BaseInput.types';
 
-export interface BaseCheckboxProps extends BaseComponentAriaAttributes {
+export const INPUT_TYPE_VALUES = ['checkbox', 'radio'] as const satisfies BaseInputTypesType[];
+
+export type InputChoiceTypesType = (typeof INPUT_TYPE_VALUES)[number];
+
+export interface BaseChoiceInputProps extends BaseComponentAriaAttributes {
     name: string;
+    type: InputChoiceTypesType;
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
     onChange?: (value: boolean, event?: React.ChangeEvent<HTMLInputElement>) => void;
     onFocus?: React.FocusEventHandler<HTMLInputElement>;
