@@ -9,5 +9,5 @@ export default abstract class BaseValidator<T> {
 
     abstract getErrorMessage(): string;
 
-    abstract validate(_value: T): boolean;
+    abstract validate(value: T): boolean;
 }
