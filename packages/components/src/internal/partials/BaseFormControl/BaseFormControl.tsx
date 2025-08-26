@@ -11,7 +11,7 @@ const BaseFormControl = ({ children, className = '', helperText, label, type }: 
     const classes = createCssClassNames({
         'ids-form-control': true,
         [`ids-form-control--${type}`]: true,
-        [className]: true,
+        [className]: !!className,
     });
     const renderLabel = () => {
         if (!label) {
