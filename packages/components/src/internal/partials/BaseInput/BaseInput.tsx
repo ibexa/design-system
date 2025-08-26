@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { createCssClassNames } from '@ids-internal/shared/css.class.names';
+import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 import { useGenerateSimpleNumberId } from '@ids-internal/hooks/generators';
 
 import { BaseInputProps } from './BaseInput.types';
