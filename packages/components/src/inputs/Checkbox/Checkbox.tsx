@@ -1,7 +1,7 @@
 import React from 'react';
 
 import BaseCheckbox from '@ids-internal/partials/BaseCheckbox';
-import { createCssClassNames } from '@ids-internal/shared/css.class.names';
+import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 import withStateChecked from '@ids-internal/hoc/withStateChecked';
 
 import { CheckboxProps } from './Checkbox.types';

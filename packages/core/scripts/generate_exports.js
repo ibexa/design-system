@@ -5,7 +5,7 @@ const packageJsonPath = path.resolve(__dirname, '../package.json');
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 
 if (!packageJson.exports) {
-    console.error('No exports field found in package.json'); // eslint-disable-line no-console
+    console.error('No exports field found in package.json');
     process.exit(1);
 }
 
