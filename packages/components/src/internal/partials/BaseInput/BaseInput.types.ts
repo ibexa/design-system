@@ -1,4 +1,4 @@
-import { HTMLInputTypeAttribute, InputHTMLAttributes } from 'react';
+import { HTMLInputTypeAttribute, InputHTMLAttributes, Ref } from 'react';
 
 import { BaseComponentAttributes } from '@ids-types/general';
 
@@ -22,6 +22,7 @@ interface BaseInputPropsProps extends BaseComponentAttributes {
     disabled?: boolean;
     error?: boolean;
     id?: string;
+    ref?: Ref<HTMLInputElement>;
     size?: string;
     value?: string | number;
 }

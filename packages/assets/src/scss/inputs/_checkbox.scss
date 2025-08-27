@@ -1,0 +1,57 @@
+@use '../functions' as *;
+@use '../variables' as *;
+
+@mixin checkbox-active-state {
+    border-color: $color-primary-80;
+    background-color: $color-primary-80;
+
+    &::after {
+        border-color: $color-neutral-10;
+    }
+
+    &:disabled {
+        border-color: $color-primary-60;
+        background-color: $color-primary-60;
+    }
+
+    &.ids-input--error {
+        border-color: $color-error-80;
+        background-color: $color-error-80;
+
+        &::after {
+            border-color: $color-neutral-10;
+        }
+    }
+}
+
+.ids-checkbox {
+    .ids-input--checkbox {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: calculateRem(16px);
+        height: calculateRem(16px);
+        border-radius: calculateRem(2px);
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        position: relative;
+
+        &::after {
+            content: ' ';
+            position: absolute;
+            top: calculateRem(2px);
+            left: calculateRem(2px);
+            display: block;
+            width: calculateRem(8px);
+            height: calculateRem(5px);
+            border-left: calculateRem(2px) solid transparent;
+            border-bottom: calculateRem(2px) solid transparent;
+            transform: rotate(-45deg);
+        }
+
+        &:checked {
+            @include checkbox-active-state;
+        }
+    }
+}
