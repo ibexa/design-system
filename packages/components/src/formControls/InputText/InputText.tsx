@@ -1,14 +1,11 @@
-import React, { useContext, useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 
+import { useInitValidators, useValidateInput } from './InputText.utils';
 import BaseFormControl from '@ids-internal/partials/BaseFormControl';
 import InputText from '../../inputs/InputText';
-import IsEmptyStringValidator from '@ibexa/ids-core/validators/IsEmptyStringValidator';
-import { TranslatorContext } from '@ids-context/Translator';
-import { validateInput } from '@ids-internal/shared/validators';
 import withStateValue from '@ids-internal/hoc/withStateValue';
 
-import { FormControlInputTextProps } from './InputText.types';
-import { ValidationResult } from '@ibexa/ids-core/types/validation';
+import { FormControlInputTextProps, ValueType } from './InputText.types';
 
 const FormControlInputText = ({
     helperText,
@@ -22,21 +19,9 @@ const FormControlInputText = ({
     onValidate = () => undefined,
     value = '',
 }: FormControlInputTextProps) => {
-    const translator = useContext(TranslatorContext);
     const required = input.required ?? false;
-    const validators = useMemo(() => {
-        const validatorsList = [];
-
-        if (required) {
-            validatorsList.push(new IsEmptyStringValidator(translator));
-        }
-
-        return validatorsList;
-    }, [required, translator]);
-    const { isValid, messages } = useMemo<ValidationResult>(
-        () => validateInput<string | number>(value, validators),
-        [value, validators],
-    );
+    const validators = useInitValidators({ required });
+    const { isValid, messages } = useValidateInput({ validators, value });
     const helperTextProps = {
         children: isValid ? helperText : messages.join(', '),
         type: isValid ? ('default' as const) : ('error' as const),
@@ -71,4 +56,4 @@ const FormControlInputText = ({
 
 export default FormControlInputText;
 
-export const FormControlInputTextStateful = withStateValue<string | number>(FormControlInputText);
+export const FormControlInputTextStateful = withStateValue<ValueType>(FormControlInputText);

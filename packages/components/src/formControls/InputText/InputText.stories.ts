@@ -19,6 +19,15 @@ const meta: Meta<typeof FormControlInputTextStateful> = {
         value: {
             control: 'text',
         },
+        onChange: {
+            control: false,
+        },
+        onValidate: {
+            control: false,
+        },
+        input: {
+            control: false,
+        },
     },
     args: {
         id: 'default-input',

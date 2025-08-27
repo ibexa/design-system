@@ -16,3 +16,7 @@ export interface FormControlInputTextProps extends BaseComponentAttributes {
     onValidate?: (isValid: boolean, messages: string[]) => void;
     value?: BasicInputTextProps['value'];
 }
+
+export type OnChangeArgsType = Parameters<NonNullable<FormControlInputTextProps['onChange']>>;
+
+export type ValueType = NonNullable<FormControlInputTextProps['value']>;
