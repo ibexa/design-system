@@ -58,9 +58,9 @@ export const Required: Story = {
     args: {
         helperText: 'This is a helper text',
         label: 'Input Label',
+        required: true,
         input: {
             size: 'medium',
-            required: true,
             type: 'text',
         },
     },

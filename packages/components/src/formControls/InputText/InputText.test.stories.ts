@@ -52,9 +52,7 @@ export const NotRequired: Story = {
 export const Required: Story = {
     name: 'Required',
     args: {
-        input: {
-            required: true,
-        },
+        required: true,
     },
     play: async ({ canvasElement, step, args }) => {
         const canvas = within(canvasElement);

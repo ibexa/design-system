@@ -7,13 +7,14 @@ import { LabelProps } from '../../Label/Label.types';
 export interface FormControlInputTextProps extends BaseComponentAttributes {
     id: string;
     name: BasicInputTextProps['name'];
-    input?: Omit<BasicInputTextProps, 'error' | 'name' | 'onChange' | 'value'>;
+    input?: Omit<BasicInputTextProps, 'error' | 'name' | 'onChange' | 'required' | 'value'>;
     helperText?: HelperTextProps['children'];
     helperTextExtra?: Omit<HelperTextProps, 'children' | 'type'>;
     label?: LabelProps['children'];
     labelExtra?: Omit<LabelProps, 'children' | 'error' | 'htmlFor' | 'required'>;
     onChange?: BasicInputTextProps['onChange'];
     onValidate?: (isValid: boolean, messages: string[]) => void;
+    required?: boolean;
     value?: BasicInputTextProps['value'];
 }
 

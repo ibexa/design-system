@@ -17,9 +17,9 @@ const FormControlInputText = ({
     name,
     onChange = () => undefined,
     onValidate = () => undefined,
+    required = false,
     value = '',
 }: FormControlInputTextProps) => {
-    const required = input.required ?? false;
     const validators = useInitValidators({ required });
     const { isValid, messages } = useValidateInput({ validators, value });
     const helperTextProps = {
