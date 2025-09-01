@@ -6,8 +6,8 @@ import withStateChecked from '@ids-internal/hoc/withStateChecked';
 
 import { AltRadioProps } from './AltRadio.types';
 
-const AltRadio = ({ className = '', label, ...restProps }: AltRadioProps) => {
-    const { checked = false, disabled = false, error = false, onBlur, onChange, onFocus, onInput } = restProps;
+const AltRadio = ({ className = '', label, inputProps }: AltRadioProps) => {
+    const { checked = false, disabled = false, error = false, onBlur, onChange, onFocus, onInput } = inputProps;
     const inputRef = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
     const altRadioClassName = createCssClassNames({
@@ -41,7 +41,21 @@ const AltRadio = ({ className = '', label, ...restProps }: AltRadioProps) => {
     return (
         <div className={altRadioClassName}>
             <div className="ids-alt-radio__source">
-                <BaseChoiceInput {...restProps} onBlur={onInputBlur} onFocus={onInputFocus} ref={inputRef} type="radio" />
+                <BaseChoiceInput
+                    {...inputProps}
+                    onBlur={onInputBlur}
+                    onFocus={onInputFocus}
+                    ref={(node) => {
+                        inputRef.current = node;
+
+                        if (typeof inputProps.ref === 'function') {
+                            inputProps.ref(node);
+                        } else if (inputProps.ref) {
+                            inputProps.ref.current = node; // eslint-disable-line no-param-reassign
+                        }
+                    }}
+                    type="radio"
+                />
             </div>
             <div className={altRadioTileClassName} onClick={onTileClick} role="button">
                 {label}
@@ -52,4 +66,4 @@ const AltRadio = ({ className = '', label, ...restProps }: AltRadioProps) => {
 
 export default AltRadio;
 
-export const AltRadioStateful = withStateChecked(AltRadio);
+export const AltRadioStateful = withStateChecked<AltRadioProps>(AltRadio);
