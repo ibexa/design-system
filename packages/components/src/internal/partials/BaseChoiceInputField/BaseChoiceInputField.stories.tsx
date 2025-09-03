@@ -2,12 +2,12 @@ import React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import BaseChoiceInputWithLabel from './BaseChoiceInputWithLabel';
+import BaseChoiceInputField from './BaseChoiceInputField';
 import { RadioButtonStateful } from '../../../inputs/RadioButton';
 
-const meta: Meta<typeof BaseChoiceInputWithLabel> = {
-    title: 'components/src/base/BaseChoiceInputWithLabel',
-    component: BaseChoiceInputWithLabel,
+const meta: Meta<typeof BaseChoiceInputField> = {
+    title: 'components/src/base/BaseChoiceInputField',
+    component: BaseChoiceInputField,
     parameters: {
         layout: 'centered',
     },
@@ -33,7 +33,7 @@ const meta: Meta<typeof BaseChoiceInputWithLabel> = {
 
 export default meta;
 
-type Story = StoryObj<typeof BaseChoiceInputWithLabel>;
+type Story = StoryObj<typeof BaseChoiceInputField>;
 
 export const Default: Story = {
     name: 'Default',

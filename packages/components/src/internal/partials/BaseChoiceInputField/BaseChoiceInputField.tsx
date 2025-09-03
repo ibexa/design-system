@@ -3,26 +3,26 @@ import React from 'react';
 import ChoiceInputLabel from '../../../ChoiceInputLabel';
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
-import { BaseChoiceInputWithLabelProps } from './BaseChoiceInputWithLabel.types';
+import { BaseChoiceInputFieldProps } from './BaseChoiceInputField.types';
 
-const BaseChoiceInputWithLabel = ({
+const BaseChoiceInputField = ({
     children,
     className = '',
     id,
     inputWrapperClassName = '',
     labelClassName = '',
     renderInput,
-}: BaseChoiceInputWithLabelProps) => {
+}: BaseChoiceInputFieldProps) => {
     const componentClassName = createCssClassNames({
-        'ids-choice-input-with-label': true,
+        'ids-choice-input-field': true,
         [className]: true,
     });
     const componentInputWrapperClassName = createCssClassNames({
-        'ids-choice-input-with-label__input-wrapper': true,
+        'ids-choice-input-field__input-wrapper': true,
         [inputWrapperClassName]: true,
     });
     const componentLabelClassName = createCssClassNames({
-        'ids-choice-input-with-label__label': true,
+        'ids-choice-input-field__label': true,
         [labelClassName]: true,
     });
 
@@ -36,4 +36,4 @@ const BaseChoiceInputWithLabel = ({
     );
 };
 
-export default BaseChoiceInputWithLabel;
+export default BaseChoiceInputField;

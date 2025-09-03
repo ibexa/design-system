@@ -1,6 +1,6 @@
 import { BaseComponentAriaAttributes } from '@ids-types/general';
 
-export interface BaseChoiceInputWithLabelProps extends BaseComponentAriaAttributes {
+export interface BaseChoiceInputFieldProps extends BaseComponentAriaAttributes {
     children: React.ReactNode;
     id: string;
     inputWrapperClassName?: string;
