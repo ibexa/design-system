@@ -4,5 +4,5 @@ import { BaseComponentAttributes } from '@ids-types/general';
 
 export interface ChoiceInputLabelProps extends BaseComponentAttributes {
     children: ReactNode;
-    htmlFor?: string;
+    htmlFor: string;
 }
