@@ -1,0 +1,7 @@
+@use 'functions' as *;
+
+.ids-choice-input-with-label {
+    display: flex;
+    align-items: center;
+    gap: calculateRem(8px);
+}

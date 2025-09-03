@@ -1,6 +1,7 @@
 import React from 'react';
 
 import BaseInput from '@ids-internal/partials/BaseInput';
+import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
 import { BaseChoiceInputProps } from './BaseChoiceInput.types';
 
@@ -23,6 +24,10 @@ const BaseChoiceInput = ({
     title = '',
     value = '',
 }: BaseChoiceInputProps) => {
+    const componentClassName = createCssClassNames({
+        'ids-choice-input': true,
+        [className]: !!className,
+    });
     const componentOnBlur = (event: React.FocusEvent<HTMLInputElement>) => {
         onBlur(event);
     };
@@ -37,7 +42,7 @@ const BaseChoiceInput = ({
     };
 
     return (
-        <div className={className}>
+        <div className={componentClassName}>
             <BaseInput
                 className={inputClassName}
                 disabled={disabled}
