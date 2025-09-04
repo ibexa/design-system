@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 
-import ThreeStateCheckbox, { ThreeStateCheckboxProps } from '../../inputs/ThreeStateCheckbox';
 import BaseChoiceInputField from '@ids-internal/partials/BaseChoiceInputField';
 import Checkbox from '../../inputs/Checkbox';
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
@@ -13,23 +12,15 @@ const CheckboxField = ({
     label,
     inputWrapperClassName = '',
     labelClassName = '',
-    useIndeterminate = false,
     ...inputProps
 }: CheckboxFieldProps) => {
     const fieldClassName = createCssClassNames({
         'ids-checkbox-field': true,
-        'ids-checkbox-field--indeterminate': useIndeterminate,
         [className]: !!className,
     });
     const renderInput = useCallback(() => {
-        if (useIndeterminate) {
-            const threeStateProps = inputProps as ThreeStateCheckboxProps; // eslint-disable-line @typescript-eslint/no-unsafe-type-assertion
-
-            return <ThreeStateCheckbox {...threeStateProps} />;
-        }
-
         return <Checkbox {...inputProps} />;
-    }, [inputProps, useIndeterminate]);
+    }, [inputProps]);
 
     return (
         <BaseChoiceInputField

@@ -67,29 +67,3 @@ export const CheckedError: Story = {
         checked: true,
     },
 };
-
-export const Indeterminate: Story = {
-    name: 'Indeterminate',
-    args: {
-        useIndeterminate: true,
-        indeterminate: true,
-    },
-};
-
-export const IndeterminateDisabled: Story = {
-    name: 'Indeterminate (Disabled)',
-    args: {
-        useIndeterminate: true,
-        disabled: true,
-        indeterminate: true,
-    },
-};
-
-export const IndeterminateError: Story = {
-    name: 'Indeterminate (Error)',
-    args: {
-        useIndeterminate: true,
-        error: true,
-        checked: true,
-    },
-};
