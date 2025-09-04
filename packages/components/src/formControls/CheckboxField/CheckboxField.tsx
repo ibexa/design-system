@@ -7,13 +7,7 @@ import withStateChecked from '@ids-internal/hoc/withStateChecked';
 
 import { CheckboxFieldProps } from './CheckboxField.types';
 
-const CheckboxField = ({
-    className = '',
-    label,
-    inputWrapperClassName = '',
-    labelClassName = '',
-    ...inputProps
-}: CheckboxFieldProps) => {
+const CheckboxField = ({ className = '', label, inputWrapperClassName = '', labelClassName = '', ...inputProps }: CheckboxFieldProps) => {
     const fieldClassName = createCssClassNames({
         'ids-checkbox-field': true,
         [className]: !!className,
