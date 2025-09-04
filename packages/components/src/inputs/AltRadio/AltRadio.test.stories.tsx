@@ -11,13 +11,11 @@ const meta: Meta<typeof AltRadioStateful> = {
     tags: ['!dev'],
     args: {
         label: '1:1',
-        inputProps: {
-            name: 'default-input',
-            onBlur: fn(),
-            onChange: fn(),
-            onFocus: fn(),
-            onInput: fn(),
-        },
+        name: 'default-input',
+        onBlur: fn(),
+        onChange: fn(),
+        onFocus: fn(),
+        onInput: fn(),
     },
 };
 
@@ -32,21 +30,21 @@ export const Default: Story = {
         const input = canvas.getByRole('button');
 
         await step('Radio Button handles focus event', async () => {
-            await expect(args.inputProps.onFocus).not.toHaveBeenCalled();
+            await expect(args.onFocus).not.toHaveBeenCalled();
 
             await userEvent.click(input);
 
-            await expect(args.inputProps.onFocus).toHaveBeenCalledOnce();
-            await expect(args.inputProps.onChange).toHaveBeenCalledOnce();
-            await expect(args.inputProps.onInput).toHaveBeenCalledOnce();
+            await expect(args.onFocus).toHaveBeenCalledOnce();
+            await expect(args.onChange).toHaveBeenCalledOnce();
+            await expect(args.onInput).toHaveBeenCalledOnce();
         });
 
         await step('Radio Button handles blur event', async () => {
-            await expect(args.inputProps.onBlur).not.toHaveBeenCalled();
+            await expect(args.onBlur).not.toHaveBeenCalled();
 
             await userEvent.click(canvasElement);
 
-            await expect(args.inputProps.onBlur).toHaveBeenCalledOnce();
+            await expect(args.onBlur).toHaveBeenCalledOnce();
         });
     },
 };

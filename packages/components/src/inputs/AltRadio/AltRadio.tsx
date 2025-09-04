@@ -6,7 +6,7 @@ import withStateChecked from '@ids-internal/hoc/withStateChecked';
 
 import { AltRadioProps } from './AltRadio.types';
 
-const AltRadio = ({ className = '', label, inputProps }: AltRadioProps) => {
+const AltRadio = ({ className = '', label, ...inputProps }: AltRadioProps) => {
     const { checked = false, disabled = false, error = false, onBlur, onChange, onFocus, onInput } = inputProps;
     const inputRef = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
