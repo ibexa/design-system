@@ -8,7 +8,7 @@ const meta: Meta<typeof CheckboxFieldStateful> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['!dev'],
+    tags: [],
     args: {
         id: 'default-input',
         label: 'Checkbox Label',
@@ -23,6 +23,8 @@ const meta: Meta<typeof CheckboxFieldStateful> = {
 export default meta;
 
 type Story = StoryObj<typeof CheckboxFieldStateful>;
+
+const NUMBER_OF_CLICKS_FOCUS = 2;
 
 export const Default: Story = {
     name: 'Default',
@@ -40,8 +42,8 @@ export const Default: Story = {
             await userEvent.click(input);
 
             await expect(args.onFocus).toHaveBeenCalledOnce();
-            await expect(args.onChange).toHaveBeenCalledOnce();
-            await expect(args.onInput).toHaveBeenCalledOnce();
+            await expect(args.onChange).toHaveBeenCalledTimes(NUMBER_OF_CLICKS_FOCUS);
+            await expect(args.onInput).toHaveBeenCalledTimes(NUMBER_OF_CLICKS_FOCUS);
         });
 
         await step('Checkbox handles blur event', async () => {
