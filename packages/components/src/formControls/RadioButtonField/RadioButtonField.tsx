@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import BaseChoiceInputField from '@ids-internal/partials/BaseChoiceInputField';
 import RadioButton from '../../inputs/RadioButton';
@@ -18,9 +18,10 @@ const RadioButtonField = ({
         'ids-radio-button-field': true,
         [className]: !!className,
     });
-    const renderInput = () => {
+    const renderInput = useCallback(() => {
         return <RadioButton {...inputProps} />;
-    };
+    }, [inputProps]);
+
     return (
         <BaseChoiceInputField
             className={fieldClassName}
