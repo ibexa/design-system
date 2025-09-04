@@ -6,13 +6,13 @@ import withStateChecked from '@ids-internal/hoc/withStateChecked';
 
 import { AltRadioProps } from './AltRadio.types';
 
-const AltRadio = ({ className = '', label, ...inputProps }: AltRadioProps) => {
+const AltRadio = ({ className = '', label, tileClassName = '', title = '', ...inputProps }: AltRadioProps) => {
     const { checked = false, disabled = false, error = false, onBlur, onChange, onFocus, onInput } = inputProps;
     const inputRef = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
     const altRadioClassName = createCssClassNames({
         'ids-alt-radio': true,
-        [className]: true,
+        [className]: !!className,
     });
     const altRadioTileClassName = createCssClassNames({
         'ids-alt-radio__tile': true,
@@ -20,6 +20,7 @@ const AltRadio = ({ className = '', label, ...inputProps }: AltRadioProps) => {
         'ids-alt-radio__tile--disabled': disabled,
         'ids-alt-radio__tile--error': error,
         'ids-alt-radio__tile--focused': isFocused,
+        [tileClassName]: !!tileClassName,
     });
     const onTileClick = () => {
         inputRef.current?.focus();
@@ -39,7 +40,7 @@ const AltRadio = ({ className = '', label, ...inputProps }: AltRadioProps) => {
     };
 
     return (
-        <div className={altRadioClassName}>
+        <div className={altRadioClassName} title={title}>
             <div className="ids-alt-radio__source">
                 <BaseChoiceInput
                     {...inputProps}

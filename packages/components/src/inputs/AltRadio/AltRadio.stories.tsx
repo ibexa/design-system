@@ -15,6 +15,9 @@ const meta: Meta<typeof AltRadioStateful> = {
         className: {
             control: 'text',
         },
+        tileClassName: {
+            control: 'text',
+        },
         title: {
             control: 'text',
         },
