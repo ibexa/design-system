@@ -17,4 +17,4 @@ const Checkbox = ({ className = '', ...restProps }: CheckboxProps) => {
 
 export default Checkbox;
 
-export const CheckboxStateful = withStateChecked(Checkbox);
+export const CheckboxStateful = withStateChecked<CheckboxProps>(Checkbox);

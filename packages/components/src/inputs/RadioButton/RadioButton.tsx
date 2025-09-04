@@ -17,4 +17,4 @@ const RadioButton = ({ className = '', ...restProps }: RadioButtonProps) => {
 
 export default RadioButton;
 
-export const RadioButtonStateful = withStateChecked(RadioButton);
+export const RadioButtonStateful = withStateChecked<RadioButtonProps>(RadioButton);

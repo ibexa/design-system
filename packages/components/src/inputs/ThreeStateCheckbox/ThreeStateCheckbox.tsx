@@ -32,4 +32,4 @@ const ThreeStateCheckbox = ({ className = '', indeterminate = false, ...restProp
 
 export default ThreeStateCheckbox;
 
-export const ThreeStateCheckboxStateful = withStateChecked(ThreeStateCheckbox);
+export const ThreeStateCheckboxStateful = withStateChecked<ThreeStateCheckboxProps>(ThreeStateCheckbox);
