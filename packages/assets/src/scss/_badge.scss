@@ -5,23 +5,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: $badge-size-medium;
-    height: $badge-size-medium;
-    border-radius: $badge-size-medium;
+    min-width: calculateRem(18px);
+    height: calculateRem(18px);
+    border-radius: calculateRem(18px);
     background: $color-error-80;
-    opacity: 1;
-    cursor: pointer;
     color: $color-neutral-10;
     font-size: $text-font-size-xs;
     transition: all 0.2s ease-in-out;
 
     &--small {
-        min-width: $badge-size-small;
-        height: $badge-size-small;
-        border-radius: $badge-size-small;
+        min-width: calculateRem(12px);
+        height: calculateRem(12px);
+        border-radius: calculateRem(12px);
     }
 
-    &--expanded {
+    &--wide {
         padding: 0 calculateRem(3px);
     }
 }
