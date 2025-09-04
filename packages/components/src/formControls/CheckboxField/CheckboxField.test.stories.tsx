@@ -11,7 +11,7 @@ const meta: Meta<typeof CheckboxFieldStateful> = {
     tags: ['!dev'],
     args: {
         id: 'default-input',
-        label: 'Radio Button Label',
+        label: 'Checkbox Label',
         name: 'default-input',
         onBlur: fn(),
         onChange: fn(),
@@ -28,9 +28,9 @@ export const Default: Story = {
     name: 'Default',
     play: async ({ canvasElement, step, args }) => {
         const canvas = within(canvasElement);
-        const input = canvas.getByRole('radio');
+        const input = canvas.getByRole('checkbox');
 
-        await step('Radio Button handles focus event', async () => {
+        await step('Checkbox handles focus event', async () => {
             await expect(args.onFocus).not.toHaveBeenCalled();
 
             await userEvent.click(input);
@@ -44,7 +44,7 @@ export const Default: Story = {
             await expect(args.onInput).toHaveBeenCalledOnce();
         });
 
-        await step('Radio Button handles blur event', async () => {
+        await step('Checkbox handles blur event', async () => {
             await expect(args.onBlur).not.toHaveBeenCalled();
 
             await userEvent.click(canvasElement);
