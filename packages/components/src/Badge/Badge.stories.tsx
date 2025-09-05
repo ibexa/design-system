@@ -40,3 +40,11 @@ export const Small: Story = {
         size: BadgeSize.Small,
     },
 };
+
+export const Wide: Story = {
+    name: 'Wide',
+    args: {
+        value: 100,
+        size: BadgeSize.Medium,
+    },
+};

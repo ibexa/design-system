@@ -15,7 +15,7 @@ const Badge = ({ className = '', size = BadgeSize.Medium, value }: BadgeProps) =
         [className]: !!className,
     });
     const formatBadgeValue = useCallback((val: number): string => {
-        return val > MAX_BADGE_VALUE ? '99+' : val.toString();
+        return val > MAX_BADGE_VALUE ? `${MAX_BADGE_VALUE}+` : val.toString();
     }, []);
 
     return (
