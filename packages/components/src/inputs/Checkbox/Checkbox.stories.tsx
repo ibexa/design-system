@@ -21,6 +21,7 @@ const meta: Meta<typeof CheckboxStateful> = {
         },
     },
     args: {
+        value: 'checkbox-value',
         onBlur: action('on-blur'),
         onChange: action('on-change'),
         onFocus: action('on-focus'),
