@@ -29,7 +29,6 @@ export const Default: Story = {
     name: 'Default',
     args: {
         value: 1,
-        size: BadgeSize.Medium,
     },
 };
 
