@@ -1,15 +1,15 @@
 import React from 'react';
 
-import Button from '../Button';
-import Icon from '../Icon';
+import Button, { ButtonSize, ButtonType } from '../Button';
+import Icon, { IconSize } from '../Icon';
 
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
-import { ExpanderProps } from './Expander.types';
+import { ExpanderProps, ExpanderType } from './Expander.types';
 
 const ICONS_MAP = {
-    caret: 'arrow-caret-down',
-    chevron: 'arrow-chevron-down',
+    [ExpanderType.caret]: 'arrow-caret-down',
+    [ExpanderType.chevron]: 'arrow-chevron-down',
 } as const;
 
 const Expander = ({ onClick, type, collapseLabel = '', expandLabel = '', hasIcon = true, isExpanded = false }: ExpanderProps) => {
@@ -28,7 +28,7 @@ const Expander = ({ onClick, type, collapseLabel = '', expandLabel = '', hasIcon
             return null;
         }
 
-        return <Icon name={ICONS_MAP[type]} size="small" />;
+        return <Icon name={ICONS_MAP[type]} size={IconSize.Small} />;
     };
 
     return (
@@ -39,8 +39,8 @@ const Expander = ({ onClick, type, collapseLabel = '', expandLabel = '', hasIcon
             onClick={() => {
                 onClick(!isExpanded);
             }}
-            size="small"
-            type="tertiary-alt"
+            size={ButtonSize.Small}
+            type={ButtonType.TertiaryAlt}
         >
             {label}
             {renderExpanderIcon()}

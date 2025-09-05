@@ -3,16 +3,16 @@ import React from 'react';
 import BaseButton from '@ids-internal/partials/BaseButton';
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
-import Icon, { IconSizeType } from '../Icon';
+import Icon, { IconSize } from '../Icon';
 
-import { IconButtonProps, IconButtonSizeType } from './IconButton.types';
+import { IconButtonProps, IconButtonSize } from './IconButton.types';
 
-const ICON_SIZE_MAPPING: Record<IconButtonSizeType, IconSizeType> = {
-    medium: 'small',
-    small: 'tiny-small',
+const ICON_SIZE_MAPPING: Record<IconButtonSize, IconSize> = {
+    [IconButtonSize.Medium]: IconSize.Small,
+    [IconButtonSize.Small]: IconSize.TinySmall,
 } as const;
 
-const IconButton = ({ ariaLabel, className = '', icon = '', size = 'medium', ...restProps }: IconButtonProps) => {
+const IconButton = ({ ariaLabel, className = '', icon = '', size = IconButtonSize.Medium, ...restProps }: IconButtonProps) => {
     const componentClassName = createCssClassNames({
         'ids-btn--icon-only': true,
         [className]: !!className,

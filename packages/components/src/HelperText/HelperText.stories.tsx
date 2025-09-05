@@ -2,27 +2,14 @@ import React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { HELPER_TEXT_TYPE_VALUES } from './HelperText.types';
-import HelperText from './HelperText';
+import HelperText, { HelperTextType } from './';
 
 const meta: Meta<typeof HelperText> = {
     component: HelperText,
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs'],
-    argTypes: {
-        type: {
-            control: 'select',
-            options: Object.values(HELPER_TEXT_TYPE_VALUES),
-        },
-        className: {
-            control: 'text',
-        },
-        title: {
-            control: 'text',
-        },
-    },
+    tags: ['autodocs', 'foundation'],
 };
 
 export default meta;
@@ -53,6 +40,6 @@ export const Error: Story = {
     name: 'Error',
     args: {
         children: 'Lorem Ipsum',
-        type: 'error',
+        type: HelperTextType.Error,
     },
 };

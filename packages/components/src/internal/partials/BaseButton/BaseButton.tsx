@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
-import { BaseButtonProps } from './BaseButton.types';
+import { BaseButtonProps, BaseButtonSize, BaseButtonType } from './BaseButton.types';
 
 const BaseButton = ({
     onClick,
@@ -11,9 +11,9 @@ const BaseButton = ({
     disabled = false,
     extraAria = {},
     className = '',
-    size = 'medium',
+    size = BaseButtonSize.Medium,
     title = '',
-    type = 'primary',
+    type = BaseButtonType.Primary,
 }: BaseButtonProps) => {
     const componentClassName = createCssClassNames({
         'ids-btn': true,
