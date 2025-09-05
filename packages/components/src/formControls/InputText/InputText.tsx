@@ -56,4 +56,4 @@ const FormControlInputText = ({
 
 export default FormControlInputText;
 
-export const FormControlInputTextStateful = withStateValue<ValueType>(FormControlInputText);
+export const FormControlInputTextStateful = withStateValue<FormControlInputTextProps, ValueType>(FormControlInputText);

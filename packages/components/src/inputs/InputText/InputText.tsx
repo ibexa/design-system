@@ -119,4 +119,4 @@ const InputText = ({
 
 export default InputText;
 
-export const InputTextStateful = withStateValue<string | number>(InputText);
+export const InputTextStateful = withStateValue<InputTextProps, string | number>(InputText);

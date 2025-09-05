@@ -23,6 +23,7 @@ const meta: Meta<typeof RadioButtonStateful> = {
         },
     },
     args: {
+        value: 'value1',
         onBlur: action('on-blur'),
         onChange: action('on-change'),
         onFocus: action('on-focus'),
