@@ -13,6 +13,7 @@ const meta: Meta<typeof CheckboxFieldStateful> = {
         id: 'default-input',
         label: 'Checkbox Label',
         name: 'default-input',
+        value: 'checkbox-value',
         onBlur: fn(),
         onChange: fn(),
         onFocus: fn(),
