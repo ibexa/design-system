@@ -3,7 +3,7 @@ const path = require('path');
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
-    stories: ['../packages/**/*.stories.@(js|jsx|mjs|ts|tsx)', '../stories/*.stories.@(js|jsx|mjs|ts|tsx)'],
+    stories: ['../packages/**/*.stories.@(js|jsx|mjs|ts|tsx)', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
     staticDirs: ['../packages/assets/src/'],
     addons: [
         '@storybook/addon-docs',
@@ -54,6 +54,7 @@ const config = {
         webpackConfig.resolve.alias = {
             ...webpackConfig.resolve.alias,
             '@ids-context': path.resolve(__dirname, '../packages/components/src/context'),
+            '@ids-core': path.resolve(__dirname, '../packages/components/src/core'),
             '@ids-internal': path.resolve(__dirname, '../packages/components/src/internal'),
         };
 

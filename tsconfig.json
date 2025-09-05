@@ -14,5 +14,5 @@
             "@ids-types/*": ["./types/*"]
         }
     },
-    "include": ["src/**/*", ".storybook/*", "types/*", "stories/*"]
+    "include": ["src/**/*", ".storybook/*", "types/*", "stories/**/*"]
 }
