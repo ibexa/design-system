@@ -5,9 +5,12 @@ import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 import { BadgeProps, BadgeSize } from './Badge.types';
 
 const MAX_BADGE_VALUE = 99;
-
+const THRESHOLD = {
+    [BadgeSize.Medium]: 100,
+    [BadgeSize.Small]: 10,
+};
 const Badge = ({ className = '', size = BadgeSize.Medium, value }: BadgeProps) => {
-    const isWide = value > MAX_BADGE_VALUE;
+    const isWide = value >= THRESHOLD[size];
     const componentClassName = createCssClassNames({
         'ids-badge': true,
         [`ids-badge--${size}`]: true,
@@ -18,11 +21,7 @@ const Badge = ({ className = '', size = BadgeSize.Medium, value }: BadgeProps) =
         return val > MAX_BADGE_VALUE ? `${MAX_BADGE_VALUE}+` : val.toString();
     }, []);
 
-    return (
-        <div className={componentClassName}>
-            {formatBadgeValue(value)}
-        </div>
-    );
+    return <div className={componentClassName}>{formatBadgeValue(value)}</div>;
 };
 
 export default Badge;
