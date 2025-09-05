@@ -2,22 +2,14 @@ import React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ChoiceInputLabel from './ChoiceInputLabel';
+import ChoiceInputLabel from './';
 
 const meta: Meta<typeof ChoiceInputLabel> = {
     component: ChoiceInputLabel,
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs'],
-    argTypes: {
-        className: {
-            control: 'text',
-        },
-        title: {
-            control: 'text',
-        },
-    },
+    tags: ['autodocs', 'foundation'],
 };
 
 export default meta;

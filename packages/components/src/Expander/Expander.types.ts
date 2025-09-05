@@ -1,7 +1,12 @@
+export enum ExpanderType {
+    caret = 'caret',
+    chevron = 'chevron',
+}
+
 interface ExpanderSharedProps {
     onClick: (isExpanded: boolean) => void;
     isExpanded?: boolean;
-    type: 'caret' | 'chevron';
+    type: ExpanderType;
 }
 
 interface ExpanderWithoutLabelProps extends ExpanderSharedProps {

@@ -1,20 +1,18 @@
-export const BASE_ICON_SIZE_VALUES = [
-    'tiny',
-    'tiny-small',
-    'small',
-    'small-medium',
-    'medium',
-    'medium-large',
-    'large',
-    'large-huge',
-    'huge',
-] as const;
-
-export type BaseIconSizeType = (typeof BASE_ICON_SIZE_VALUES)[number];
+export enum BaseIconSize {
+    Tiny = 'tiny',
+    TinySmall = 'tiny-small',
+    Small = 'small',
+    SmallMedium = 'small-medium',
+    Medium = 'medium',
+    MediumLarge = 'medium-large',
+    Large = 'large',
+    LargeHuge = 'large-huge',
+    Huge = 'huge',
+};
 
 export interface BaseIconProps {
     path: string;
     className?: string;
     name?: string;
-    size?: (typeof BASE_ICON_SIZE_VALUES)[number];
+    size?: BaseIconSize;
 }

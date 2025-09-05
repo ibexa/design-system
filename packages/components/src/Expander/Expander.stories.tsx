@@ -1,26 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import Expander from './Expander';
+import Expander, { ExpanderType } from './';
 
 const meta: Meta<typeof Expander> = {
     component: Expander,
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs', 'buttons'],
-    argTypes: {
-        hasIcon: {
-            control: 'boolean',
-        },
-        isExpanded: {
-            control: 'boolean',
-        },
-        type: {
-            control: 'select',
-            options: ['caret', 'chevron'],
-        },
-    },
+    tags: ['autodocs', 'foundation'],
     args: { onClick: action('on-click') },
 };
 
@@ -33,7 +21,7 @@ export const Default: Story = {
     args: {
         collapseLabel: 'Show less',
         expandLabel: 'Show more',
-        type: 'caret',
+        type: ExpanderType.caret,
     },
 };
 
@@ -42,7 +30,7 @@ export const NoIcon: Story = {
     args: {
         collapseLabel: 'Show less',
         expandLabel: 'Show more',
-        type: 'caret',
+        type: ExpanderType.caret,
         hasIcon: false,
     },
 };
@@ -52,7 +40,7 @@ export const Chevron: Story = {
     args: {
         collapseLabel: 'Show less',
         expandLabel: 'Show more',
-        type: 'chevron',
+        type: ExpanderType.chevron,
     },
 };
 
@@ -60,7 +48,7 @@ export const NoLabel: Story = {
     name: 'No Label',
     args: {
         hasIcon: true,
-        type: 'caret',
+        type: ExpanderType.caret,
     },
 };
 
@@ -69,7 +57,7 @@ export const isExpanded: Story = {
     args: {
         collapseLabel: 'Show less',
         expandLabel: 'Show more',
-        type: 'caret',
+        type: ExpanderType.caret,
         isExpanded: true,
     },
 };

@@ -3,28 +3,14 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import { BUTTON_SIZE_VALUES, BUTTON_TYPE_VALUES } from './Button.types';
-import Button from './Button';
+import Button, { ButtonType } from './';
 
 const meta: Meta<typeof Button> = {
     component: Button,
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs', 'foundation', 'buttons'],
-    argTypes: {
-        size: {
-            control: 'select',
-            options: Object.values(BUTTON_SIZE_VALUES),
-        },
-        type: {
-            control: 'select',
-            options: Object.values(BUTTON_TYPE_VALUES),
-        },
-        className: {
-            control: 'text',
-        },
-    },
+    tags: ['autodocs', 'foundation'],
     args: { onClick: action('on-click') },
 };
 
@@ -37,7 +23,7 @@ type Story = StoryObj<typeof Button>;
 export const Primary: Story = {
     name: 'Primary / Default',
     args: {
-        type: 'primary',
+        type: ButtonType.Primary,
         icon: 'edit',
         children: 'Button label',
     },
@@ -46,7 +32,7 @@ export const Primary: Story = {
 export const PrimaryTextOnly: Story = {
     name: 'Primary / Text only',
     args: {
-        type: 'primary',
+        type: ButtonType.Primary,
         children: 'Button label',
     },
 };
@@ -54,7 +40,7 @@ export const PrimaryTextOnly: Story = {
 export const PrimaryDisabled: Story = {
     name: 'Primary / Disabled',
     args: {
-        type: 'primary',
+        type: ButtonType.Primary,
         icon: 'edit',
         children: 'Button label',
         disabled: true,
@@ -66,7 +52,7 @@ export const PrimaryDisabled: Story = {
 export const Secondary: Story = {
     name: 'Secondary / Default',
     args: {
-        type: 'secondary',
+        type: ButtonType.Secondary,
         icon: 'edit',
         children: 'Button label',
     },
@@ -75,7 +61,7 @@ export const Secondary: Story = {
 export const SecondaryTextOnly: Story = {
     name: 'Secondary / Text only',
     args: {
-        type: 'secondary',
+        type: ButtonType.Secondary,
         children: 'Button label',
     },
 };
@@ -83,7 +69,7 @@ export const SecondaryTextOnly: Story = {
 export const SecondaryDisabled: Story = {
     name: 'Secondary / Disabled',
     args: {
-        type: 'secondary',
+        type: ButtonType.Secondary,
         icon: 'edit',
         children: 'Button label',
         disabled: true,
@@ -95,7 +81,7 @@ export const SecondaryDisabled: Story = {
 export const Tertiary: Story = {
     name: 'Tertiary / Default',
     args: {
-        type: 'tertiary',
+        type: ButtonType.Tertiary,
         icon: 'edit',
         children: 'Button label',
     },
@@ -104,7 +90,7 @@ export const Tertiary: Story = {
 export const TertiaryTextOnly: Story = {
     name: 'Tertiary / Text only',
     args: {
-        type: 'tertiary',
+        type: ButtonType.Tertiary,
         children: 'Button label',
     },
 };
@@ -112,7 +98,7 @@ export const TertiaryTextOnly: Story = {
 export const TertiaryDisabled: Story = {
     name: 'Tertiary / Disabled',
     args: {
-        type: 'tertiary',
+        type: ButtonType.Tertiary,
         icon: 'edit',
         children: 'Button label',
         disabled: true,
@@ -124,7 +110,7 @@ export const TertiaryDisabled: Story = {
 export const SecondaryAlt: Story = {
     name: 'Secondary Alt / Default',
     args: {
-        type: 'secondary-alt',
+        type: ButtonType.SecondaryAlt,
         icon: 'edit',
         children: 'Button label',
     },
@@ -133,7 +119,7 @@ export const SecondaryAlt: Story = {
 export const SecondaryAltTextOnly: Story = {
     name: 'Secondary Alt / Text only',
     args: {
-        type: 'secondary-alt',
+        type: ButtonType.SecondaryAlt,
         children: 'Button label',
     },
 };
@@ -141,7 +127,7 @@ export const SecondaryAltTextOnly: Story = {
 export const SecondaryAltDisabled: Story = {
     name: 'Secondary Alt / Disabled',
     args: {
-        type: 'secondary-alt',
+        type: ButtonType.SecondaryAlt,
         icon: 'edit',
         children: 'Button label',
         disabled: true,
@@ -153,7 +139,7 @@ export const SecondaryAltDisabled: Story = {
 export const SecondaryAltSmall: Story = {
     name: 'Secondary Alt Small / Default',
     args: {
-        type: 'secondary-alt',
+        type: ButtonType.SecondaryAlt,
         size: 'small',
         icon: 'edit',
         children: 'Button label',
@@ -163,7 +149,7 @@ export const SecondaryAltSmall: Story = {
 export const SecondaryAltSmallTextOnly: Story = {
     name: 'Secondary Alt Small / Text only',
     args: {
-        type: 'secondary-alt',
+        type: ButtonType.SecondaryAlt,
         size: 'small',
         children: 'Button label',
     },
@@ -174,7 +160,7 @@ export const SecondaryAltSmallTextOnly: Story = {
 export const TertiaryAltSmall: Story = {
     name: 'Tertiary Alt Small / Default',
     args: {
-        type: 'tertiary-alt',
+        type: ButtonType.TertiaryAlt,
         size: 'small',
         children: 'Button label',
     },
@@ -183,7 +169,7 @@ export const TertiaryAltSmall: Story = {
 export const TertiaryAltSmallTextOnly: Story = {
     name: 'Tertiary Alt Small / Text only',
     args: {
-        type: 'tertiary-alt',
+        type: ButtonType.TertiaryAlt,
         size: 'small',
         icon: 'edit',
         children: 'Button label',
@@ -195,7 +181,7 @@ export const TertiaryAltSmallTextOnly: Story = {
 export const VariaLongChildren: Story = {
     name: 'Varia / Long children',
     args: {
-        type: 'primary',
+        type: ButtonType.Primary,
         children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed lorem magna',
     },
 };
@@ -203,7 +189,7 @@ export const VariaLongChildren: Story = {
 export const VariaHTMLChildren: Story = {
     name: 'Varia / HTML children',
     args: {
-        type: 'primary',
+        type: ButtonType.Primary,
         children: (
             <>
                 <b>Button</b>&nbsp;<i>label</i>

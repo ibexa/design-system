@@ -44,6 +44,7 @@ const config = {
     },
     typescript: {
         check: true,
+        reactDocgen: 'react-docgen-typescript',
     },
     webpackFinal: async (webpackConfig) => {
         webpackConfig.module.rules.push({
