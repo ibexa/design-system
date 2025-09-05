@@ -12,6 +12,7 @@ const meta: Meta<typeof AltRadioStateful> = {
     args: {
         label: '1:1',
         name: 'default-input',
+        value: 'radio-value',
         onBlur: fn(),
         onChange: fn(),
         onFocus: fn(),

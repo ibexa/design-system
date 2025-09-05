@@ -5,4 +5,5 @@ import { BaseChoiceInputProps } from '@ids-internal/partials/BaseChoiceInput';
 export interface AltRadioProps extends Omit<BaseChoiceInputProps, 'type'> {
     label: ReactNode;
     tileClassName?: string;
+    value: string;
 }
