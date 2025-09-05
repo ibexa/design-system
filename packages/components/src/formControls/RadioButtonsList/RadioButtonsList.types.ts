@@ -7,7 +7,7 @@ import { RadioButtonFieldProps } from '../RadioButtonField/RadioButtonField.type
 
 export { DIRECTION };
 
-export type RadioButtonItem = Omit<RadioButtonFieldProps, 'name' | 'checked'>
+export type RadioButtonItem = Omit<RadioButtonFieldProps, 'name' | 'checked'>;
 
 export interface RadioButtonsListProps extends BaseComponentAttributes {
     id: string;

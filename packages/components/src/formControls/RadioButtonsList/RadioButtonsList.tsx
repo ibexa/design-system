@@ -44,7 +44,7 @@ const RadioButtonsList = ({
                 }}
             />
         );
-    }
+    };
 
     return (
         <BaseInputsList
