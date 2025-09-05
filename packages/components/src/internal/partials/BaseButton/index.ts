@@ -1,5 +1,5 @@
 import BaseButton from './BaseButton';
 
-export type { BaseButtonProps, BaseButtonSizeType, BaseButtonTypesType } from './BaseButton.types';
+export { type BaseButtonProps, BaseButtonSize, BaseButtonType } from './BaseButton.types';
 
 export default BaseButton;
