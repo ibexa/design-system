@@ -7,7 +7,7 @@
     justify-content: center;
     min-width: calculateRem(18px);
     height: calculateRem(18px);
-    border-radius: calculateRem(18px);
+    border-radius: calculateRem(9px);
     background: $color-error-80;
     color: $color-neutral-10;
     font-size: $text-font-size-xs;
@@ -16,7 +16,7 @@
     &--small {
         min-width: calculateRem(12px);
         height: calculateRem(12px);
-        border-radius: calculateRem(12px);
+        border-radius: calculateRem(6px);
     }
 
     &--wide {
