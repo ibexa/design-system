@@ -3,13 +3,13 @@ import React from 'react';
 import BaseFormControl from '@ids-internal/partials/BaseFormControl';
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
-import { BaseInputsListProps, DIRECTION } from './BaseInputsList.types';
+import { BaseInputsListProps, Direction } from './BaseInputsList.types';
 
 const BaseInputsList = <T,>({
     items,
     renderItem,
     className = '',
-    direction = DIRECTION.VERTICAL,
+    direction = Direction.Vertical,
     helperTextProps,
     labelProps,
 }: BaseInputsListProps<T>) => {

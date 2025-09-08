@@ -2,7 +2,6 @@ import React from 'react';
 
 import Button, { ButtonSize, ButtonType } from '../Button';
 import Icon, { IconSize } from '../Icon';
-
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
 import { ExpanderProps, ExpanderType } from './Expander.types';

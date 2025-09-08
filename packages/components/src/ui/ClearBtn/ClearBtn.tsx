@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 
-import IconButton from '../../IconButton';
+import IconButton, { IconButtonSize, IconButtonType } from '../../IconButton';
 import { TranslatorContext } from '@ids-context/Translator';
-
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
 import { ClearBtnProps } from './ClearBtn.types';
@@ -21,9 +20,9 @@ const ClearBtn = ({ onClick, disabled = false }: ClearBtnProps) => {
             disabled={disabled}
             icon="discard"
             onClick={onClick}
-            size="small"
+            size={IconButtonSize.Small}
             title={clearMsg}
-            type="tertiary-alt"
+            type={IconButtonType.TertiaryAlt}
         />
     );
 };

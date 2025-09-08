@@ -3,7 +3,7 @@ import { BaseComponentAriaAttributes } from '@ids-types/general';
 export enum BaseButtonSize {
     Medium = 'medium',
     Small = 'small',
-};
+}
 
 export enum BaseButtonType {
     Primary = 'primary',
@@ -11,7 +11,7 @@ export enum BaseButtonType {
     Tertiary = 'tertiary',
     SecondaryAlt = 'secondary-alt',
     TertiaryAlt = 'tertiary-alt',
-};
+}
 
 export interface BaseButtonProps extends BaseComponentAriaAttributes {
     ariaLabel: string;

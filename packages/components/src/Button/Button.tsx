@@ -1,8 +1,7 @@
 import React from 'react';
 
-import BaseButton from '@ids-internal/partials/BaseButton';
-
 import Icon, { IconSize } from '../Icon';
+import BaseButton from '@ids-internal/partials/BaseButton';
 
 import { ButtonProps, ButtonSize } from './Button.types';
 

@@ -3,25 +3,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import Accordion from './Accordion';
-
-const meta: Meta<typeof Accordion> = {
-    component: Accordion,
-    parameters: {
-        layout: 'padded',
-    },
-    tags: ['autodocs', 'secondary'],
-    argTypes: {
-        initiallyExpanded: {
-            control: 'boolean',
-        },
-    },
-    args: { onHandleExpand: action('on-click') },
-};
-
-export default meta;
-
-type Story = StoryObj<typeof Accordion>;
+import Accordion from './';
 
 const defaultChildren = (
     <div>
@@ -43,19 +25,30 @@ const defaultChildren = (
     </div>
 );
 
+const meta: Meta<typeof Accordion> = {
+    component: Accordion,
+    parameters: {
+        layout: 'padded',
+    },
+    tags: ['autodocs', 'secondary'],
+    args: {
+        children: defaultChildren,
+        header: 'Lorem ipsum',
+        onHandleExpand: action('on-click'),
+    },
+};
+
+export default meta;
+
+type Story = StoryObj<typeof Accordion>;
+
 export const Default: Story = {
     name: 'Default',
-    args: {
-        header: 'Lorem ipsum',
-        children: defaultChildren,
-    },
 };
 
 export const InitiallyExpanded: Story = {
     name: 'Initially Expanded',
     args: {
-        header: 'Lorem ipsum',
-        children: defaultChildren,
         initiallyExpanded: true,
     },
 };

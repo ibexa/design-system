@@ -10,13 +10,9 @@ const meta: Meta<typeof Label> = {
         layout: 'centered',
     },
     tags: ['autodocs'],
-    argTypes: {
-        className: {
-            control: 'text',
-        },
-        title: {
-            control: 'text',
-        },
+    args: {
+        children: 'Lorem Ipsum',
+        htmlFor: 'default-input',
     },
 };
 
@@ -26,10 +22,6 @@ type Story = StoryObj<typeof Label>;
 
 export const Default: Story = {
     name: 'Default',
-    args: {
-        children: 'Lorem Ipsum',
-        htmlFor: 'default-input',
-    },
 };
 
 export const withHTML: Story = {
@@ -40,15 +32,12 @@ export const withHTML: Story = {
                 <b>Lorem</b>&nbsp;<u>Ipsum</u>
             </>
         ),
-        htmlFor: 'default-input',
     },
 };
 
 export const Required: Story = {
     name: 'Required',
     args: {
-        children: 'Lorem Ipsum',
-        htmlFor: 'default-input',
         required: true,
     },
 };
@@ -56,8 +45,6 @@ export const Required: Story = {
 export const Error: Story = {
     name: 'Error',
     args: {
-        children: 'Lorem Ipsum',
-        htmlFor: 'default-input',
         error: true,
         required: true,
     },

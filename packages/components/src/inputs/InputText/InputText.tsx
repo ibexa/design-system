@@ -5,8 +5,8 @@ import ClearBtn from '../../ui/ClearBtn';
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 import withStateValue from '@ids-internal/hoc/withStateValue';
 
+import { InputTextProps, InputTextSize } from './InputText.types';
 import { ComponentEntryDataType } from '@ids-types/general';
-import { InputTextProps } from './InputText.types';
 
 const InputText = ({
     name,
@@ -23,7 +23,7 @@ const InputText = ({
     processActions = (actions): ComponentEntryDataType[] => actions,
     readOnly = false,
     required = false,
-    size = 'medium',
+    size = InputTextSize.Medium,
     title = '',
     type = 'text',
     value = '',

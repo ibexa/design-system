@@ -1,5 +1,6 @@
 import CheckboxField from './CheckboxField';
-import { CheckboxFieldProps } from './CheckboxField.types';
+
+export { CheckboxFieldStateful } from './CheckboxField';
+export { CheckboxFieldProps } from './CheckboxField.types';
 
 export default CheckboxField;
-export type { CheckboxFieldProps };

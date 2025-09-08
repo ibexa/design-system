@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Icon, { IconSize } from '../Icon';
-
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
 import { HelperTextProps, HelperTextType } from './HelperText.types';

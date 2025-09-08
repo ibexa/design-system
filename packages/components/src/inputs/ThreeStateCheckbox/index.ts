@@ -1,6 +1,6 @@
-import ThreeStateCheckbox, { ThreeStateCheckboxStateful } from './ThreeStateCheckbox';
-import { ThreeStateCheckboxProps } from './ThreeStateCheckbox.types';
+import ThreeStateCheckbox from './ThreeStateCheckbox';
+
+export { ThreeStateCheckboxStateful } from './ThreeStateCheckbox';
+export { ThreeStateCheckboxProps } from './ThreeStateCheckbox.types';
 
 export default ThreeStateCheckbox;
-export { ThreeStateCheckboxStateful };
-export type { ThreeStateCheckboxProps };

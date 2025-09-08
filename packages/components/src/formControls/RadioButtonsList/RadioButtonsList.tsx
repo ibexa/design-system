@@ -1,14 +1,15 @@
 import React from 'react';
 
 import BaseInputsList from '@ids-internal/partials/BaseInputsList';
+import { HelperTextType } from '../../HelperText';
 import RadioButtonField from '../RadioButtonField';
 import withStateValue from '@ids-internal/hoc/withStateValue';
 
-import { DIRECTION, RadioButtonItem, RadioButtonsListProps } from './RadioButtonsList.types';
+import { Direction, RadioButtonItem, RadioButtonsListProps } from './RadioButtonsList.types';
 
 const RadioButtonsList = ({
     className = '',
-    direction = DIRECTION.VERTICAL,
+    direction = Direction.Vertical,
     helperText,
     helperTextExtra = {},
     id,
@@ -22,7 +23,7 @@ const RadioButtonsList = ({
 }: RadioButtonsListProps) => {
     const helperTextProps = {
         children: helperText,
-        type: 'default' as const,
+        type: HelperTextType.Default,
         ...helperTextExtra,
     };
     const labelProps = {

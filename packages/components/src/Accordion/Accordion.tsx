@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 
-import Expander from '../Expander';
+import Expander, { ExpanderType } from '../Expander';
 import { TranslatorContext } from '@ids-context/Translator';
-
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
 import { AccordionProps } from './Accordion.types';
@@ -67,7 +66,7 @@ const Accordion = ({ children, header, initiallyExpanded = false, onHandleExpand
                     hasIcon={true}
                     isExpanded={isExpanded}
                     onClick={changeExpanded}
-                    type="caret"
+                    type={ExpanderType.caret}
                 />
             </div>
             <div className="ids-accordion__content" ref={accordionContentRef}>

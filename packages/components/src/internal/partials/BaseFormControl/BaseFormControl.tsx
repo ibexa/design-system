@@ -2,7 +2,6 @@ import React from 'react';
 
 import HelperText from '../../../HelperText';
 import Label from '../../../Label';
-
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
 import { BaseFormControlProps } from './BaseFormControl.types';

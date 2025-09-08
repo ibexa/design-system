@@ -1,11 +1,14 @@
 import { BaseComponentAriaAttributes, ComponentEntryDataType } from '@ids-types/general';
-import { BaseInputTypesType } from '@ids-internal/partials/BaseInput/BaseInput.types';
+import { BaseInputType } from '@ids-internal/partials/BaseInput/BaseInput.types';
 
-export const INPUT_SIZE_VALUES = ['medium', 'small'] as const;
-export const INPUT_TYPE_VALUES = ['text', 'password', 'email', 'number', 'tel', 'search', 'url'] as const satisfies BaseInputTypesType[];
+export enum InputTextSize {
+    Medium = 'medium',
+    Small = 'small',
+}
 
-export type InputTextSizeType = (typeof INPUT_SIZE_VALUES)[number];
-export type InputTextTypesType = (typeof INPUT_TYPE_VALUES)[number];
+export const INPUT_TYPE_VALUES = ['text', 'password', 'email', 'number', 'tel', 'search', 'url'] as const satisfies BaseInputType[];
+
+export type InputTextType = (typeof INPUT_TYPE_VALUES)[number];
 
 export interface InputTextProps extends BaseComponentAriaAttributes {
     name: string;
@@ -20,7 +23,7 @@ export interface InputTextProps extends BaseComponentAriaAttributes {
     processActions?: (actions: ComponentEntryDataType[]) => ComponentEntryDataType[];
     readOnly?: boolean;
     required?: boolean;
-    size?: InputTextSizeType;
-    type?: InputTextTypesType;
+    size?: InputTextSize;
+    type?: InputTextType;
     value?: string | number;
 }

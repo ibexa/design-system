@@ -8,7 +8,7 @@ export enum BaseIconSize {
     Large = 'large',
     LargeHuge = 'large-huge',
     Huge = 'huge',
-};
+}
 
 export interface BaseIconProps {
     path: string;

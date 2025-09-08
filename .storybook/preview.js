@@ -6,11 +6,13 @@ import './styles.scss';
 const preview = {
     decorators: [ContextDecorator],
     parameters: {
+        layout: 'centered',
         controls: {
             matchers: {
                 color: /(background|color)$/i,
                 date: /Date$/i,
             },
+            sort: 'requiredFirst',
         },
     },
 };

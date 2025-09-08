@@ -5,11 +5,11 @@ import IconButton, { IconButtonSize, IconButtonType } from './';
 
 const meta: Meta<typeof IconButton> = {
     component: IconButton,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['autodocs', 'foundation'],
-    args: { onClick: action('on-click') },
+    args: {
+        icon: 'edit',
+        onClick: action('on-click'),
+    },
 };
 
 export default meta;
@@ -22,7 +22,6 @@ export const Primary: Story = {
     name: 'Primary / Default',
     args: {
         type: IconButtonType.Primary,
-        icon: 'edit',
     },
 };
 
@@ -30,7 +29,6 @@ export const PrimaryDisabled: Story = {
     name: 'Primary / Disabled',
     args: {
         type: IconButtonType.Primary,
-        icon: 'edit',
         disabled: true,
     },
 };
@@ -41,7 +39,6 @@ export const Secondary: Story = {
     name: 'Secondary / Default',
     args: {
         type: IconButtonType.Secondary,
-        icon: 'edit',
     },
 };
 
@@ -49,7 +46,6 @@ export const SecondaryDisabled: Story = {
     name: 'Secondary / Disabled',
     args: {
         type: IconButtonType.Secondary,
-        icon: 'edit',
         disabled: true,
     },
 };
@@ -60,7 +56,6 @@ export const Tertiary: Story = {
     name: 'Tertiary / Default',
     args: {
         type: IconButtonType.Tertiary,
-        icon: 'edit',
     },
 };
 
@@ -68,7 +63,6 @@ export const TertiaryDisabled: Story = {
     name: 'Tertiary / Disabled',
     args: {
         type: IconButtonType.Tertiary,
-        icon: 'edit',
         disabled: true,
     },
 };
@@ -79,7 +73,6 @@ export const SecondaryAlt: Story = {
     name: 'Secondary Alt / Default',
     args: {
         type: IconButtonType.SecondaryAlt,
-        icon: 'edit',
     },
 };
 
@@ -87,7 +80,6 @@ export const SecondaryAltDisabled: Story = {
     name: 'Secondary Alt / Disabled',
     args: {
         type: IconButtonType.SecondaryAlt,
-        icon: 'edit',
         disabled: true,
     },
 };
@@ -99,7 +91,6 @@ export const SecondaryAltSmall: Story = {
     args: {
         type: IconButtonType.SecondaryAlt,
         size: IconButtonSize.Small,
-        icon: 'edit',
     },
 };
 
@@ -110,7 +101,6 @@ export const TertiaryAltSmall: Story = {
     args: {
         type: IconButtonType.TertiaryAlt,
         size: IconButtonSize.Small,
-        icon: 'edit',
     },
 };
 
@@ -120,7 +110,6 @@ export const VariaWithAriaLabel: Story = {
     name: 'Varia / With aria-label',
     args: {
         type: IconButtonType.Primary,
-        icon: 'edit',
         ariaLabel: 'Edit Button',
     },
 };

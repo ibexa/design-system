@@ -1,10 +1,17 @@
+export enum AutosaveStatus {
+    On = 'on',
+    Saving = 'saving',
+    Saved = 'saved',
+    Error = 'error',
+}
+
 interface AutosaveSharedProps {
     isDarkMode?: boolean;
     isEnabled?: boolean;
 }
 interface AutosaveEnabledProps extends AutosaveSharedProps {
     isEnabled: true;
-    status?: 'on' | 'saving' | 'error';
+    status?: Exclude<AutosaveStatus, AutosaveStatus.Saved>;
     lastSavedTime?: never;
 }
 interface AutosaveDisabledProps extends AutosaveSharedProps {
@@ -14,7 +21,7 @@ interface AutosaveDisabledProps extends AutosaveSharedProps {
 }
 interface AutosaveSavedProps extends AutosaveSharedProps {
     isEnabled: true;
-    status?: 'saved';
+    status?: AutosaveStatus.Saved;
     lastSavedTime?: Date;
 }
 

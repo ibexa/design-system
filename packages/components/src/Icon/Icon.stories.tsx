@@ -5,10 +5,12 @@ import Icon, { IconSize } from './';
 const meta: Meta<typeof Icon> = {
     component: Icon,
     parameters: {
-        layout: 'centered',
         controls: { exclude: ['path'] },
     },
     tags: ['autodocs', 'foundation'],
+    args: {
+        name: 'favourite-outline',
+    },
 };
 
 export default meta;
@@ -17,15 +19,11 @@ type Story = StoryObj<typeof Icon>;
 
 export const IconNamed: Story = {
     name: 'Icon',
-    args: {
-        name: 'favourite-outline',
-    },
 };
 
 export const IconTiny: Story = {
     name: 'Icon Tiny',
     args: {
-        name: 'favourite-outline',
         size: IconSize.Tiny,
     },
 };
@@ -33,7 +31,6 @@ export const IconTiny: Story = {
 export const IconTinySmall: Story = {
     name: 'Icon Tiny-Small',
     args: {
-        name: 'favourite-outline',
         size: IconSize.TinySmall,
     },
 };
@@ -41,7 +38,6 @@ export const IconTinySmall: Story = {
 export const IconSmall: Story = {
     name: 'Icon Small',
     args: {
-        name: 'favourite-outline',
         size: IconSize.Small,
     },
 };
@@ -49,7 +45,6 @@ export const IconSmall: Story = {
 export const IconSmallMedium: Story = {
     name: 'Icon Small-Medium',
     args: {
-        name: 'favourite-outline',
         size: IconSize.SmallMedium,
     },
 };
@@ -57,7 +52,6 @@ export const IconSmallMedium: Story = {
 export const IconMedium: Story = {
     name: 'Icon Medium',
     args: {
-        name: 'favourite-outline',
         size: IconSize.Medium,
     },
 };
@@ -65,7 +59,6 @@ export const IconMedium: Story = {
 export const IconMediumLarge: Story = {
     name: 'Icon Medium-Large',
     args: {
-        name: 'favourite-outline',
         size: IconSize.MediumLarge,
     },
 };
@@ -73,7 +66,6 @@ export const IconMediumLarge: Story = {
 export const IconLarge: Story = {
     name: 'Icon Large',
     args: {
-        name: 'favourite-outline',
         size: IconSize.Large,
     },
 };
@@ -81,7 +73,6 @@ export const IconLarge: Story = {
 export const IconLargeHuge: Story = {
     name: 'Icon Large-Huge',
     args: {
-        name: 'favourite-outline',
         size: IconSize.LargeHuge,
     },
 };
@@ -89,7 +80,6 @@ export const IconLargeHuge: Story = {
 export const IconHuge: Story = {
     name: 'Icon Huge',
     args: {
-        name: 'favourite-outline',
         size: IconSize.Huge,
     },
 };
@@ -97,7 +87,6 @@ export const IconHuge: Story = {
 export const IconCssClass: Story = {
     name: 'Icon with css class',
     args: {
-        name: 'favourite-outline',
         className: 'ids-icon ids-icon--primary',
     },
 };

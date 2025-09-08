@@ -5,9 +5,6 @@ import Button, { ButtonType } from './';
 
 const meta: Meta<typeof Button> = {
     component: Button,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['!dev'],
     args: {
         type: ButtonType.Primary,

@@ -1,13 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import { ThreeStateCheckboxStateful } from './ThreeStateCheckbox';
+import { ThreeStateCheckboxStateful } from './';
 
 const meta: Meta<typeof ThreeStateCheckboxStateful> = {
     component: ThreeStateCheckboxStateful,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['!dev'],
     args: {
         name: 'default-input',

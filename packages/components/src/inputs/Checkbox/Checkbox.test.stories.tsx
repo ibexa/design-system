@@ -1,13 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import { CheckboxStateful } from './Checkbox';
+import { CheckboxStateful } from './';
 
 const meta: Meta<typeof CheckboxStateful> = {
     component: CheckboxStateful,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['!dev'],
     args: {
         name: 'default-input',

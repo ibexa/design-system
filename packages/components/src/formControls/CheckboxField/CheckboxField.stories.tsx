@@ -1,17 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import { CheckboxFieldStateful } from './CheckboxField';
+import { CheckboxFieldStateful } from './';
 
 const meta: Meta<typeof CheckboxFieldStateful> = {
     component: CheckboxFieldStateful,
-    parameters: {
-        layout: 'centered',
-    },
-    tags: ['autodocs', 'foundation', 'base'],
-    argTypes: {
-        className: { control: 'text' },
-    },
+    tags: ['autodocs', 'foundation'],
     args: {
         id: 'default-input',
         label: 'Checkbox Label',

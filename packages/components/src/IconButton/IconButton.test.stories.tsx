@@ -5,9 +5,6 @@ import IconButton, { IconButtonType } from './';
 
 const meta: Meta<typeof IconButton> = {
     component: IconButton,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['!dev'],
     args: {
         type: IconButtonType.Primary,

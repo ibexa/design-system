@@ -2,8 +2,7 @@ import React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import BaseInputsList from './BaseInputsList';
-import { DIRECTION } from './BaseInputsList.types';
+import BaseInputsList, { Direction } from './';
 
 interface ItemType {
     id: string;
@@ -13,21 +12,10 @@ interface ItemType {
 const meta: Meta<typeof BaseInputsList<ItemType>> = {
     title: 'components/src/base/BaseInputsList',
     component: BaseInputsList<ItemType>,
-    parameters: {
-        layout: 'centered',
-        docs: {
-            controls: { exclude: ['items', 'renderItem', 'labelProps', 'helperTextProps'] },
-        },
-    },
     tags: ['autodocs', 'foundation', 'base'],
-    argTypes: {
-        className: { control: 'text' },
-        direction: {
-            control: 'select',
-            options: Object.values(DIRECTION),
-        },
-    },
     args: {
+        labelProps: { children: 'Choice Inputs List Label' },
+        helperTextProps: { children: 'This is a helper text' },
         items: [
             { id: '1', label: 'Item 1' },
             { id: '2', label: 'Item 2' },
@@ -47,36 +35,33 @@ type Story = StoryObj<typeof BaseInputsList<ItemType>>;
 
 export const Default: Story = {
     name: 'Default',
-    args: {
-        labelProps: { children: 'Choice Inputs List Label' },
-        helperTextProps: { children: 'This is a helper text' },
-    },
 };
 
 export const Horizontal: Story = {
     name: 'Horizontal',
     args: {
-        labelProps: { children: 'Choice Inputs List Label' },
-        helperTextProps: { children: 'This is a helper text' },
-        direction: DIRECTION.HORIZONTAL,
+        direction: Direction.Horizontal,
     },
 };
 
 export const NoHelper: Story = {
     name: 'No Helper',
     args: {
-        labelProps: { children: 'Choice Inputs List Label' },
+        helperTextProps: undefined,
     },
 };
 
 export const NoLabel: Story = {
     name: 'No Label',
     args: {
-        helperTextProps: { children: 'This is a helper text' },
+        labelProps: undefined,
     },
 };
 
 export const OnlyItems: Story = {
     name: 'Only Items',
-    args: {},
+    args: {
+        helperTextProps: undefined,
+        labelProps: undefined,
+    },
 };

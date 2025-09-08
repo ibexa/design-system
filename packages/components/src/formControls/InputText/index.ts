@@ -1,6 +1,6 @@
-import FormControlInputText, { FormControlInputTextStateful } from './InputText';
-import { FormControlInputTextProps } from './InputText.types';
+import FormControlInputText from './InputText';
+
+export { FormControlInputTextStateful } from './InputText';
+export { FormControlInputTextProps } from './InputText.types';
 
 export default FormControlInputText;
-export { FormControlInputTextStateful };
-export type { FormControlInputTextProps };

@@ -1,6 +1,5 @@
-import Autosave, { AUTOSAVE_STATUS } from './Autosave';
-import { AutosaveProps } from './Autosave.types';
+import Autosave from './Autosave';
+
+export { AutosaveProps, AutosaveStatus } from './Autosave.types';
 
 export default Autosave;
-export { AUTOSAVE_STATUS };
-export type { AutosaveProps };

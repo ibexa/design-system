@@ -6,10 +6,10 @@ import ChoiceInputLabel from './';
 
 const meta: Meta<typeof ChoiceInputLabel> = {
     component: ChoiceInputLabel,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['autodocs', 'foundation'],
+    args: {
+        htmlFor: 'default-input',
+    },
 };
 
 export default meta;
@@ -20,7 +20,6 @@ export const Default: Story = {
     name: 'Default',
     args: {
         children: 'Lorem Ipsum',
-        htmlFor: 'default-input',
     },
 };
 
@@ -32,6 +31,5 @@ export const withHTML: Story = {
                 <b>Lorem</b>&nbsp;<u>Ipsum</u>
             </>
         ),
-        htmlFor: 'default-input',
     },
 };

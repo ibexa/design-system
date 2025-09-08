@@ -1,9 +1,9 @@
 import { Ref } from 'react';
 
 import { BaseComponentAriaAttributes } from '@ids-types/general';
-import { BaseInputTypesType } from '../BaseInput/BaseInput.types';
+import { BaseInputType } from '../BaseInput/BaseInput.types';
 
-export const INPUT_TYPE_VALUES = ['checkbox', 'radio'] as const satisfies BaseInputTypesType[];
+export const INPUT_TYPE_VALUES = ['checkbox', 'radio'] as const satisfies BaseInputType[];
 
 export type InputChoiceTypesType = (typeof INPUT_TYPE_VALUES)[number];
 

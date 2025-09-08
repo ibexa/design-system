@@ -1,4 +1,4 @@
-import { type BaseButtonProps } from '@ids-internal/partials/BaseButton';
+import { BaseButtonProps } from '@ids-internal/partials/BaseButton';
 
 export { BaseButtonSize as ButtonSize, BaseButtonType as ButtonType } from '@ids-internal/partials/BaseButton';
 

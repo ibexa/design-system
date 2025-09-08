@@ -5,9 +5,6 @@ import Expander from './';
 
 const meta: Meta<typeof Expander> = {
     component: Expander,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['!dev'],
     args: {
         collapseLabel: 'Show more',
