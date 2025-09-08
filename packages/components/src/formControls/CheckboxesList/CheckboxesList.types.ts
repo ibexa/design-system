@@ -9,15 +9,15 @@ export { DIRECTION };
 
 export type CheckboxItem = Omit<CheckboxFieldProps, 'name' | 'checked'>;
 
-export enum CHECKBOXES_LIST_ACTION {
-    CHECK = 'check',
-    UNCHECK = 'uncheck',
+export enum CheckboxesListAction {
+    Check = 'check',
+    Uncheck = 'uncheck',
 }
 
 export interface CheckboxesListProps extends BaseComponentAttributes {
     id: string;
     name: string;
-    onChange?: (value: string[], itemValue: string, action: CHECKBOXES_LIST_ACTION) => void;
+    onChange?: (value: string[], itemValue: string, action: CheckboxesListAction) => void;
     direction?: DIRECTION;
     helperText?: HelperTextProps['children'];
     helperTextExtra?: Omit<HelperTextProps, 'children' | 'type'>;

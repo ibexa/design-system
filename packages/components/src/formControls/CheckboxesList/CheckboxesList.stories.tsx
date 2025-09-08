@@ -1,24 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import { CheckboxesListStateful } from './CheckboxesList';
-import { DIRECTION } from './CheckboxesList.types';
+import { CheckboxesListStateful, DIRECTION } from './';
 
 const meta: Meta<typeof CheckboxesListStateful> = {
     component: CheckboxesListStateful,
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs', 'foundation', 'base'],
-    argTypes: {
-        className: { control: 'text' },
-        direction: {
-            control: 'select',
-            options: Object.values(DIRECTION),
-        },
-        items: { control: false },
-    },
+    tags: ['autodocs', 'foundation'],
     args: {
+        label: 'Choice Inputs List Label',
+        helperText: 'This is a helper text',
         onChange: action('on-change'),
         value: ['item1'],
         items: [
@@ -35,18 +28,12 @@ type Story = StoryObj<typeof CheckboxesListStateful>;
 
 export const Default: Story = {
     name: 'Default',
-    args: {
-        label: 'Choice Inputs List Label',
-        helperText: 'This is a helper text',
-    },
 };
 
 export const NoneChecked: Story = {
     name: 'None Checked',
     args: {
         value: [],
-        label: 'Choice Inputs List Label',
-        helperText: 'This is a helper text',
     },
 };
 
@@ -54,16 +41,12 @@ export const AllChecked: Story = {
     name: 'All Checked',
     args: {
         value: ['item1', 'item2', 'item3'],
-        label: 'Choice Inputs List Label',
-        helperText: 'This is a helper text',
     },
 };
 
 export const Horizontal: Story = {
     name: 'Horizontal',
     args: {
-        label: 'Choice Inputs List Label',
-        helperText: 'This is a helper text',
         direction: DIRECTION.HORIZONTAL,
     },
 };
@@ -71,18 +54,21 @@ export const Horizontal: Story = {
 export const NoHelper: Story = {
     name: 'No Helper',
     args: {
-        label: 'Choice Inputs List Label',
+        helperText: undefined,
     },
 };
 
 export const NoLabel: Story = {
     name: 'No Label',
     args: {
-        helperText: 'This is a helper text',
+        label: undefined,
     },
 };
 
 export const OnlyItems: Story = {
     name: 'Only Items',
-    args: {},
+    args: {
+        helperText: undefined,
+        label: undefined,
+    },
 };

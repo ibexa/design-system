@@ -1,5 +1,6 @@
 import CheckboxesList from './CheckboxesList';
-import { CheckboxesListProps } from './CheckboxesList.types';
+
+export { CheckboxesListStateful } from './CheckboxesList';
+export { CheckboxesListAction, CheckboxesListProps, DIRECTION } from './CheckboxesList.types';
 
 export default CheckboxesList;
-export type { CheckboxesListProps };

@@ -4,7 +4,7 @@ import BaseInputsList from '@ids-internal/partials/BaseInputsList';
 import CheckboxField from '../CheckboxField';
 import withStateValue from '@ids-internal/hoc/withStateValue';
 
-import { CHECKBOXES_LIST_ACTION, CheckboxItem, CheckboxesListProps, DIRECTION } from './CheckboxesList.types';
+import { CheckboxItem, CheckboxesListAction, CheckboxesListProps, DIRECTION } from './CheckboxesList.types';
 
 const CheckboxesList = ({
     className = '',
@@ -53,7 +53,7 @@ const CheckboxesList = ({
                     onChange={(...args) => {
                         const [itemAdded] = args;
                         const nextValue = addOrRemoveItem(item.value, itemAdded);
-                        const actionPerformed = itemAdded ? CHECKBOXES_LIST_ACTION.CHECK : CHECKBOXES_LIST_ACTION.UNCHECK;
+                        const actionPerformed = itemAdded ? CheckboxesListAction.Check : CheckboxesListAction.Uncheck;
 
                         onChange(nextValue, item.value, actionPerformed);
                         item.onChange?.(...args);
