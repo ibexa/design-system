@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { BadgeSize } from './Badge.types';
-
-import Badge from './Badge';
+import Badge, { BadgeSize } from './';
 
 const meta: Meta<typeof Badge> = {
     component: Badge,
@@ -10,15 +8,6 @@ const meta: Meta<typeof Badge> = {
         layout: 'centered',
     },
     tags: ['autodocs', 'foundation'],
-    argTypes: {
-        className: {
-            control: 'text',
-        },
-        size: {
-            control: 'select',
-            options: Object.values(BadgeSize),
-        },
-    },
 };
 
 export default meta;
