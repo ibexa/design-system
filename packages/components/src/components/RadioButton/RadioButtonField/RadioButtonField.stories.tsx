@@ -10,6 +10,7 @@ const meta: Meta<typeof RadioButtonFieldStateful> = {
         id: 'default-input',
         label: 'Radio Button Label',
         name: 'default-input',
+        value: 'radio-value',
         onBlur: action('on-blur'),
         onChange: action('on-change'),
         onFocus: action('on-focus'),
