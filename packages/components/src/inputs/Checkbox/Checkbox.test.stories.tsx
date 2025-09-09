@@ -11,6 +11,7 @@ const meta: Meta<typeof CheckboxStateful> = {
     tags: ['!dev'],
     args: {
         name: 'default-input',
+        value: 'checkbox-value',
         onBlur: fn(),
         onChange: fn(),
         onFocus: fn(),
