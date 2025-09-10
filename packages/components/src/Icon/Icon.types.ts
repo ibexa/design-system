@@ -1,9 +1,7 @@
-import { BaseIconProps } from '@ids-internal/partials/BaseIcon/BaseIcon.types';
+import { type BaseIconProps } from '@ids-internal/partials/BaseIcon';
 
-export {
-    BASE_ICON_SIZE_VALUES as ICON_SIZE_VALUES,
-    type BaseIconSizeType as IconSizeType,
-} from '@ids-internal/partials/BaseIcon/BaseIcon.types';
+export { BaseIconSize as IconSize } from '@ids-internal/partials/BaseIcon';
+
 export interface IconProps extends Omit<BaseIconProps, 'path' | 'name'> {
     path?: never;
     name: string;

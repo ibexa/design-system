@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Icon from '../packages/components/src/Icon';
+import Icon, { IconSize } from '../packages/components/src/Icon';
 import iconsList from '../packages/assets/src/img/all-icons.json';
 
 // TODO: remove temporary styles when scss is available
@@ -15,7 +15,7 @@ const IconsList = () => {
             return (
                 <tr className="ids-table__row" key={iconName}>
                     <td className="ids-table__cell" style={{ padding: '10px' }}>
-                        <Icon name={iconName} size="large" />
+                        <Icon name={iconName} size={IconSize.Large} />
                     </td>
                     <td className="ids-table__cell" style={{ padding: '10px' }}>
                         {iconName}

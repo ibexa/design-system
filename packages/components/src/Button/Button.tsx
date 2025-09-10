@@ -1,17 +1,16 @@
 import React from 'react';
 
+import Icon, { IconSize } from '../Icon';
 import BaseButton from '@ids-internal/partials/BaseButton';
 
-import Icon, { IconSizeType } from '../Icon';
+import { ButtonProps, ButtonSize } from './Button.types';
 
-import { ButtonProps, ButtonSizeType } from './Button.types';
-
-const ICON_SIZE_MAPPING: Record<ButtonSizeType, IconSizeType> = {
-    medium: 'small',
-    small: 'tiny-small',
+const ICON_SIZE_MAPPING: Record<ButtonSize, IconSize> = {
+    [ButtonSize.Medium]: IconSize.Small,
+    [ButtonSize.Small]: IconSize.TinySmall,
 } as const;
 
-const Button = ({ ariaLabel, children, icon, size = 'medium', ...restProps }: ButtonProps) => {
+const Button = ({ ariaLabel, children, icon, size = ButtonSize.Medium, ...restProps }: ButtonProps) => {
     const getBtnAriaLabel = () => {
         if (ariaLabel) {
             return ariaLabel;

@@ -15,7 +15,7 @@ export const INPUT_TYPE_VALUES = [
     'hidden',
 ] as const satisfies HTMLInputTypeAttribute[];
 
-export type BaseInputTypesType = (typeof INPUT_TYPE_VALUES)[number];
+export type BaseInputType = (typeof INPUT_TYPE_VALUES)[number];
 
 interface BaseInputPropsProps extends BaseComponentAttributes {
     name: string;
@@ -29,7 +29,7 @@ interface BaseInputPropsProps extends BaseComponentAttributes {
 
 interface BaseInputVisibleProps extends BaseInputPropsProps {
     required: boolean;
-    type?: Exclude<BaseInputTypesType, 'hidden'>;
+    type?: Exclude<BaseInputType, 'hidden'>;
     extraInputAttrs?: Omit<InputHTMLAttributes<HTMLInputElement>, keyof BaseInputVisibleProps>;
 }
 

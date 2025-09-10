@@ -1,13 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import Expander from './Expander';
+import Expander from './';
 
 const meta: Meta<typeof Expander> = {
     component: Expander,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['!dev'],
     args: {
         collapseLabel: 'Show more',

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import { CheckboxesListStateful, DIRECTION } from './';
+import { CheckboxesListStateful, Direction } from './';
 
 const meta: Meta<typeof CheckboxesListStateful> = {
     component: CheckboxesListStateful,
@@ -47,7 +47,7 @@ export const AllChecked: Story = {
 export const Horizontal: Story = {
     name: 'Horizontal',
     args: {
-        direction: DIRECTION.HORIZONTAL,
+        direction: Direction.Horizontal,
     },
 };
 

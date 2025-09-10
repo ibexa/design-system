@@ -1,5 +1,6 @@
 import RadioButtonsList from './RadioButtonsList';
-import { RadioButtonsListProps } from './RadioButtonsList.types';
+
+export { RadioButtonsListStateful } from './RadioButtonsList';
+export { Direction, RadioButtonsListProps } from './RadioButtonsList.types';
 
 export default RadioButtonsList;
-export type { RadioButtonsListProps };

@@ -1,11 +1,6 @@
-import { BaseButtonProps } from '@ids-internal/partials/BaseButton/BaseButton.types';
+import { BaseButtonProps } from '@ids-internal/partials/BaseButton';
 
-export {
-    BASE_BUTTON_SIZE_VALUES as BUTTON_SIZE_VALUES,
-    BASE_BUTTON_TYPE_VALUES as BUTTON_TYPE_VALUES,
-    type BaseButtonSizeType as ButtonSizeType,
-    type BaseButtonTypesType as ButtonTypesType,
-} from '@ids-internal/partials/BaseButton/BaseButton.types';
+export { BaseButtonSize as ButtonSize, BaseButtonType as ButtonType } from '@ids-internal/partials/BaseButton';
 
 interface ButtonSharedProps extends BaseButtonProps {
     icon?: string;

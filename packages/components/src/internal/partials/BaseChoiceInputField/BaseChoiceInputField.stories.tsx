@@ -2,20 +2,13 @@ import React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import BaseChoiceInputField from './BaseChoiceInputField';
+import BaseChoiceInputField from './';
 import { RadioButtonStateful } from '../../../inputs/RadioButton';
 
 const meta: Meta<typeof BaseChoiceInputField> = {
     title: 'components/src/base/BaseChoiceInputField',
     component: BaseChoiceInputField,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['autodocs', 'foundation', 'base'],
-    argTypes: {
-        className: { control: 'text' },
-        renderInput: { control: false },
-    },
     args: {
         id: 'default-radio',
         renderInput: () => <RadioButtonStateful checked={false} id="default-radio" name="default-radio" value="default" />,

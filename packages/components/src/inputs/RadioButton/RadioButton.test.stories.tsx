@@ -1,13 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import { RadioButtonStateful } from './RadioButton';
+import { RadioButtonStateful } from './';
 
 const meta: Meta<typeof RadioButtonStateful> = {
     component: RadioButtonStateful,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['!dev'],
     args: {
         name: 'default-input',

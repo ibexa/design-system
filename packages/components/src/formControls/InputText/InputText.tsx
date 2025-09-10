@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useInitValidators, useValidateInput } from './InputText.utils';
 import BaseFormControl from '@ids-internal/partials/BaseFormControl';
+import { HelperTextType } from '../../HelperText';
 import InputText from '../../inputs/InputText';
 import withStateValue from '@ids-internal/hoc/withStateValue';
 
@@ -24,7 +25,7 @@ const FormControlInputText = ({
     const { isValid, messages } = useValidateInput({ validators, value });
     const helperTextProps = {
         children: isValid ? helperText : messages.join(', '),
-        type: isValid ? ('default' as const) : ('error' as const),
+        type: isValid ? HelperTextType.Default : HelperTextType.Error,
         ...helperTextExtra,
     };
     const labelProps = {

@@ -1,29 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import { ICON_BUTTON_SIZE_VALUES, ICON_BUTTON_TYPE_VALUES } from './IconButton.types';
-import IconButton from './IconButton';
+import IconButton, { IconButtonSize, IconButtonType } from './';
 
 const meta: Meta<typeof IconButton> = {
     component: IconButton,
-    parameters: {
-        layout: 'centered',
+    tags: ['autodocs', 'foundation'],
+    args: {
+        icon: 'edit',
+        onClick: action('on-click'),
     },
-    tags: ['autodocs', 'foundation', 'buttons'],
-    argTypes: {
-        size: {
-            control: 'select',
-            options: Object.values(ICON_BUTTON_SIZE_VALUES),
-        },
-        type: {
-            control: 'select',
-            options: Object.values(ICON_BUTTON_TYPE_VALUES),
-        },
-        className: {
-            control: 'text',
-        },
-    },
-    args: { onClick: action('on-click') },
 };
 
 export default meta;
@@ -35,16 +21,14 @@ type Story = StoryObj<typeof IconButton>;
 export const Primary: Story = {
     name: 'Primary / Default',
     args: {
-        type: 'primary',
-        icon: 'edit',
+        type: IconButtonType.Primary,
     },
 };
 
 export const PrimaryDisabled: Story = {
     name: 'Primary / Disabled',
     args: {
-        type: 'primary',
-        icon: 'edit',
+        type: IconButtonType.Primary,
         disabled: true,
     },
 };
@@ -54,16 +38,14 @@ export const PrimaryDisabled: Story = {
 export const Secondary: Story = {
     name: 'Secondary / Default',
     args: {
-        type: 'secondary',
-        icon: 'edit',
+        type: IconButtonType.Secondary,
     },
 };
 
 export const SecondaryDisabled: Story = {
     name: 'Secondary / Disabled',
     args: {
-        type: 'secondary',
-        icon: 'edit',
+        type: IconButtonType.Secondary,
         disabled: true,
     },
 };
@@ -73,16 +55,14 @@ export const SecondaryDisabled: Story = {
 export const Tertiary: Story = {
     name: 'Tertiary / Default',
     args: {
-        type: 'tertiary',
-        icon: 'edit',
+        type: IconButtonType.Tertiary,
     },
 };
 
 export const TertiaryDisabled: Story = {
     name: 'Tertiary / Disabled',
     args: {
-        type: 'tertiary',
-        icon: 'edit',
+        type: IconButtonType.Tertiary,
         disabled: true,
     },
 };
@@ -92,16 +72,14 @@ export const TertiaryDisabled: Story = {
 export const SecondaryAlt: Story = {
     name: 'Secondary Alt / Default',
     args: {
-        type: 'secondary-alt',
-        icon: 'edit',
+        type: IconButtonType.SecondaryAlt,
     },
 };
 
 export const SecondaryAltDisabled: Story = {
     name: 'Secondary Alt / Disabled',
     args: {
-        type: 'secondary-alt',
-        icon: 'edit',
+        type: IconButtonType.SecondaryAlt,
         disabled: true,
     },
 };
@@ -111,9 +89,8 @@ export const SecondaryAltDisabled: Story = {
 export const SecondaryAltSmall: Story = {
     name: 'Secondary Alt Small / Default',
     args: {
-        type: 'secondary-alt',
-        size: 'small',
-        icon: 'edit',
+        type: IconButtonType.SecondaryAlt,
+        size: IconButtonSize.Small,
     },
 };
 
@@ -122,9 +99,8 @@ export const SecondaryAltSmall: Story = {
 export const TertiaryAltSmall: Story = {
     name: 'Tertiary Alt Small / Default',
     args: {
-        type: 'tertiary-alt',
-        icon: 'edit',
-        size: 'small',
+        type: IconButtonType.TertiaryAlt,
+        size: IconButtonSize.Small,
     },
 };
 
@@ -133,8 +109,7 @@ export const TertiaryAltSmall: Story = {
 export const VariaWithAriaLabel: Story = {
     name: 'Varia / With aria-label',
     args: {
-        type: 'primary',
-        icon: 'edit',
+        type: IconButtonType.Primary,
         ariaLabel: 'Edit Button',
     },
 };

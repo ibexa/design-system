@@ -1,13 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import { InputTextStateful } from './InputText';
+import { InputTextStateful } from './';
 
 const meta: Meta<typeof InputTextStateful> = {
     component: InputTextStateful,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['!dev'],
     args: {
         name: 'default-input',

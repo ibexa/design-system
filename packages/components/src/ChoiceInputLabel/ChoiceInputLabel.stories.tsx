@@ -2,21 +2,13 @@ import React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ChoiceInputLabel from './ChoiceInputLabel';
+import ChoiceInputLabel from './';
 
 const meta: Meta<typeof ChoiceInputLabel> = {
     component: ChoiceInputLabel,
-    parameters: {
-        layout: 'centered',
-    },
-    tags: ['autodocs'],
-    argTypes: {
-        className: {
-            control: 'text',
-        },
-        title: {
-            control: 'text',
-        },
+    tags: ['autodocs', 'foundation'],
+    args: {
+        htmlFor: 'default-input',
     },
 };
 
@@ -28,7 +20,6 @@ export const Default: Story = {
     name: 'Default',
     args: {
         children: 'Lorem Ipsum',
-        htmlFor: 'default-input',
     },
 };
 
@@ -40,6 +31,5 @@ export const withHTML: Story = {
                 <b>Lorem</b>&nbsp;<u>Ipsum</u>
             </>
         ),
-        htmlFor: 'default-input',
     },
 };

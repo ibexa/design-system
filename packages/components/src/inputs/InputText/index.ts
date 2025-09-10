@@ -1,6 +1,6 @@
-import InputText, { InputTextStateful } from './InputText';
-import { InputTextProps } from './InputText.types';
+import InputText from './InputText';
+
+export { InputTextStateful } from './InputText';
+export { InputTextProps, InputTextSize, InputTextType } from './InputText.types';
 
 export default InputText;
-export { InputTextStateful };
-export type { InputTextProps };

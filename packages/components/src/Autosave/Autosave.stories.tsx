@@ -1,24 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Autosave, { AUTOSAVE_STATUS } from './Autosave';
+import Autosave, { AutosaveStatus } from './';
 
 const meta: Meta<typeof Autosave> = {
     component: Autosave,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['autodocs', 'in-frequent'],
-    argTypes: {
-        isDarkMode: {
-            control: 'boolean',
-        },
-        isEnabled: {
-            control: 'boolean',
-        },
-        status: {
-            options: Object.values(AUTOSAVE_STATUS),
-        },
-    },
 };
 
 export default meta;
@@ -33,14 +19,14 @@ export const LightOn: Story = {
 export const LightSaving: Story = {
     name: 'Saving (Light)',
     args: {
-        status: 'saving',
+        status: AutosaveStatus.Saving,
     },
 };
 
 export const LightSaved: Story = {
     name: 'Saved (Light)',
     args: {
-        status: 'saved',
+        status: AutosaveStatus.Saved,
     },
 };
 
@@ -54,7 +40,7 @@ export const LightOff: Story = {
 export const LightError: Story = {
     name: 'Error (Light)',
     args: {
-        status: 'error',
+        status: AutosaveStatus.Error,
     },
 };
 
@@ -69,7 +55,7 @@ export const DarkSaving: Story = {
     name: 'Saving (Dark)',
     args: {
         isDarkMode: true,
-        status: 'saving',
+        status: AutosaveStatus.Saving,
     },
 };
 
@@ -77,7 +63,7 @@ export const DarkSaved: Story = {
     name: 'Saved (Dark)',
     args: {
         isDarkMode: true,
-        status: 'saved',
+        status: AutosaveStatus.Saved,
     },
 };
 
@@ -93,6 +79,6 @@ export const DarkError: Story = {
     name: 'Error (Dark)',
     args: {
         isDarkMode: true,
-        status: 'error',
+        status: AutosaveStatus.Error,
     },
 };

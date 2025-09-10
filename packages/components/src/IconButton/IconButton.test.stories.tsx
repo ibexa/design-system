@@ -1,16 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import IconButton from './IconButton';
+import IconButton, { IconButtonType } from './';
 
 const meta: Meta<typeof IconButton> = {
     component: IconButton,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['!dev'],
     args: {
-        type: 'primary',
+        type: IconButtonType.Primary,
         icon: 'edit',
         onClick: fn(),
     },
