@@ -29,8 +29,8 @@ export const Small: Story = {
     },
 };
 
-export const Wide: Story = {
-    name: 'Wide',
+export const Stretched: Story = {
+    name: 'Stretched',
     args: {
         value: 100,
         size: BadgeSize.Medium,

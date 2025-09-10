@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
@@ -10,16 +10,16 @@ const THRESHOLD = {
     [BadgeSize.Small]: 10,
 };
 const Badge = ({ className = '', size = BadgeSize.Medium, value }: BadgeProps) => {
-    const isWide = value >= THRESHOLD[size];
+    const isStretched = value >= THRESHOLD[size];
     const componentClassName = createCssClassNames({
         'ids-badge': true,
         [`ids-badge--${size}`]: true,
-        'ids-badge--wide': isWide,
+        'ids-badge--stretched': isStretched,
         [className]: !!className,
     });
-    const formatBadgeValue = useCallback((val: number): string => {
-        return val > MAX_BADGE_VALUE ? `${MAX_BADGE_VALUE}+` : val.toString();
-    }, []);
+    const formatBadgeValue = (badgeValue: number): string => {
+        return badgeValue > MAX_BADGE_VALUE ? `${MAX_BADGE_VALUE}+` : badgeValue.toString();
+    };
 
     return <div className={componentClassName}>{formatBadgeValue(value)}</div>;
 };
