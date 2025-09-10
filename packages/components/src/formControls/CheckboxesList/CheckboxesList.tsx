@@ -2,13 +2,14 @@ import React, { useCallback } from 'react';
 
 import BaseInputsList from '@ids-internal/partials/BaseInputsList';
 import CheckboxField from '../CheckboxField';
+import { HelperTextType } from '../../HelperText';
 import withStateValue from '@ids-internal/hoc/withStateValue';
 
-import { CheckboxItem, CheckboxesListAction, CheckboxesListProps, DIRECTION } from './CheckboxesList.types';
+import { CheckboxItem, CheckboxesListAction, CheckboxesListProps, Direction } from './CheckboxesList.types';
 
 const CheckboxesList = ({
     className = '',
-    direction = DIRECTION.VERTICAL,
+    direction = Direction.Vertical,
     helperText,
     helperTextExtra = {},
     id,
@@ -22,7 +23,7 @@ const CheckboxesList = ({
 }: CheckboxesListProps) => {
     const helperTextProps = {
         children: helperText,
-        type: 'default' as const,
+        type: HelperTextType.Default,
         ...helperTextExtra,
     };
     const labelProps = {

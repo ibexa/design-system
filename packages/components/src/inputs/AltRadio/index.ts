@@ -1,6 +1,6 @@
-import AltRadio, { AltRadioStateful } from './AltRadio';
-import { AltRadioProps } from './AltRadio.types';
+import AltRadio from './AltRadio';
+
+export { AltRadioStateful } from './AltRadio';
+export { AltRadioProps } from './AltRadio.types';
 
 export default AltRadio;
-export { AltRadioStateful };
-export type { AltRadioProps };

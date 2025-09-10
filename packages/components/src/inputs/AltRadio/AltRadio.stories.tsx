@@ -3,25 +3,11 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import { AltRadioStateful } from './AltRadio';
+import { AltRadioStateful } from './';
 
 const meta: Meta<typeof AltRadioStateful> = {
     component: AltRadioStateful,
-    parameters: {
-        layout: 'centered',
-    },
-    tags: ['autodocs', 'foundation', 'inputs'],
-    argTypes: {
-        className: {
-            control: 'text',
-        },
-        tileClassName: {
-            control: 'text',
-        },
-        title: {
-            control: 'text',
-        },
-    },
+    tags: ['autodocs', 'foundation'],
     args: {
         label: '1:1',
         name: 'default-input',

@@ -1,13 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import { AltRadioStateful } from './AltRadio';
+import { AltRadioStateful } from './';
 
 const meta: Meta<typeof AltRadioStateful> = {
     component: AltRadioStateful,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['!dev'],
     args: {
         label: '1:1',
