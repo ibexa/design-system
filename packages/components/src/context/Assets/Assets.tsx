@@ -6,8 +6,6 @@ export const AssetsContext = createContext<AssetsType>({
     getIconPath: () => '',
 });
 
-const AssetsProvider = ({ children, value }: AssetsProps) => {
+export const AssetsProvider = ({ children, value }: AssetsProps) => {
     return <AssetsContext.Provider value={value}>{children}</AssetsContext.Provider>;
 };
-
-export default AssetsProvider;

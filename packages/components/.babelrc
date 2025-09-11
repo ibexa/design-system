@@ -7,8 +7,12 @@
                 "root": ["./"],
                 "alias": {
                     "@ibexa/ids-core": ["./packages/core/src"],
+                    "@ids-components": "./packages/components/src/components",
                     "@ids-context": "./packages/components/src/context",
-                    "@ids-internal": "./packages/components/src/internal",
+                    "@ids-hoc": "./packages/components/src/hoc",
+                    "@ids-hooks": "./packages/components/src/hooks",
+                    "@ids-partials": "./packages/components/src/partials",
+                    "@ids-shared": "./packages/components/src/shared",
                     "@ids-types": "./types"
                 }
             }

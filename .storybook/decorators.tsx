@@ -1,7 +1,7 @@
 import React from 'react';
 
-import AssetsProvider from '../packages/components/src/context/Assets/Assets';
-import TranslatorProvider from '../packages/components/src/context/Translator/Translator';
+import { AssetsProvider } from '../packages/components/src/context/Assets/Assets';
+import { TranslatorProvider } from '../packages/components/src/context/Translator/Translator';
 import { getTranslations } from '../src/utils/translations';
 
 const Assets = {

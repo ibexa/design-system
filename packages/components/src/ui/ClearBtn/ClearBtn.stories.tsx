@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import ClearBtn from './';
+import { ClearBtn } from './';
 
 const meta: Meta<typeof ClearBtn> = {
     component: ClearBtn,
