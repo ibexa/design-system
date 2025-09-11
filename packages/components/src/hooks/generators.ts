@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react';
+import { useId, useMemo, useRef } from 'react';
 
 import { generateSimpleNumberId } from '@ids-shared/generators';
 
@@ -10,3 +10,9 @@ export const useGenerateSimpleNumberId = () => {
 
     return generatedId;
 };
+
+export const useGetOrCreateId = ({ prefix, id }: { prefix?: string; id?: string }) => {
+    const generatedId = useId();
+
+    return id ?? (prefix ? `${prefix}-${generatedId}` : generatedId);
+}
