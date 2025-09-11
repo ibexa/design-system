@@ -46,7 +46,7 @@ const Toggle = ({ className = '', disabledLabel, enabledLabel, size = ToggleSize
         }
 
         return disabledLabel ?? defaultDisabledLabel;
-    }
+    };
 
     return (
         <div className={toggleClassName} title={title}>
@@ -55,7 +55,9 @@ const Toggle = ({ className = '', disabledLabel, enabledLabel, size = ToggleSize
                     {...inputProps}
                     id={componentId}
                     onBlur={onInputBlur}
+                    onChange={(state) => onChange?.(state)}
                     onFocus={onInputFocus}
+                    onInput={(state) => onInput?.(state)}
                     ref={(node) => {
                         inputRef.current = node;
 
@@ -71,11 +73,7 @@ const Toggle = ({ className = '', disabledLabel, enabledLabel, size = ToggleSize
             <div className="ids-toggle__widget" onClick={onTogglerClick} role="button">
                 <div className="ids-toggle__indicator" />
             </div>
-            <ChoiceInputLabel
-                className="ids-toggle__label"
-                htmlFor={componentId}
-                title={title}
-            >
+            <ChoiceInputLabel className="ids-toggle__label" htmlFor={componentId} title={title}>
                 {getLabel()}
             </ChoiceInputLabel>
         </div>

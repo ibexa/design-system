@@ -15,4 +15,4 @@ export const useGetOrCreateId = ({ prefix, id }: { prefix?: string; id?: string 
     const generatedId = useId();
 
     return id ?? (prefix ? `${prefix}-${generatedId}` : generatedId);
-}
+};
