@@ -7,6 +7,8 @@ const meta: Meta<typeof ToggleStateful> = {
     component: ToggleStateful,
     tags: ['!dev'],
     args: {
+        enabledLabel: 'Enabled',
+        disabledLabel: 'Disabled',
         name: 'default-input',
         onBlur: fn(),
         onChange: fn(),
@@ -23,24 +25,49 @@ export const Default: Story = {
     name: 'Default',
     play: async ({ canvasElement, step, args }) => {
         const canvas = within(canvasElement);
-        const input = canvas.getByRole('button');
+        const toggler = canvas.getByRole('button');
+        const checkStepState = async (numberOfClicks: number, currValue: boolean) => {
+            await expect(args.onFocus).toHaveBeenCalledTimes(numberOfClicks);
+            await expect(args.onChange).toHaveBeenNthCalledWith(numberOfClicks, currValue);
+            await expect(args.onInput).toHaveBeenNthCalledWith(numberOfClicks, currValue);
 
-        await step('Radio Button handles focus event', async () => {
-            await expect(args.onFocus).not.toHaveBeenCalled();
+            if (currValue) {
+                await expect(toggler.parentNode).toHaveClass('ids-toggle--checked');
+            } else {
+                await expect(toggler.parentNode).not.toHaveClass('ids-toggle--checked');
+            }
+        };
 
-            await userEvent.click(input);
+        await step('Click toggle to check it', async () => {
+            await userEvent.click(toggler);
 
-            await expect(args.onFocus).toHaveBeenCalledOnce();
-            await expect(args.onChange).toHaveBeenCalledOnce();
-            await expect(args.onInput).toHaveBeenCalledOnce();
+            await checkStepState(1, true); // eslint-disable-line no-magic-numbers
         });
 
-        await step('Radio Button handles blur event', async () => {
-            await expect(args.onBlur).not.toHaveBeenCalled();
+        await step('Click toggle to uncheck it', async () => {
+            await userEvent.click(toggler);
 
+            await checkStepState(2, false); // eslint-disable-line no-magic-numbers
+        });
+
+        await step('Click outside of toggle widget', async () => {
             await userEvent.click(canvasElement);
 
-            await expect(args.onBlur).toHaveBeenCalledOnce();
+            await expect(args.onBlur).toHaveBeenCalledTimes(2); // eslint-disable-line no-magic-numbers
+        });
+
+        await step('Click toggle label to check it', async () => {
+            const togglerLabel = canvas.getByText('Disabled');
+            await userEvent.click(togglerLabel);
+
+            await checkStepState(3, true); // eslint-disable-line no-magic-numbers
+        });
+
+        await step('Click toggle label to uncheck it', async () => {
+            const togglerLabel = canvas.getByText('Enabled');
+            await userEvent.click(togglerLabel);
+
+            await checkStepState(4, false); // eslint-disable-line no-magic-numbers
         });
     },
 };
