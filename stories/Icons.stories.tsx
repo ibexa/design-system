@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Icon, { IconSize } from '../packages/components/src/Icon';
+import { Icon, IconSize } from '../packages/components/src/components/Icon';
 import iconsList from '../packages/assets/src/img/all-icons.json';
 
 // TODO: remove temporary styles when scss is available

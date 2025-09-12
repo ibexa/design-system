@@ -1,5 +1,2 @@
-import ClearBtn from './ClearBtn';
-
-export { ClearBtnProps } from './ClearBtn.types';
-
-export default ClearBtn;
+export * from './ClearBtn';
+export * from './ClearBtn.types';

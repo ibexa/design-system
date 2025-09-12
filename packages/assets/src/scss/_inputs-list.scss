@@ -3,7 +3,7 @@
 .ids-choice-inputs-list {
     $self: &;
 
-    .ids-form-control {
+    .ids-field {
         &__label-wrapper {
             margin-bottom: calculateRem(4px);
         }

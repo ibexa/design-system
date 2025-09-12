@@ -54,9 +54,13 @@ const config = {
 
         webpackConfig.resolve.alias = {
             ...webpackConfig.resolve.alias,
+            '@ids-components': path.resolve(__dirname, '../packages/components/src/components'),
             '@ids-context': path.resolve(__dirname, '../packages/components/src/context'),
+            '@ids-hoc': path.resolve(__dirname, '../packages/components/src/hoc'),
+            '@ids-hooks': path.resolve(__dirname, '../packages/components/src/hooks'),
+            '@ids-partials': path.resolve(__dirname, '../packages/components/src/partials'),
+            '@ids-shared': path.resolve(__dirname, '../packages/components/src/shared'),
             '@ids-core': path.resolve(__dirname, '../packages/components/src/core'),
-            '@ids-internal': path.resolve(__dirname, '../packages/components/src/internal'),
         };
 
         webpackConfig.plugins.push(new NodePolyfillPlugin());
