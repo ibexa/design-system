@@ -4,12 +4,12 @@ import { HelperText } from '@ids-components/HelperText';
 import { Label } from '@ids-components/Label';
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
-import { BaseFormControlProps } from './BaseFormControl.types';
+import { BaseFieldProps } from './BaseField.types';
 
-export const BaseFormControl = ({ children, className = '', helperText, label, type }: BaseFormControlProps) => {
+export const BaseField = ({ children, className = '', helperText, label, type }: BaseFieldProps) => {
     const classes = createCssClassNames({
-        'ids-form-control': true,
-        [`ids-form-control--${type}`]: true,
+        'ids-field': true,
+        [`ids-field--${type}`]: true,
         [className]: !!className,
     });
     const renderLabel = () => {
@@ -20,7 +20,7 @@ export const BaseFormControl = ({ children, className = '', helperText, label, t
         const { children: labelContent, ...labelProps } = label;
 
         return (
-            <div className="ids-form-control__label-wrapper">
+            <div className="ids-field__label-wrapper">
                 <Label {...labelProps}>{labelContent}</Label>
             </div>
         );
@@ -33,7 +33,7 @@ export const BaseFormControl = ({ children, className = '', helperText, label, t
         const { children: helperTextContent, ...helperTextProps } = helperText;
 
         return (
-            <div className="ids-form-control__helper-text-wrapper">
+            <div className="ids-field__helper-text-wrapper">
                 <HelperText {...helperTextProps}>{helperTextContent}</HelperText>
             </div>
         );
@@ -42,7 +42,7 @@ export const BaseFormControl = ({ children, className = '', helperText, label, t
     return (
         <div className={classes}>
             {renderLabel()}
-            <div className="ids-form-control__source-wrapper">{children}</div>
+            <div className="ids-field__source-wrapper">{children}</div>
             {renderHelperText()}
         </div>
     );

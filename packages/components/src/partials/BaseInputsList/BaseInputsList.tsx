@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BaseFormControl } from '@ids-partials/BaseFormControl';
+import { BaseField } from '@ids-partials/BaseField';
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
 import { BaseInputsListProps, Direction } from './BaseInputsList.types';
@@ -19,8 +19,8 @@ export const BaseInputsList = <T,>({
         [className]: true,
     });
     return (
-        <BaseFormControl className={listClassName} helperText={helperTextProps} label={labelProps} type="list">
+        <BaseField className={listClassName} helperText={helperTextProps} label={labelProps} type="list">
             <div className="ids-choice-inputs-list__items">{items.map((item) => renderItem(item))}</div>
-        </BaseFormControl>
+        </BaseField>
     );
 };

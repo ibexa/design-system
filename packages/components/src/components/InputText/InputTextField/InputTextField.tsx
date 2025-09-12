@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useInitValidators, useValidateInput } from './InputTextField.utils';
-import { BaseFormControl } from '@ids-partials/BaseFormControl';
+import { BaseField } from '@ids-partials/BaseField';
 import { HelperTextType } from '@ids-components/HelperText';
 import { InputTextInput } from '../InputTextInput';
 import withStateValue from '@ids-hoc/withStateValue';
@@ -49,9 +49,9 @@ export const InputTextField = ({
     }, [isValid, messages, onValidate]);
 
     return (
-        <BaseFormControl helperText={helperTextProps} label={labelProps} type="input-text">
+        <BaseField helperText={helperTextProps} label={labelProps} type="input-text">
             <InputTextInput {...inputProps} />
-        </BaseFormControl>
+        </BaseField>
     );
 };
 
