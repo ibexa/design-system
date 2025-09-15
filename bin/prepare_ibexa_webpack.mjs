@@ -10,20 +10,6 @@ const getArgument = (argName, defaultValue = null) => {
 
     return args[argName] || defaultValue;
 }
-const generateRandomString = () => {
-    const randomString = (Math.random() + 1).toString(36).substring(2, 7);
-
-    return randomString;
-};
-const getIbexaConfigFilename = () => {
-    let filename;
-
-    do {
-        filename = `ibexa.webpack.config.${generateRandomString()}.js`;
-    } while (fs.existsSync(path.resolve(filename)));
-
-    return filename;
-};
 const getScripts = (commandName, webpackFilename) => {
     return {
         [`${commandName}:dev`]: `encore dev --config ./${webpackFilename}`,
@@ -36,6 +22,9 @@ const getSourceDir = (packageName) => {
     const dsDir = path.join(currFileDir, '..');
 
     return path.join(dsDir, 'packages', packageName, 'src');
+}
+const createSymlink = (source, target) => {
+    execSync(`mkdir -p ${target} && rm -rf ${target} && ln -s ${source} ${target}`);
 }
 const updatePackageJsonFile = (webpackFilename, commandName) => {
     const packageJsonFilePath = path.resolve('package.json');
@@ -85,9 +74,6 @@ const updateComposerJsonFile = (commandName) => {
 
     fs.writeFileSync(composerJsonFilePath, JSON.stringify(composerJsonContent, null, 4));
 }
-const createSymlink = (source, target) => {
-    execSync(`mkdir -p ${target} && rm -rf ${target} && ln -s ${source} ${target}`);
-}
 const createSymlinks = () => {
     const composerJsonFilePath = path.resolve('composer.json');
     const composerJsonContent = JSON.parse(fs.readFileSync(composerJsonFilePath, 'utf-8'));
@@ -104,13 +90,6 @@ const createSymlinks = () => {
     createSymlink(assetsSourcePath, assetsSymlinkPath);
     createSymlink(componentsSourcePath, componentsSymlinkPath);
     createSymlink(coreSourcePath, coreSymlinkPath);
-
-    // console.log(`mkdir -p ${componentsSymlinkPath} && ln -sf ${componentsSourcePath} ${componentsSymlinkPath}`);
-
-
-    // execSync(`mkdir -p ${componentsSymlinkPath} && ln -sf ${componentsSourcePath} ${componentsSymlinkPath}`);
-    // execSync(`mkdir -p ${coreSymlinkPath} && ln -sf ${coreSourcePath} ${coreSymlinkPath}`);
-    // execSync(`mkdir -p ${assetsSymlinkPath} && ln -sf ${assetsSourcePath} ${assetsSymlinkPath}`);
 }
 const createWebpackConfigFile = (filePath) => {
     const webpackConfigFileContent = `
@@ -134,8 +113,7 @@ module.exports = allConfigs;
 };
 
 const commandDevName = getArgument('command', 'ibexa-ds');
-
-const ibexaWebpackConfigFilename = getIbexaConfigFilename();
+const ibexaWebpackConfigFilename = getArgument('webpack-file', 'ibexa.webpack.config.js');
 const ibexaWebpackConfigFilePath = path.resolve(ibexaWebpackConfigFilename);
 
 updatePackageJsonFile(ibexaWebpackConfigFilename, commandDevName);
