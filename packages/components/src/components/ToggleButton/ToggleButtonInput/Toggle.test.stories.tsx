@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import { ToggleStateful } from './';
+import { ToggleButtonInputStateful } from '.';
 
-const meta: Meta<typeof ToggleStateful> = {
-    component: ToggleStateful,
+const meta: Meta<typeof ToggleButtonInputStateful> = {
+    component: ToggleButtonInputStateful,
     tags: ['!dev'],
     args: {
         enabledLabel: 'Enabled',
@@ -19,7 +19,7 @@ const meta: Meta<typeof ToggleStateful> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ToggleStateful>;
+type Story = StoryObj<typeof ToggleButtonInputStateful>;
 
 export const Default: Story = {
     name: 'Default',

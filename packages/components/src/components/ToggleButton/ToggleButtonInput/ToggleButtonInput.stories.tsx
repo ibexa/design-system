@@ -3,10 +3,10 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import { ToggleSize, ToggleStateful } from './';
+import { ToggleButtonInputSize, ToggleButtonInputStateful } from '.';
 
-const meta: Meta<typeof ToggleStateful> = {
-    component: ToggleStateful,
+const meta: Meta<typeof ToggleButtonInputStateful> = {
+    component: ToggleButtonInputStateful,
     tags: ['autodocs', 'foundation'],
     args: {
         name: 'default-input',
@@ -28,7 +28,7 @@ const meta: Meta<typeof ToggleStateful> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ToggleStateful>;
+type Story = StoryObj<typeof ToggleButtonInputStateful>;
 
 export const Empty: Story = {
     name: 'Empty',
@@ -44,7 +44,7 @@ export const EmptyDisabled: Story = {
 export const EmptyError: Story = {
     name: 'Empty (Small)',
     args: {
-        size: ToggleSize.Small,
+        size: ToggleButtonInputSize.Small,
     },
 };
 
@@ -67,6 +67,6 @@ export const CheckedError: Story = {
     name: 'Checked (Small)',
     args: {
         checked: true,
-        size: ToggleSize.Small,
+        size: ToggleButtonInputSize.Small,
     },
 };
