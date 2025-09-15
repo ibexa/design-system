@@ -1,11 +1,9 @@
 import React from 'react';
 
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
-import { useGenerateSimpleNumberId } from '@ids-hooks/generators';
+import { useGetOrCreateId } from '@ids-hooks/generators';
 
 import { BaseInputProps } from './BaseInput.types';
-
-const INPUT_ID_PREFIX = 'ids-input-';
 
 export const BaseInput = ({
     name,
@@ -21,8 +19,7 @@ export const BaseInput = ({
     type = 'text',
     value = '',
 }: BaseInputProps) => {
-    const componentGeneratedNumberId = useGenerateSimpleNumberId();
-    const componentId = id ?? `${INPUT_ID_PREFIX}${componentGeneratedNumberId.toString()}`;
+    const componentId = useGetOrCreateId(id);
     const componentClassName = createCssClassNames({
         'ids-input': true,
         [`ids-input--${type}`]: true,
