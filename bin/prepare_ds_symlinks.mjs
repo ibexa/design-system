@@ -17,12 +17,8 @@ const updateIbexaTSConfigFile = () => {
     const tsConfigFilePath = path.resolve('ibexa.tsconfig.json');
     const tsConfigContent = JSON.parse(fs.readFileSync(tsConfigFilePath, 'utf-8'));
 
-    if (!tsConfigContent.compilerOptions) {
-        tsConfigContent.compilerOptions = {};
-    }
-    if (!tsConfigContent.compilerOptions.paths) {
-        tsConfigContent.compilerOptions.paths = {};
-    }
+    tsConfigContent.compilerOptions ??= {};
+    tsConfigContent.compilerOptions.paths ??= {};
     tsConfigContent.compilerOptions.paths['@ids-assets/*'] = [
         `${getSourceDir('assets')}/*`,
     ];
