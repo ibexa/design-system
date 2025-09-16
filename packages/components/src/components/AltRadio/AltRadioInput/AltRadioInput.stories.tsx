@@ -11,6 +11,7 @@ const meta: Meta<typeof AltRadioInputStateful> = {
     args: {
         label: '1:1',
         name: 'default-input',
+        value: 'value-1',
         onBlur: action('on-blur'),
         onChange: action('on-change'),
         onFocus: action('on-focus'),
