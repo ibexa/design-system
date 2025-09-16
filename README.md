@@ -2,38 +2,12 @@
 
 ## Using dev version in Ibexa DXP
 
-### Change aliases for TS configuration
-In Ibexa DXP root directory edit `ibexa.tsconfig.json` and add two routes in TS config:
+In Ibexa DXP root directory run command
 ```
-"paths": {
-    "@ids-assets/*": [
-        "[path to Ibexa Design System directory]/packages/assets/src/*"
-    ],
-    "@ids-components/*": [
-        "[path to Ibexa Design System directory]/packages/components/src/*"
-    ]
-}
+yarn [path to design system root]/bin/prepare_ds_symlinks.mjs
 ```
-This will overwrite default TS aliases pointing to modules inside `ibexa/admin-ui-assets` bundle.
-
-### Change aliases for webpack
-In Ibexa DXP root directory edit `ibexa.webpack.config.js` and add import:
-```
-const createDevAliases = require('../bundles/design-system/scripts/symfony/create-dev-aliases.cjs'); 
-```
-and then add
-```
-createDevAliases(Encore);
-```
-after
-```
-configSetups.forEach((configSetupPath) => {
-    const setupConfig = require(configSetupPath);
-
-    setupConfig(Encore);
-});
-```
-This will overwrite default webpack aliases defined in `ibexa/admin-ui-assets` bundle with paths pointing to this module packages.
+This command replaces design system directories from admin-ui-assets with symlinks to this repository.
+It also updates `ibexa.tsconfig.json` file with aliases to this repository.
 
 ## Preparing tag for release
 
