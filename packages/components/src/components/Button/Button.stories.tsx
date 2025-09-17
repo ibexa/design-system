@@ -35,6 +35,15 @@ export const PrimaryTextOnly: Story = {
     },
 };
 
+export const PrimaryIconOnly: Story = {
+    name: 'Primary / Icon only',
+    args: {
+        type: ButtonType.Primary,
+        icon: 'edit',
+        children: undefined,
+    },
+};
+
 export const PrimaryDisabled: Story = {
     name: 'Primary / Disabled',
     args: {
@@ -58,6 +67,15 @@ export const SecondaryTextOnly: Story = {
     name: 'Secondary / Text only',
     args: {
         type: ButtonType.Secondary,
+    },
+};
+
+export const SecondaryIconOnly: Story = {
+    name: 'Secondary / Icon only',
+    args: {
+        type: ButtonType.Secondary,
+        icon: 'edit',
+        children: undefined,
     },
 };
 
@@ -87,6 +105,15 @@ export const TertiaryTextOnly: Story = {
     },
 };
 
+export const TertiaryIconOnly: Story = {
+    name: 'Tertiary / Icon only',
+    args: {
+        type: ButtonType.Tertiary,
+        icon: 'edit',
+        children: undefined,
+    },
+};
+
 export const TertiaryDisabled: Story = {
     name: 'Tertiary / Disabled',
     args: {
@@ -110,6 +137,15 @@ export const SecondaryAltTextOnly: Story = {
     name: 'Secondary Alt / Text only',
     args: {
         type: ButtonType.SecondaryAlt,
+    },
+};
+
+export const SecondaryAltIconOnly: Story = {
+    name: 'Secondary Alt / Icon only',
+    args: {
+        type: ButtonType.SecondaryAlt,
+        icon: 'edit',
+        children: undefined,
     },
 };
 
@@ -141,6 +177,16 @@ export const SecondaryAltSmallTextOnly: Story = {
     },
 };
 
+export const SecondaryAltSmallIconOnly: Story = {
+    name: 'Secondary Alt Small / Icon only',
+    args: {
+        type: ButtonType.SecondaryAlt,
+        size: ButtonSize.Small,
+        icon: 'edit',
+        children: undefined,
+    },
+};
+
 /***** Tertiary Alt Small *****/
 
 export const TertiaryAltSmall: Story = {
@@ -148,6 +194,7 @@ export const TertiaryAltSmall: Story = {
     args: {
         type: ButtonType.TertiaryAlt,
         size: ButtonSize.Small,
+        icon: 'edit',
     },
 };
 
@@ -156,7 +203,16 @@ export const TertiaryAltSmallTextOnly: Story = {
     args: {
         type: ButtonType.TertiaryAlt,
         size: ButtonSize.Small,
+    },
+};
+
+export const TertiaryAltSmallIconOnly: Story = {
+    name: 'Tertiary Alt Small / Icon only',
+    args: {
+        type: ButtonType.TertiaryAlt,
+        size: ButtonSize.Small,
         icon: 'edit',
+        children: undefined,
     },
 };
 

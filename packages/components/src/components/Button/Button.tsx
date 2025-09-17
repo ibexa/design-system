@@ -1,19 +1,41 @@
 import React from 'react';
 
 import { Icon, IconSize } from '@ids-components/Icon';
-import { BaseButton } from '@ids-partials/BaseButton';
+import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
-import { ButtonProps, ButtonSize } from './Button.types';
+import { ButtonProps, ButtonSize, ButtonType } from './Button.types';
 
 const ICON_SIZE_MAPPING: Record<ButtonSize, IconSize> = {
     [ButtonSize.Medium]: IconSize.Small,
     [ButtonSize.Small]: IconSize.TinySmall,
 } as const;
 
-export const Button = ({ ariaLabel, children, icon, size = ButtonSize.Medium, ...restProps }: ButtonProps) => {
+export const Button = ({
+    onClick,
+    children = null,
+    ariaLabel,
+    disabled = false,
+    extraAria = {},
+    className = '',
+    icon,
+    size = ButtonSize.Medium,
+    title = '',
+    type = ButtonType.Primary,
+}: ButtonProps) => {
+    const iconOnly = !!icon && !children;
+    const componentClassName = createCssClassNames({
+        'ids-btn': true,
+        [`ids-btn--${type}`]: true,
+        [`ids-btn--${size}`]: true,
+        'ids-btn--disabled': disabled,
+        'ids-btn--icon-only': iconOnly,
+        [className]: !!className,
+    });
     const getBtnAriaLabel = () => {
         if (ariaLabel) {
             return ariaLabel;
+        } else if (iconOnly) {
+            return icon;
         }
 
         return typeof children === 'string' ? children : '';
@@ -31,11 +53,28 @@ export const Button = ({ ariaLabel, children, icon, size = ButtonSize.Medium, ..
 
         return null;
     };
+    const renderLabel = () => {
+        if (!iconOnly) {
+            return <div className="ids-btn__label">{children}</div>;
+        }
+
+        return null;
+    };
 
     return (
-        <BaseButton ariaLabel={getBtnAriaLabel()} size={size} {...restProps}>
+        <button
+            aria-disabled={disabled}
+            aria-label={getBtnAriaLabel()}
+            className={componentClassName}
+            disabled={disabled}
+            onClick={onClick}
+            role="button"
+            title={title}
+            type="button"
+            {...extraAria}
+        >
             {renderIcon()}
-            <div className="ids-btn__label">{children}</div>
-        </BaseButton>
+            {renderLabel()}
+        </button>
     );
 };
