@@ -90,3 +90,19 @@ export const IconCssClass: Story = {
         className: 'ids-icon ids-icon--primary',
     },
 };
+
+export const CustomIcon: Story = {
+    name: 'Custom Icon',
+    args: {
+        name: undefined,
+        path: './img/all-icons.svg#bookmarks',
+    },
+};
+
+export const CustomIconWithName: Story = {
+    name: 'Custom Icon with name',
+    args: {
+        name: 'Bookmarks Button',
+        path: './img/all-icons.svg#bookmarks',
+    },
+};
