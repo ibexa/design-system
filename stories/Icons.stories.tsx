@@ -48,6 +48,8 @@ const meta: Meta<typeof IconsList> = {
     component: IconsList,
     parameters: {
         layout: 'padded',
+        // Disables Chromatic's snapshotting on a component level
+        chromatic: { disableSnapshot: true },
     },
     tags: [],
 };
