@@ -4,9 +4,6 @@ import { Icon, IconSize } from './';
 
 const meta: Meta<typeof Icon> = {
     component: Icon,
-    parameters: {
-        controls: { exclude: ['path'] },
-    },
     tags: ['autodocs', 'foundation'],
     args: {
         name: 'favourite-outline',
