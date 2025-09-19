@@ -92,8 +92,11 @@ const FrameworkSelectorDecorator = (StoryFn: StoryFunction, context: StoryContex
             return;
         }
 
-        if (data.width && data.height) {
+        if (data.width) {
             iframeRef.current.style.width = `${data.width.toString()}px`;
+        }
+
+        if (data.height) {
             iframeRef.current.style.height = `${data.height.toString()}px`;
             iframeWrapperRef.current.style.height = `${data.height.toString()}px`;
         }
