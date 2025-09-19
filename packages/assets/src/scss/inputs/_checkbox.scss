@@ -2,29 +2,6 @@
 @use '../variables' as *;
 @use '../mixins/choice-inputs' as *;
 
-@mixin checkbox-active-state {
-    border-color: $color-primary-80;
-    background-color: $color-primary-80;
-
-    &::after {
-        border-color: $color-neutral-10;
-    }
-
-    &:disabled {
-        border-color: $color-primary-60;
-        background-color: $color-primary-60;
-    }
-
-    &.ids-input--error {
-        border-color: $color-error-80;
-        background-color: $color-error-80;
-
-        &::after {
-            border-color: $color-neutral-10;
-        }
-    }
-}
-
 .ids-checkbox {
     .ids-input--checkbox {
         @include choice-input-base;
@@ -45,8 +22,43 @@
             transform: rotate(-45deg);
         }
 
-        &:checked {
-            @include checkbox-active-state;
+        &:checked,
+        &:indeterminate {
+            border-color: $color-primary-80;
+            background-color: $color-primary-80;
+
+            &::after {
+                border-color: $color-neutral-10;
+            }
+
+            &:disabled {
+                border-color: $color-primary-60;
+                background-color: $color-primary-60;
+            }
+
+            &.ids-input--error {
+                border-color: $color-error-80;
+                background-color: $color-error-80;
+
+                &::after {
+                    border-color: $color-neutral-10;
+                }
+            }
+        }
+
+        &:indeterminate {
+            &::after {
+                background-color: $color-neutral-10;
+                height: calculateRem(2px);
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            &.ids-input--error {
+                &::after {
+                    background-color: $color-neutral-10;
+                }
+            }
         }
     }
 }

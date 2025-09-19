@@ -38,6 +38,29 @@ export const EmptyError: Story = {
     },
 };
 
+export const Indeterminate: Story = {
+    name: 'Indeterminate',
+    args: {
+        indeterminate: true,
+    },
+};
+
+export const IndeterminateDisabled: Story = {
+    name: 'Indeterminate (Disabled)',
+    args: {
+        indeterminate: true,
+        disabled: true,
+    },
+};
+
+export const IndeterminateError: Story = {
+    name: 'Indeterminate (Error)',
+    args: {
+        indeterminate: true,
+        error: true,
+    },
+};
+
 export const Checked: Story = {
     name: 'Checked',
     args: {
