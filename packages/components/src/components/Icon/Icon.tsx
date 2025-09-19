@@ -1,13 +1,22 @@
 import React, { useContext } from 'react';
 
 import { AssetsContext, AssetsType } from '@ids-context/Assets';
-import { BaseIcon } from '@ids-partials/BaseIcon';
+import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
-import { IconProps } from './Icon.types';
+import { IconProps, IconSize } from './Icon.types';
 
-export const Icon = ({ name, ...restProps }: IconProps) => {
+export const Icon = ({ path, className = '', name = '', size = IconSize.Small }: IconProps) => {
     const { getIconPath } = useContext<AssetsType>(AssetsContext);
-    const path = getIconPath(name);
+    const iconPath = path ?? getIconPath(name);
+    const componentClassName = createCssClassNames({
+        'ids-icon': true,
+        [`ids-icon--${size}`]: true,
+        [className]: !!className,
+    });
 
-    return <BaseIcon name={name} path={path} {...restProps} />;
+    return (
+        <svg aria-label={name} className={componentClassName} role="img">
+            <use xlinkHref={iconPath} />
+        </svg>
+    );
 };
