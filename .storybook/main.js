@@ -37,7 +37,7 @@ const config = {
             },
         },
         path.resolve(__dirname, '../src/storybook/addons/framework-selector/index.ts'),
-        '@chromatic-com/storybook'
+        '@chromatic-com/storybook',
     ],
     framework: {
         name: '@storybook/react-webpack5',
