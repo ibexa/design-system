@@ -25,7 +25,7 @@ export const TestEnabled: Story = {
     play: async ({ canvasElement, step, args }) => {
         const canvas = within(canvasElement);
 
-        await step('Button is clickable', async () => {
+        await step('Button is clicked', async () => {
             const btn = canvas.getByRole('button');
 
             await expect(btn).not.toHaveClass('ids-btn--disabled');
@@ -46,7 +46,7 @@ export const TestDisabled: Story = {
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
 
-        await step('Button is not clickable', async () => {
+        await step(`Button can't be clicked`, async () => {
             const btn = canvas.getByRole('button');
 
             await expect(btn).toHaveClass('ids-btn--disabled');
