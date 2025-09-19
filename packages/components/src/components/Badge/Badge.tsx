@@ -9,7 +9,7 @@ const THRESHOLD = {
     [BadgeSize.Medium]: 100,
     [BadgeSize.Small]: 10,
 };
-const Badge = ({ className = '', size = BadgeSize.Medium, value }: BadgeProps) => {
+export const Badge = ({ className = '', size = BadgeSize.Medium, value }: BadgeProps) => {
     const isStretched = value >= THRESHOLD[size];
     const componentClassName = createCssClassNames({
         'ids-badge': true,
@@ -23,5 +23,3 @@ const Badge = ({ className = '', size = BadgeSize.Medium, value }: BadgeProps) =
 
     return <div className={componentClassName}>{formatBadgeValue(value)}</div>;
 };
-
-export default Badge;
