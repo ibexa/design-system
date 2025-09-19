@@ -4,7 +4,7 @@ const path = require('path');
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
     stories: ['../packages/**/*.stories.@(js|jsx|mjs|ts|tsx)', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-    staticDirs: ['../packages/assets/src/'],
+    staticDirs: ['../packages/assets/src/', '../assets/'],
     addons: [
         '@storybook/addon-docs',
         '@storybook/addon-webpack5-compiler-swc',
