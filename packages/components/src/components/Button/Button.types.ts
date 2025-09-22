@@ -1,17 +1,33 @@
-import { BaseButtonProps } from '@ids-partials/BaseButton';
+import { BaseComponentAriaAttributes } from '@ids-types/general';
 
-export { BaseButtonSize as ButtonSize, BaseButtonType as ButtonType } from '@ids-partials/BaseButton';
-
-interface ButtonSharedProps extends BaseButtonProps {
-    icon?: string;
+export enum ButtonSize {
+    Medium = 'medium',
+    Small = 'small',
 }
 
-interface ButtonHTMLProps extends ButtonSharedProps {
-    ariaLabel: string;
+export enum ButtonType {
+    Primary = 'primary',
+    Secondary = 'secondary',
+    Tertiary = 'tertiary',
+    SecondaryAlt = 'secondary-alt',
+    TertiaryAlt = 'tertiary-alt',
 }
-interface ButtonStringProps extends Omit<ButtonSharedProps, 'ariaLabel'> {
+
+interface ButtonSharedProps extends BaseComponentAriaAttributes {
     ariaLabel?: string;
-    children: string;
+    onClick: React.MouseEventHandler<HTMLButtonElement>;
+    disabled?: boolean;
+    size?: ButtonSize;
+    type?: ButtonType;
 }
 
-export type ButtonProps = ButtonHTMLProps | ButtonStringProps;
+interface ButtonNoTextProps extends ButtonSharedProps {
+    icon: string;
+    children?: never;
+}
+interface ButtonTextProps extends ButtonSharedProps {
+    icon?: string;
+    children: React.ReactNode;
+}
+
+export type ButtonProps = ButtonNoTextProps | ButtonTextProps;
