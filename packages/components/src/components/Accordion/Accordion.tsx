@@ -66,7 +66,7 @@ export const Accordion = ({ children, header, initiallyExpanded = false, onHandl
                     hasIcon={true}
                     isExpanded={isExpanded}
                     onClick={changeExpanded}
-                    type={ExpanderType.caret}
+                    type={ExpanderType.Caret}
                 />
             </div>
             <div className="ids-accordion__content" ref={accordionContentRef}>
