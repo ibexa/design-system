@@ -4,9 +4,6 @@ import { Icon, IconSize } from './';
 
 const meta: Meta<typeof Icon> = {
     component: Icon,
-    parameters: {
-        controls: { exclude: ['path'] },
-    },
     tags: ['autodocs', 'foundation'],
     args: {
         name: 'favourite-outline',
@@ -88,5 +85,21 @@ export const IconCssClass: Story = {
     name: 'Icon with css class',
     args: {
         className: 'ids-icon ids-icon--primary',
+    },
+};
+
+export const CustomIcon: Story = {
+    name: 'Custom Icon',
+    args: {
+        name: undefined,
+        path: './img/all-icons.svg#bookmarks',
+    },
+};
+
+export const CustomIconWithName: Story = {
+    name: 'Custom Icon with name',
+    args: {
+        name: 'Bookmarks Button',
+        path: './img/all-icons.svg#bookmarks',
     },
 };
