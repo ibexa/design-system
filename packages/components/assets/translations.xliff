@@ -5,6 +5,10 @@
         <source>Clear</source>
         <target>Clear</target>
       </trans-unit>
+      <trans-unit id="ibexa.dropdown.search.placeholder">
+        <source>Search...</source>
+        <target>Search...</target>
+      </trans-unit>
       <trans-unit id="ids.toggle.label.enabled">
         <source>Yes</source>
         <target>Yes</target>
