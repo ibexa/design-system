@@ -30,6 +30,9 @@ export const Default: Story = {
             await userEvent.click(dropdownWidget);
 
             const dropdownItem = canvas.getByText(itemLabel);
+            const firstItem = canvas.getByText('Item 1', { selector: 'li' });
+
+            await expect(document.activeElement).toBe(firstItem);
 
             await userEvent.click(dropdownItem);
 
@@ -94,7 +97,9 @@ export const ManyItems: Story = {
             const visibleItemsAll = canvas.queryAllByText('Item ', { exact: false });
             const searchInput = canvas.getByRole('textbox');
 
+            await expect(document.activeElement).toBe(searchInput);
             await expect(visibleItemsAll).toHaveLength(ALL_ITEMS_COUNT);
+
             await userEvent.type(searchInput, 'Item 1');
 
             const visibleItemsFiltered = canvas.queryAllByText('Item ', { exact: false });

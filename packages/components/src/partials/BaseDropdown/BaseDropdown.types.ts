@@ -7,6 +7,7 @@ export interface BaseDropdownItem {
 
 export interface BaseDropdownRef {
     openDropdown: () => void;
+    hasSearchInput: () => boolean;
     closeDropdown: () => void;
 }
 
