@@ -24,7 +24,7 @@ export const DropdownSingleInput = ({
     };
     const renderItems = (itemsToRender: DropdownSingleInputItem[]) => (
         <>
-            {itemsToRender.map((item) => {
+            {itemsToRender.map((item, index) => {
                 const dropdownItemClassName = createCssClassNames({
                     [BASE_DROPDOWN_CLASS.ITEM]: true,
                     [`${BASE_DROPDOWN_CLASS.ITEM}--selected`]: item.id === value,
@@ -35,6 +35,12 @@ export const DropdownSingleInput = ({
                         className={dropdownItemClassName}
                         key={item.id}
                         onClick={clickDropdownItem.bind(null, item)}
+                        ref={(node) => {
+                            const hasSearchInput = baseDropdownRef.current?.hasSearchInput() ?? false;
+                            if (index === 0 && !hasSearchInput && node) {
+                                node.focus();
+                            }
+                        }}
                         role="button"
                         tabIndex={0}
                     >

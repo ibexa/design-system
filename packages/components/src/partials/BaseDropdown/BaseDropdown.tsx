@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useImperativeHandle, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 
 import { Expander, ExpanderType } from '@ids-components/Expander';
@@ -27,10 +27,12 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
     className = '',
 }: BaseDropdownProps<T>) => {
     const Translator = useContext(TranslatorContext);
+    const searchRef = useRef<HTMLInputElement>(null);
     const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>(null);
     const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [isOpen, setIsOpen] = useState(false);
+    const [itemsContainerWidth, setItemsContainerWidth] = useState(0);
     const { styles, attributes } = usePopper(referenceElement, popperElement, {
         placement: 'bottom-start',
         strategy: 'fixed',
@@ -46,6 +48,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
         'ids-input--disabled': disabled,
         'ids-input--error': error,
     });
+    const hasSearchInput = items.length > maxVisibleItems;
     const filteredItems = useMemo(() => {
         if (!searchTerm) {
             return items;
@@ -57,7 +60,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
         setIsOpen(!isOpen);
     };
     const renderSearchInput = () => {
-        if (items.length <= maxVisibleItems) {
+        if (!hasSearchInput) {
             return null;
         }
 
@@ -69,6 +72,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
                     name="dropdown-search"
                     onChange={setSearchTerm}
                     placeholder={placeholderText}
+                    ref={searchRef}
                     size={InputTextInputSize.Small}
                     value={searchTerm}
                 />
@@ -80,8 +84,13 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
             return null;
         }
 
+        const itemsContainerStyles = {
+            ...styles.popper,
+            width: itemsContainerWidth ? `${itemsContainerWidth}px` : 'auto',
+        }
+
         return (
-            <div className="ids-dropdown__items-container" ref={setPopperElement} style={styles.popper} {...attributes.popper}>
+            <div className="ids-dropdown__items-container" ref={setPopperElement} style={itemsContainerStyles} {...attributes.popper}>
                 {renderSearchInput()}
                 <ul className="ids-dropdown__items" data-max-visible-items={maxVisibleItems}>
                     {renderItems(filteredItems)}
@@ -99,6 +108,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
 
         if (isOpen) {
             setSearchTerm('');
+            searchRef.current?.focus();
 
             window.document.body.addEventListener('click', clickOutsideHandler);
 
@@ -113,11 +123,18 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
             closeDropdown: () => {
                 setIsOpen(false);
             },
+            hasSearchInput: () => hasSearchInput,
             openDropdown: () => {
                 setIsOpen(true);
             },
         };
     }, []);
+
+    useLayoutEffect(() => {
+        if (isOpen && referenceElement) {
+            setItemsContainerWidth(referenceElement.offsetWidth);
+        }
+    }, [isOpen, popperElement]);
 
     return (
         <div className={dropdownClassName}>
