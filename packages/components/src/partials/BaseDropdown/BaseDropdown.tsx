@@ -87,7 +87,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
         const itemsContainerStyles = {
             ...styles.popper,
             width: itemsContainerWidth ? `${itemsContainerWidth}px` : 'auto',
-        }
+        };
 
         return (
             <div className="ids-dropdown__items-container" ref={setPopperElement} style={itemsContainerStyles} {...attributes.popper}>
