@@ -23,13 +23,20 @@ type Story = StoryObj<typeof ToggleButtonInputStateful>;
 
 export const Default: Story = {
     name: 'Default',
+    // eslint-disable-next-line ibexa/max-lines-per-function-jsx
     play: async ({ canvasElement, step, args }) => {
         const canvas = within(canvasElement);
         const toggler = canvas.getByRole('button');
-        const checkStepState = async (numberOfClicks: number, currValue: boolean) => {
+        const checkStepState = async (numberOfClicks: number, currValue: boolean, expectAdditionalParam = false) => {
             await expect(args.onFocus).toHaveBeenCalledTimes(numberOfClicks);
-            await expect(args.onChange).toHaveBeenNthCalledWith(numberOfClicks, currValue);
-            await expect(args.onInput).toHaveBeenNthCalledWith(numberOfClicks, currValue);
+
+            if (expectAdditionalParam) {
+                await expect(args.onChange).toHaveBeenNthCalledWith(numberOfClicks, currValue, expect.anything());
+                await expect(args.onInput).toHaveBeenNthCalledWith(numberOfClicks, currValue, expect.anything());
+            } else {
+                await expect(args.onChange).toHaveBeenNthCalledWith(numberOfClicks, currValue);
+                await expect(args.onInput).toHaveBeenNthCalledWith(numberOfClicks, currValue);
+            }
 
             if (currValue) {
                 await expect(toggler.parentNode).toHaveClass('ids-toggle--checked');
@@ -58,16 +65,18 @@ export const Default: Story = {
 
         await step('Click toggle label to check it', async () => {
             const togglerLabel = canvas.getByText('Disabled');
+
             await userEvent.click(togglerLabel);
 
-            await checkStepState(3, true); // eslint-disable-line no-magic-numbers
+            await checkStepState(3, true, true); // eslint-disable-line no-magic-numbers
         });
 
         await step('Click toggle label to uncheck it', async () => {
             const togglerLabel = canvas.getByText('Enabled');
+
             await userEvent.click(togglerLabel);
 
-            await checkStepState(4, false); // eslint-disable-line no-magic-numbers
+            await checkStepState(4, false, true); // eslint-disable-line no-magic-numbers
         });
     },
 };
