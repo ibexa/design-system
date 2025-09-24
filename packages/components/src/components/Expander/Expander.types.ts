@@ -1,6 +1,6 @@
 export enum ExpanderType {
-    caret = 'caret',
-    chevron = 'chevron',
+    Caret = 'caret',
+    Chevron = 'chevron',
 }
 
 interface ExpanderSharedProps {

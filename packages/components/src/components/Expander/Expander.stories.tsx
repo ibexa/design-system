@@ -12,7 +12,7 @@ const meta: Meta<typeof Expander> = {
     args: {
         collapseLabel: 'Show less',
         expandLabel: 'Show more',
-        type: ExpanderType.caret,
+        type: ExpanderType.Caret,
         onClick: action('on-click'),
     },
 };
@@ -35,7 +35,7 @@ export const NoIcon: Story = {
 export const Chevron: Story = {
     name: 'Chevron',
     args: {
-        type: ExpanderType.chevron,
+        type: ExpanderType.Chevron,
     },
 };
 

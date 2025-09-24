@@ -7,8 +7,8 @@ import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 import { ExpanderProps, ExpanderType } from './Expander.types';
 
 const ICONS_MAP = {
-    [ExpanderType.caret]: 'arrow-caret-down',
-    [ExpanderType.chevron]: 'arrow-chevron-down',
+    [ExpanderType.Caret]: 'arrow-caret-down',
+    [ExpanderType.Chevron]: 'arrow-chevron-down',
 } as const;
 
 export const Expander = ({ onClick, type, collapseLabel = '', expandLabel = '', hasIcon = true, isExpanded = false }: ExpanderProps) => {

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useImperativeHandle, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
 import { BaseInput } from '@ids-partials/BaseInput';
 import { ClearBtn } from '../../../ui/ClearBtn';
@@ -22,6 +22,7 @@ export const InputTextInput = ({
     placeholder = '',
     processActions = (actions): ComponentEntryDataType[] => actions,
     readOnly = false,
+    ref = null,
     required = false,
     size = InputTextInputSize.Medium,
     title = '',
@@ -29,6 +30,7 @@ export const InputTextInput = ({
     value = '',
 }: InputTextInputProps) => {
     const actionsRef = useRef<HTMLDivElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
     const [sourcePadding, setSourcePadding] = useState(0);
     const inputTextClassName = createCssClassNames({
         'ids-input-text': true,
@@ -81,6 +83,12 @@ export const InputTextInput = ({
         );
     };
 
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            inputRef.current?.focus();
+        },
+    }));
+
     useLayoutEffect(() => {
         const actionsWidth = actionsRef.current?.offsetWidth ?? 0;
 
@@ -105,6 +113,7 @@ export const InputTextInput = ({
                     }}
                     id={id}
                     name={name}
+                    ref={inputRef}
                     required={required}
                     size={size}
                     title={title}

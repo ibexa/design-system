@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "cross-env": "^7.0.3"
+    "@popperjs/core": "^2.11.8",
+    "cross-env": "^7.0.3",
+    "react-popper": "^2.3.0"
   },
   "scripts": {
     "prettier:test": "yarn prettier \"./scripts/*.js\" \"./src/**/*.{js,ts,jsx,tsx}\" --check",
