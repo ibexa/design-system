@@ -25,6 +25,7 @@
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
+    "@chromatic-com/storybook": "^4.1.1",
     "@ibexa/eslint-config": "https://github.com/ibexa/eslint-config-ibexa#~v2.0.0",
     "@ibexa/ts-config": "https://github.com/ibexa/ts-config-ibexa#~v1.1.0",
     "@storybook/addon-a11y": "^9.0.4",
