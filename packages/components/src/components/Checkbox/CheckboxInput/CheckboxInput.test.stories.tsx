@@ -20,29 +20,35 @@ export default meta;
 
 type Story = StoryObj<typeof CheckboxInputStateful>;
 
-const NUMBER_OF_CLICKS_FOCUS = 2;
-
 export const Default: Story = {
     name: 'Default',
     play: async ({ canvasElement, step, args }) => {
         const canvas = within(canvasElement);
-        const input = canvas.getByRole('checkbox');
+        const input = canvas.getByRole<HTMLInputElement>('checkbox');
+        const checkInputHandlers = async (nthCalled: number, currentValue: boolean) => {
+            await expect(args.onFocus).toHaveBeenCalledOnce();
+            await expect(args.onChange).toHaveBeenCalledTimes(nthCalled);
+            await expect(args.onChange).toHaveBeenLastCalledWith(currentValue, expect.anything());
+            await expect(args.onInput).toHaveBeenCalledTimes(nthCalled);
+            await expect(args.onInput).toHaveBeenLastCalledWith(currentValue, expect.anything());
+            await expect(input.checked).toBe(currentValue);
+        };
 
-        await step('Checkbox handles focus event', async () => {
+        await step('Click checkbox', async () => {
             await expect(args.onFocus).not.toHaveBeenCalled();
 
             await userEvent.click(input);
 
-            await expect(args.onFocus).toHaveBeenCalledOnce();
-
-            await userEvent.click(input);
-
-            await expect(args.onFocus).toHaveBeenCalledOnce();
-            await expect(args.onChange).toHaveBeenCalledTimes(NUMBER_OF_CLICKS_FOCUS);
-            await expect(args.onInput).toHaveBeenCalledTimes(NUMBER_OF_CLICKS_FOCUS);
+            await checkInputHandlers(1, true); // eslint-disable-line no-magic-numbers
         });
 
-        await step('Checkbox handles blur event', async () => {
+        await step('Click checkbox again', async () => {
+            await userEvent.click(input);
+
+            await checkInputHandlers(2, false); // eslint-disable-line no-magic-numbers
+        });
+
+        await step('Click outside checkbox', async () => {
             await expect(args.onBlur).not.toHaveBeenCalled();
 
             await userEvent.click(canvasElement);
