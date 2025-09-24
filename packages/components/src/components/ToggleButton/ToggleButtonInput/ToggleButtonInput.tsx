@@ -53,8 +53,8 @@ export const ToggleButtonInput = ({
         onBlur(event);
     };
     const getLabel = () => {
-        const defaultEnabledLabel = Translator.trans(/*@Desc("Yes")*/ 'ids.toggle.label.enabled');
-        const defaultDisabledLabel = Translator.trans(/*@Desc("No")*/ 'ids.toggle.label.disabled');
+        const defaultEnabledLabel = Translator.trans(/*@Desc("On")*/ 'ids.toggle.label.enabled');
+        const defaultDisabledLabel = Translator.trans(/*@Desc("Off")*/ 'ids.toggle.label.disabled');
 
         if (checked) {
             return enabledLabel ?? defaultEnabledLabel;
