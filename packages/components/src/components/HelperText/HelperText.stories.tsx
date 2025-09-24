@@ -39,3 +39,10 @@ export const Error: Story = {
         type: HelperTextType.Error,
     },
 };
+
+export const Empty: Story = {
+    name: 'Empty',
+    args: {
+        children: '',
+    },
+};

@@ -11,6 +11,10 @@ const ICONS_TYPE_MAP = {
 } as const;
 
 export const HelperText = ({ children, className = '', title = '', type = HelperTextType.Default }: HelperTextProps) => {
+    if (!children) {
+        return null;
+    }
+
     const componentClassName = createCssClassNames({
         'ids-helper-text': true,
         [`ids-helper-text--${type}`]: !!type,
