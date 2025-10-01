@@ -27,17 +27,19 @@ export const Default: Story = {
         const canvas = within(canvasElement);
         const input = canvas.getByRole('button');
 
-        await step('AltRadio handles focus event', async () => {
+        await step('Click tile', async () => {
             await expect(args.onFocus).not.toHaveBeenCalled();
 
             await userEvent.click(input);
 
             await expect(args.onFocus).toHaveBeenCalledOnce();
             await expect(args.onChange).toHaveBeenCalledOnce();
+            await expect(args.onChange).toHaveBeenCalledWith(true);
             await expect(args.onInput).toHaveBeenCalledOnce();
+            await expect(args.onInput).toHaveBeenCalledWith(true);
         });
 
-        await step('AltRadio handles blur event', async () => {
+        await step('Click outside tile', async () => {
             await expect(args.onBlur).not.toHaveBeenCalled();
 
             await userEvent.click(canvasElement);
