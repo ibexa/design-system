@@ -10,5 +10,4 @@ export type ToggleButtonInputProps = Omit<BaseChoiceInputProps, 'type' | 'error'
     disabledLabel?: string;
     onChange?: (checked: boolean) => void;
     size?: ToggleButtonInputSize;
-    value: string;
 };
