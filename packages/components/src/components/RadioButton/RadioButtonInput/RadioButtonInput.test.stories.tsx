@@ -23,9 +23,9 @@ export const Default: Story = {
     name: 'Default',
     play: async ({ canvasElement, step, args }) => {
         const canvas = within(canvasElement);
-        const input = canvas.getByRole('radio');
+        const input = canvas.getByRole<HTMLInputElement>('radio');
 
-        await step('Radio Button handles focus event', async () => {
+        await step('Click radio button', async () => {
             await expect(args.onFocus).not.toHaveBeenCalled();
 
             await userEvent.click(input);
@@ -36,10 +36,12 @@ export const Default: Story = {
 
             await expect(args.onFocus).toHaveBeenCalledOnce();
             await expect(args.onChange).toHaveBeenCalledOnce();
+            await expect(args.onChange).toHaveBeenCalledWith(true, expect.anything());
             await expect(args.onInput).toHaveBeenCalledOnce();
+            await expect(args.onInput).toHaveBeenCalledWith(true, expect.anything());
         });
 
-        await step('Radio Button handles blur event', async () => {
+        await step('Click outside radio button', async () => {
             await expect(args.onBlur).not.toHaveBeenCalled();
 
             await userEvent.click(canvasElement);
