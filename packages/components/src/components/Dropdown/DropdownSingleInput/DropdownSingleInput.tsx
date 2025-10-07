@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { BASE_DROPDOWN_CLASS, BaseDropdown } from '@ids-partials/BaseDropdown';
-import { TranslatorContext } from '@ids-context/Translator';
+import { BaseDropdown, ExtraDropdownItemClickParamsType } from '@ids-partials/BaseDropdown';
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 import withStateValue from '@ids-hoc/withStateValue';
 
@@ -15,29 +14,19 @@ export const DropdownSingleInput = ({
     value = '',
     ...restProps
 }: DropdownSingleInputProps) => {
-    const Translator = useContext(TranslatorContext);
     const dropdownClassName = createCssClassNames({
         'ids-dropdown--single': true,
         [className]: !!className,
     });
-    const clickDropdownItem = ({ id }: DropdownSingleInputItem) => {
+    const clickDropdownItem = ({ id }: DropdownSingleInputItem, { closeDropdown }: ExtraDropdownItemClickParamsType) => {
         onChange(id);
+        closeDropdown();
     };
+    const selectedItem = value ? items.find((item) => item.id === value) : null;
     const isItemSelected = (item: DropdownSingleInputItem) => item.id === value;
-    const renderSelectedInfo = () => {
-        const selectedItem = value ? items.find((item) => item.id === value) : null;
-
-        if (!selectedItem) {
-            const placeholder = Translator.trans(/*@Desc("Select an item")*/ 'ids.dropdown.placeholder');
-
-            return <div className={BASE_DROPDOWN_CLASS.PLACEHOLDER}>{placeholder}</div>;
-        }
-
-        return <div className={BASE_DROPDOWN_CLASS.SELECTION_INFO_ITEMS}>{selectedItem.label}</div>;
-    };
     const renderSource = () => {
         return (
-            <select name={name} tabIndex={-1} value={value}>
+            <select defaultValue={value} name={name} tabIndex={-1}>
                 {items.map((item) => (
                     <option key={item.id} value={item.id}>
                         {item.label}
@@ -51,14 +40,14 @@ export const DropdownSingleInput = ({
         <BaseDropdown
             {...restProps}
             className={dropdownClassName}
+            isEmpty={!selectedItem}
             isItemSelected={isItemSelected}
             items={items}
             onDropdownItemClick={clickDropdownItem}
+            renderSelectedItems={() => selectedItem?.label ?? ''}
             renderSource={renderSource}
-        >
-            {renderSelectedInfo()}
-        </BaseDropdown>
+        />
     );
 };
 
-export const DropdownSingleInputStateful = withStateValue<DropdownSingleInputProps, string | number>(DropdownSingleInput);
+export const DropdownSingleInputStateful = withStateValue<DropdownSingleInputProps, string>(DropdownSingleInput);

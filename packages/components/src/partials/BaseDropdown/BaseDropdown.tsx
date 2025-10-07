@@ -9,23 +9,22 @@ import { useKeyDown } from '@ids-hooks/useKeyEvent';
 
 import { BaseDropdownItem, BaseDropdownProps } from './BaseDropdown.types';
 
-export const BASE_DROPDOWN_CLASS = {
-    ITEM: 'ids-dropdown__item',
-    PLACEHOLDER: 'ids-dropdown__placeholder',
-    SELECTION_INFO_ITEMS: 'ids-dropdown__selection-info-items',
-};
 const MAX_VISIBLE_ITEMS = 10;
 
 export const BaseDropdown = <T extends BaseDropdownItem>({
     children,
+    isEmpty = true,
     isItemSelected = () => false,
     items,
     disabled = false,
     error = false,
     filterFunction = (item, searchTerm) => item.label.toLowerCase().includes(searchTerm.toLowerCase()),
+    getItemAttributes = () => ({}),
     maxVisibleItems = MAX_VISIBLE_ITEMS,
     onDropdownItemClick = () => undefined,
+    renderEmptySelectionInfo,
     renderItem = (item) => item.label,
+    renderSelectedItems = () => null,
     renderSource = () => null,
     className = '',
 }: BaseDropdownProps<T>) => {
@@ -83,8 +82,28 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
         );
     };
     const onItemClick = (item: T) => {
-        onDropdownItemClick(item);
-        setIsOpen(false);
+        onDropdownItemClick(item, {
+            closeDropdown: () => {
+                setIsOpen(false);
+            },
+        });
+    };
+    const renderSelectionInfo = () => {
+        if (children) {
+            return children;
+        }
+
+        if (isEmpty) {
+            if (renderEmptySelectionInfo) {
+                return renderEmptySelectionInfo();
+            }
+
+            const placeholder = Translator.trans(/*@Desc("Select an item")*/ 'ids.dropdown.placeholder');
+
+            return <div className="ids-dropdown__placeholder">{placeholder}</div>;
+        }
+
+        return <div className="ids-dropdown__selection-info-items">{renderSelectedItems()}</div>;
     };
     const renderItemsContainer = () => {
         if (!isOpen) {
@@ -120,6 +139,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
                                 }}
                                 role="button"
                                 tabIndex={0}
+                                {...getItemAttributes(item)}
                             >
                                 {renderItem(item)}
                             </li>
@@ -208,7 +228,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
         <div className={dropdownClassName}>
             <div className="ids-dropdown__source">{renderSource()}</div>
             <div className={dropdownWidgetClassName} onClick={toggleDropdown} ref={setReferenceElement} role="button" tabIndex={0}>
-                <div className="ids-dropdown__selection-info">{children}</div>
+                <div className="ids-dropdown__selection-info">{renderSelectionInfo()}</div>
                 <div className="ids-dropdown__expander">
                     <Expander isExpanded={isOpen} isFocusable={false} onClick={toggleDropdown} type={ExpanderType.Chevron} />
                 </div>
