@@ -2,7 +2,11 @@
 
 .ids-input-text {
     position: relative;
-    width: fit-content;
+
+    .ids-input {
+        box-sizing: border-box;
+        width: 100%;
+    }
 
     &__actions {
         position: absolute;

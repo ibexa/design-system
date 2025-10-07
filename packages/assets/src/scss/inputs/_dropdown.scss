@@ -44,7 +44,7 @@
         padding: calculateRem(8px);
     }
 
-    &__search + .ids-dropdown__items {
+    &__search:not([hidden]) + .ids-dropdown__items {
         padding-top: 0;
     }
 
@@ -70,18 +70,20 @@
     &--single {
         #{$self} {
             &__item {
-                &:hover {
-                    color: $color-primary-80;
-                    cursor: pointer;
-                }
+                &:not(.ids-dropdown__item--selected) {
+                    &:hover {
+                        color: $color-primary-80;
+                        cursor: pointer;
+                    }
 
-                &:active {
-                    border-color: $color-primary-80;
-                }
+                    &:active {
+                        border-color: $color-primary-80;
+                    }
 
-                &:focus {
-                    border-color: $color-primary-80;
-                    box-shadow: $box-shadow-focus-primary;
+                    &:focus {
+                        border-color: $color-primary-80;
+                        box-shadow: $box-shadow-focus-primary;
+                    }
                 }
 
                 &--selected {

@@ -57,7 +57,7 @@ export const DropdownSingleInput = ({
             return <div className={BASE_DROPDOWN_CLASS.PLACEHOLDER}>Select an item</div>;
         }
 
-        return <div>{selectedItem.label}</div>;
+        return <div className={BASE_DROPDOWN_CLASS.SELECTION_INFO_ITEMS}>{selectedItem.label}</div>;
     };
 
     return (
