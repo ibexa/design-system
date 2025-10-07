@@ -17,6 +17,10 @@
         <source>No</source>
         <target>No</target>
       </trans-unit>
+      <trans-unit id="ids.dropdown.placeholder">
+        <source>Select an item</source>
+        <target>Select an item</target>
+      </trans-unit>
       <trans-unit id="content_edit.autosave.status_off.message">
         <source>Autosave is off, draft not created</source>
         <target>Autosave is off, draft not created</target>

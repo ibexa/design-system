@@ -6,6 +6,7 @@ export enum ExpanderType {
 interface ExpanderSharedProps {
     onClick?: (isExpanded: boolean) => void;
     isExpanded?: boolean;
+    isFocusable?: boolean;
     type: ExpanderType;
 }
 
