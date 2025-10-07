@@ -25,7 +25,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
     filterFunction = (item, searchTerm) => item.label.toLowerCase().includes(searchTerm.toLowerCase()),
     maxVisibleItems = MAX_VISIBLE_ITEMS,
     onDropdownItemClick = () => undefined,
-    renderItem,
+    renderItem = (item) => item.label,
     renderSource = () => null,
     className = '',
 }: BaseDropdownProps<T>) => {

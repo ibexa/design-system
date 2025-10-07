@@ -24,9 +24,6 @@ export const DropdownSingleInput = ({
         onChange(id);
     };
     const isItemSelected = (item: DropdownSingleInputItem) => item.id === value;
-    const renderItem = (item: DropdownSingleInputItem) => {
-        return item.label;
-    };
     const renderSelectedInfo = () => {
         const selectedItem = value ? items.find((item) => item.id === value) : null;
 
@@ -57,7 +54,6 @@ export const DropdownSingleInput = ({
             isItemSelected={isItemSelected}
             items={items}
             onDropdownItemClick={clickDropdownItem}
-            renderItem={renderItem}
             renderSource={renderSource}
         >
             {renderSelectedInfo()}

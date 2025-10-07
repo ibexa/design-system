@@ -22,14 +22,12 @@ const getArguments = (items: DropdownItem[]) => ({
         </select>
     ),
 });
-const renderItem = (item: DropdownItem) => item.label;
 
 const meta: Meta<typeof BaseDropdown<DropdownItem>> = {
     title: 'components/src/base/BaseDropdown',
     component: BaseDropdown<DropdownItem>,
     tags: ['autodocs', 'foundation', 'base'],
     args: {
-        renderItem,
         children: <div className={BASE_DROPDOWN_CLASS.PLACEHOLDER}>Select an item</div>,
         ...getArguments([
             { id: 1, label: 'Item 1' },

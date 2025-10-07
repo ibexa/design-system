@@ -5,7 +5,7 @@ import { DropdownSingleInputStateful } from '.';
 
 const meta: Meta<typeof DropdownSingleInputStateful> = {
     component: DropdownSingleInputStateful,
-    // tags: ['!dev'],
+    tags: ['!dev'],
     args: {
         items: [
             { id: 'value1', label: 'Item 1' },
