@@ -1,8 +1,0 @@
-{
-    "extends": ["./tsconfig.json"],
-    "exclude": ["src/**/*.stories.ts", "src/**/*.stories.tsx"],
-    "compilerOptions": {
-        "declaration": true,
-        "outDir": "dist"
-    }
-}

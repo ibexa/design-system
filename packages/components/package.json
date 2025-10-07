@@ -22,11 +22,13 @@
     "build": "yarn build:clear && yarn build:js && yarn build:types && yarn generate-exports"
   },
   "exports": {
-    "./Accordion": "./dist/Accordion/index.js",
-    "./Autosave": "./dist/Autosave/index.js",
-    "./Button": "./dist/Button/index.js",
-    "./Expander": "./dist/Expander/index.js",
-    "./Icon": "./dist/Icon/index.js",
+    "./components": "./dist/components/index.js",
+    "./core": "./dist/core/index.js",
+    "./hoc": "./dist/hoc/index.js",
+    "./hooks": "./dist/hooks/index.js",
+    "./partials": "./dist/partials/index.js",
+    "./shared": "./dist/shared/index.js",
+    "./ui": "./dist/ui/index.js",
     "./context/Assets": "./dist/context/Assets/index.js",
     "./context/Translator": "./dist/context/Translator/index.js"
   }

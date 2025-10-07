@@ -20,8 +20,8 @@
     "build": "yarn build:clear && yarn build:js && yarn generate-exports"
   },
   "exports": {
-    "./helpers/*": "./src/helpers/*",
-    "./types/*": "./src/types/*",
-    "./validators/*": "./src/validators/*"
+    "./helpers/*": "./dist/helpers/*",
+    "./types/*": "./dist/types/*",
+    "./validators/*": "./dist/validators/*"
   }
 }
