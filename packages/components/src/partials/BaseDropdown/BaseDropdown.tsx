@@ -110,7 +110,9 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
                             <li
                                 className={dropdownItemClassName}
                                 key={item.id}
-                                onClick={() => { onItemClick(item) }}
+                                onClick={() => {
+                                    onItemClick(item);
+                                }}
                                 ref={(node) => {
                                     if (index === 0 && !hasSearchInput && node) {
                                         node.focus();
