@@ -11,7 +11,14 @@ const ICONS_MAP = {
     [ExpanderType.Chevron]: 'arrow-chevron-down',
 } as const;
 
-export const Expander = ({ onClick, type, collapseLabel = '', expandLabel = '', hasIcon = true, isExpanded = false }: ExpanderProps) => {
+export const Expander = ({
+    onClick = () => undefined,
+    type,
+    collapseLabel = '',
+    expandLabel = '',
+    hasIcon = true,
+    isExpanded = false,
+}: ExpanderProps) => {
     const label = isExpanded ? collapseLabel : expandLabel;
     const componentClassName = createCssClassNames({
         'ids-expander': true,

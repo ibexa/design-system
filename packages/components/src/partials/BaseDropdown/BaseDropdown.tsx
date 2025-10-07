@@ -11,6 +11,7 @@ import { BaseDropdownItem, BaseDropdownProps } from './BaseDropdown.types';
 export const BASE_DROPDOWN_CLASS = {
     ITEM: 'ids-dropdown__item',
     PLACEHOLDER: 'ids-dropdown__placeholder',
+    SELECTION_INFO_ITEMS: 'ids-dropdown__selection-info-items',
 };
 const MAX_VISIBLE_ITEMS = 10;
 
