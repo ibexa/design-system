@@ -110,7 +110,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
                             <li
                                 className={dropdownItemClassName}
                                 key={item.id}
-                                onClick={onItemClick.bind(null, item)}
+                                onClick={() => { onItemClick(item) }}
                                 ref={(node) => {
                                     if (index === 0 && !hasSearchInput && node) {
                                         node.focus();
@@ -153,14 +153,16 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
         }
     }, [isOpen, referenceElement]);
 
-    useKeyDown(['Enter', ' '], () => {
+    useKeyDown(['Enter', ' '], (event) => {
         const { activeElement } = window.document;
 
         if (activeElement === referenceElement) {
+            event.preventDefault();
             toggleDropdown();
         }
 
         if (isOpen && activeElement?.classList.contains('ids-dropdown__item') && activeElement instanceof HTMLElement) {
+            event.preventDefault();
             activeElement.click();
         }
     });
