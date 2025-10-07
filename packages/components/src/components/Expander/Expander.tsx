@@ -18,6 +18,7 @@ export const Expander = ({
     expandLabel = '',
     hasIcon = true,
     isExpanded = false,
+    isFocusable = true,
 }: ExpanderProps) => {
     const label = isExpanded ? collapseLabel : expandLabel;
     const componentClassName = createCssClassNames({
@@ -42,6 +43,7 @@ export const Expander = ({
             ariaLabel={label}
             className={componentClassName}
             extraAria={extraAria}
+            isFocusable={isFocusable}
             onClick={() => {
                 onClick(!isExpanded);
             }}

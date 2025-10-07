@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useImperativeHandle, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 
 import { Expander, ExpanderType } from '@ids-components/Expander';
 import { InputTextInput, InputTextInputSize } from '@ids-components/InputText';
 import { TranslatorContext } from '@ids-context/Translator';
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
+import { useKeyDown } from '@ids-hooks/useKeyEvent';
 
 import { BaseDropdownItem, BaseDropdownProps } from './BaseDropdown.types';
 
@@ -17,13 +18,14 @@ const MAX_VISIBLE_ITEMS = 10;
 
 export const BaseDropdown = <T extends BaseDropdownItem>({
     children,
+    isItemSelected = () => false,
     items,
     disabled = false,
     error = false,
     filterFunction = (item, searchTerm) => item.label.toLowerCase().includes(searchTerm.toLowerCase()),
     maxVisibleItems = MAX_VISIBLE_ITEMS,
-    ref,
-    renderItems,
+    onDropdownItemClick = () => undefined,
+    renderItem,
     renderSource = () => null,
     className = '',
 }: BaseDropdownProps<T>) => {
@@ -80,6 +82,10 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
             </div>
         );
     };
+    const onItemClick = (item: T) => {
+        onDropdownItemClick(item);
+        setIsOpen(false);
+    };
     const renderItemsContainer = () => {
         if (!isOpen) {
             return null;
@@ -94,7 +100,29 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
             <div className="ids-dropdown__items-container" ref={setPopperElement} style={itemsContainerStyles} {...attributes.popper}>
                 {renderSearchInput()}
                 <ul className="ids-dropdown__items" data-max-visible-items={maxVisibleItems}>
-                    {renderItems(filteredItems)}
+                    {filteredItems.map((item, index) => {
+                        const dropdownItemClassName = createCssClassNames({
+                            'ids-dropdown__item': true,
+                            'ids-dropdown__item--selected': isItemSelected(item),
+                        });
+
+                        return (
+                            <li
+                                className={dropdownItemClassName}
+                                key={item.id}
+                                onClick={onItemClick.bind(null, item)}
+                                ref={(node) => {
+                                    if (index === 0 && !hasSearchInput && node) {
+                                        node.focus();
+                                    }
+                                }}
+                                role="button"
+                                tabIndex={0}
+                            >
+                                {renderItem(item)}
+                            </li>
+                        );
+                    })}
                 </ul>
             </div>
         );
@@ -119,23 +147,58 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
         }
     }, [isOpen, popperElement, referenceElement]);
 
-    useImperativeHandle(ref, () => {
-        return {
-            closeDropdown: () => {
-                setIsOpen(false);
-            },
-            hasSearchInput: () => hasSearchInput,
-            openDropdown: () => {
-                setIsOpen(true);
-            },
-        };
-    }, []);
-
     useLayoutEffect(() => {
         if (isOpen && referenceElement) {
             setItemsContainerWidth(referenceElement.offsetWidth);
         }
-    }, [isOpen, popperElement]);
+    }, [isOpen, referenceElement]);
+
+    useKeyDown(['Enter', ' '], () => {
+        const { activeElement } = window.document;
+
+        if (activeElement === referenceElement) {
+            toggleDropdown();
+        }
+
+        if (isOpen && activeElement?.classList.contains('ids-dropdown__item') && activeElement instanceof HTMLElement) {
+            activeElement.click();
+        }
+    });
+
+    useKeyDown(['Escape'], () => {
+        if (isOpen) {
+            setIsOpen(false);
+            referenceElement?.focus();
+        }
+    });
+
+    useKeyDown(['ArrowDown'], () => {
+        if (isOpen) {
+            const { activeElement } = window.document;
+
+            if (activeElement?.classList.contains('ids-dropdown__item')) {
+                const nextElement = activeElement.nextElementSibling;
+
+                if (nextElement?.classList.contains('ids-dropdown__item') && nextElement instanceof HTMLElement) {
+                    nextElement.focus();
+                }
+            }
+        }
+    });
+
+    useKeyDown(['ArrowUp'], () => {
+        if (isOpen) {
+            const { activeElement } = window.document;
+
+            if (activeElement?.classList.contains('ids-dropdown__item')) {
+                const previousElement = activeElement.previousElementSibling;
+
+                if (previousElement?.classList.contains('ids-dropdown__item') && previousElement instanceof HTMLElement) {
+                    previousElement.focus();
+                }
+            }
+        }
+    });
 
     return (
         <div className={dropdownClassName}>
@@ -143,7 +206,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
             <div className={dropdownWidgetClassName} onClick={toggleDropdown} ref={setReferenceElement} role="button" tabIndex={0}>
                 <div className="ids-dropdown__selection-info">{children}</div>
                 <div className="ids-dropdown__expander">
-                    <Expander isExpanded={isOpen} onClick={toggleDropdown} type={ExpanderType.Chevron} />
+                    <Expander isExpanded={isOpen} isFocusable={false} onClick={toggleDropdown} type={ExpanderType.Chevron} />
                 </div>
             </div>
             {renderItemsContainer()}

@@ -22,22 +22,14 @@ const getArguments = (items: DropdownItem[]) => ({
         </select>
     ),
 });
-const renderItems = (items: DropdownItem[]) => (
-    <>
-        {items.map((item) => (
-            <li className={BASE_DROPDOWN_CLASS.ITEM} key={item.id} role="button" tabIndex={0}>
-                {item.label}
-            </li>
-        ))}
-    </>
-);
+const renderItem = (item: DropdownItem) => item.label;
 
 const meta: Meta<typeof BaseDropdown<DropdownItem>> = {
     title: 'components/src/base/BaseDropdown',
     component: BaseDropdown<DropdownItem>,
     tags: ['autodocs', 'foundation', 'base'],
     args: {
-        renderItems,
+        renderItem,
         children: <div className={BASE_DROPDOWN_CLASS.PLACEHOLDER}>Select an item</div>,
         ...getArguments([
             { id: 1, label: 'Item 1' },

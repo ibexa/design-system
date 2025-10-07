@@ -1,67 +1,65 @@
-import React, { useRef } from 'react';
+import React, { useContext } from 'react';
 
-import { BASE_DROPDOWN_CLASS, BaseDropdown, BaseDropdownRef } from '@ids-partials/BaseDropdown';
+import { BASE_DROPDOWN_CLASS, BaseDropdown } from '@ids-partials/BaseDropdown';
+import { TranslatorContext } from '@ids-context/Translator';
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 import withStateValue from '@ids-hoc/withStateValue';
 
 import { DropdownSingleInputItem, DropdownSingleInputProps } from './DropdownSingleInput.types';
 
 export const DropdownSingleInput = ({
+    name,
     className = '',
     items = [],
     onChange = () => undefined,
     value = '',
     ...restProps
 }: DropdownSingleInputProps) => {
-    const baseDropdownRef = useRef<BaseDropdownRef>(null);
+    const Translator = useContext(TranslatorContext);
     const dropdownClassName = createCssClassNames({
         'ids-dropdown--single': true,
-        [className]: true,
+        [className]: !!className,
     });
     const clickDropdownItem = ({ id }: DropdownSingleInputItem) => {
         onChange(id);
-        baseDropdownRef.current?.closeDropdown();
     };
-    const renderItems = (itemsToRender: DropdownSingleInputItem[]) => (
-        <>
-            {itemsToRender.map((item, index) => {
-                const dropdownItemClassName = createCssClassNames({
-                    [BASE_DROPDOWN_CLASS.ITEM]: true,
-                    [`${BASE_DROPDOWN_CLASS.ITEM}--selected`]: item.id === value,
-                });
-
-                return (
-                    <li
-                        className={dropdownItemClassName}
-                        key={item.id}
-                        onClick={clickDropdownItem.bind(null, item)}
-                        ref={(node) => {
-                            const hasSearchInput = baseDropdownRef.current?.hasSearchInput() ?? false;
-                            if (index === 0 && !hasSearchInput && node) {
-                                node.focus();
-                            }
-                        }}
-                        role="button"
-                        tabIndex={0}
-                    >
-                        {item.label}
-                    </li>
-                );
-            })}
-        </>
-    );
+    const isItemSelected = (item: DropdownSingleInputItem) => item.id === value;
+    const renderItem = (item: DropdownSingleInputItem) => {
+        return item.label;
+    };
     const renderSelectedInfo = () => {
         const selectedItem = value ? items.find((item) => item.id === value) : null;
 
         if (!selectedItem) {
-            return <div className={BASE_DROPDOWN_CLASS.PLACEHOLDER}>Select an item</div>;
+            const placeholder = Translator.trans(/*@Desc("Select an item")*/ 'ids.dropdown.placeholder');
+
+            return <div className={BASE_DROPDOWN_CLASS.PLACEHOLDER}>{placeholder}</div>;
         }
 
         return <div className={BASE_DROPDOWN_CLASS.SELECTION_INFO_ITEMS}>{selectedItem.label}</div>;
     };
+    const renderSource = () => {
+        return (
+            <select name={name} tabIndex={-1} value={value}>
+                {items.map((item) => (
+                    <option key={item.id} value={item.id}>
+                        {item.label}
+                    </option>
+                ))}
+            </select>
+        );
+    };
 
     return (
-        <BaseDropdown {...restProps} className={dropdownClassName} items={items} ref={baseDropdownRef} renderItems={renderItems}>
+        <BaseDropdown
+            {...restProps}
+            className={dropdownClassName}
+            isItemSelected={isItemSelected}
+            items={items}
+            onDropdownItemClick={clickDropdownItem}
+            renderItem={renderItem}
+            renderSource={renderSource}
+        >
             {renderSelectedInfo()}
         </BaseDropdown>
     );

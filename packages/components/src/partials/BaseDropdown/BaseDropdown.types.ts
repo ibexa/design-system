@@ -5,20 +5,15 @@ export interface BaseDropdownItem {
     label: string;
 }
 
-export interface BaseDropdownRef {
-    openDropdown: () => void;
-    hasSearchInput: () => boolean;
-    closeDropdown: () => void;
-}
-
 export interface BaseDropdownProps<T extends BaseDropdownItem> extends BaseComponentAttributes {
+    isItemSelected: (item: T) => boolean;
     items: T[];
-    renderItems: (items: T[]) => React.ReactNode;
+    renderItem: (item: T) => React.ReactNode;
     children: React.ReactNode;
     disabled?: boolean;
     error?: boolean;
     filterFunction?: (item: T, searchTerm: string) => boolean;
     maxVisibleItems?: number;
-    ref: React.Ref<BaseDropdownRef>;
+    onDropdownItemClick: (item: T) => void;
     renderSource?: () => React.ReactNode;
 }
