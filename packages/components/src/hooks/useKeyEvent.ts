@@ -1,17 +1,19 @@
 import { useEffect } from 'react';
 
-export const useKeyDown = (key: string[], callback: (event: KeyboardEvent) => void) => {
+export const useKeyDown = (key: string[], callback: (event: KeyboardEvent) => void, node: HTMLElement | null) => {
     useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (key.includes(event.key)) {
+        const listenerElement = node ?? window;
+
+        const handleKeyDown = (event: Event) => {
+            if (event instanceof KeyboardEvent && key.includes(event.key)) {
                 callback(event);
             }
         };
 
-        window.addEventListener('keydown', handleKeyDown);
+        listenerElement.addEventListener('keydown', handleKeyDown);
 
         return () => {
-            window.removeEventListener('keydown', handleKeyDown);
+            listenerElement.removeEventListener('keydown', handleKeyDown);
         };
     }, [key, callback]);
 };
