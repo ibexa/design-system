@@ -4,11 +4,13 @@ import { useInitValidators, useValidateInput } from './InputTextField.utils';
 import { BaseField } from '@ids-partials/BaseField';
 import { HelperTextType } from '@ids-components/HelperText';
 import { InputTextInput } from '../InputTextInput';
+import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 import withStateValue from '@ids-hoc/withStateValue';
 
 import { InputTextFieldProps, InputTextFieldValueType } from './InputTextField.types';
 
 export const InputTextField = ({
+    className = '',
     helperText,
     helperTextExtra = {},
     id,
@@ -21,6 +23,10 @@ export const InputTextField = ({
     required = false,
     value = '',
 }: InputTextFieldProps) => {
+    const componentClassName = createCssClassNames({
+        'ids-input-text-field': true,
+        [className]: !!className,
+    });
     const validators = useInitValidators({ required });
     const { isValid, messages } = useValidateInput({ validators, value });
     const helperTextProps = {
@@ -49,7 +55,7 @@ export const InputTextField = ({
     }, [isValid, messages, onValidate]);
 
     return (
-        <BaseField helperText={helperTextProps} label={labelProps} type="input-text">
+        <BaseField className={componentClassName} helperText={helperTextProps} label={labelProps} type="input-text">
             <InputTextInput {...inputProps} />
         </BaseField>
     );
