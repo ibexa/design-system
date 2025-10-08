@@ -12,6 +12,7 @@ const meta: Meta<typeof CheckboxesListFieldStateful> = {
     args: {
         label: 'Choice Inputs List Label',
         helperText: 'This is a helper text',
+        name: 'checkboxes-list-field',
         onChange: action('on-change'),
         value: ['item1'],
         items: [

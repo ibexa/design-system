@@ -9,6 +9,7 @@ const meta: Meta<typeof RadioButtonsListFieldStateful> = {
     args: {
         label: 'Choice Inputs List Label',
         helperText: 'This is a helper text',
+        name: 'radio-buttons-list-field',
         onChange: action('on-change'),
         value: 'item1',
         items: [

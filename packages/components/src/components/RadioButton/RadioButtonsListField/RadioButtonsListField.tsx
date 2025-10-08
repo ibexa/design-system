@@ -3,6 +3,7 @@ import React from 'react';
 import { BaseInputsList } from '@ids-partials/BaseInputsList';
 import { HelperTextType } from '@ids-components/HelperText';
 import { RadioButtonField } from '../RadioButtonField';
+import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 import withStateValue from '@ids-hoc/withStateValue';
 
 import { RadioButtonsListFieldDirection, RadioButtonsListFieldItem, RadioButtonsListFieldProps } from './RadioButtonsListField.types';
@@ -21,6 +22,10 @@ export const RadioButtonsListField = ({
     required = false,
     value = '',
 }: RadioButtonsListFieldProps) => {
+    const componentClassName = createCssClassNames({
+        'ids-radio-buttons-list-field': true,
+        [className]: !!className,
+    });
     const helperTextProps = {
         children: helperText,
         type: HelperTextType.Default,
@@ -49,7 +54,7 @@ export const RadioButtonsListField = ({
 
     return (
         <BaseInputsList
-            className={className}
+            className={componentClassName}
             direction={direction}
             helperTextProps={helperTextProps}
             items={items}

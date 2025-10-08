@@ -3,6 +3,7 @@ import React, { useCallback } from 'react';
 import { BaseInputsList } from '@ids-partials/BaseInputsList';
 import { CheckboxField } from '../CheckboxField';
 import { HelperTextType } from '@ids-components/HelperText';
+import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 import withStateValue from '@ids-hoc/withStateValue';
 
 import {
@@ -26,6 +27,10 @@ export const CheckboxesListField = ({
     required = false,
     value = [],
 }: CheckboxesListFieldProps) => {
+    const componentClassName = createCssClassNames({
+        'ids-checkboxes-list-field': true,
+        [className]: !!className,
+    });
     const helperTextProps = {
         children: helperText,
         type: HelperTextType.Default,
@@ -72,7 +77,7 @@ export const CheckboxesListField = ({
 
     return (
         <BaseInputsList
-            className={className}
+            className={componentClassName}
             direction={direction}
             helperTextProps={helperTextProps}
             items={items}
