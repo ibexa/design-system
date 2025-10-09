@@ -4,7 +4,7 @@
 
 In Ibexa DXP root directory run command
 ```
-yarn [path to design system root]/bin/prepare_ds_symlinks.mjs
+node [path to design system root]/bin/prepare_ds_symlinks.mjs
 ```
 This command replaces design system directories from admin-ui-assets with symlinks to this repository.
 It also updates `ibexa.tsconfig.json` file with aliases to this repository.
