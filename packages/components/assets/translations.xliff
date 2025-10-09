@@ -6,12 +6,12 @@
         <target>Clear</target>
       </trans-unit>
       <trans-unit id="ids.toggle.label.enabled">
-        <source>Yes</source>
-        <target>Yes</target>
+        <source>On</source>
+        <target>On</target>
       </trans-unit>
       <trans-unit id="ids.toggle.label.disabled">
-        <source>No</source>
-        <target>No</target>
+        <source>Off</source>
+        <target>Off</target>
       </trans-unit>
       <trans-unit id="content_edit.autosave.status_off.message">
         <source>Autosave is off, draft not created</source>
