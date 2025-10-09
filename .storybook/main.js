@@ -1,5 +1,9 @@
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const path = require('path');
+const dotenv = require('dotenv');
+
+dotenv.config({ path: '.env.local' });
+dotenv.config();
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
@@ -68,9 +72,5 @@ const config = {
 
         return webpackConfig;
     },
-    env: (envConfig) => ({
-        ...envConfig,
-        TWIG_COMPONENTS_BASE_URL: 'http://localhost:8000',
-    }),
 };
 export default config;
