@@ -9,6 +9,13 @@ yarn [path to design system root]/bin/prepare_ds_symlinks.mjs
 This command replaces design system directories from admin-ui-assets with symlinks to this repository.
 It also updates `ibexa.tsconfig.json` file with aliases to this repository.
 
+### Using Ibexa DXP on different port than localhost:8000
+
+By default Storybook tests if there's running instance on `http://localhost:8000`. In order to change it, create file `.env.local` in main storybook directory.
+```
+TWIG_COMPONENTS_BASE_URL=[url to your DXP instance]
+```
+
 ## Preparing tag for release
 
 To prepare a tag for release you have to run the following command from the root directory of the module:
