@@ -7,11 +7,19 @@ import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 import { ExpanderProps, ExpanderType } from './Expander.types';
 
 const ICONS_MAP = {
-    [ExpanderType.caret]: 'arrow-caret-down',
-    [ExpanderType.chevron]: 'arrow-chevron-down',
+    [ExpanderType.Caret]: 'arrow-caret-down',
+    [ExpanderType.Chevron]: 'arrow-chevron-down',
 } as const;
 
-export const Expander = ({ onClick, type, collapseLabel = '', expandLabel = '', hasIcon = true, isExpanded = false }: ExpanderProps) => {
+export const Expander = ({
+    onClick = () => undefined,
+    type,
+    collapseLabel = '',
+    expandLabel = '',
+    hasIcon = true,
+    isExpanded = false,
+    isFocusable = true,
+}: ExpanderProps) => {
     const label = isExpanded ? collapseLabel : expandLabel;
     const componentClassName = createCssClassNames({
         'ids-expander': true,
@@ -35,6 +43,7 @@ export const Expander = ({ onClick, type, collapseLabel = '', expandLabel = '', 
             ariaLabel={label}
             className={componentClassName}
             extraAria={extraAria}
+            isFocusable={isFocusable}
             onClick={() => {
                 onClick(!isExpanded);
             }}

@@ -18,6 +18,7 @@ export const Button = ({
     extraAria = {},
     className = '',
     icon,
+    isFocusable = true,
     size = ButtonSize.Medium,
     title = '',
     type = ButtonType.Primary,
@@ -69,6 +70,7 @@ export const Button = ({
             disabled={disabled}
             onClick={onClick}
             role="button"
+            tabIndex={isFocusable && !disabled ? 0 : -1} // eslint-disable-line no-magic-numbers
             title={title}
             type="button"
             {...extraAria}
