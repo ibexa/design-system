@@ -39,7 +39,7 @@ export const Default: Story = {
 
             await userEvent.click(input);
 
-            await checkInputHandlers(1, true); // eslint-disable-line no-magic-numbers
+            await checkInputHandlers(1, true);
         });
 
         await step('Click checkbox again', async () => {

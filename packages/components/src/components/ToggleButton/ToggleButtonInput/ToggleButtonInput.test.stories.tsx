@@ -48,7 +48,7 @@ export const Default: Story = {
         await step('Click toggle to check it', async () => {
             await userEvent.click(toggler);
 
-            await checkStepState(1, true); // eslint-disable-line no-magic-numbers
+            await checkStepState(1, true);
         });
 
         await step('Click toggle to uncheck it', async () => {
