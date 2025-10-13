@@ -8,7 +8,7 @@ const meta: Meta<typeof Tag> = {
         layout: 'centered',
     },
     tags: ['autodocs', 'foundation'],
-        args: {
+    args: {
         children: 'Label',
         size: TagSize.Medium,
     },
@@ -67,7 +67,6 @@ export const Error: Story = {
     },
 };
 
-
 export const IconTag: Story = {
     name: 'Icon tag',
     args: {
@@ -75,7 +74,6 @@ export const IconTag: Story = {
         type: TagType.IconTag,
     },
 };
-
 
 export const SuccessGhost: Story = {
     name: 'Success Ghost',
@@ -97,4 +95,3 @@ export const ErrorGhost: Story = {
         type: TagType.ErrorGhost,
     },
 };
-

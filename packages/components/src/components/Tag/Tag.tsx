@@ -17,9 +17,7 @@ export const Tag = ({ children, className = '', isDark = false, icon, size = Tag
 
     const renderDot = () => {
         if (isGhost) {
-            return (
-                <div className="ids-tag__ghost"></div>
-            );
+            return <div className="ids-tag__ghost" />;
         }
 
         return null;
