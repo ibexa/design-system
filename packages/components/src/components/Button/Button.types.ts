@@ -17,6 +17,7 @@ interface ButtonSharedProps extends BaseComponentAriaAttributes {
     ariaLabel?: string;
     onClick: React.MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
+    isFocusable?: boolean;
     size?: ButtonSize;
     type?: ButtonType;
 }

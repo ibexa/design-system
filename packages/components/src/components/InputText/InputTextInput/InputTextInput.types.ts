@@ -1,5 +1,6 @@
 import { BaseComponentAriaAttributes, ComponentEntryDataType } from '@ids-types/general';
 import { BaseInputType } from '@ids-partials/BaseInput/BaseInput.types';
+import React from 'react';
 
 export enum InputTextInputSize {
     Medium = 'medium',
@@ -9,6 +10,10 @@ export enum InputTextInputSize {
 export const INPUT_TYPE_VALUES = ['text', 'password', 'email', 'number', 'tel', 'search', 'url'] as const satisfies BaseInputType[];
 
 export type InputTextInputType = (typeof INPUT_TYPE_VALUES)[number];
+
+export interface InputTextInputRef {
+    focus: () => void;
+}
 
 export interface InputTextInputProps extends BaseComponentAriaAttributes {
     name: string;
@@ -22,6 +27,7 @@ export interface InputTextInputProps extends BaseComponentAriaAttributes {
     placeholder?: string;
     processActions?: (actions: ComponentEntryDataType[]) => ComponentEntryDataType[];
     readOnly?: boolean;
+    ref?: React.Ref<InputTextInputRef>;
     required?: boolean;
     size?: InputTextInputSize;
     type?: InputTextInputType;
