@@ -4,12 +4,13 @@ import { PartialStoryFn } from 'storybook/internal/types';
 
 const DEFAULT_WRAPPER_HEIGHT = 200;
 
-const DropdownDecorator = (Story: PartialStoryFn, { parameters }: { parameters: { wrapperHeight?: number } }) => (
-    <div style={{ height: parameters.wrapperHeight ?? DEFAULT_WRAPPER_HEIGHT }}>
+export const DropdownDecorator = (
+    Story: PartialStoryFn,
+    { parameters }: { parameters: { wrapperHeight?: number; styles?: React.CSSProperties } },
+) => (
+    <div style={{ height: parameters.wrapperHeight ?? DEFAULT_WRAPPER_HEIGHT, ...parameters.styles }}>
         <div style={{ overflow: 'hidden', padding: 20 }}>
             <Story />
         </div>
     </div>
 );
-
-export default DropdownDecorator;

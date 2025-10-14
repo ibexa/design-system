@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import DropdownDecorator from '../../../../../../src/storybook/decorators/DropdownDecorator';
+import { DropdownDecorator } from '@ids-sb-decorators/DropdownDecorator';
 import { DropdownSingleInputStateful } from '.';
 
 const meta: Meta<typeof DropdownSingleInputStateful> = {
