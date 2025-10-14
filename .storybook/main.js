@@ -64,6 +64,7 @@ const config = {
             '@ids-hoc': path.resolve(__dirname, '../packages/components/src/hoc'),
             '@ids-hooks': path.resolve(__dirname, '../packages/components/src/hooks'),
             '@ids-partials': path.resolve(__dirname, '../packages/components/src/partials'),
+            '@ids-sb-decorators': path.resolve(__dirname, '../src/storybook/decorators'),
             '@ids-shared': path.resolve(__dirname, '../packages/components/src/shared'),
             '@ids-core': path.resolve(__dirname, '../packages/components/src/core'),
         };

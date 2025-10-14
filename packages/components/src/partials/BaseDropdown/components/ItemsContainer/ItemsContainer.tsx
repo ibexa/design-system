@@ -1,11 +1,12 @@
-import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 
 import { Search } from '../Search';
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 import { useKeyDown } from '@ids-hooks/useKeyEvent';
 
-import { BaseDropdownItem, ItemsContainerProps } from './ItemsContainer.types';
+import { ItemsContainerItemsStylesType, ItemsContainerProps } from './ItemsContainer.types';
+import { BaseDropdownItem } from '../../BaseDropdown.types';
 
 export const ItemsContainer = <T extends BaseDropdownItem>({
     closeDropdown,
@@ -20,11 +21,15 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
     renderItem,
 }: ItemsContainerProps<T>) => {
     const searchRef = useRef<HTMLInputElement>(null);
+    const itemsRef = useRef<HTMLUListElement>(null);
+    const originalItemsMaxHeightRef = useRef(0);
+    const [forceTopPlacement, setForceTopPlacement] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
     const [itemsContainerWidth, setItemsContainerWidth] = useState(0);
+    const [itemsMaxHeight, setItemsMaxHeight] = useState(0);
     const { styles, attributes } = usePopper(referenceElement, popperElement, {
-        placement: 'bottom-start',
+        placement: forceTopPlacement ? 'top-start' : 'bottom-start',
         strategy: 'fixed',
     });
     const hasSearchInput = items.length > maxVisibleItems;
@@ -44,6 +49,35 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
         ...styles.popper,
         width: itemsContainerWidth ? `${itemsContainerWidth}px` : 'auto',
     };
+    const getItemsStyles = () => {
+        const itemsStyles: ItemsContainerItemsStylesType = {
+            '--max-visible-items': maxVisibleItems,
+        };
+
+        if (itemsMaxHeight) {
+            itemsStyles.maxHeight = `${itemsMaxHeight}px`;
+        }
+
+        return itemsStyles;
+    };
+    const popplerPlacement = attributes.popper?.['data-popper-placement'] === 'top-start' ? 'top' : 'bottom';
+    const calculateMaxAvailableItemsHeight = useCallback(
+        (availableHeight: number) => {
+            if (!isOpen || !popperElement || !itemsRef.current) {
+                return 0;
+            }
+
+            const { marginTop: itemsMarginTop, marginBottom: itemsMarginBottom } = window.getComputedStyle(popperElement);
+            const { top: itemsContainerTop, bottom: itemsContainerBottom } = popperElement.getBoundingClientRect();
+            const { top: itemsTop, bottom: itemsBottom } = itemsRef.current.getBoundingClientRect();
+            const topHeight = parseInt(itemsMarginTop, 10) + (itemsTop - itemsContainerTop);
+            const bottomHeight = parseInt(itemsMarginBottom, 10) + (itemsContainerBottom - itemsBottom);
+            const calculatedAvailableHeight = availableHeight - topHeight - bottomHeight;
+
+            return calculatedAvailableHeight;
+        },
+        [popperElement, isOpen],
+    );
 
     useEffect(() => {
         const clickOutsideHandler = (event: MouseEvent) => {
@@ -67,8 +101,55 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
     useLayoutEffect(() => {
         if (isOpen && referenceElement) {
             setItemsContainerWidth(referenceElement.offsetWidth);
+
+            originalItemsMaxHeightRef.current = itemsRef.current?.offsetHeight ?? 0;
+        } else {
+            setItemsMaxHeight(0);
         }
     }, [isOpen, referenceElement]);
+
+    useLayoutEffect(() => {
+        if (styles.popper.transform && referenceElement) {
+            const getAvailableHeight = () => {
+                if (popplerPlacement === 'bottom') {
+                    const { innerHeight: windowHeight } = window;
+                    const { bottom: dropdownBottom } = referenceElement.getBoundingClientRect();
+
+                    return windowHeight - dropdownBottom;
+                }
+
+                return referenceElement.getBoundingClientRect().top;
+            };
+            const availableHeight = getAvailableHeight();
+            const availableItemsHeight = calculateMaxAvailableItemsHeight(availableHeight);
+            const originalDropdownFitsInViewport = availableItemsHeight > originalItemsMaxHeightRef.current;
+
+            if (originalDropdownFitsInViewport) {
+                setItemsMaxHeight(0);
+            } else {
+                setItemsMaxHeight(availableItemsHeight);
+            }
+        }
+    }, [styles.popper.transform, popplerPlacement, referenceElement]);
+
+    useLayoutEffect(() => {
+        if (isOpen && referenceElement) {
+            const { top: referenceTop, bottom: referenceBottom } = referenceElement.getBoundingClientRect();
+            const { innerHeight: windowHeight } = window;
+
+            if (referenceBottom < 0 || referenceTop > windowHeight) {
+                closeDropdown();
+
+                return;
+            }
+
+            const maxTopHeight = referenceTop;
+            const maxBottomPosition = windowHeight - referenceBottom;
+            const shouldForceTopPlacement = maxTopHeight > maxBottomPosition && maxBottomPosition < originalItemsMaxHeightRef.current;
+
+            setForceTopPlacement(shouldForceTopPlacement);
+        }
+    }, [isOpen, referenceElement, styles.popper.transform]);
 
     useKeyDown(
         ['Enter', ' '],
@@ -137,7 +218,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
     return (
         <div className="ids-dropdown__items-container" ref={setPopperElement} style={itemsContainerStyles} {...attributes.popper}>
             <Search isVisible={hasSearchInput} searchRef={searchRef} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-            <ul className="ids-dropdown__items" data-max-visible-items={maxVisibleItems}>
+            <ul className="ids-dropdown__items" ref={itemsRef} style={getItemsStyles()}>
                 {filteredItems.map((item, index) => {
                     const dropdownItemClassName = createCssClassNames({
                         'ids-dropdown__item': true,
