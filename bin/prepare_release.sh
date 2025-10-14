@@ -44,9 +44,6 @@ check_process()
 check_command "git"
 check_command "yarn"
 
-ASSETS_DIR="packages/assets"
-COMPONENTS_DIR="packages/components"
-
 CURRENT_BRANCH=`git branch | grep '*' | cut -d ' ' -f 2`
 TMP_BRANCH="version_$VERSION"
 TAG="v$VERSION"
@@ -55,27 +52,8 @@ echo "# Switching to $BRANCH and updating"
 git checkout -q $BRANCH > /dev/null && git pull > /dev/null
 check_process "switch to $BRANCH"
 
-echo "# Removing the assets"
-yarn run packages:remove-dist
-
-echo "# Removing yarn.lock"
-rm -rf "yarn.lock"
-
-echo "# Installing dependendencies"
-yarn install
-yarn run packages:build
-
-echo "# Removing Storybook and dev files"
-rm -rf ".storybook" "scripts" "src" "stories" "types" "eslint.config.js" "tsconfig.json"
-check_process "clean storybook dev"
-
-echo "# Removing components dev files"
-rm -rf "$COMPONENTS_DIR/scripts" "$COMPONENTS_DIR/src" "$COMPONENTS_DIR/.babelrc" "$COMPONENTS_DIR/tsconfig.build.json" "$COMPONENTS_DIR/tsconfig.json"
-check_process "clean components dev"
-
-echo "# Removing assets dev files"
-rm -rf "$ASSETS_DIR/src"
-check_process "clean assets dev"
+./bin/prepare_release_files.sh
+check_process "prepare the release files"
 
 echo "# Creating the custom branch: $TMP_BRANCH"
 git checkout -q -b "$TMP_BRANCH" > /dev/null
