@@ -88,7 +88,7 @@ const FrameworkSelectorDecorator = (StoryFn: StoryFunction, context: StoryContex
     const handleIframeEvent = (event: MessageEvent<IframeMessageData>) => {
         const { data, source }: { data: IframeMessageData; source: MessageEventSource | null } = event;
 
-        if (iframeWrapperRef.current === null || iframeRef.current === null || source !== iframeRef.current.contentWindow) {
+        if (iframeWrapperRef.current === null || source !== iframeRef.current?.contentWindow) {
             return;
         }
 
