@@ -4,6 +4,13 @@ export enum TagSize {
     Medium = 'medium',
     Small = 'small',
 }
+
+export enum TagGhostType {
+    SuccessGhost = 'success-ghost',
+    ErrorGhost = 'error-ghost',
+    NeutralGhost = 'neutral-ghost',
+}
+
 export enum TagType {
     Primary = 'primary',
     PrimaryAlt = 'primary-alt',
@@ -13,15 +20,12 @@ export enum TagType {
     Error = 'error',
     Neutral = 'neutral',
     IconTag = 'icon-tag',
-    SuccessGhost = 'success-ghost',
-    ErrorGhost = 'error-ghost',
-    NeutralGhost = 'neutral-ghost',
 }
 
 export interface TagProps extends BaseComponentAttributes {
     children: React.ReactNode;
+    type: TagType | TagGhostType;
     icon?: string;
     size?: TagSize;
-    type?: TagType;
     isDark?: boolean; //TODO: decide way of implementing variant on dark background
 }

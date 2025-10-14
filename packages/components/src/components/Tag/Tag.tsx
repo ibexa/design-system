@@ -3,10 +3,14 @@ import React from 'react';
 import { Icon, IconSize } from '@ids-components/Icon';
 import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
 
-import { TagProps, TagSize, TagType } from './Tag.types';
+import { TagGhostType, TagProps, TagSize, TagType } from './Tag.types';
 
-export const Tag = ({ children, className = '', isDark = false, icon, size = TagSize.Medium, type = TagType.Primary }: TagProps) => {
-    const isGhost = type.includes('ghost');
+export const Tag = ({ children, className = '', isDark = false, icon, size = TagSize.Medium, type }: TagProps) => {
+    const isGhostType = (tagType: TagType | TagGhostType): tagType is TagGhostType => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+        return Object.values(TagGhostType).includes(tagType as TagGhostType);
+    };
+    const isGhost = isGhostType(type);
     const componentClassName = createCssClassNames({
         'ids-tag': true,
         [`ids-tag--${type}`]: true,
@@ -17,7 +21,7 @@ export const Tag = ({ children, className = '', isDark = false, icon, size = Tag
 
     const renderDot = () => {
         if (isGhost) {
-            return <div className="ids-tag__ghost" />;
+            return <div className="ids-tag__ghost-dot" />;
         }
 
         return null;

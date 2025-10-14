@@ -174,6 +174,7 @@ $tags-sizes: (
     fill: var(--ids-default-text-color);
     background: var(--ids-default-bg-color);
     transition: all 1s $transition-timing-function;
+
     @each $name, $theme in $tags-types {
         &--#{$name} {
             @include mixins.tag-variant(map.get($theme, 'default'));
@@ -182,6 +183,7 @@ $tags-sizes: (
         //TODO: decide way of implementing variant on dark background
         &--#{$name}.ids-tag--dark {
             @include mixins.tag-variant(map.get($theme, 'dark'));
+
             &.ids-tag::before {
                 content: '';
                 position: absolute;
@@ -202,7 +204,7 @@ $tags-sizes: (
         }
     }
 
-    &__ghost {
+    &__ghost-dot {
         margin: 0 calculateRem(6px) calculateRem(2px) 0;
         border-radius: 50%;
         background: var(--ids-default-dot-color);
