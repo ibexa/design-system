@@ -60,7 +60,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
 
         return itemsStyles;
     };
-    const popplerPlacement = attributes.popper?.['data-popper-placement'] === 'top-start' ? 'top' : 'bottom';
+    const popperPlacement = attributes.popper?.['data-popper-placement'] === 'top-start' ? 'top' : 'bottom';
     const calculateMaxAvailableItemsHeight = useCallback(
         (availableHeight: number) => {
             if (!isOpen || !popperElement || !itemsRef.current) {
@@ -111,7 +111,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
     useLayoutEffect(() => {
         if (styles.popper.transform && referenceElement) {
             const getAvailableHeight = () => {
-                if (popplerPlacement === 'bottom') {
+                if (popperPlacement === 'bottom') {
                     const { innerHeight: windowHeight } = window;
                     const { bottom: dropdownBottom } = referenceElement.getBoundingClientRect();
 
@@ -130,7 +130,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
                 setItemsMaxHeight(availableItemsHeight);
             }
         }
-    }, [styles.popper.transform, popplerPlacement, referenceElement]);
+    }, [styles.popper.transform, popperPlacement, referenceElement]);
 
     useLayoutEffect(() => {
         if (isOpen && referenceElement) {
