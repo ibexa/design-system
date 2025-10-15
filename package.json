@@ -72,7 +72,7 @@
     "packages:fix": "yarn components:fix && yarn assets:fix && yarn core:fix",
     "packages:remove-dist": "rm -rf packages/assets/dist && rm -rf packages/components/dist && rm -rf packages/core/dist",
     "packages:build": "yarn components:build && yarn assets:build && yarn core:build",
-    "packages:watch": "yarn components:watch & yarn core:watch",
+    "packages:watch": "yarn core:watch & yarn components:watch",
     "infra:prettier-test": "yarn prettier \"./{.storybook,src,stories}/**/*.{js,ts,jsx,tsx}\" --check",
     "infra:prettier-fix": "yarn infra:prettier-test --write",
     "infra:eslint-test": "eslint \"./{.storybook,src,stories}/**/*.{js,ts,jsx,tsx}\"",

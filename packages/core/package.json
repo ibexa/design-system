@@ -1,29 +1,29 @@
 {
-  "name": "@ibexa/ids-core",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "dependencies": {
-    "cross-env": "^7.0.3"
-  },
-  "scripts": {
-    "prettier:test": "yarn prettier \"./scripts/*.js\" \"./src/**/*.{js,ts}\" --check",
-    "prettier:fix": "yarn prettier:test --write",
-    "eslint:test": "yarn eslint \"./scripts/*.js\" \"./src/**/*.{js,ts}\"",
-    "eslint:fix": "yarn eslint:test --fix",
-    "ts:test": "yarn tsc --noEmit",
-    "test": "yarn prettier:test && yarn eslint:test && yarn ts:test",
-    "fix": "yarn prettier:fix && yarn eslint:fix",
-    "generate-exports": "node ./scripts/generate_exports.js",
-    "build:clear": "rm -rf dist/* tsconfig.build.tsbuildinfo",
-    "build:js": "yarn tsc -b tsconfig.json",
-    "build": "yarn build:clear && yarn build:js && yarn generate-exports",
-    "watch:js": "yarn tsc -b tsconfig.json --watch",
-    "watch": "yarn build:clear && yarn watch:js"
-  },
-  "exports": {
-    "./helpers/*": "./dist/helpers/*",
-    "./types/*": "./dist/types/*",
-    "./validators/*": "./dist/validators/*"
-  }
+    "name": "@ibexa/ids-core",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "dependencies": {
+        "cross-env": "^7.0.3"
+    },
+    "scripts": {
+        "prettier:test": "yarn prettier \"./scripts/*.js\" \"./src/**/*.{js,ts}\" --check",
+        "prettier:fix": "yarn prettier:test --write",
+        "eslint:test": "yarn eslint \"./scripts/*.js\" \"./src/**/*.{js,ts}\"",
+        "eslint:fix": "yarn eslint:test --fix",
+        "ts:test": "yarn tsc --noEmit",
+        "test": "yarn prettier:test && yarn eslint:test && yarn ts:test",
+        "fix": "yarn prettier:fix && yarn eslint:fix",
+        "generate-exports": "node ./scripts/generate_exports.js",
+        "build:clear": "rm -rf dist/* tsconfig.tsbuildinfo",
+        "build:js": "yarn tsc -b tsconfig.json",
+        "build": "yarn build:clear && yarn build:js && yarn generate-exports",
+        "watch:js": "yarn tsc -b tsconfig.json --watch",
+        "watch": "yarn build:clear && yarn watch:js"
+    },
+    "exports": {
+      "./helpers/*": "./dist/helpers/*",
+      "./types/*": "./dist/types/*",
+      "./validators/*": "./dist/validators/*"
+    }
 }
