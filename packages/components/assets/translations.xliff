@@ -5,7 +5,11 @@
         <source>Clear</source>
         <target>Clear</target>
       </trans-unit>
-      <trans-unit id="ibexa.dropdown.search.placeholder">
+      <trans-unit id="ids.dropdown.placeholder">
+        <source>Select an item</source>
+        <target>Select an item</target>
+      </trans-unit>
+      <trans-unit id="ids.dropdown.search.placeholder">
         <source>Search...</source>
         <target>Search...</target>
       </trans-unit>
@@ -16,10 +20,6 @@
       <trans-unit id="ids.toggle.label.disabled">
         <source>Off</source>
         <target>Off</target>
-      </trans-unit>
-      <trans-unit id="ids.dropdown.placeholder">
-        <source>Select an item</source>
-        <target>Select an item</target>
       </trans-unit>
       <trans-unit id="content_edit.autosave.status_off.message">
         <source>Autosave is off, draft not created</source>
