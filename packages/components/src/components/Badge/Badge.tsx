@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 
 import { BadgeProps, BadgeSize } from './Badge.types';
 
@@ -21,5 +21,5 @@ export const Badge = ({ className = '', size = BadgeSize.Medium, value }: BadgeP
         return badgeValue > MAX_BADGE_VALUE ? `${MAX_BADGE_VALUE}+` : badgeValue.toString();
     };
 
-    return <div className={componentClassName}>{formatBadgeValue(value)}</div>;
+    return <div className={componentClassName}>zzzz{formatBadgeValue(value)}</div>;
 };

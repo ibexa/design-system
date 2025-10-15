@@ -3,7 +3,7 @@ import React from 'react';
 import { BaseInputsList } from '@ids-partials/BaseInputsList';
 import { HelperTextType } from '@ids-components/HelperText';
 import { RadioButtonField } from '../RadioButtonField';
-import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 import withStateValue from '@ids-hoc/withStateValue';
 
 import { RadioButtonsListFieldDirection, RadioButtonsListFieldItem, RadioButtonsListFieldProps } from './RadioButtonsListField.types';

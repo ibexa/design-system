@@ -8,7 +8,7 @@ const getSourceDir = (packageName) => {
     const currFileDir = path.dirname(fileURLToPath(import.meta.url));
     const dsDir = path.join(currFileDir, '..');
 
-    return path.join(dsDir, 'packages', packageName, 'src');
+    return path.join(dsDir, 'packages', packageName);
 }
 const createSymlink = (source, target) => {
     execSync(`mkdir -p ${target} && rm -rf ${target} && ln -s ${source} ${target}`);
@@ -40,9 +40,9 @@ const createSymlinks = () => {
     const componentsSourcePath = getSourceDir('components');
     const coreSourcePath = getSourceDir('core');
     const assetsSourcePath = getSourceDir('assets');
-    const componentsSymlinkPath = path.join(assetsDirPath, 'ids-components/dist');
-    const coreSymlinkPath = path.join(assetsDirPath, 'ids-core/dist');
-    const assetsSymlinkPath = path.join(assetsDirPath, 'ids-assets/dist');
+    const componentsSymlinkPath = path.join(assetsDirPath, 'ids-components');
+    const coreSymlinkPath = path.join(assetsDirPath, 'ids-core');
+    const assetsSymlinkPath = path.join(assetsDirPath, 'ids-assets');
 
     createSymlink(assetsSourcePath, assetsSymlinkPath);
     createSymlink(componentsSourcePath, componentsSymlinkPath);

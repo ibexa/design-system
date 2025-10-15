@@ -65,7 +65,7 @@ const config = {
             '@ids-hooks': path.resolve(__dirname, '../packages/components/src/hooks'),
             '@ids-partials': path.resolve(__dirname, '../packages/components/src/partials'),
             '@ids-shared': path.resolve(__dirname, '../packages/components/src/shared'),
-            '@ids-core': path.resolve(__dirname, '../packages/components/src/core'),
+            '@ids-core': path.resolve(__dirname, '../packages/core/src'),
         };
 
         webpackConfig.plugins.push(new NodePolyfillPlugin());

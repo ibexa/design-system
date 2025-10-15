@@ -8,7 +8,7 @@
             "./node_modules/@types"
         ],
         "paths": {
-            "@ibexa/ids-core/*": ["./packages/core/src/*"],
+            "@ids-core/*": ["./packages/core/src/*"],
             "@ids-components/*": ["./packages/components/src/components/*"],
             "@ids-context/*": ["./packages/components/src/context/*"],
             "@ids-hoc/*": ["./packages/components/src/hoc/*"],

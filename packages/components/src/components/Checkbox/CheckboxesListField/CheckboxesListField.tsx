@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import { BaseInputsList } from '@ids-partials/BaseInputsList';
 import { CheckboxField } from '../CheckboxField';
 import { HelperTextType } from '@ids-components/HelperText';
-import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 import withStateValue from '@ids-hoc/withStateValue';
 
 import {

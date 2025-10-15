@@ -1,9 +1,9 @@
 import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 
-import BaseValidator from '@ibexa/ids-core/validators/BaseValidator';
-import IsEmptyStringValidator from '@ibexa/ids-core/validators/IsEmptyStringValidator';
+import BaseValidator from '@ids-core/validators/BaseValidator';
+import IsEmptyStringValidator from '@ids-core/validators/IsEmptyStringValidator';
 import { TranslatorContext } from '@ids-context/Translator';
-import { ValidationResult } from '@ibexa/ids-core/types/validation';
+import { ValidationResult } from '@ids-core/types/validation';
 import { validateInput } from '@ids-shared/validators';
 
 import { InputTextFieldValueType } from './InputTextField.types';

@@ -1,5 +1,5 @@
-import BaseValidator from '@ibexa/ids-core/validators/BaseValidator';
-import type { ValidationResult } from '@ibexa/ids-core/types/validation';
+import BaseValidator from '@ids-core/validators/BaseValidator';
+import type { ValidationResult } from '@ids-core/types/validation';
 
 export const validateInput = <T>(value: T, validators: BaseValidator<T>[]): ValidationResult => {
     const errors = validators.reduce((errorsAcc: string[], validator) => {

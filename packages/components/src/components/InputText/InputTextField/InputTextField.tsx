@@ -4,7 +4,7 @@ import { useInitValidators, useValidateInput } from './InputTextField.utils';
 import { BaseField } from '@ids-partials/BaseField';
 import { HelperTextType } from '@ids-components/HelperText';
 import { InputTextInput } from '../InputTextInput';
-import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 import withStateValue from '@ids-hoc/withStateValue';
 
 import { InputTextFieldProps, InputTextFieldValueType } from './InputTextField.types';

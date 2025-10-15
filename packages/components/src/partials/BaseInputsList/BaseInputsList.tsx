@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BaseField } from '@ids-partials/BaseField';
-import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 
 import { BaseInputsListProps, Direction } from './BaseInputsList.types';
 

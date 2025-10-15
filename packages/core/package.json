@@ -15,13 +15,15 @@
     "test": "yarn prettier:test && yarn eslint:test && yarn ts:test",
     "fix": "yarn prettier:fix && yarn eslint:fix",
     "generate-exports": "node ./scripts/generate_exports.js",
-    "build:clear": "rm -rf dist/*",
-    "build:js": "yarn tsc",
-    "build": "yarn build:clear && yarn build:js && yarn generate-exports"
+    "build:clear": "rm -rf dist/* tsconfig.build.tsbuildinfo",
+    "build:js": "yarn tsc -b tsconfig.json",
+    "build": "yarn build:clear && yarn build:js && yarn generate-exports",
+    "watch:js": "yarn tsc -b tsconfig.json --watch",
+    "watch": "yarn build:clear && yarn watch:js"
   },
   "exports": {
-    "./helpers/*": "./src/helpers/*",
-    "./types/*": "./src/types/*",
-    "./validators/*": "./src/validators/*"
+    "./helpers/*": "./dist/helpers/*",
+    "./types/*": "./dist/types/*",
+    "./validators/*": "./dist/validators/*"
   }
 }

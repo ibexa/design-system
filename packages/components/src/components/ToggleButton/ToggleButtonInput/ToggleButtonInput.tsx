@@ -3,7 +3,7 @@ import React, { useContext, useRef, useState } from 'react';
 import { BaseChoiceInput } from '@ids-partials/BaseChoiceInput';
 import { ChoiceInputLabel } from '@ids-components/ChoiceInputLabel';
 import { TranslatorContext } from '@ids-context/Translator';
-import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 import { useGetOrCreateId } from '@ids-hooks/generators';
 import withStateChecked from '@ids-hoc/withStateChecked';
 

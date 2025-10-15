@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 
 import { BaseChoiceInput } from '@ids-partials/BaseChoiceInput';
-import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 import withStateChecked from '@ids-hoc/withStateChecked';
 
 import { AltRadioInputProps } from './AltRadioInput.types';
