@@ -169,7 +169,6 @@ $tags-sizes: (
     border-radius: calculateRem(16px);
     padding: calculateRem(3px) calculateRem(8px);
     font-size: $text-font-size-s;
-    line-height: $base-line-height;
     color: var(--ids-default-text-color);
     fill: var(--ids-default-text-color);
     background: var(--ids-default-bg-color);
@@ -202,6 +201,10 @@ $tags-sizes: (
             font-size: map.get($values, 'text');
             padding: map.get($values, 'padding-y') map.get($values, 'padding-x');
         }
+    }
+
+    &__content {
+        line-height: $base-line-height;
     }
 
     &__ghost-dot {

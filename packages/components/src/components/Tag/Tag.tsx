@@ -43,7 +43,7 @@ export const Tag = ({ children, className = '', isDark = false, icon, size = Tag
         <div className={componentClassName}>
             {renderDot()}
             {renderIcon()}
-            {children}
+            <div className="ids-tag__content">{children}</div>
         </div>
     );
 };
