@@ -13,24 +13,6 @@ const getSourceDir = (packageName) => {
 const createSymlink = (source, target) => {
     execSync(`mkdir -p ${target} && rm -rf ${target} && ln -s ${source} ${target}`);
 }
-const updateIbexaTSConfigFile = () => {
-    const tsConfigFilePath = path.resolve('ibexa.tsconfig.json');
-    const tsConfigContent = JSON.parse(fs.readFileSync(tsConfigFilePath, 'utf-8'));
-
-    tsConfigContent.compilerOptions ??= {};
-    tsConfigContent.compilerOptions.paths ??= {};
-    tsConfigContent.compilerOptions.paths['@ids-assets/*'] = [
-        `${getSourceDir('assets')}/*`,
-    ];
-    tsConfigContent.compilerOptions.paths['@ids-components/*'] = [
-        `${getSourceDir('components')}/*`,
-    ];
-    tsConfigContent.compilerOptions.paths['@ids-core/*'] = [
-        `${getSourceDir('core')}/*`,
-    ];
-
-    fs.writeFileSync(tsConfigFilePath, JSON.stringify(tsConfigContent, null, 4));
-}
 const createSymlinks = () => {
     const composerJsonFilePath = path.resolve('composer.json');
     const composerJsonContent = JSON.parse(fs.readFileSync(composerJsonFilePath, 'utf-8'));
@@ -49,7 +31,6 @@ const createSymlinks = () => {
     createSymlink(coreSourcePath, coreSymlinkPath);
 }
 
-updateIbexaTSConfigFile();
 createSymlinks();
 
 /* eslint-disable no-console */
