@@ -1,35 +1,29 @@
 {
-  "name": "@ibexa/ids-components",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "cross-env": "^7.0.3",
-    "react-popper": "^2.3.0"
-  },
-  "scripts": {
-    "prettier:test": "yarn prettier \"./scripts/*.js\" \"./src/**/*.{js,ts,jsx,tsx}\" --check",
-    "prettier:fix": "yarn prettier:test --write",
-    "eslint:test": "yarn eslint \"./scripts/*.js\" \"./src/**/*.{js,ts,jsx,tsx}\"",
-    "eslint:fix": "yarn eslint:test --fix",
-    "ts:test": "yarn tsc --noEmit",
-    "test": "yarn prettier:test && yarn eslint:test && yarn ts:test",
-    "fix": "yarn prettier:fix && yarn eslint:fix",
-    "extract-translations": "node ./scripts/extract_translations.js",
-    "generate-exports": "node ./scripts/generate_exports.js",
-    "build:clear": "rm -rf dist/*",
-    "build:js": "babel src --out-dir dist --delete-dir-on-start --extensions \".js,.ts,.jsx,.tsx\"",
-    "build:types": "tsc --emitDeclarationOnly --project tsconfig.build.json",
-    "build": "yarn build:clear && yarn build:js && yarn build:types && yarn generate-exports"
-  },
-  "exports": {
-    "./Accordion": "./dist/Accordion/index.js",
-    "./Autosave": "./dist/Autosave/index.js",
-    "./Button": "./dist/Button/index.js",
-    "./Expander": "./dist/Expander/index.js",
-    "./Icon": "./dist/Icon/index.js",
-    "./context/Assets": "./dist/context/Assets/index.js",
-    "./context/Translator": "./dist/context/Translator/index.js"
-  }
+    "name": "@ibexa/ids-components",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "dependencies": {
+        "@popperjs/core": "^2.11.8",
+        "cross-env": "^7.0.3",
+        "react-popper": "^2.3.0"
+    },
+    "scripts": {
+        "prettier:test": "yarn prettier \"./scripts/*.js\" \"./src/**/*.{js,ts,jsx,tsx}\" --check",
+        "prettier:fix": "yarn prettier:test --write",
+        "eslint:test": "yarn eslint \"./scripts/*.js\" \"./src/**/*.{js,ts,jsx,tsx}\"",
+        "eslint:fix": "yarn eslint:test --fix",
+        "ts:test": "yarn tsc --noEmit",
+        "test": "yarn prettier:test && yarn eslint:test && yarn ts:test",
+        "fix": "yarn prettier:fix && yarn eslint:fix",
+        "extract-translations": "node ./scripts/extract_translations.js",
+        "generate-exports": "node ./scripts/generate_exports.js",
+        "build:clear": "rm -rf dist/* tsconfig.build.tsbuildinfo",
+        "build:js": "babel src --out-dir dist --delete-dir-on-start --extensions \".js,.ts,.jsx,.tsx\"",
+        "build:types": "tsc -b tsconfig.build.json",
+        "build": "yarn build:clear && yarn build:js && yarn build:types && yarn generate-exports",
+        "watch:js": "babel src --out-dir dist --delete-dir-on-start --extensions \".js,.ts,.jsx,.tsx\" --watch",
+        "watch:types": "tsc -b tsconfig.build.json --watch",
+        "watch": "yarn build:clear && (yarn watch:js & yarn watch:types)"
+    }
 }

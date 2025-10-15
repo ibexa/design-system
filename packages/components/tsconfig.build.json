@@ -3,6 +3,13 @@
     "exclude": ["src/**/*.stories.ts", "src/**/*.stories.tsx"],
     "compilerOptions": {
         "declaration": true,
-        "outDir": "dist"
-    }
+        "emitDeclarationOnly": true,
+        "outDir": "dist",
+        "composite": true,
+        "rootDir": "src"
+    },
+    "include": ["src/**/*.ts", "src/**/*.tsx"],
+    "references": [
+        { "path": "../core/tsconfig.json" }
+    ]
 }

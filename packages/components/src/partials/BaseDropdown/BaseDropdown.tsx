@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Expander, ExpanderType } from '@ids-components/Expander';
 import { ItemsContainer } from './components/ItemsContainer';
 import { TranslatorContext } from '@ids-context/Translator';
-import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 import { useKeyDown } from '@ids-hooks/useKeyEvent';
 
 import { BaseDropdownItem, BaseDropdownProps } from './BaseDropdown.types';

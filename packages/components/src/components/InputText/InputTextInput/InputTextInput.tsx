@@ -2,7 +2,7 @@ import React, { useImperativeHandle, useLayoutEffect, useMemo, useRef, useState 
 
 import { BaseInput } from '@ids-partials/BaseInput';
 import { ClearBtn } from '../../../ui/ClearBtn';
-import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 import withStateValue from '@ids-hoc/withStateValue';
 
 import { InputTextInputProps, InputTextInputSize } from './InputTextInput.types';

@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import { BaseChoiceInputField } from '@ids-partials/BaseChoiceInputField';
 import { RadioButtonInput } from '../RadioButtonInput';
-import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 import withStateChecked from '@ids-hoc/withStateChecked';
 
 import { RadioButtonFieldProps } from './RadioButtonField.types';

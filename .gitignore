@@ -2,7 +2,10 @@ node_modules/
 yarn.lock
 yarn-error.log
 package-lock.json
+.vscode
 storybook-static/
 coverage/
 dist/
+tsconfig.tsbuildinfo
+tsconfig.build.tsbuildinfo
 .env.local
