@@ -51,3 +51,25 @@ const createSymlinks = () => {
 
 updateIbexaTSConfigFile();
 createSymlinks();
+
+/* eslint-disable no-console */
+console.log(
+    '\x1b[32m%s\x1b[0m',
+    '+-----------------------------------------------------------------+',
+);
+console.log(
+    '\x1b[32m%s\x1b[0m',
+    '|                 Symlinks created successfully.                  |',
+);
+console.log(
+    '\x1b[32m%s\x1b[0m',
+    '|   Go to admin-ui-assets/src/bundle/Resources/public/vendors     |',
+);
+console.log(
+    '\x1b[32m%s\x1b[0m',
+    '|  and double check if directories ids-X are properly symlinked.  |',
+);
+console.log(
+    '\x1b[32m%s\x1b[0m',
+    '+-----------------------------------------------------------------+',
+);
