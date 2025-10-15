@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Icon, IconSize } from '@ids-components/Icon';
-import { createCssClassNames } from '@ibexa/ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 
 import { TagGhostType, TagProps, TagSize, TagType } from './Tag.types';
 
