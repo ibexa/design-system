@@ -23,13 +23,13 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
     const searchRef = useRef<HTMLInputElement>(null);
     const itemsRef = useRef<HTMLUListElement>(null);
     const originalItemsMaxHeightRef = useRef(0);
-    const [forceTopPlacement, setForceTopPlacement] = useState(false);
+    const [isTopPlacementForced, setIsTopPlacementForced] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
     const [itemsContainerWidth, setItemsContainerWidth] = useState(0);
     const [itemsMaxHeight, setItemsMaxHeight] = useState(0);
     const { styles, attributes } = usePopper(referenceElement, popperElement, {
-        placement: forceTopPlacement ? 'top-start' : 'bottom-start',
+        placement: isTopPlacementForced ? 'top-start' : 'bottom-start',
         strategy: 'fixed',
     });
     const hasSearchInput = items.length > maxVisibleItems;
@@ -143,11 +143,13 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
                 return;
             }
 
-            const maxTopHeight = referenceTop;
-            const maxBottomPosition = windowHeight - referenceBottom;
-            const IsTopPlacementNeeded = maxTopHeight > maxBottomPosition && maxBottomPosition < originalItemsMaxHeightRef.current;
+            const availableSpaceAbove = referenceTop;
+            const availableSpaceBelow = windowHeight - referenceBottom;
+            const originalDropdownFitsInViewport = availableSpaceBelow > originalItemsMaxHeightRef.current;
+            const moreSpaceAbove = availableSpaceAbove > availableSpaceBelow;
+            const showDropdownAbove = moreSpaceAbove && !originalDropdownFitsInViewport;
 
-            setForceTopPlacement(IsTopPlacementNeeded);
+            setIsTopPlacementForced(showDropdownAbove);
         }
     }, [isOpen, referenceElement, styles.popper.transform]);
 
