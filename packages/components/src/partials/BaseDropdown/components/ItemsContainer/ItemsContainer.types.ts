@@ -1,6 +1,8 @@
 import { BaseDropdownItem, ExtraDropdownItemClickParamsType } from '../../BaseDropdown.types';
 
-export { BaseDropdownItem };
+export type ItemsContainerItemsStylesType = React.CSSProperties & {
+    '--max-visible-items'?: number;
+};
 
 export interface ItemsContainerProps<T extends BaseDropdownItem> {
     closeDropdown: () => void;

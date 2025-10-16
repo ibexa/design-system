@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { AssetsProvider } from '../packages/components/src/context/Assets/Assets';
-import { TranslatorProvider } from '../packages/components/src/context/Translator/Translator';
-import { getTranslations } from '../src/utils/translations';
+import { PartialStoryFn } from 'storybook/internal/types';
+
+import { AssetsProvider } from '@ids-context/Assets';
+import { TranslatorProvider } from '@ids-context/Translator';
+import { getTranslations } from '../../utils/translations';
 
 const Assets = {
     getIconPath: (name: string) => `./img/all-icons.svg#${name}`,
@@ -22,9 +24,7 @@ const Translator = {
     },
 };
 
-export const ContextDecorator = (
-    Story: any, // eslint-disable-line @typescript-eslint/no-explicit-any
-) => (
+export const ContextDecorator = (Story: PartialStoryFn) => (
     <AssetsProvider value={Assets}>
         <TranslatorProvider value={Translator}>
             <Story />

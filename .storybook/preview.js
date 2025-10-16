@@ -1,4 +1,4 @@
-import { ContextDecorator } from './decorators';
+import { ContextDecorator } from '@ids-sb-decorators/ContextDecorator';
 
 import './styles.scss';
 

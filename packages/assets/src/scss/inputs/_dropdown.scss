@@ -37,7 +37,8 @@
         border-radius: $border-radius-medium;
         border: calculateRem(1px) solid $color-neutral-80;
         background-color: $color-neutral-10;
-        margin-top: calculateRem(4px);
+        margin: calculateRem(4px) 0;
+        box-sizing: border-box;
     }
 
     &__search {
@@ -52,8 +53,9 @@
         list-style: none;
         margin: 0;
         padding: calculateRem(8px);
-        max-height: calc(#{calculateRem(29px)} * attr(max-visible-items, 10));
+        max-height: calc(calculateRem(31px) * var(--max-visible-items, 10));
         overflow-y: auto;
+        box-sizing: border-box;
     }
 
     &__item {
