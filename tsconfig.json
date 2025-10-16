@@ -15,6 +15,7 @@
             "@ids-hooks/*": ["./packages/components/src/hooks/*"],
             "@ids-partials/*": ["./packages/components/src/partials/*"],
             "@ids-sb-decorators/*": ["./src/storybook/decorators/*"],
+            "@ids-sb-utils/*": ["./src/storybook/utils/*"],
             "@ids-shared/*": ["./packages/components/src/shared/*"],
             "@ids-types/*": ["./types/*"]
         }

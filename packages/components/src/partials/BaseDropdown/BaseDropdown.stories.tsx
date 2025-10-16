@@ -4,13 +4,16 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { BaseDropdown } from './';
 import { DropdownDecorator } from '@ids-sb-decorators/DropdownDecorator';
+import { generateItemsArray } from '@ids-sb-utils/generators';
 
 interface DropdownItem {
     id: string;
     label: string;
 }
 
+const DEFAULT_ITEMS_LENGTH = 5;
 const MANY_ITEMS_LENGTH = 50;
+const WRAPPER_HEIGHT_FOR_LONG_LIST = 400;
 
 const getArguments = (items: DropdownItem[]) => ({
     items,
@@ -25,16 +28,6 @@ const getArguments = (items: DropdownItem[]) => ({
     ),
 });
 
-const generateItems = (length: number) =>
-    Array.from({ length }, (value, index) => {
-        const id = String(index + 1); // eslint-disable-line no-magic-numbers
-
-        return {
-            id,
-            label: `Item ${id}`,
-        };
-    });
-
 const meta: Meta<typeof BaseDropdown<DropdownItem>> = {
     title: 'components/src/base/BaseDropdown',
     component: BaseDropdown<DropdownItem>,
@@ -43,11 +36,7 @@ const meta: Meta<typeof BaseDropdown<DropdownItem>> = {
         chromatic: { disableSnapshot: true },
     },
     args: {
-        ...getArguments([
-            { id: '1', label: 'Item 1' },
-            { id: '2', label: 'Item 2' },
-            { id: '3', label: 'Item 3' },
-        ]),
+        ...getArguments(generateItemsArray(DEFAULT_ITEMS_LENGTH)),
     },
     decorators: [DropdownDecorator],
 };
@@ -86,31 +75,31 @@ export const EmptyError: Story = {
 export const LongItems: Story = {
     name: 'Long items',
     args: {
-        ...getArguments([
-            { id: '1', label: 'This is a very long item that should be tested in the dropdown' },
-            { id: '2', label: 'This is a very long item that should be tested in the dropdown' },
-            { id: '3', label: 'This is a very long item that should be tested in the dropdown' },
-        ]),
+        ...getArguments(
+            generateItemsArray(DEFAULT_ITEMS_LENGTH, {
+                label: 'This is a very long item that should be tested in the dropdown',
+            }),
+        ),
     },
 };
 
 export const ManyItems: Story = {
     name: 'Many items',
     args: {
-        ...getArguments(generateItems(MANY_ITEMS_LENGTH)),
+        ...getArguments(generateItemsArray(MANY_ITEMS_LENGTH)),
     },
     parameters: {
-        wrapperHeight: 400,
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
     },
 };
 
 export const CloseBottom: Story = {
     name: 'Close bottom',
     args: {
-        ...getArguments(generateItems(MANY_ITEMS_LENGTH)),
+        ...getArguments(generateItemsArray(MANY_ITEMS_LENGTH)),
     },
     parameters: {
-        wrapperHeight: 400,
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
         styles: { paddingTop: 'calc(100vh - 300px)' },
     },
 };
@@ -118,11 +107,11 @@ export const CloseBottom: Story = {
 export const Scrolling: Story = {
     name: 'Scrolling',
     args: {
-        ...getArguments(generateItems(MANY_ITEMS_LENGTH)),
+        ...getArguments(generateItemsArray(MANY_ITEMS_LENGTH)),
         maxVisibleItems: 15,
     },
     parameters: {
-        wrapperHeight: 400,
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
         styles: { padding: 'calc(40vh) 0' },
     },
 };
@@ -130,11 +119,11 @@ export const Scrolling: Story = {
 export const ScrollingWithTop: Story = {
     name: 'Scrolling (Top Placement)',
     args: {
-        ...getArguments(generateItems(MANY_ITEMS_LENGTH)),
+        ...getArguments(generateItemsArray(MANY_ITEMS_LENGTH)),
         maxVisibleItems: 15,
     },
     parameters: {
-        wrapperHeight: 400,
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
         styles: { padding: 'calc(60vh) 0' },
     },
 };
@@ -142,11 +131,11 @@ export const ScrollingWithTop: Story = {
 export const AllowScrollingOffScreen: Story = {
     name: 'Allow Scrolling Off Screen',
     args: {
-        ...getArguments(generateItems(MANY_ITEMS_LENGTH)),
+        ...getArguments(generateItemsArray(MANY_ITEMS_LENGTH)),
         maxVisibleItems: 15,
     },
     parameters: {
-        wrapperHeight: 400,
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
         styles: { padding: 'calc(100vh) 0' },
     },
 };

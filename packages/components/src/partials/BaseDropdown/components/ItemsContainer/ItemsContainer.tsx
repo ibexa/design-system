@@ -145,9 +145,9 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
 
             const maxTopHeight = referenceTop;
             const maxBottomPosition = windowHeight - referenceBottom;
-            const shouldForceTopPlacement = maxTopHeight > maxBottomPosition && maxBottomPosition < originalItemsMaxHeightRef.current;
+            const IsTopPlacementNeeded = maxTopHeight > maxBottomPosition && maxBottomPosition < originalItemsMaxHeightRef.current;
 
-            setForceTopPlacement(shouldForceTopPlacement);
+            setForceTopPlacement(IsTopPlacementNeeded);
         }
     }, [isOpen, referenceElement, styles.popper.transform]);
 
@@ -161,7 +161,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
                 activeElement.click();
             }
         },
-        referenceElement,
+        popperElement,
     );
 
     useKeyDown(
