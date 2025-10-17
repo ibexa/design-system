@@ -17,36 +17,26 @@ export const OverflowList = <ItemProps extends { id: string }>({
         'ids-overflow-list': true,
         [className]: !!className,
     });
-    const recalculateVisibleItems = (withOverflow = false) => {
+    const recalculateVisibleItems = () => {
         if (!listRef.current) {
             return;
         }
 
         const itemsNodes = Array.from(listRef.current.children);
         const { right: listRightPosition } = listRef.current.getBoundingClientRect();
-        let calculatedLastItemRightPosition = listRightPosition;
-
-        if (withOverflow) {
-            const { width: overflowWidth } = itemsNodes.at(-1)?.getBoundingClientRect() ?? { width: 0 };
-
-            calculatedLastItemRightPosition -= overflowWidth;
-        }
-
-        let newNumberOfVisibleItems = itemsNodes.findIndex((itemNode) => {
+        const newNumberOfVisibleItems = itemsNodes.findIndex((itemNode) => {
             const { right: itemRightPosition } = itemNode.getBoundingClientRect();
 
-            return itemRightPosition > calculatedLastItemRightPosition;
+            return itemRightPosition > listRightPosition;
         });
 
-        if (newNumberOfVisibleItems === -1) {
-            newNumberOfVisibleItems = numberOfVisibleItems;
+        if (newNumberOfVisibleItems === -1 || newNumberOfVisibleItems === items.length) {
+            return true;
         }
 
-        const stopRecalculating = newNumberOfVisibleItems === numberOfVisibleItems;
+        setNumberOfVisibleItems(newNumberOfVisibleItems - 1); // eslint-disable-line no-magic-numbers
 
-        setNumberOfVisibleItems(newNumberOfVisibleItems);
-
-        return stopRecalculating;
+        return true;
     };
     const listResizeObserver = useMemo(
         () =>
@@ -61,17 +51,15 @@ export const OverflowList = <ItemProps extends { id: string }>({
     };
     const renderOverflow = () => {
         const hiddenCount = items.length - numberOfVisibleItems;
-        if (currentAction !== Actions.CalculateItems && hiddenCount > 0) {
+
+        if (hiddenCount > 0) {
             return renderMore({ hiddenCount });
         }
     };
 
     useLayoutEffect(() => {
         if (currentAction === Actions.CalculateItems) {
-            recalculateVisibleItems();
-            setCurrentAction(Actions.CalculateOverflow);
-        } else if (currentAction === Actions.CalculateOverflow) {
-            const stopRecalculating = recalculateVisibleItems(true);
+            const stopRecalculating = recalculateVisibleItems();
 
             if (stopRecalculating) {
                 setCurrentAction(Actions.None);
@@ -86,20 +74,18 @@ export const OverflowList = <ItemProps extends { id: string }>({
         }
     }, [items]);
 
-    return (
-        <div
-            className={componentClassName}
-            ref={(node) => {
-                if (node) {
-                    listResizeObserver.observe(node);
-                    listRef.current = node;
+    useEffect(() => {
+        if (listRef.current) {
+            listResizeObserver.observe(listRef.current);
+        }
 
-                    return () => {
-                        listResizeObserver.unobserve(node);
-                    };
-                }
-            }}
-        >
+        return () => {
+            listResizeObserver.disconnect();
+        };
+    }, []);
+
+    return (
+        <div className={componentClassName} ref={listRef}>
             {renderItems()}
             {renderOverflow()}
         </div>

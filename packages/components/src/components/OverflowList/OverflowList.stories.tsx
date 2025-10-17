@@ -27,10 +27,12 @@ const meta: Meta<typeof OverflowList<ItemType>> = {
     },
     args: {
         items: generateItems(7), // eslint-disable-line no-magic-numbers
-        renderItem: (item) => <div className="ids-overflow-list__item">{item.content}</div>,
-        renderMore: ({ hiddenCount }) => (
-            <div className="ids-overflow-list__item ids-overflow-list__item--more">{hiddenCount > 0 && <div>+ {hiddenCount}</div>}</div>
+        renderItem: (item) => (
+            <div className="ids-overflow-list__item" key={item.id}>
+                {item.content}
+            </div>
         ),
+        renderMore: ({ hiddenCount }) => <div className="ids-overflow-list__item ids-overflow-list__item--more">+ {hiddenCount}</div>,
     },
     decorators: [
         (Story, { parameters }) => {
@@ -64,6 +66,27 @@ type Story = StoryObj<typeof OverflowList>;
 
 export const OverflowListDefault: Story = {
     name: 'Overflow List',
+};
+
+export const SpaceLeft: Story = {
+    name: 'Space left',
+    parameters: {
+        wrapperWidth: 600,
+    },
+};
+
+export const SpaceLeftOnOverflowItem: Story = {
+    name: 'Space ends on overflow item',
+    parameters: {
+        wrapperWidth: 460,
+    },
+};
+
+export const SpaceLeftOnLastItem: Story = {
+    name: 'Space ends on last item',
+    parameters: {
+        wrapperWidth: 400,
+    },
 };
 
 export const FontLoading: Story = {
