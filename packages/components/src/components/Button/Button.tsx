@@ -70,7 +70,7 @@ export const Button = ({
             disabled={disabled}
             onClick={onClick}
             role="button"
-            tabIndex={isFocusable && !disabled ? 0 : -1} // eslint-disable-line no-magic-numbers
+            tabIndex={isFocusable && !disabled ? 0 : -1}
             title={title}
             type="button"
             {...extraAria}
