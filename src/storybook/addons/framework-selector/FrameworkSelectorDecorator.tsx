@@ -7,19 +7,13 @@ import { useArgs, useGlobals } from 'storybook/internal/preview-api';
 import { FRAMEWORK, ROUTES } from './constants';
 
 type argsType = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
-interface IframeResize {
-    width: number;
-    height: number;
-    method?: never;
-    args?: never;
-}
 interface IframeMethods {
     width?: never;
     height?: never;
     method: string;
     args: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
-type IframeMessageData = IframeResize | IframeMethods;
+type IframeMessageData = IframeMethods;
 
 const getStoryId = (kind: string) => {
     const storyId = kind.replace('components/src/', '');
@@ -62,44 +56,37 @@ const getIframeSrc = (id: string, args: argsType) => {
 const FrameworkSelectorDecorator = (StoryFn: StoryFunction, context: StoryContext): Renderer['storyResult'] | React.JSX.Element => {
     const [globals] = useGlobals();
     const [args] = useArgs();
-    const iframeWrapperRef = useRef<HTMLDivElement>(null);
     const iframeRef = useRef<HTMLIFrameElement>(null);
-    const { id, title }: { id: string; title: string } = context;
+    const { id, title, viewMode }: { id: string; title: string; viewMode: string } = context;
+    const isInDocsMode = viewMode === 'docs';
     const renderTwigSelector = () => {
         const storyId = getStoryId(title);
         const twigUrl = getIframeSrc(storyId, args);
+        const iframeStyles: React.CSSProperties = {
+            border: 0,
+        };
+
+        if (isInDocsMode) {
+            iframeStyles.opacity = 0;
+        } else {
+            iframeStyles.width = 'calc(100vw - 28px)';
+        }
 
         return (
-            <div ref={iframeWrapperRef} style={{ overflow: 'hidden' }}>
-                <iframe
-                    className="twig-preview"
-                    id={`twig-preview-${id}`}
-                    key={twigUrl}
-                    ref={iframeRef}
-                    src={twigUrl}
-                    style={{
-                        border: 0,
-                    }}
-                    title={storyId}
-                />
-            </div>
+            <iframe
+                allowFullScreen
+                className="twig-preview"
+                id={`twig-preview-${id}`}
+                key={twigUrl}
+                ref={iframeRef}
+                src={twigUrl}
+                style={iframeStyles}
+                title={storyId}
+            />
         );
     };
     const handleIframeEvent = (event: MessageEvent<IframeMessageData>) => {
-        const { data, source }: { data: IframeMessageData; source: MessageEventSource | null } = event;
-
-        if (iframeWrapperRef.current === null || source !== iframeRef.current?.contentWindow) {
-            return;
-        }
-
-        if (data.width) {
-            iframeRef.current.style.width = `${data.width.toString()}px`;
-        }
-
-        if (data.height) {
-            iframeRef.current.style.height = `${data.height.toString()}px`;
-            iframeWrapperRef.current.style.height = `${data.height.toString()}px`;
-        }
+        const { data }: { data: IframeMessageData } = event;
 
         if (data.method) {
             const callback = args[data.method]; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
@@ -112,7 +99,7 @@ const FrameworkSelectorDecorator = (StoryFn: StoryFunction, context: StoryContex
     const isTwigFramework = globals.frameworkSelector === FRAMEWORK.TWIG;
 
     useEffect(() => {
-        if (!isTwigFramework) {
+        if (!isTwigFramework || isInDocsMode) {
             return;
         }
 
@@ -121,7 +108,25 @@ const FrameworkSelectorDecorator = (StoryFn: StoryFunction, context: StoryContex
         return () => {
             window.removeEventListener('message', handleIframeEvent, false);
         };
-    }, [isTwigFramework]);
+    }, [isTwigFramework, isInDocsMode]);
+
+    useEffect(() => {
+        if (!isTwigFramework || !iframeRef.current || !isInDocsMode) {
+            return;
+        }
+
+        const docStoryWrapper = iframeRef.current.closest('.docs-story')?.firstChild;
+
+        if (!docStoryWrapper || !(docStoryWrapper instanceof HTMLElement)) {
+            return;
+        }
+
+        const EXTRA_BORDER_SPACE = 16;
+        const docStoryWrapperStyles = window.getComputedStyle(docStoryWrapper);
+
+        iframeRef.current.style.width = `${parseInt(docStoryWrapperStyles.width, 10) - EXTRA_BORDER_SPACE}px`;
+        iframeRef.current.style.opacity = '1';
+    }, [isTwigFramework, isInDocsMode]);
 
     switch (globals.frameworkSelector) {
         case FRAMEWORK.REACT:
