@@ -78,14 +78,14 @@ export const SpaceLeft: Story = {
 export const SpaceLeftOnOverflowItem: Story = {
     name: 'Space ends on overflow item',
     parameters: {
-        wrapperWidth: 460,
+        wrapperWidth: 390,
     },
 };
 
 export const SpaceLeftOnLastItem: Story = {
     name: 'Space ends on last item',
     parameters: {
-        wrapperWidth: 400,
+        wrapperWidth: 428,
     },
 };
 

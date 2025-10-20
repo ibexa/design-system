@@ -34,9 +34,13 @@ export const OverflowList = <ItemProps extends { id: string }>({
             return true;
         }
 
-        setNumberOfVisibleItems(newNumberOfVisibleItems - 1); // eslint-disable-line no-magic-numbers
+        if (newNumberOfVisibleItems === numberOfVisibleItems) {
+            setNumberOfVisibleItems(newNumberOfVisibleItems - 1); // eslint-disable-line no-magic-numbers
+        } else {
+            setNumberOfVisibleItems(newNumberOfVisibleItems);
+        }
 
-        return true;
+        return false;
     };
     const listResizeObserver = useMemo(
         () =>

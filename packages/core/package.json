@@ -22,8 +22,8 @@
         "watch": "yarn build:clear && yarn watch:js"
     },
     "exports": {
-      "./helpers/*": "./dist/helpers/*",
-      "./types/*": "./dist/types/*",
-      "./validators/*": "./dist/validators/*"
+        "./helpers/*": "./dist/helpers/*",
+        "./types/*": "./dist/types/*",
+        "./validators/*": "./dist/validators/*"
     }
 }
