@@ -3,12 +3,17 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BaseDropdown } from './';
-import DropdownDecorator from '../../../../../src/storybook/decorators/DropdownDecorator';
+import { DropdownDecorator } from '@ids-sb-decorators/DropdownDecorator';
+import { generateItemsArray } from '@ids-sb-utils/generators';
 
 interface DropdownItem {
     id: string;
     label: string;
 }
+
+const DEFAULT_ITEMS_LENGTH = 5;
+const MANY_ITEMS_LENGTH = 50;
+const WRAPPER_HEIGHT_FOR_LONG_LIST = 400;
 
 const getArguments = (items: DropdownItem[]) => ({
     items,
@@ -27,12 +32,11 @@ const meta: Meta<typeof BaseDropdown<DropdownItem>> = {
     title: 'components/src/base/BaseDropdown',
     component: BaseDropdown<DropdownItem>,
     tags: ['autodocs', 'foundation', 'base'],
+    parameters: {
+        chromatic: { disableSnapshot: true },
+    },
     args: {
-        ...getArguments([
-            { id: '1', label: 'Item 1' },
-            { id: '2', label: 'Item 2' },
-            { id: '3', label: 'Item 3' },
-        ]),
+        ...getArguments(generateItemsArray(DEFAULT_ITEMS_LENGTH)),
     },
     decorators: [DropdownDecorator],
 };
@@ -43,10 +47,16 @@ type Story = StoryObj<typeof BaseDropdown<DropdownItem>>;
 
 export const Default: Story = {
     name: 'Default',
+    parameters: {
+        chromatic: { disableSnapshot: false },
+    },
 };
 
 export const EmptyDisabled: Story = {
     name: 'Empty (Disabled)',
+    parameters: {
+        chromatic: { disableSnapshot: false },
+    },
     args: {
         disabled: true,
     },
@@ -54,6 +64,9 @@ export const EmptyDisabled: Story = {
 
 export const EmptyError: Story = {
     name: 'Empty (Error)',
+    parameters: {
+        chromatic: { disableSnapshot: false },
+    },
     args: {
         error: true,
     },
@@ -62,33 +75,67 @@ export const EmptyError: Story = {
 export const LongItems: Story = {
     name: 'Long items',
     args: {
-        ...getArguments([
-            { id: '1', label: 'This is a very long item that should be tested in the dropdown' },
-            { id: '2', label: 'This is a very long item that should be tested in the dropdown' },
-            { id: '3', label: 'This is a very long item that should be tested in the dropdown' },
-        ]),
+        ...getArguments(
+            generateItemsArray(DEFAULT_ITEMS_LENGTH, {
+                label: 'This is a very long item that should be tested in the dropdown',
+            }),
+        ),
     },
 };
 
 export const ManyItems: Story = {
     name: 'Many items',
     args: {
-        ...getArguments([
-            { id: '1', label: 'Item 1' },
-            { id: '2', label: 'Item 2' },
-            { id: '3', label: 'Item 3' },
-            { id: '4', label: 'Item 4' },
-            { id: '5', label: 'Item 5' },
-            { id: '6', label: 'Item 6' },
-            { id: '7', label: 'Item 7' },
-            { id: '8', label: 'Item 8' },
-            { id: '9', label: 'Item 9' },
-            { id: '10', label: 'Item 10' },
-            { id: '11', label: 'Item 11' },
-            { id: '12', label: 'Item 12' },
-        ]),
+        ...getArguments(generateItemsArray(MANY_ITEMS_LENGTH)),
     },
     parameters: {
-        wrapperHeight: 400,
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
+    },
+};
+
+export const CloseBottom: Story = {
+    name: 'Close bottom',
+    args: {
+        ...getArguments(generateItemsArray(MANY_ITEMS_LENGTH)),
+    },
+    parameters: {
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
+        styles: { paddingTop: 'calc(100vh - 300px)' },
+    },
+};
+
+export const Scrolling: Story = {
+    name: 'Scrolling',
+    args: {
+        ...getArguments(generateItemsArray(MANY_ITEMS_LENGTH)),
+        maxVisibleItems: 15,
+    },
+    parameters: {
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
+        styles: { padding: 'calc(40vh) 0' },
+    },
+};
+
+export const ScrollingWithTop: Story = {
+    name: 'Scrolling (Top Placement)',
+    args: {
+        ...getArguments(generateItemsArray(MANY_ITEMS_LENGTH)),
+        maxVisibleItems: 15,
+    },
+    parameters: {
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
+        styles: { padding: 'calc(60vh) 0' },
+    },
+};
+
+export const AllowScrollingOffScreen: Story = {
+    name: 'Allow Scrolling Off Screen',
+    args: {
+        ...getArguments(generateItemsArray(MANY_ITEMS_LENGTH)),
+        maxVisibleItems: 15,
+    },
+    parameters: {
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
+        styles: { padding: 'calc(100vh) 0' },
     },
 };
