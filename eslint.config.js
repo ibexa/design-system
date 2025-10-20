@@ -8,4 +8,10 @@ export default [
             'sort-keys': 'off',
         },
     },
+    {
+        files: ['**/*.ts', '**/*.tsx'],
+        rules: {
+            'no-magic-numbers': ['error', { ignore: [-1, 0] }],
+        },
+    },
 ];
