@@ -92,4 +92,14 @@
             }
         }
     }
+
+    &--multi {
+        #{$self} {
+            &__item {
+                display: flex;
+                align-items: center;
+                gap: calculateRem(8px);
+            }
+        }
+    }
 }
