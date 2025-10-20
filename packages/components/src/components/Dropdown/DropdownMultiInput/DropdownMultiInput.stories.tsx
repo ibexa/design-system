@@ -45,7 +45,7 @@ export const EmptyError: Story = {
 export const Selected: Story = {
     name: 'Selected',
     args: {
-        value: ['value2'],
+        value: ['2'],
     },
 };
 
@@ -53,7 +53,7 @@ export const SelectedDisabled: Story = {
     name: 'Selected (Disabled)',
     args: {
         disabled: true,
-        value: ['value2'],
+        value: ['2'],
     },
 };
 
@@ -61,7 +61,7 @@ export const SelectedError: Story = {
     name: 'Selected (Error)',
     args: {
         error: true,
-        value: ['value2'],
+        value: ['2'],
     },
 };
 
@@ -69,6 +69,17 @@ export const ManyItems: Story = {
     name: 'Many Items',
     args: {
         items: generateItemsArray(MANY_ITEMS_LENGTH),
+    },
+    parameters: {
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
+    },
+};
+
+export const ManyItemsManySelected: Story = {
+    name: 'Many Items / Many Selected',
+    args: {
+        items: generateItemsArray(MANY_ITEMS_LENGTH),
+        value: ['3', '4', '8'],
     },
     parameters: {
         wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,

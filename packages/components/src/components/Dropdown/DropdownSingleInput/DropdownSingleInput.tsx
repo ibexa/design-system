@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { BaseDropdown, ExtraDropdownItemClickParamsType } from '@ids-partials/BaseDropdown';
+import { ExtraParamsType, getNextFocusableItem } from '../utils/focus';
+import { Icon, IconSize } from '@ids-components/Icon';
 import { createCssClassNames } from '@ids-core';
 import { withStateValue } from '@ids-hoc/withStateValue';
 
@@ -24,6 +26,14 @@ export const DropdownSingleInput = ({
     };
     const selectedItem = value ? items.find((item) => item.id === value) : null;
     const isItemSelected = (item: DropdownSingleInputItem) => item.id === value;
+    const renderItem = (item: DropdownSingleInputItem) => {
+        return (
+            <>
+                {item.label}
+                {isItemSelected(item) && <Icon name="check-circle" size={IconSize.TinySmall} />}
+            </>
+        );
+    };
     const renderSource = () => {
         return (
             <select defaultValue={value} name={name} tabIndex={-1}>
@@ -35,15 +45,27 @@ export const DropdownSingleInput = ({
             </select>
         );
     };
+    const getFocusableElements = (
+        { itemsList, search }: ExtraParamsType,
+    ): HTMLElement[] => {
+        const focusableElements = [
+            ...(search ? [search] : []),
+            ...Array.from(itemsList.children).filter((child) => !child.classList.contains('ids-dropdown__item--selected')),
+        ];
+
+        return focusableElements.filter((element): element is HTMLElement => element instanceof HTMLElement);
+    };
 
     return (
         <BaseDropdown
             {...restProps}
             className={dropdownClassName}
+            getNextFocusableItem={getNextFocusableItem.bind(null, getFocusableElements)}
             isEmpty={!selectedItem}
             isItemSelected={isItemSelected}
             items={items}
             onDropdownItemClick={clickDropdownItem}
+            renderItem={renderItem}
             renderSelectedItems={() => selectedItem?.label ?? ''}
             renderSource={renderSource}
         />

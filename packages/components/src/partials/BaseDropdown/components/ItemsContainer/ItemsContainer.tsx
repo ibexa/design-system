@@ -5,13 +5,14 @@ import { Search } from '../Search';
 import { createCssClassNames } from '@ids-core';
 import { useKeyDown } from '@ids-hooks/useKeyEvent';
 
-import { ItemsContainerItemsStylesType, ItemsContainerProps } from './ItemsContainer.types';
+import { ItemsContainerItemsStylesType, ItemsContainerMoveActiveFocusDirection, ItemsContainerProps } from './ItemsContainer.types';
 import { BaseDropdownItem } from '../../BaseDropdown.types';
 
 export const ItemsContainer = <T extends BaseDropdownItem>({
     closeDropdown,
     filterFunction,
     getItemAttributes,
+    getNextFocusableItem,
     isItemSelected,
     isOpen,
     items,
@@ -78,6 +79,20 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
         },
         [popperElement, isOpen],
     );
+    const moveActiveFocus = (event: KeyboardEvent, direction: ItemsContainerMoveActiveFocusDirection) => {
+        if (isOpen) {
+            event.preventDefault();
+            const { activeElement } = window.document;
+
+            if (activeElement instanceof HTMLElement && itemsRef.current instanceof HTMLUListElement) {
+                const nextElement = getNextFocusableItem(activeElement, direction, { itemsList: itemsRef.current, search: searchRef.current });
+
+                if (nextElement) {
+                    nextElement.focus();
+                }
+            }
+        }
+    };
 
     useEffect(() => {
         const clickOutsideHandler = (event: MouseEvent) => {
@@ -178,37 +193,17 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
     );
 
     useKeyDown(
-        ['ArrowDown'],
-        () => {
-            if (isOpen) {
-                const { activeElement } = window.document;
-
-                if (activeElement?.classList.contains('ids-dropdown__item')) {
-                    const nextElement = activeElement.nextElementSibling;
-
-                    if (nextElement?.classList.contains('ids-dropdown__item') && nextElement instanceof HTMLElement) {
-                        nextElement.focus();
-                    }
-                }
-            }
+        ['ArrowDown', 'Tab'],
+        (event) => {
+            moveActiveFocus(event, ItemsContainerMoveActiveFocusDirection.Down);
         },
         popperElement,
     );
 
     useKeyDown(
         ['ArrowUp'],
-        () => {
-            if (isOpen) {
-                const { activeElement } = window.document;
-
-                if (activeElement?.classList.contains('ids-dropdown__item')) {
-                    const previousElement = activeElement.previousElementSibling;
-
-                    if (previousElement?.classList.contains('ids-dropdown__item') && previousElement instanceof HTMLElement) {
-                        previousElement.focus();
-                    }
-                }
-            }
+        (event) => {
+            moveActiveFocus(event, ItemsContainerMoveActiveFocusDirection.Up);
         },
         popperElement,
     );
