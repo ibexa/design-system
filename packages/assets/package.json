@@ -14,6 +14,8 @@
     "build:clear": "rm -rf dist/*",
     "build:copy": "mkdir -p dist && cp -r src/font src/img src/scss dist/",
     "build:css": "sass src/scss/styles.scss dist/css/styles.css --style=compressed --no-source-map",
-    "build": "yarn build:clear && yarn build:copy && yarn build:css"
+    "build:scss": "cp -rf src/scss dist",
+    "build": "yarn build:clear && yarn build:copy && yarn build:css",
+    "watch": "nodemon --watch ./src --ext .scss --exec \"yarn build:scss\""
   }
 }
