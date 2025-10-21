@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { BaseChoiceInput } from '@ids-partials/BaseChoiceInput';
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
-import withStateChecked from '@ids-hoc/withStateChecked';
+import { createCssClassNames } from '@ids-core';
+import { withStateChecked } from '@ids-hoc/withStateChecked';
 
 import { CheckboxInputProps } from './CheckboxInput.types';
 

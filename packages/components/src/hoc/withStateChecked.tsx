@@ -7,11 +7,11 @@ interface BaseProps {
     checked: boolean;
 }
 
-export type WrappedComponentProps<T extends object> = BaseProps & T;
+export type WithStateCheckedWrappedComponentProps<T extends object> = BaseProps & T;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default <T extends object>(WrappedComponent: FC<any>) => {
-    const WrapperComponent = ({ checked, onChange, ...restProps }: WrappedComponentProps<T>) => {
+export const withStateChecked = <T extends object>(WrappedComponent: FC<any>) => {
+    const WrapperComponent = ({ checked, onChange, ...restProps }: WithStateCheckedWrappedComponentProps<T>) => {
         const [componentChecked, setComponentChecked] = useState(checked);
 
         const handleChange = (...args: Parameters<OnChangeFn>): ReturnType<OnChangeFn> => {

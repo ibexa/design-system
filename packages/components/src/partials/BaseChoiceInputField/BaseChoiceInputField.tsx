@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ChoiceInputLabel } from '@ids-components/ChoiceInputLabel';
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core';
 
 import { BaseChoiceInputFieldProps } from './BaseChoiceInputField.types';
 

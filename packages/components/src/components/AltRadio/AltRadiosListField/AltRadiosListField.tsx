@@ -3,8 +3,8 @@ import React, { useCallback } from 'react';
 import { AltRadioInput } from '../AltRadioInput';
 import { BaseInputsList } from '@ids-partials/BaseInputsList';
 import { HelperTextType } from '@ids-components/HelperText';
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
-import withStateValue from '@ids-hoc/withStateValue';
+import { createCssClassNames } from '@ids-core';
+import { withStateValue } from '@ids-hoc/withStateValue';
 
 import { AltRadiosListFieldDirection, AltRadiosListFieldItem, AltRadiosListFieldProps } from './AltRadiosListField.types';
 

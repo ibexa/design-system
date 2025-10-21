@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { AssetsContext, AssetsType } from '@ids-context/Assets';
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core';
 
 import { IconProps, IconSize } from './Icon.types';
 

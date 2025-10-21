@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import { Button, ButtonSize, ButtonType } from '@ids-components/Button';
 import { TranslatorContext } from '@ids-context/Translator';
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core';
 
 import { ClearBtnProps } from './ClearBtn.types';
 

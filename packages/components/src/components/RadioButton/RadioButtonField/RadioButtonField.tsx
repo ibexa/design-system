@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 
 import { BaseChoiceInputField } from '@ids-partials/BaseChoiceInputField';
 import { RadioButtonInput } from '../RadioButtonInput';
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
-import withStateChecked from '@ids-hoc/withStateChecked';
+import { createCssClassNames } from '@ids-core';
+import { withStateChecked } from '@ids-hoc/withStateChecked';
 
 import { RadioButtonFieldProps } from './RadioButtonField.types';
 

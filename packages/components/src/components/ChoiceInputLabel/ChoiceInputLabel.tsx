@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core';
 
 import { ChoiceInputLabelProps } from './ChoiceInputLabel.types';
 

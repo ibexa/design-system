@@ -7,9 +7,9 @@ export enum InputTextInputSize {
     Small = 'small',
 }
 
-export const INPUT_TYPE_VALUES = ['text', 'password', 'email', 'number', 'tel', 'search', 'url'] as const satisfies BaseInputType[];
+export const INPUT_TEXT_TYPE_VALUES = ['text', 'password', 'email', 'number', 'tel', 'search', 'url'] as const satisfies BaseInputType[];
 
-export type InputTextInputType = (typeof INPUT_TYPE_VALUES)[number];
+export type InputTextInputType = (typeof INPUT_TEXT_TYPE_VALUES)[number];
 
 export interface InputTextInputRef {
     focus: () => void;

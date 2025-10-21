@@ -1,6 +1,6 @@
 import { TranslatorType } from '../types/translator';
 
-export default abstract class BaseValidator<T> {
+export abstract class BaseValidator<T> {
     protected _translator: TranslatorType;
 
     constructor(translator: TranslatorType) {

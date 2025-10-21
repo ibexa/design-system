@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import { Icon, IconSize } from '@ids-components/Icon';
 import { TranslatorContext } from '@ids-context/Translator';
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core';
 
 import { AutosaveProps, AutosaveStatus } from './Autosave.types';
 

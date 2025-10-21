@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BaseInput } from '@ids-partials/BaseInput';
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core';
 
 import { BaseChoiceInputProps } from './BaseChoiceInput.types';
 

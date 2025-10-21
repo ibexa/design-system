@@ -17,11 +17,10 @@
         "test": "yarn prettier:test && yarn eslint:test && yarn ts:test",
         "fix": "yarn prettier:fix && yarn eslint:fix",
         "extract-translations": "node ./scripts/extract_translations.js",
-        "generate-exports": "node ./scripts/generate_exports.js",
         "build:clear": "rm -rf dist/* tsconfig.build.tsbuildinfo",
         "build:js": "babel src --out-dir dist --delete-dir-on-start --extensions \".js,.ts,.jsx,.tsx\"",
         "build:types": "tsc -b tsconfig.build.json",
-        "build": "yarn build:clear && yarn build:js && yarn build:types && yarn generate-exports",
+        "build": "yarn build:clear && yarn build:js && yarn build:types",
         "watch:js": "babel src --out-dir dist --delete-dir-on-start --extensions \".js,.ts,.jsx,.tsx\" --watch",
         "watch:types": "tsc -b tsconfig.build.json --watch",
         "watch": "yarn build:clear && (yarn watch:js & yarn watch:types)"

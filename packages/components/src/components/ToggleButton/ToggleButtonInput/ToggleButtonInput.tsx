@@ -3,9 +3,9 @@ import React, { useContext, useRef, useState } from 'react';
 import { BaseChoiceInput } from '@ids-partials/BaseChoiceInput';
 import { ChoiceInputLabel } from '@ids-components/ChoiceInputLabel';
 import { TranslatorContext } from '@ids-context/Translator';
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core';
 import { useGetOrCreateId } from '@ids-hooks/generators';
-import withStateChecked from '@ids-hoc/withStateChecked';
+import { withStateChecked } from '@ids-hoc/withStateChecked';
 
 import { ToggleButtonInputProps, ToggleButtonInputSize } from './ToggleButtonInput.types';
 

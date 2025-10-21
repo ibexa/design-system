@@ -1,6 +1,6 @@
-import BaseValidator from './BaseValidator';
+import { BaseValidator } from './BaseValidator';
 
-export default class IsEmptyStringValidator extends BaseValidator<string> {
+export class IsEmptyStringValidator extends BaseValidator<string> {
     getErrorMessage(): string {
         const Translator = this._translator;
 
