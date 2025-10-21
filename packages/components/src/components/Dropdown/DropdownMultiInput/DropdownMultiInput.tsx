@@ -3,6 +3,7 @@ import React from 'react';
 import { ExtraParamsType, getNextFocusableItem } from '../utils/focus';
 import { BaseDropdown } from '@ids-partials/BaseDropdown';
 import { CheckboxInput } from '@ids-components/Checkbox';
+import { OverflowList } from '@ids-components/OverflowList';
 import { createCssClassNames } from '@ids-core';
 import { withStateValue } from '@ids-hoc/withStateValue';
 
@@ -47,7 +48,11 @@ export const DropdownMultiInput = ({
     };
     const selectedItems = value.length ? items.filter((item) => value.includes(item.id)) : [];
     const renderSelectedItems = () => (
-        <>{selectedItems.map((item) => item.label).join(', ')}</>
+        <OverflowList
+            items={selectedItems}
+            renderItem={(item) => <div key={item.id}>{item.label}</div>}
+            renderMore={({ hiddenCount }) => <div>+{hiddenCount}</div>}
+        />
         // TODO: replace with chips when done
     );
     const renderSource = () => {

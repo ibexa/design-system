@@ -1,8 +1,11 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
 import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
+import { useDebounce } from '@ids-hooks/useDebounce';
 
 import { OverflowListCalculateAction as Actions, OverflowListProps } from './OverflowList.types';
+
+const RESIZE_TIMEOUT = 200;
 
 export const OverflowList = <ItemProps extends { id: string }>({
     className = '',
@@ -11,19 +14,22 @@ export const OverflowList = <ItemProps extends { id: string }>({
     renderMore,
 }: OverflowListProps<ItemProps>) => {
     const listRef = useRef<HTMLDivElement | null>(null);
+    const itemsRef = useRef<HTMLDivElement | null>(null);
+    const [itemsWidth, setItemsWidth] = useState(0);
     const [currentAction, setCurrentAction] = useState(Actions.None);
     const [numberOfVisibleItems, setNumberOfVisibleItems] = useState(items.length);
+    const debounce = useDebounce(RESIZE_TIMEOUT);
     const componentClassName = createCssClassNames({
         'ids-overflow-list': true,
         [className]: !!className,
     });
     const recalculateVisibleItems = () => {
-        if (!listRef.current) {
+        if (!itemsRef.current) {
             return;
         }
 
-        const itemsNodes = Array.from(listRef.current.children);
-        const { right: listRightPosition } = listRef.current.getBoundingClientRect();
+        const itemsNodes = Array.from(itemsRef.current.children);
+        const { right: listRightPosition } = itemsRef.current.getBoundingClientRect();
         const newNumberOfVisibleItems = itemsNodes.findIndex((itemNode) => {
             const { right: itemRightPosition } = itemNode.getBoundingClientRect();
 
@@ -45,8 +51,11 @@ export const OverflowList = <ItemProps extends { id: string }>({
     const listResizeObserver = useMemo(
         () =>
             new ResizeObserver(() => {
-                setNumberOfVisibleItems(items.length);
-                setCurrentAction(Actions.CalculateItems);
+                debounce(() => {
+                    setItemsWidth(listRef.current?.offsetWidth ?? 0);
+                    setNumberOfVisibleItems(items.length);
+                    setCurrentAction(Actions.CalculateItems);
+                });
             }),
         [items.length],
     );
@@ -71,6 +80,12 @@ export const OverflowList = <ItemProps extends { id: string }>({
         }
     }, [currentAction, numberOfVisibleItems]);
 
+    useLayoutEffect(() => {
+        if (listRef.current) {
+            setItemsWidth(listRef.current.offsetWidth);
+        }
+    }, []);
+
     useEffect(() => {
         if (currentAction === Actions.None) {
             setNumberOfVisibleItems(items.length);
@@ -90,8 +105,10 @@ export const OverflowList = <ItemProps extends { id: string }>({
 
     return (
         <div className={componentClassName} ref={listRef}>
-            {renderItems()}
-            {renderOverflow()}
+            <div className="ids-overflow-list__items" ref={itemsRef} style={{ width: `${itemsWidth}px` }}>
+                {renderItems()}
+                {renderOverflow()}
+            </div>
         </div>
     );
 };
