@@ -23,7 +23,7 @@ export const Accordion = ({ children, header, initiallyExpanded = false, onHandl
         if (accordionContentRef.current) {
             const initialHeight = nextIsExpanded ? 0 : accordionContentRef.current.offsetHeight;
 
-            accordionContentRef.current.style.height = `${initialHeight.toString()}px`;
+            accordionContentRef.current.style.height = `${initialHeight}px`;
 
             accordionContentRef.current.addEventListener(
                 'transitionend',
@@ -42,7 +42,7 @@ export const Accordion = ({ children, header, initiallyExpanded = false, onHandl
             if (accordionContentRef.current) {
                 const finalHeight = nextIsExpanded ? accordionContentRef.current.scrollHeight : 0;
 
-                accordionContentRef.current.style.height = `${finalHeight.toString()}px`;
+                accordionContentRef.current.style.height = `${finalHeight}px`;
             }
         }, FAKE_TIMEOUT_RERENDER);
     };

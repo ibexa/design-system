@@ -108,7 +108,7 @@ export const InputTextInput = ({
                         onInput: componentOnInput,
                         placeholder,
                         readOnly,
-                        style: { paddingRight: `${sourcePadding.toString()}px` },
+                        style: { paddingRight: `${sourcePadding}px` },
                         ...extraAria,
                     }}
                     id={id}
