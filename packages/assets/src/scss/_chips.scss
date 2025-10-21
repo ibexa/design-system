@@ -1,0 +1,105 @@
+@use 'sass:map';
+@use 'functions' as *;
+@use 'variables' as *;
+@use 'tags';
+
+.ids-chip {
+    @extend .ids-tag;
+    background: $color-neutral-20;
+    border: 1px solid $color-neutral-70;
+    outline: none;
+    opacity: 1;
+    visibility: visible;
+    transition:
+        opacity 0.2s ease-out,
+        visibility 0s linear;
+
+    &:hover {
+        border-color: $color-primary-80;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $color-primary-80;
+        box-shadow: 0 0 0 calculateRem(4px) rgba($color-primary-80, 0.25);
+    }
+
+    &:focus:not(:focus-visible) {
+        border-color: $color-neutral-70;
+        box-shadow: none;
+    }
+
+    &--hidden {
+        opacity: 0;
+        visibility: hidden;
+        transition:
+            opacity 0.2s ease-in,
+            visibility 0s linear 0.2s;
+    }
+
+    &--disabled {
+        background: $color-neutral-20;
+        border-color: $color-neutral-70;
+        color: $color-neutral-130;
+
+        &:hover {
+            border-color: $color-neutral-70;
+        }
+
+        .ids-chip__discard {
+            fill: $color-neutral-130;
+        }
+    }
+
+    &__user {
+        @extend .ids-tag--neutral;
+    }
+
+    &__close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.5rem;
+        height: 1.5rem;
+        padding: 0;
+        margin-left: 0.25rem;
+        border: none;
+        background: none;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: background-color 0.2s ease;
+
+        &:focus {
+            outline: none;
+            border: 1px solid $color-primary-80;
+            box-shadow: 0 0 0 calculateRem(4px) rgba($color-primary-80, 0.25);
+        }
+
+        &:hover {
+            border: 1px solid $color-primary-80;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+            background-color: transparent;
+            pointer-events: none;
+        }
+    }
+
+    &--error {
+        border-color: $color-error-80;
+        background-color: $color-error-20;
+        color: $color-error-90;
+        fill: $color-error-90;
+
+        .ids-chip-clear-btn.ids-btn--icon-only {
+            fill: $color-error-90;
+        }
+    }
+}
+
+.ids-chip-clear-btn.ids-btn--icon-only {
+    width: 1.5rem;
+    height: 1.5rem;
+}
