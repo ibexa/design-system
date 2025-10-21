@@ -5,15 +5,7 @@ import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 
 import { ChipProps } from './Chip.types';
 
-export const Chip = ({
-    children,
-    className = '',
-    isClosable = true,
-    disabled = false,
-    error = false,
-    onClose,
-    ...tagProps
-}: ChipProps) => {
+export const Chip = ({ children, className = '', isClosable = true, disabled = false, error = false, onClose, ...tagProps }: ChipProps) => {
     const [isVisible, setIsVisible] = React.useState(true);
 
     const componentClassName = createCssClassNames({
@@ -24,9 +16,9 @@ export const Chip = ({
         [className]: !!className,
     });
 
-        const handleCloseClick = (event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) => {
+    const handleCloseClick = (event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) => {
         setIsVisible(false);
-        
+
         if (onClose) {
             onClose(event as React.MouseEvent<HTMLButtonElement>);
         }
@@ -57,11 +49,7 @@ export const Chip = ({
     };
 
     return (
-        <div 
-            className={componentClassName} 
-            tabIndex={!disabled ? 0 : -1}
-            aria-disabled={disabled}
-        >
+        <div className={componentClassName} tabIndex={!disabled ? 0 : -1} aria-disabled={disabled}>
             <div className="ids-chip__content">{children}</div>
             {renderCloseButton()}
         </div>
