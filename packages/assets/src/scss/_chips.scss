@@ -5,14 +5,12 @@
 
 .ids-chip {
     @extend .ids-tag;
+
     background: $color-neutral-20;
-    border: 1px solid $color-neutral-70;
+    border: calculateRem(1px) solid $color-neutral-70;
     outline: none;
     opacity: 1;
     visibility: visible;
-    transition:
-        opacity 0.2s ease-out,
-        visibility 0s linear;
 
     &:hover {
         border-color: $color-primary-80;
@@ -21,20 +19,12 @@
     &:focus {
         outline: none;
         border-color: $color-primary-80;
-        box-shadow: 0 0 0 calculateRem(4px) rgba($color-primary-80, 0.25);
+        box-shadow: $box-shadow-focus-primary;
     }
 
     &:focus:not(:focus-visible) {
         border-color: $color-neutral-70;
         box-shadow: none;
-    }
-
-    &--hidden {
-        opacity: 0;
-        visibility: hidden;
-        transition:
-            opacity 0.2s ease-in,
-            visibility 0s linear 0.2s;
     }
 
     &--disabled {
@@ -46,33 +36,32 @@
             border-color: $color-neutral-70;
         }
 
-        .ids-chip__discard {
+        .ids-chip__close {
             fill: $color-neutral-130;
         }
-    }
-
-    &__user {
-        @extend .ids-tag--neutral;
     }
 
     &__close {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 1.5rem;
-        height: 1.5rem;
+        width: calculateRem(20px);
+        height: calculateRem(20px);
         padding: 0;
-        margin-left: 0.25rem;
+        margin-left: calculateRem(4px);
         border: none;
         background: none;
         cursor: pointer;
         border-radius: 50%;
         transition: background-color 0.2s ease;
-
+        &.ids-btn--icon-only {
+            width: calculateRem(20px);
+            height: calculateRem(20px);
+        }
         &:focus {
             outline: none;
             border: 1px solid $color-primary-80;
-            box-shadow: 0 0 0 calculateRem(4px) rgba($color-primary-80, 0.25);
+            box-shadow: $box-shadow-focus-primary;
         }
 
         &:hover {
@@ -97,9 +86,4 @@
             fill: $color-error-90;
         }
     }
-}
-
-.ids-chip-clear-btn.ids-btn--icon-only {
-    width: 1.5rem;
-    height: 1.5rem;
 }

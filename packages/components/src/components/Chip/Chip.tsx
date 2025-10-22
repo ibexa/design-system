@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { Icon, IconSize } from '@ids-components/Icon';
+import { Button, ButtonSize, ButtonType } from '@ids-components/Button';
+import { TranslatorContext } from '@ids-context/Translator';
+
 import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 
 import { ChipProps } from './Chip.types';
 
 export const Chip = ({ children, className = '', disabled = false, error = false, isClosable = true, onClose }: ChipProps) => {
+    const Translator = useContext(TranslatorContext);
+    const cleanMsg = Translator.trans(/*@Desc("Clear")*/ 'ids.clear_btn.label');
     const componentClassName = createCssClassNames({
         'ids-chip': true,
         'ids-chip--disabled': disabled,
@@ -25,16 +29,16 @@ export const Chip = ({ children, className = '', disabled = false, error = false
         }
 
         return (
-            <button
-                aria-label="Remove"
+            <Button
+                aria-label={cleanMsg}
                 className="ids-chip__close"
                 disabled={disabled}
                 onClick={handleCloseClick}
-                tabIndex={disabled ? -1 : 0}
-                type="button"
-            >
-                <Icon name="discard" size={IconSize.Small} />
-            </button>
+                icon="discard"
+                isFocusable={true}
+                size={ButtonSize.Small}
+                type={ButtonType.TertiaryAlt}
+            />
         );
     };
 

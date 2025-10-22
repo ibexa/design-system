@@ -5,6 +5,7 @@
 @use 'autosave';
 @use 'badge';
 @use 'buttons';
+@use 'chips';
 @use 'choice-input';
 @use 'choice-input-field';
 @use 'choice-input-label';
@@ -21,7 +22,6 @@
 @use 'tags';
 @use 'overflow-list';
 
-@use 'chips';
 @use 'inputs/alt-radio';
 @use 'inputs/checkbox';
 @use 'inputs/dropdown';
