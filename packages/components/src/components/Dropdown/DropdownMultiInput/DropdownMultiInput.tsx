@@ -1,11 +1,13 @@
 import React from 'react';
 
 import { BaseDropdown } from '@ids-partials/BaseDropdown';
+import { CheckboxInput } from '@ids-components/Checkbox';
+import { OverflowList } from '@ids-components/OverflowList';
+
 import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 import withStateValue from '@ids-hoc/withStateValue';
 
 import { DropdownMultiInputAction, DropdownMultiInputItem, DropdownMultiInputProps } from './DropdownMultiInput.types';
-import { CheckboxInput } from '@ids-components/Checkbox';
 
 export const DropdownMultiInput = ({
     name,
@@ -46,7 +48,11 @@ export const DropdownMultiInput = ({
     };
     const selectedItems = value.length ? items.filter((item) => value.includes(item.id)) : [];
     const renderSelectedItems = () => (
-        <>{selectedItems.map((item) => item.label).join(', ')}</>
+        <OverflowList
+            items={selectedItems}
+            renderItem={(item) => <div key={item.id}>{item.label}</div>}
+            renderMore={({ hiddenCount }) => <div>+{hiddenCount}</div>}
+        />
         // TODO: replace with chips when done
     );
     const renderSource = () => {
