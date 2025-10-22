@@ -54,18 +54,20 @@
         cursor: pointer;
         border-radius: 50%;
         transition: background-color 0.2s ease;
+
         &.ids-btn--icon-only {
             width: calculateRem(20px);
             height: calculateRem(20px);
         }
+
         &:focus {
             outline: none;
-            border: 1px solid $color-primary-80;
+            border: calculateRem(1px) solid $color-primary-80;
             box-shadow: $box-shadow-focus-primary;
         }
 
         &:hover {
-            border: 1px solid $color-primary-80;
+            border: calculateRem(1px) solid $color-primary-80;
         }
 
         &:disabled {

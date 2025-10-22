@@ -26,7 +26,7 @@ export const TestEnabled: Story = {
         const canvas = within(canvasElement);
 
         await step('Chip delete button is clicked', async () => {
-            const chip = canvas.getByRole('generic');
+            const chip = canvas.getByText('Chips').closest('.ids-chip');
             const deleteButton = canvas.getByRole('button');
 
             await expect(chip).not.toHaveClass('ids-chip--disabled');
@@ -48,7 +48,7 @@ export const TestDisabled: Story = {
         const canvas = within(canvasElement);
 
         await step(`Chip can't be clicked`, async () => {
-            const chip = canvas.getByRole('generic');
+            const chip = canvas.getByText('Chips').closest('.ids-chip');
             const deleteButton = canvas.getByRole('button');
 
             await expect(chip).toHaveClass('ids-chip--disabled');
