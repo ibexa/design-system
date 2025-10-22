@@ -8,8 +8,8 @@ const meta: Meta<typeof Chip> = {
     tags: ['autodocs', 'foundation'],
     args: {
         children: 'Chips',
-        onClose: action('onClose'),
-        isClosable: true,
+        onDelete: action('onDelete'),
+        isDeletable: true,
     },
 };
 
@@ -28,7 +28,7 @@ export const More: Story = {
     name: 'More',
     args: {
         children: '+3',
-        isClosable: false,
+        isDeletable: false,
     },
 };
 

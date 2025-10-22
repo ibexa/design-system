@@ -7,8 +7,9 @@ const meta: Meta<typeof Chip> = {
     component: Chip,
     tags: ['!dev'],
     args: {
-        children: 'Chip label',
-        onClose: fn(),
+        children: 'Chips',
+        isDeletable: true,
+        onDelete: fn(),
     },
 };
 
@@ -24,16 +25,16 @@ export const TestEnabled: Story = {
     play: async ({ canvasElement, step, args }) => {
         const canvas = within(canvasElement);
 
-        await step('Chip close button is clicked', async () => {
+        await step('Chip delete button is clicked', async () => {
             const chip = canvas.getByRole('generic');
-            const closeButton = canvas.getByRole('button');
+            const deleteButton = canvas.getByRole('button');
 
             await expect(chip).not.toHaveClass('ids-chip--disabled');
             await expect(chip).toHaveAttribute('aria-disabled', 'false');
 
-            await userEvent.click(closeButton);
+            await userEvent.click(deleteButton);
 
-            await expect(args.onClose).toHaveBeenCalledOnce();
+            await expect(args.onDelete).toHaveBeenCalledOnce();
         });
     },
 };
@@ -48,12 +49,12 @@ export const TestDisabled: Story = {
 
         await step(`Chip can't be clicked`, async () => {
             const chip = canvas.getByRole('generic');
-            const closeButton = canvas.getByRole('button');
+            const deleteButton = canvas.getByRole('button');
 
             await expect(chip).toHaveClass('ids-chip--disabled');
             await expect(chip).toHaveAttribute('aria-disabled', 'true');
-            await expect(closeButton).toBeDisabled();
-            await expect(closeButton).toHaveAttribute('tabindex', '-1');
+            await expect(deleteButton).toBeDisabled();
+            await expect(deleteButton).toHaveAttribute('tabindex', '-1');
         });
     },
 };

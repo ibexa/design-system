@@ -2,8 +2,8 @@ import { BaseComponentAttributes } from '@ids-types/general';
 
 export interface ChipProps extends BaseComponentAttributes {
     children: React.ReactNode;
-    isClosable?: boolean;
+    isDeletable?: boolean;
     disabled?: boolean;
-    onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onDelete?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     error?: boolean;
 }

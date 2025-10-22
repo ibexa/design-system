@@ -7,9 +7,9 @@ import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
 
 import { ChipProps } from './Chip.types';
 
-export const Chip = ({ children, className = '', disabled = false, error = false, isClosable = true, onClose }: ChipProps) => {
+export const Chip = ({ children, className = '', disabled = false, error = false, isDeletable = true, onDelete }: ChipProps) => {
     const Translator = useContext(TranslatorContext);
-    const cleanMsg = Translator.trans(/*@Desc("Clear")*/ 'ids.clear_btn.label');
+    const deleteMsg = Translator.trans(/*@Desc("Delete")*/ 'ibexa.chip.delete-btn.label');
     const componentClassName = createCssClassNames({
         'ids-chip': true,
         'ids-chip--disabled': disabled,
@@ -17,25 +17,25 @@ export const Chip = ({ children, className = '', disabled = false, error = false
         [className]: !!className,
     });
 
-    const handleCloseClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        if (onClose) {
-            onClose(event);
+    const handleDeleteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (onDelete) {
+            onDelete(event);
         }
     };
 
-    const renderCloseButton = () => {
-        if (!isClosable) {
+    const renderDeleteButton = () => {
+        if (!isDeletable) {
             return null;
         }
 
         return (
             <Button
-                aria-label={cleanMsg}
-                className="ids-chip__close"
+                aria-label={deleteMsg}
+                className="ids-chip__delete"
                 disabled={disabled}
-                onClick={handleCloseClick}
                 icon="discard"
                 isFocusable={true}
+                onClick={handleDeleteClick}
                 size={ButtonSize.Small}
                 type={ButtonType.TertiaryAlt}
             />
@@ -45,7 +45,7 @@ export const Chip = ({ children, className = '', disabled = false, error = false
     return (
         <div aria-disabled={disabled} className={componentClassName} tabIndex={disabled ? -1 : 0}>
             <div className="ids-chip__content">{children}</div>
-            {renderCloseButton()}
+            {renderDeleteButton()}
         </div>
     );
 };

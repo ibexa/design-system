@@ -36,12 +36,12 @@
             border-color: $color-neutral-70;
         }
 
-        .ids-chip__close {
+        .ids-chip__delete {
             fill: $color-neutral-130;
         }
     }
 
-    &__close {
+    &__delete {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -82,7 +82,7 @@
         color: $color-error-90;
         fill: $color-error-90;
 
-        .ids-chip-clear-btn.ids-btn--icon-only {
+        .ids-chip__delete.ids-btn--icon-only {
             fill: $color-error-90;
         }
     }
