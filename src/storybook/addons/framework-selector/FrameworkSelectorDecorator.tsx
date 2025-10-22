@@ -20,7 +20,7 @@ const getStoryId = (kind: string) => {
 
     return storyId;
 };
-const getIframeSrc = (id: string, args: argsType) => {
+const getIframeSrc = (id: string, args: argsType, storyCustomParameters: Record<string, unknown>) => {
     const baseUrl = process.env.TWIG_COMPONENTS_BASE_URL;
 
     if (baseUrl === undefined || baseUrl === '') {
@@ -45,11 +45,38 @@ const getIframeSrc = (id: string, args: argsType) => {
         /* eslint-enable @typescript-eslint/no-unsafe-assignment */
     }, {});
     const storyPropertiesStringified = JSON.stringify(storyProperties);
+    const storyCustomParametersStringified = JSON.stringify(storyCustomParameters);
     const previewUrl = new URL(`${ROUTES.PREVIEW}/${id}`, baseUrl);
 
     previewUrl.searchParams.set('properties', storyPropertiesStringified);
+    previewUrl.searchParams.set('customParameters', storyCustomParametersStringified);
 
     return previewUrl.toString();
+};
+const getCustomParameters = (context: StoryContext) => {
+    const builtInParameters = [
+        'a11y',
+        'backgrounds',
+        'controls',
+        'docs',
+        'fileName',
+        'layout',
+        'renderer',
+        'throwPlayFunctionExceptions',
+        '__isArgsStory',
+    ];
+
+    const customParameters = Object.entries(context.parameters).reduce(
+        (acc: Record<string, unknown>, [parameterName, parameterValue]: [string, unknown]) => {
+            if (!builtInParameters.includes(parameterName)) {
+                acc[parameterName] = parameterValue; // eslint-disable-line no-param-reassign
+            }
+            return acc;
+        },
+        {},
+    );
+
+    return customParameters;
 };
 
 // eslint-disable-next-line ibexa/max-lines-per-function-jsx
@@ -61,7 +88,8 @@ const FrameworkSelectorDecorator = (StoryFn: StoryFunction, context: StoryContex
     const isInDocsMode = viewMode === 'docs';
     const renderTwigSelector = () => {
         const storyId = getStoryId(title);
-        const twigUrl = getIframeSrc(storyId, args);
+        const storyCustomParameters = getCustomParameters(context);
+        const twigUrl = getIframeSrc(storyId, args, storyCustomParameters);
         const iframeStyles: React.CSSProperties = {
             border: 0,
         };
