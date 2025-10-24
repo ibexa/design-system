@@ -14,16 +14,10 @@
         "ts:test": "yarn tsc --noEmit",
         "test": "yarn prettier:test && yarn eslint:test && yarn ts:test",
         "fix": "yarn prettier:fix && yarn eslint:fix",
-        "generate-exports": "node ./scripts/generate_exports.js",
         "build:clear": "rm -rf dist/* tsconfig.tsbuildinfo",
         "build:js": "yarn tsc -b tsconfig.json",
-        "build": "yarn build:clear && yarn build:js && yarn generate-exports",
+        "build": "yarn build:clear && yarn build:js",
         "watch:js": "yarn tsc -b tsconfig.json --watch",
         "watch": "yarn build:clear && yarn watch:js"
-    },
-    "exports": {
-        "./helpers/*": "./dist/helpers/*",
-        "./types/*": "./dist/types/*",
-        "./validators/*": "./dist/validators/*"
     }
 }

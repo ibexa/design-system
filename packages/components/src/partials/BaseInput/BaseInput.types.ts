@@ -2,7 +2,7 @@ import { HTMLInputTypeAttribute, InputHTMLAttributes, Ref } from 'react';
 
 import { BaseComponentAttributes } from '@ids-types/general';
 
-export const INPUT_TYPE_VALUES = [
+export const BASE_INPUT_TYPE_VALUES = [
     'text',
     'password',
     'email',
@@ -15,7 +15,7 @@ export const INPUT_TYPE_VALUES = [
     'hidden',
 ] as const satisfies HTMLInputTypeAttribute[];
 
-export type BaseInputType = (typeof INPUT_TYPE_VALUES)[number];
+export type BaseInputType = (typeof BASE_INPUT_TYPE_VALUES)[number];
 
 interface BaseInputPropsProps extends BaseComponentAttributes {
     name: string;

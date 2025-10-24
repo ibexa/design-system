@@ -3,7 +3,7 @@ import React from 'react';
 import { BaseField } from '@ids-partials/BaseField';
 import { HelperTextType } from '@ids-components/HelperText';
 import { ToggleButtonInput } from '../ToggleButtonInput';
-import withStateChecked from '@ids-hoc/withStateChecked';
+import { withStateChecked } from '@ids-hoc/withStateChecked';
 
 import { ToggleButtonFieldProps } from './ToggleButtonField.types';
 

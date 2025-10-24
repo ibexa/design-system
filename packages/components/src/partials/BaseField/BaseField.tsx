@@ -2,7 +2,7 @@ import React from 'react';
 
 import { HelperText } from '@ids-components/HelperText';
 import { Label } from '@ids-components/Label';
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core';
 
 import { BaseFieldProps } from './BaseField.types';
 

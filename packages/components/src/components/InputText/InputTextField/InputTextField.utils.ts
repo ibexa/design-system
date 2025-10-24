@@ -1,9 +1,7 @@
 import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 
-import BaseValidator from '@ids-core/validators/BaseValidator';
-import IsEmptyStringValidator from '@ids-core/validators/IsEmptyStringValidator';
+import { BaseValidator, IsEmptyStringValidator, type ValidationResult } from '@ids-core';
 import { TranslatorContext } from '@ids-context/Translator';
-import { ValidationResult } from '@ids-core/types/validation';
 import { validateInput } from '@ids-shared/validators';
 
 import { InputTextFieldValueType } from './InputTextField.types';

@@ -3,9 +3,9 @@ import { Ref } from 'react';
 import { BaseComponentAriaAttributes } from '@ids-types/general';
 import { BaseInputType } from '@ids-partials/BaseInput/BaseInput.types';
 
-export const INPUT_TYPE_VALUES = ['checkbox', 'radio'] as const satisfies BaseInputType[];
+export const INPUT_CHOICE_TYPE_VALUES = ['checkbox', 'radio'] as const satisfies BaseInputType[];
 
-export type InputChoiceTypesType = (typeof INPUT_TYPE_VALUES)[number];
+export type InputChoiceTypesType = (typeof INPUT_CHOICE_TYPE_VALUES)[number];
 
 export interface BaseChoiceInputProps extends BaseComponentAriaAttributes {
     name: string;

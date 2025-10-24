@@ -7,11 +7,11 @@ interface BaseProps<T> {
     value: T;
 }
 
-export type WrappedComponentProps<Props, ValueType> = BaseProps<ValueType> & Props;
+export type WIthStateValueWrappedComponentProps<Props, ValueType> = BaseProps<ValueType> & Props;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default <Props, ValueType>(WrappedComponent: FC<any>) => {
-    const WrapperComponent = ({ value, onChange, ...restProps }: WrappedComponentProps<Props, ValueType>) => {
+export const withStateValue = <Props, ValueType>(WrappedComponent: FC<any>) => {
+    const WrapperComponent = ({ value, onChange, ...restProps }: WIthStateValueWrappedComponentProps<Props, ValueType>) => {
         const [componentValue, setComponentValue] = useState(value);
 
         const handleChange = (...args: Parameters<OnChangeFn<ValueType>>): ReturnType<OnChangeFn<ValueType>> => {

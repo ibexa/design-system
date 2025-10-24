@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useSta
 import { usePopper } from 'react-popper';
 
 import { Search } from '../Search';
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
+import { createCssClassNames } from '@ids-core';
 import { useKeyDown } from '@ids-hooks/useKeyEvent';
 
 import { ItemsContainerItemsStylesType, ItemsContainerProps } from './ItemsContainer.types';

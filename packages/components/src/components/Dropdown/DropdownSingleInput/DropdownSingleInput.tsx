@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { BaseDropdown, ExtraDropdownItemClickParamsType } from '@ids-partials/BaseDropdown';
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
-import withStateValue from '@ids-hoc/withStateValue';
+import { createCssClassNames } from '@ids-core';
+import { withStateValue } from '@ids-hoc/withStateValue';
 
 import { DropdownSingleInputItem, DropdownSingleInputProps } from './DropdownSingleInput.types';
 

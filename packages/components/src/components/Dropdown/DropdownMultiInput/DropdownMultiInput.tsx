@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { BaseDropdown } from '@ids-partials/BaseDropdown';
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
-import withStateValue from '@ids-hoc/withStateValue';
+import { createCssClassNames } from '@ids-core';
+import { withStateValue } from '@ids-hoc/withStateValue';
 
 import { DropdownMultiInputAction, DropdownMultiInputItem, DropdownMultiInputProps } from './DropdownMultiInput.types';
 import { CheckboxInput } from '@ids-components/Checkbox';

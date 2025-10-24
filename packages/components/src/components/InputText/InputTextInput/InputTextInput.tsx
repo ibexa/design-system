@@ -2,8 +2,8 @@ import React, { useImperativeHandle, useLayoutEffect, useMemo, useRef, useState 
 
 import { BaseInput } from '@ids-partials/BaseInput';
 import { ClearBtn } from '../../../ui/ClearBtn';
-import { createCssClassNames } from '@ids-core/helpers/cssClassNames';
-import withStateValue from '@ids-hoc/withStateValue';
+import { createCssClassNames } from '@ids-core';
+import { withStateValue } from '@ids-hoc/withStateValue';
 
 import { InputTextInputProps, InputTextInputSize } from './InputTextInput.types';
 import { ComponentEntryDataType } from '@ids-types/general';
