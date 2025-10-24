@@ -19,6 +19,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
     error = false,
     filterFunction = (item, searchTerm) => item.label.toLowerCase().includes(searchTerm.toLowerCase()),
     getItemAttributes = () => ({}),
+    getNextFocusableItem = () => null,
     maxVisibleItems = MAX_VISIBLE_ITEMS,
     onDropdownItemClick = () => undefined,
     renderEmptySelectionInfo,
@@ -90,6 +91,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
                 }}
                 filterFunction={filterFunction}
                 getItemAttributes={getItemAttributes}
+                getNextFocusableItem={getNextFocusableItem}
                 isItemSelected={isItemSelected}
                 isOpen={isOpen}
                 items={items}

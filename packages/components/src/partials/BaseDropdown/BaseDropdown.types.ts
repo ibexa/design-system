@@ -1,5 +1,7 @@
 import { BaseComponentAttributes } from '@ids-types/general';
 
+import { GetNextFocusableItemType } from './components/ItemsContainer/ItemsContainer.types';
+
 export interface BaseDropdownItem {
     id: string;
     label: string;
@@ -18,6 +20,7 @@ export interface BaseDropdownProps<T extends BaseDropdownItem> extends BaseCompo
     filterFunction?: (item: T, searchTerm: string) => boolean;
     getItemAttributes?: (item: T) => React.HTMLAttributes<HTMLElement>;
     isEmpty?: boolean;
+    getNextFocusableItem?: GetNextFocusableItemType;
     maxVisibleItems?: number;
     onDropdownItemClick: (item: T, extraParams: ExtraDropdownItemClickParamsType) => void;
     renderEmptySelectionInfo?: () => React.ReactNode;

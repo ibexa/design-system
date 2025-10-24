@@ -11,10 +11,6 @@ export const INPUT_TEXT_TYPE_VALUES = ['text', 'password', 'email', 'number', 't
 
 export type InputTextInputType = (typeof INPUT_TEXT_TYPE_VALUES)[number];
 
-export interface InputTextInputRef {
-    focus: () => void;
-}
-
 export interface InputTextInputProps extends BaseComponentAriaAttributes {
     name: string;
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
@@ -27,7 +23,7 @@ export interface InputTextInputProps extends BaseComponentAriaAttributes {
     placeholder?: string;
     processActions?: (actions: ComponentEntryDataType[]) => ComponentEntryDataType[];
     readOnly?: boolean;
-    ref?: React.Ref<InputTextInputRef>;
+    ref?: React.Ref<HTMLInputElement>;
     required?: boolean;
     size?: InputTextInputSize;
     type?: InputTextInputType;

@@ -45,7 +45,7 @@ export const EmptyError: Story = {
 export const Selected: Story = {
     name: 'Selected',
     args: {
-        value: 'value2',
+        value: '2',
     },
 };
 
@@ -53,7 +53,7 @@ export const SelectedDisabled: Story = {
     name: 'Selected (Disabled)',
     args: {
         disabled: true,
-        value: 'value2',
+        value: '2',
     },
 };
 
@@ -61,7 +61,7 @@ export const SelectedError: Story = {
     name: 'Selected (Error)',
     args: {
         error: true,
-        value: 'value2',
+        value: '2',
     },
 };
 
