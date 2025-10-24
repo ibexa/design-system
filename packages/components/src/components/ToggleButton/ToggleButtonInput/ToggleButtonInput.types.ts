@@ -6,8 +6,8 @@ export enum ToggleButtonInputSize {
 }
 
 export type ToggleButtonInputProps = Omit<BaseChoiceInputProps, 'type' | 'error'> & {
-    enabledLabel?: string;
-    disabledLabel?: string;
+    onLabel?: string;
+    offLabel?: string;
     onChange?: (checked: boolean) => void;
     size?: ToggleButtonInputSize;
 };
