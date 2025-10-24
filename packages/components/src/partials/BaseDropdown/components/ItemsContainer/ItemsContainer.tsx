@@ -85,7 +85,10 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
             const { activeElement } = window.document;
 
             if (activeElement instanceof HTMLElement && itemsRef.current instanceof HTMLUListElement) {
-                const nextElement = getNextFocusableItem(activeElement, direction, { itemsList: itemsRef.current, search: searchRef.current });
+                const nextElement = getNextFocusableItem(activeElement, direction, {
+                    itemsList: itemsRef.current,
+                    search: searchRef.current,
+                });
 
                 if (nextElement) {
                     nextElement.focus();

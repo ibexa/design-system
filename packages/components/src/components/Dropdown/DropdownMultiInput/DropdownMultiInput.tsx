@@ -61,9 +61,7 @@ export const DropdownMultiInput = ({
             </select>
         );
     };
-    const getFocusableElements = (
-        { itemsList, search }: ExtraParamsType,
-    ): HTMLElement[] => {
+    const getFocusableElements = ({ itemsList, search }: ExtraParamsType): HTMLElement[] => {
         const focusableElements = [
             ...(search instanceof HTMLElement ? [search] : []),
             ...Array.from(itemsList.children).reduce((acc: HTMLElement[], child) => {

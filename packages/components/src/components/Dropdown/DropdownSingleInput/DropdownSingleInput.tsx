@@ -45,9 +45,7 @@ export const DropdownSingleInput = ({
             </select>
         );
     };
-    const getFocusableElements = (
-        { itemsList, search }: ExtraParamsType,
-    ): HTMLElement[] => {
+    const getFocusableElements = ({ itemsList, search }: ExtraParamsType): HTMLElement[] => {
         const focusableElements = [
             ...(search ? [search] : []),
             ...Array.from(itemsList.children).filter((child) => !child.classList.contains('ids-dropdown__item--selected')),

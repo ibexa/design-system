@@ -6,10 +6,10 @@ export enum ItemsContainerMoveActiveFocusDirection {
 }
 
 export type GetNextFocusableItemType = (
-        element: HTMLElement,
-        direction: ItemsContainerMoveActiveFocusDirection,
-        { itemsList, search }: { itemsList: HTMLUListElement; search: HTMLInputElement | null },
-    ) => HTMLElement | null;
+    element: HTMLElement,
+    direction: ItemsContainerMoveActiveFocusDirection,
+    { itemsList, search }: { itemsList: HTMLUListElement; search: HTMLInputElement | null },
+) => HTMLElement | null;
 
 export type ItemsContainerItemsStylesType = React.CSSProperties & {
     '--max-visible-items'?: number;
