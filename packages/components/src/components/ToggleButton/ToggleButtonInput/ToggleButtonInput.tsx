@@ -11,8 +11,8 @@ import { ToggleButtonInputProps, ToggleButtonInputSize } from './ToggleButtonInp
 
 export const ToggleButtonInput = ({
     className = '',
-    disabledLabel,
-    enabledLabel,
+    offLabel,
+    onLabel,
     size = ToggleButtonInputSize.Medium,
     title = '',
     ...inputProps
@@ -53,14 +53,14 @@ export const ToggleButtonInput = ({
         onBlur(event);
     };
     const getLabel = () => {
-        const defaultEnabledLabel = Translator.trans(/*@Desc("On")*/ 'ids.toggle.label.enabled');
-        const defaultDisabledLabel = Translator.trans(/*@Desc("Off")*/ 'ids.toggle.label.disabled');
+        const defaultOnLabel = Translator.trans(/*@Desc("On")*/ 'ids.toggle.label.on');
+        const defaultOffLabel = Translator.trans(/*@Desc("Off")*/ 'ids.toggle.label.off');
 
         if (checked) {
-            return enabledLabel ?? defaultEnabledLabel;
+            return onLabel ?? defaultOnLabel;
         }
 
-        return disabledLabel ?? defaultDisabledLabel;
+        return offLabel ?? defaultOffLabel;
     };
 
     return (
