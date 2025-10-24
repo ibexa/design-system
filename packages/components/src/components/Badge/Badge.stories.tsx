@@ -4,9 +4,6 @@ import { Badge, BadgeSize } from '.';
 
 const meta: Meta<typeof Badge> = {
     component: Badge,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['autodocs', 'foundation'],
 };
 

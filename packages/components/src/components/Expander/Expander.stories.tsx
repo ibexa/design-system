@@ -5,9 +5,6 @@ import { Expander, ExpanderType } from './';
 
 const meta: Meta<typeof Expander> = {
     component: Expander,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['autodocs', 'foundation'],
     args: {
         collapseLabel: 'Show less',

@@ -4,9 +4,6 @@ import { Tag, TagGhostType, TagSize, TagType } from './';
 
 const meta: Meta<typeof Tag> = {
     component: Tag,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['autodocs', 'foundation'],
     args: {
         children: 'Label',
