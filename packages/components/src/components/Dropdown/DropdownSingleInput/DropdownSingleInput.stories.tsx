@@ -8,7 +8,7 @@ import { generateItemsArray } from '@ids-sb-utils/generators';
 
 const DEFAULT_ITEMS_LENGTH = 5;
 const MANY_ITEMS_LENGTH = 50;
-const WRAPPER_HEIGHT_FOR_LONG_LIST = 400;
+const WRAPPER_HEIGHT_FOR_LONG_LIST = 500;
 
 const meta: Meta<typeof DropdownSingleInputStateful> = {
     component: DropdownSingleInputStateful,

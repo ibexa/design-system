@@ -8,7 +8,7 @@ import { generateItemsArray } from '@ids-sb-utils/generators';
 
 const DEFAULT_ITEMS_LENGTH = 5;
 const MANY_ITEMS_LENGTH = 50;
-const WRAPPER_HEIGHT_FOR_LONG_LIST = 400;
+const WRAPPER_HEIGHT_FOR_LONG_LIST = 500;
 
 const meta: Meta<typeof DropdownMultiInputStateful> = {
     component: DropdownMultiInputStateful,
@@ -64,6 +64,9 @@ export const Selected: Story = {
 export const SelectedOpenedMenu: Story = {
     name: 'Selected (Opened Menu)',
     tags: ['!dev'],
+    args: {
+        value: ['2'],
+    },
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
         const dropdownWidget = canvas.getByText('Item 2', { selector: '.ids-dropdown__selection-info-items' });

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { PartialStoryFn } from 'storybook/internal/types';
 
-const DEFAULT_WRAPPER_HEIGHT = 200;
+const DEFAULT_WRAPPER_HEIGHT = 300;
 
 export const DropdownDecorator = (
     Story: PartialStoryFn,
