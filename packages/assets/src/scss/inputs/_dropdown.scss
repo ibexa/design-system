@@ -28,12 +28,6 @@
     &__selection-info {
         flex-grow: 1;
         user-select: none;
-
-        .ids-overflow-list {
-            .ids-chip + .ids-chip {
-                margin-left: calculateRem(8px);
-            }
-        }
     }
 
     &__placeholder {
@@ -127,6 +121,16 @@
 
                 &:focus-within {
                     color: $color-primary-80;
+                }
+            }
+
+            &__selection-info {
+                .ids-overflow-list {
+                    margin: calculateRem(-4px);
+
+                    .ids-chip {
+                        margin: calculateRem(4px);
+                    }
                 }
             }
         }
