@@ -57,7 +57,7 @@ export const OverflowList = <ItemProps extends { id: string }>({
                     setCurrentAction(Actions.CalculateItems);
                 });
             }),
-        [items.length],
+        [items.length, debounce],
     );
     const renderItems = () => {
         return items.slice(0, numberOfVisibleItems).map((item) => renderItem(item));
