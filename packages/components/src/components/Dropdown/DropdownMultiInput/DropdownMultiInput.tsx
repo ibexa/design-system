@@ -1,11 +1,12 @@
 import React from 'react';
 
+import { ExtraParamsType, getNextFocusableItem } from '../utils/focus';
 import { BaseDropdown } from '@ids-partials/BaseDropdown';
+import { CheckboxInput } from '@ids-components/Checkbox';
 import { createCssClassNames } from '@ids-core';
 import { withStateValue } from '@ids-hoc/withStateValue';
 
 import { DropdownMultiInputAction, DropdownMultiInputItem, DropdownMultiInputProps } from './DropdownMultiInput.types';
-import { CheckboxInput } from '@ids-components/Checkbox';
 
 export const DropdownMultiInput = ({
     name,
@@ -60,12 +61,31 @@ export const DropdownMultiInput = ({
             </select>
         );
     };
+    const getFocusableElements = ({ itemsList, search }: ExtraParamsType): HTMLElement[] => {
+        const focusableElements = [
+            ...(search instanceof HTMLElement ? [search] : []),
+            ...Array.from(itemsList.children).reduce((acc: HTMLElement[], child) => {
+                if (child instanceof HTMLElement) {
+                    const checkbox = child.querySelector('.ids-input--checkbox');
+
+                    if (checkbox instanceof HTMLElement && !checkbox.classList.contains('ids-input--disabled')) {
+                        acc.push(checkbox);
+                    }
+                }
+
+                return acc;
+            }, []),
+        ];
+
+        return focusableElements;
+    };
 
     return (
         <BaseDropdown
             {...restProps}
             className={dropdownClassName}
             getItemAttributes={getItemAttributes}
+            getNextFocusableItem={getNextFocusableItem.bind(null, getFocusableElements)}
             isEmpty={selectedItems.length === 0}
             isItemSelected={isItemSelected}
             items={items}

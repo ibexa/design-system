@@ -59,7 +59,9 @@
     }
 
     &__item {
-        padding: calculateRem(4px) calculateRem(8px);
+        display: flex;
+        align-items: center;
+        padding: calculateRem(4px) calculateRem(8px) calculateRem(5px);
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -72,6 +74,10 @@
     &--single {
         #{$self} {
             &__item {
+                position: relative;
+                z-index: 1;
+                justify-content: space-between;
+
                 &:not(.ids-dropdown__item--selected) {
                     &:hover {
                         color: $color-primary-80;
@@ -90,6 +96,7 @@
 
                 &--selected {
                     background-color: $color-neutral-40;
+                    z-index: 0;
                 }
             }
         }
@@ -101,6 +108,19 @@
                 display: flex;
                 align-items: center;
                 gap: calculateRem(8px);
+
+                &:hover {
+                    color: $color-primary-80;
+                    cursor: pointer;
+
+                    .ids-input--checkbox {
+                        border-color: $color-primary-80;
+                    }
+                }
+
+                &:focus-within {
+                    color: $color-primary-80;
+                }
             }
         }
     }
