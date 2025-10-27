@@ -28,6 +28,12 @@
     &__selection-info {
         flex-grow: 1;
         user-select: none;
+
+        .ids-overflow-list {
+            .ids-chip + .ids-chip {
+                margin-left: calculateRem(8px);
+            }
+        }
     }
 
     &__placeholder {

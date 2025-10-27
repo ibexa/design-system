@@ -79,7 +79,7 @@ export const ManyItemsManySelected: Story = {
     name: 'Many Items / Many Selected',
     args: {
         items: generateItemsArray(MANY_ITEMS_LENGTH),
-        value: ['3', '4', '8'],
+        value: ['3', '4', '8', '11'],
     },
     parameters: {
         wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
