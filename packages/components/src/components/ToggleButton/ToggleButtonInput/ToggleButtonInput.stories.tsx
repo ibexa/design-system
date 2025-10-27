@@ -70,3 +70,21 @@ export const CheckedError: Story = {
         size: ToggleButtonInputSize.Small,
     },
 };
+
+export const CustomLabelUnchecked: Story = {
+    name: 'Custom Label / Unchecked',
+    args: {
+        checked: false,
+        offLabel: 'Inactive',
+        onLabel: 'Active',
+    },
+};
+
+export const CustomLabelChecked: Story = {
+    name: 'Custom Label / Checked',
+    args: {
+        checked: true,
+        offLabel: 'Inactive',
+        onLabel: 'Active',
+    },
+};

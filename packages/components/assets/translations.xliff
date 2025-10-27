@@ -13,11 +13,11 @@
         <source>Search...</source>
         <target>Search...</target>
       </trans-unit>
-      <trans-unit id="ids.toggle.label.enabled">
+      <trans-unit id="ids.toggle.label.on">
         <source>On</source>
         <target>On</target>
       </trans-unit>
-      <trans-unit id="ids.toggle.label.disabled">
+      <trans-unit id="ids.toggle.label.off">
         <source>Off</source>
         <target>Off</target>
       </trans-unit>

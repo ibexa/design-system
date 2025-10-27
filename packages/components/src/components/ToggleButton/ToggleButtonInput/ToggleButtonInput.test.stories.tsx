@@ -7,8 +7,8 @@ const meta: Meta<typeof ToggleButtonInputStateful> = {
     component: ToggleButtonInputStateful,
     tags: ['!dev'],
     args: {
-        enabledLabel: 'Enabled',
-        disabledLabel: 'Disabled',
+        onLabel: 'Enabled',
+        offLabel: 'Disabled',
         name: 'default-input',
         onBlur: fn(),
         onChange: fn(),
