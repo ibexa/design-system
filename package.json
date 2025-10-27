@@ -8,7 +8,8 @@
   "type": "module",
   "prettier": "@ibexa/eslint-config/prettier",
   "bin": {
-    "ids-prepare-dev-env": "./bin/prepare_dev_env.mjs"
+    "ids-prepare-dev-env": "./bin/prepare_dev_env.mjs",
+    "ids-prepare-ds-symlinks": "./bin/prepare_ds_symlinks.mjs"
   },
   "workspaces": [
     "packages/*"
