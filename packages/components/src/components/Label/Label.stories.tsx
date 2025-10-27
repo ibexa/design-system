@@ -6,9 +6,6 @@ import { Label } from './';
 
 const meta: Meta<typeof Label> = {
     component: Label,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['autodocs'],
     args: {
         children: 'Lorem Ipsum',

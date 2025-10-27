@@ -5,9 +5,6 @@ import { CheckboxesListFieldDirection, CheckboxesListFieldStateful } from '.';
 
 const meta: Meta<typeof CheckboxesListFieldStateful> = {
     component: CheckboxesListFieldStateful,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['autodocs', 'foundation'],
     args: {
         label: 'Choice Inputs List Label',
