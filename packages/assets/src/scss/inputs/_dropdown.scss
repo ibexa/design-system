@@ -105,6 +105,10 @@
 
     &--multi {
         #{$self} {
+            &__widget.ids-input:hover:has(.ids-chip__delete:hover) {
+                border-color: var(--ids-input-default-border-color, #{$color-neutral-80});
+            }
+
             &__item {
                 display: flex;
                 align-items: center;
