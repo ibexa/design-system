@@ -37,9 +37,11 @@ export const Default: Story = {
             await userEvent.click(lastItem);
             await userEvent.click(canvasElement);
 
-            const selectedInfo = canvas.getByText('Item 1, Item 3', { selector: 'div' });
+            const selectedItem = canvas.getByText('Item 1', { selector: 'div' });
+            const overflowItem = canvas.getByText('+1', { selector: 'div' });
 
-            await expect(selectedInfo).toBeVisible();
+            await expect(selectedItem).toBeVisible();
+            await expect(overflowItem).toBeVisible();
             await expect(() => {
                 canvas.getByText('Item 2', { selector: 'div' });
             }).toThrowError();
