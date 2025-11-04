@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
 import { RadioButtonsListFieldDirection, RadioButtonsListFieldStateful } from '.';
+import { FormDecorator } from '@ids-sb-decorators/FormDecorator';
 
 const meta: Meta<typeof RadioButtonsListFieldStateful> = {
     component: RadioButtonsListFieldStateful,
@@ -18,6 +19,7 @@ const meta: Meta<typeof RadioButtonsListFieldStateful> = {
             { id: 'item3', label: 'Item 3', value: 'item3' },
         ],
     },
+    decorators: [FormDecorator],
 };
 
 export default meta;
