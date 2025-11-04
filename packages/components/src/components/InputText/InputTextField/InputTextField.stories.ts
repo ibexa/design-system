@@ -17,6 +17,10 @@ const meta: Meta<typeof InputTextFieldStateful> = {
         onChange: action('on-change'),
         onValidate: action('on-validate'),
     },
+    argTypes: {
+        onChange: { control: { disable: true } },
+        onValidate: { control: { disable: true } },
+    },
 };
 
 export default meta;

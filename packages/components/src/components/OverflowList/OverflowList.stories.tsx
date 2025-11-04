@@ -34,6 +34,10 @@ const meta: Meta<typeof OverflowList<ItemType>> = {
         ),
         renderMore: ({ hiddenCount }) => <div className="ids-overflow-list__item ids-overflow-list__item--more">+ {hiddenCount}</div>,
     },
+    argTypes: {
+        renderItem: { control: { disable: true } },
+        renderMore: { control: { disable: true } },
+    },
     decorators: [
         (Story, { parameters }) => {
             return (
