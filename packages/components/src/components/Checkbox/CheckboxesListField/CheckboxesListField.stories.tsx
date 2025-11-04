@@ -18,6 +18,9 @@ const meta: Meta<typeof CheckboxesListFieldStateful> = {
             { id: 'item3', label: 'Item 3', value: 'item3' },
         ],
     },
+    argTypes: {
+        onChange: { control: { disable: true } },
+    },
 };
 
 export default meta;
