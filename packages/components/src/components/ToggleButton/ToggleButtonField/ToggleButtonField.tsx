@@ -3,12 +3,14 @@ import React from 'react';
 import { BaseField } from '@ids-partials/BaseField';
 import { HelperTextType } from '@ids-components/HelperText';
 import { ToggleButtonInput } from '../ToggleButtonInput';
+import { createCssClassNames } from '@ids-core';
 import { withStateChecked } from '@ids-hoc/withStateChecked';
 
 import { ToggleButtonFieldProps } from './ToggleButtonField.types';
 
 export const ToggleButtonField = ({
     checked = false,
+    className = '',
     helperText,
     helperTextExtra = {},
     id,
@@ -19,6 +21,10 @@ export const ToggleButtonField = ({
     onChange = () => undefined,
     required = false,
 }: ToggleButtonFieldProps) => {
+    const toggleClassName = createCssClassNames({
+        'ids-toggle-field': true,
+        [className]: !!className,
+    });
     const helperTextProps = {
         children: helperText,
         type: HelperTextType.Default,
@@ -38,7 +44,7 @@ export const ToggleButtonField = ({
     };
 
     return (
-        <BaseField helperText={helperTextProps} label={labelProps} type="toggle">
+        <BaseField className={toggleClassName} helperText={helperTextProps} label={labelProps} type="toggle">
             <ToggleButtonInput {...inputProps} />
         </BaseField>
     );
