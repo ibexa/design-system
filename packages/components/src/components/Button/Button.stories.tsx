@@ -12,6 +12,9 @@ const meta: Meta<typeof Button> = {
         children: 'Button label',
         onClick: action('on-click'),
     },
+    argTypes: {
+        onClick: { control: { disable: true } },
+    },
 };
 
 export default meta;

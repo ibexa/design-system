@@ -11,6 +11,9 @@ const meta: Meta<typeof Chip> = {
         onDelete: action('onDelete'),
         isDeletable: true,
     },
+    argTypes: {
+        onDelete: { control: { disable: true } },
+    },
 };
 
 export default meta;
