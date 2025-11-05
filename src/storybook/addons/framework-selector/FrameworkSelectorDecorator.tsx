@@ -86,10 +86,10 @@ const FrameworkSelectorDecorator = (StoryFn: StoryFunction, context: StoryContex
     const iframeRef = useRef<HTMLIFrameElement>(null);
     const { id, title, viewMode }: { id: string; title: string; viewMode: string } = context;
     const isInDocsMode = viewMode === 'docs';
+    const storyId = getStoryId(title);
+    const storyCustomParameters = getCustomParameters(context);
+    const twigUrl = getIframeSrc(storyId, args, storyCustomParameters);
     const renderTwigSelector = () => {
-        const storyId = getStoryId(title);
-        const storyCustomParameters = getCustomParameters(context);
-        const twigUrl = getIframeSrc(storyId, args, storyCustomParameters);
         const iframeStyles: React.CSSProperties = {
             border: 0,
         };
@@ -154,7 +154,7 @@ const FrameworkSelectorDecorator = (StoryFn: StoryFunction, context: StoryContex
 
         iframeRef.current.style.width = `${parseInt(docStoryWrapperStyles.width, 10) - EXTRA_BORDER_SPACE}px`;
         iframeRef.current.style.opacity = '1';
-    }, [isTwigFramework, isInDocsMode]);
+    }, [isTwigFramework, isInDocsMode, twigUrl]);
 
     switch (globals.frameworkSelector) {
         case FRAMEWORK.REACT:
