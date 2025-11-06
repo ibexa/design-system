@@ -9,6 +9,7 @@ const meta: Meta<typeof AltRadiosListFieldStateful> = {
     args: {
         label: 'Choice Inputs List Label',
         helperText: 'This is a helper text',
+        name: 'alt-radios-list-field-story',
         onChange: action('on-change'),
         value: 'item1',
         items: [
