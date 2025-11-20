@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
+import { FormDecorator } from '@ids-sb-decorators/FormDecorator';
 import { RadioButtonFieldStateful } from './';
 
 const meta: Meta<typeof RadioButtonFieldStateful> = {
@@ -16,6 +17,7 @@ const meta: Meta<typeof RadioButtonFieldStateful> = {
         onFocus: action('on-focus'),
         onInput: action('on-input'),
     },
+    decorators: [FormDecorator],
 };
 
 export default meta;
