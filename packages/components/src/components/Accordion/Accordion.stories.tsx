@@ -36,6 +36,9 @@ const meta: Meta<typeof Accordion> = {
         header: 'Lorem ipsum',
         onHandleExpand: action('on-click'),
     },
+    argTypes: {
+        onHandleExpand: { control: { disable: true } },
+    },
 };
 
 export default meta;

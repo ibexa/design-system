@@ -12,6 +12,9 @@ const meta: Meta<typeof Expander> = {
         type: ExpanderType.Caret,
         onClick: action('on-click'),
     },
+    argTypes: {
+        onClick: { control: { disable: true } },
+    },
 };
 
 export default meta;
