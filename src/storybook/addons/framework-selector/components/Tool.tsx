@@ -1,13 +1,13 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 
-import { useGlobals, useStorybookState } from 'storybook/internal/manager-api';
 import { IconButton } from 'storybook/internal/components';
-import { type API_LeafEntry as LeafEntry } from 'storybook/internal/types';
+import { useGlobals } from 'storybook/internal/manager-api';
 
 import { FRAMEWORK, KEY, ROUTES } from '../constants';
+import { useIsTwigStoryAvailable } from '../../../hooks/useIsTwigStoryAvailable';
 
 export const Tool = memo(() => {
-    const { index: allStories, storyId: currentStoryId } = useStorybookState();
+    const isTwigStoryAvailable = useIsTwigStoryAvailable();
     const [globals, updateGlobals, storyGlobals] = useGlobals();
     const [twigEnabled, setTwigEnabled] = useState(false);
     const isLocked = KEY in storyGlobals;
@@ -17,24 +17,6 @@ export const Tool = memo(() => {
             [KEY]: frameworkId,
         });
     }, []);
-    const getStoryId = () => {
-        if (allStories === undefined) {
-            return '';
-        }
-
-        const currentStory = allStories[currentStoryId];
-
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        if (currentStory?.type !== 'story' && currentStory?.type !== 'docs') {
-            return '';
-        }
-
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
-        return (allStories[currentStoryId] as LeafEntry).title;
-    };
-    const isTwigStoryAvailable = () => {
-        return getStoryId().startsWith('components/src/components/');
-    };
     const openTwigPreview = useCallback(() => {
         const storybookIframe = window.document.querySelector<HTMLIFrameElement>('#storybook-preview-iframe');
 
@@ -68,7 +50,7 @@ export const Tool = memo(() => {
             </IconButton>
         );
     }, [isTwigActive, isLocked]);
-    const showFrameworkSelectorTools = twigEnabled && isTwigStoryAvailable();
+    const showFrameworkSelectorTools = twigEnabled && isTwigStoryAvailable;
 
     useEffect(() => {
         const baseUrl = process.env.TWIG_COMPONENTS_BASE_URL;
