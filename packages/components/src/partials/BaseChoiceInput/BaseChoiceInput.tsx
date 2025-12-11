@@ -20,7 +20,6 @@ export const BaseChoiceInput = ({
     id = undefined,
     inputClassName = '',
     ref,
-    required = false,
     title = '',
     value = '',
 }: BaseChoiceInputProps) => {
@@ -58,7 +57,6 @@ export const BaseChoiceInput = ({
                 id={id}
                 name={name}
                 ref={ref}
-                required={required}
                 title={title}
                 type={type}
                 value={value}

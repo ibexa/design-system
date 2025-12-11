@@ -8,6 +8,8 @@ import { BaseChoiceInputFieldProps } from './BaseChoiceInputField.types';
 export const BaseChoiceInputField = ({
     children,
     className = '',
+    disabled = false,
+    error = false,
     id,
     inputWrapperClassName = '',
     labelClassName = '',
@@ -15,6 +17,8 @@ export const BaseChoiceInputField = ({
 }: BaseChoiceInputFieldProps) => {
     const componentClassName = createCssClassNames({
         'ids-choice-input-field': true,
+        'ids-choice-input-field--disabled': disabled,
+        'ids-choice-input-field--error': error,
         [className]: true,
     });
     const componentInputWrapperClassName = createCssClassNames({
