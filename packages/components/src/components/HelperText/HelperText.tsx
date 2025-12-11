@@ -24,7 +24,7 @@ export const HelperText = ({ children, className = '', title = '', type = Helper
     return (
         <div className={componentClassName} title={title}>
             <div className="ids-helper-text__icon-wrapper">
-                <Icon className="ids-helper-text__icon" name={ICONS_TYPE_MAP[type]} size={IconSize.Small} />
+                <Icon className="ids-helper-text__icon" name={ICONS_TYPE_MAP[type]} size={IconSize.TinySmall} />
             </div>
             <div className="ids-helper-text__content-wrapper">{children}</div>
         </div>
