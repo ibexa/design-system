@@ -5,7 +5,6 @@ import type { Renderer, StoryContext, PartialStoryFn as StoryFunction } from 'st
 import { useArgs, useGlobals } from 'storybook/internal/preview-api';
 
 import { FRAMEWORK, ROUTES } from './constants';
-import { useIsTwigStoryAvailable } from '../../hooks/useIsTwigStoryAvailable';
 
 type argsType = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 interface IframeMethods {
@@ -82,7 +81,6 @@ const getCustomParameters = (context: StoryContext) => {
 
 // eslint-disable-next-line ibexa/max-lines-per-function-jsx
 const FrameworkSelectorDecorator = (StoryFn: StoryFunction, context: StoryContext): Renderer['storyResult'] | React.JSX.Element => {
-    const isTwigStoryAvailable = useIsTwigStoryAvailable();
     const [globals] = useGlobals();
     const [args] = useArgs();
     const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -158,11 +156,14 @@ const FrameworkSelectorDecorator = (StoryFn: StoryFunction, context: StoryContex
         iframeRef.current.style.opacity = '1';
     }, [isTwigFramework, isInDocsMode, twigUrl]);
 
-    if (isTwigStoryAvailable && globals.frameworkSelector === FRAMEWORK.REACT) {
-        return renderTwigSelector();
+    switch (globals.frameworkSelector) {
+        case FRAMEWORK.REACT:
+            return StoryFn();
+        case FRAMEWORK.TWIG:
+            return renderTwigSelector();
+        default:
+            return StoryFn();
     }
-
-    return StoryFn();
 };
 
 export default FrameworkSelectorDecorator;
