@@ -9,8 +9,8 @@ import { RadioButtonFieldProps } from './RadioButtonField.types';
 
 export const RadioButtonField = ({
     className = '',
-    label,
     inputWrapperClassName = '',
+    label,
     labelClassName = '',
     ...inputProps
 }: RadioButtonFieldProps) => {
@@ -25,6 +25,8 @@ export const RadioButtonField = ({
     return (
         <BaseChoiceInputField
             className={fieldClassName}
+            disabled={inputProps.disabled}
+            error={inputProps.error}
             id={inputProps.id}
             inputWrapperClassName={inputWrapperClassName}
             labelClassName={labelClassName}

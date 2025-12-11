@@ -20,6 +20,5 @@ export interface BaseChoiceInputProps extends BaseComponentAriaAttributes {
     id?: string;
     inputClassName?: string;
     ref?: Ref<HTMLInputElement>;
-    required?: boolean;
     value?: string;
 }

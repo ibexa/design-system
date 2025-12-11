@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 type OnChangeFn = (checked: boolean, ...args: any[]) => any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
@@ -21,6 +21,10 @@ export const withStateChecked = <T extends object>(WrappedComponent: FC<any>) =>
                 onChange(...args);
             }
         };
+
+        useEffect(() => {
+            setComponentChecked(checked);
+        }, [checked]);
 
         return <WrappedComponent {...restProps} checked={componentChecked} onChange={handleChange} />;
     };
