@@ -18,6 +18,9 @@ const meta: Meta<typeof DropdownSingleInputStateful> = {
         name: 'default-input',
         onChange: action('on-change'),
     },
+    argTypes: {
+        onChange: { control: { disable: true } },
+    },
     decorators: [DropdownDecorator],
 };
 

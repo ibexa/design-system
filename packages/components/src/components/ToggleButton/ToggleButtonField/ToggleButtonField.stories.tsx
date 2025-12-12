@@ -13,6 +13,9 @@ const meta: Meta<typeof ToggleButtonFieldStateful> = {
         label: 'Input Label',
         onChange: action('on-change'),
     },
+    argTypes: {
+        onChange: { control: { disable: true } },
+    },
 };
 
 export default meta;

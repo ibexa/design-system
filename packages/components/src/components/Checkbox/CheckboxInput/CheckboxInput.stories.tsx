@@ -14,6 +14,13 @@ const meta: Meta<typeof CheckboxInputStateful> = {
         onFocus: action('on-focus'),
         onInput: action('on-input'),
     },
+    argTypes: {
+        onBlur: { control: { disable: true } },
+        onChange: { control: { disable: true } },
+        onFocus: { control: { disable: true } },
+        onInput: { control: { disable: true } },
+        ref: { control: { disable: true } },
+    },
 };
 
 export default meta;

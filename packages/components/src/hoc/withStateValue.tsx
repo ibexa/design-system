@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 type OnChangeFn<T> = (value: T, ...args: any[]) => any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
@@ -13,7 +13,6 @@ export type WIthStateValueWrappedComponentProps<Props, ValueType> = BaseProps<Va
 export const withStateValue = <Props, ValueType>(WrappedComponent: FC<any>) => {
     const WrapperComponent = ({ value, onChange, ...restProps }: WIthStateValueWrappedComponentProps<Props, ValueType>) => {
         const [componentValue, setComponentValue] = useState(value);
-
         const handleChange = (...args: Parameters<OnChangeFn<ValueType>>): ReturnType<OnChangeFn<ValueType>> => {
             setComponentValue(args[0]);
 
@@ -21,6 +20,10 @@ export const withStateValue = <Props, ValueType>(WrappedComponent: FC<any>) => {
                 onChange(...args);
             }
         };
+
+        useEffect(() => {
+            setComponentValue(value);
+        }, [value]);
 
         return <WrappedComponent {...restProps} onChange={handleChange} value={componentValue} />;
     };
