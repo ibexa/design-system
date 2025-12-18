@@ -13,7 +13,7 @@ const MAX_VISIBLE_ITEMS = 10;
 export const BaseDropdown = <T extends BaseDropdownItem>({
     children,
     isEmpty = true,
-    isItemSelected = () => false,
+    isItemSelected,
     items,
     disabled = false,
     error = false,
@@ -21,7 +21,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
     getItemAttributes = () => ({}),
     getNextFocusableItem = () => null,
     maxVisibleItems = MAX_VISIBLE_ITEMS,
-    onDropdownItemClick = () => undefined,
+    onDropdownItemClick,
     renderEmptySelectionInfo,
     renderItem = (item) => item.label,
     renderSelectedItems = () => null,

@@ -18,7 +18,7 @@ export const InputTextInput = ({
     error = false,
     extraAria = {},
     className = '',
-    id = undefined,
+    id,
     placeholder = '',
     processActions = (actions): ComponentEntryDataType[] => actions,
     readOnly = false,

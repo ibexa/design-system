@@ -1,9 +1,8 @@
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
-const path = require('path');
-const dotenv = require('dotenv');
+import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-dotenv.config({ path: '.env.local' });
-dotenv.config();
+const currDir = path.dirname(fileURLToPath(import.meta.url));
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
@@ -28,19 +27,12 @@ const config = {
                 rules: [
                     {
                         test: /\.scss$/,
-                        use: [
-                            'style-loader',
-                            'css-loader',
-                            {
-                                loader: 'sass-loader',
-                                options: { implementation: require.resolve('sass') },
-                            },
-                        ],
+                        use: ['style-loader', 'css-loader', 'sass-loader'],
                     },
                 ],
             },
         },
-        path.resolve(__dirname, '../src/storybook/addons/framework-selector/index.ts'),
+        path.resolve(currDir, '../src/storybook/addons/framework-selector/index.ts'),
         '@chromatic-com/storybook',
     ],
     framework: {
@@ -59,15 +51,15 @@ const config = {
 
         webpackConfig.resolve.alias = {
             ...webpackConfig.resolve.alias,
-            '@ids-components': path.resolve(__dirname, '../packages/components/src/components'),
-            '@ids-context': path.resolve(__dirname, '../packages/components/src/context'),
-            '@ids-hoc': path.resolve(__dirname, '../packages/components/src/hoc'),
-            '@ids-hooks': path.resolve(__dirname, '../packages/components/src/hooks'),
-            '@ids-partials': path.resolve(__dirname, '../packages/components/src/partials'),
-            '@ids-sb-decorators': path.resolve(__dirname, '../src/storybook/decorators'),
-            '@ids-sb-utils': path.resolve(__dirname, '../src/storybook/utils'),
-            '@ids-shared': path.resolve(__dirname, '../packages/components/src/shared'),
-            '@ids-core': path.resolve(__dirname, '../packages/core/src'),
+            '@ids-components': path.resolve(currDir, '../packages/components/src/components'),
+            '@ids-context': path.resolve(currDir, '../packages/components/src/context'),
+            '@ids-hoc': path.resolve(currDir, '../packages/components/src/hoc'),
+            '@ids-hooks': path.resolve(currDir, '../packages/components/src/hooks'),
+            '@ids-partials': path.resolve(currDir, '../packages/components/src/partials'),
+            '@ids-sb-decorators': path.resolve(currDir, '../src/storybook/decorators'),
+            '@ids-sb-utils': path.resolve(currDir, '../src/storybook/utils'),
+            '@ids-shared': path.resolve(currDir, '../packages/components/src/shared'),
+            '@ids-core': path.resolve(currDir, '../packages/core/src'),
         };
 
         webpackConfig.plugins.push(new NodePolyfillPlugin());
@@ -75,4 +67,5 @@ const config = {
         return webpackConfig;
     },
 };
+
 export default config;

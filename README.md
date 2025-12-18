@@ -13,7 +13,7 @@ It also updates `ibexa.tsconfig.json` file with aliases to this repository.
 
 By default Storybook tests if there's running instance on `http://localhost:8000`. In order to change it, create file `.env.local` in main storybook directory.
 ```
-TWIG_COMPONENTS_BASE_URL=[url to your DXP instance]
+STORYBOOK_TWIG_COMPONENTS_BASE_URL=[url to your DXP instance]
 ```
 
 ## Preparing tag for release

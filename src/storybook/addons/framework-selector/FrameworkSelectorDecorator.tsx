@@ -21,10 +21,10 @@ const getStoryId = (kind: string) => {
     return storyId;
 };
 const getIframeSrc = (id: string, args: argsType, storyCustomParameters: Record<string, unknown>) => {
-    const baseUrl = process.env.TWIG_COMPONENTS_BASE_URL;
+    const baseUrl = process.env.STORYBOOK_TWIG_COMPONENTS_BASE_URL;
 
     if (baseUrl === undefined || baseUrl === '') {
-        throw new Error('TWIG_COMPONENTS_BASE_URL environment variable is not set.');
+        throw new Error('STORYBOOK_TWIG_COMPONENTS_BASE_URL environment variable is not set.');
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -11,7 +11,7 @@ export const BaseInput = ({
     error = false,
     className = '',
     extraInputAttrs = {},
-    id = undefined,
+    id,
     ref,
     required = false,
     size = 'medium',

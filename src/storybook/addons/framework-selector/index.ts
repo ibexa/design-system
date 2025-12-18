@@ -1,7 +1,9 @@
+import { fileURLToPath } from 'url';
+
 export const previewAnnotations = (entry = []) => {
-    return [...entry, require.resolve('./preview.ts')];
+    return [...entry, fileURLToPath(import.meta.resolve('./preview.ts'))];
 };
 
 export const managerEntries = (entry = []) => {
-    return [...entry, require.resolve('./manager.tsx')];
+    return [...entry, fileURLToPath(import.meta.resolve('./manager.tsx'))];
 };

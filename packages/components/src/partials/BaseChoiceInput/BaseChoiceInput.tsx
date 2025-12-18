@@ -17,7 +17,7 @@ export const BaseChoiceInput = ({
     disabled = false,
     error = false,
     extraAria = {},
-    id = undefined,
+    id,
     inputClassName = '',
     ref,
     required = false,
