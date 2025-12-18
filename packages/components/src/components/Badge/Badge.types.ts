@@ -5,7 +5,14 @@ export enum BadgeSize {
     Small = 'small',
 }
 
+export enum BadgeVariant {
+    String = 'string',
+    Number = 'number',
+}
+
 export interface BadgeProps extends BaseComponentAttributes {
-    value: number;
+    value: string;
+    variant: BadgeVariant;
+    maxValue?: number;
     size?: BadgeSize;
 }
