@@ -29,7 +29,7 @@ export const Badge = ({
     });
     const formatBadgeValue = (badgeValue: string): string => {
         if (variant === BadgeVariant.String) {
-            return badgeValue.toString();
+            return badgeValue;
         }
 
         const numericValue = parseInt(badgeValue, 10);

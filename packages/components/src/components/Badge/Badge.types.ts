@@ -12,7 +12,7 @@ export enum BadgeVariant {
 
 export interface BadgeProps extends BaseComponentAttributes {
     value: string;
-    variant: BadgeVariant;
+    variant?: BadgeVariant;
     maxValue?: number;
     size?: BadgeSize;
 }
