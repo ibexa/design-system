@@ -8,7 +8,7 @@ import { AccordionProps } from './Accordion.types';
 
 const FAKE_TIMEOUT_RERENDER = 1;
 
-export const Accordion = ({ children, header, initiallyExpanded = false, onHandleExpand }: AccordionProps) => {
+export const Accordion = ({ children, header, initiallyExpanded = false, onHandleExpand = () => void 0 }: AccordionProps) => {
     const Translator = useContext(TranslatorContext);
     const accordionContentRef = useRef<HTMLDivElement>(null);
     const [isExpanded, setIsExpanded] = useState<boolean>(initiallyExpanded);
