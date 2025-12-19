@@ -2,7 +2,9 @@
     "extends": "@ibexa/ts-config",
     "compilerOptions": {
         "target": "es2024",
-        "resolveJsonModule": true,
+        "noEmit": true,
+        "module": "esnext",
+        "moduleResolution": "bundler",
         "typeRoots": [
             "./types",
             "./node_modules/@types"

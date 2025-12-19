@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 
-import { useGlobals, useStorybookState } from 'storybook/internal/manager-api';
+import { useGlobals, useStorybookState } from 'storybook/manager-api';
 import { IconButton } from 'storybook/internal/components';
 import { type API_LeafEntry as LeafEntry } from 'storybook/internal/types';
 
@@ -24,8 +24,7 @@ export const Tool = memo(() => {
 
         const currentStory = allStories[currentStoryId];
 
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        if (currentStory?.type !== 'story' && currentStory?.type !== 'docs') {
+        if (currentStory.type !== 'story' && currentStory.type !== 'docs') {
             return '';
         }
 
@@ -71,7 +70,7 @@ export const Tool = memo(() => {
     const showFrameworkSelectorTools = twigEnabled && isTwigStoryAvailable();
 
     useEffect(() => {
-        const baseUrl = process.env.TWIG_COMPONENTS_BASE_URL;
+        const baseUrl = process.env.STORYBOOK_TWIG_COMPONENTS_BASE_URL;
 
         if (baseUrl === undefined || baseUrl === '') {
             return;
