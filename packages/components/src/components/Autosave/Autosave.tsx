@@ -6,7 +6,7 @@ import { createCssClassNames } from '@ids-core';
 
 import { AutosaveProps, AutosaveStatus } from './Autosave.types';
 
-export const Autosave = ({ isDarkMode = false, isEnabled, lastSavedTime , status = AutosaveStatus.On}: AutosaveProps) => {
+export const Autosave = ({ isDarkMode = false, isEnabled, lastSavedTime, status = AutosaveStatus.On }: AutosaveProps) => {
     const Translator = useContext(TranslatorContext);
     const classes = createCssClassNames({
         'ids-autosave': true,
