@@ -1,6 +1,7 @@
 import React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent, within } from 'storybook/test';
 
 import { BaseDropdown } from './';
 import { DropdownDecorator } from '@ids-sb-decorators/DropdownDecorator';
@@ -83,6 +84,24 @@ export const LongItems: Story = {
     },
 };
 
+export const LongItemsOpenedMenu: Story = {
+    name: 'Long items (Opened Menu)',
+    tags: ['!dev'],
+    args: {
+        ...getArguments(
+            generateItemsArray(DEFAULT_ITEMS_LENGTH, {
+                label: 'This is a very long item that should be tested in the dropdown',
+            }),
+        ),
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const dropdownWidget = canvas.getByText('Select an item');
+
+        await userEvent.click(dropdownWidget);
+    },
+};
+
 export const ManyItems: Story = {
     name: 'Many items',
     args: {
@@ -90,6 +109,23 @@ export const ManyItems: Story = {
     },
     parameters: {
         wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
+    },
+};
+
+export const ManyItemsOpenedMenu: Story = {
+    name: 'Many items (Opened Menu)',
+    tags: ['!dev'],
+    args: {
+        ...getArguments(generateItemsArray(MANY_ITEMS_LENGTH)),
+    },
+    parameters: {
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const dropdownWidget = canvas.getByText('Select an item');
+
+        await userEvent.click(dropdownWidget);
     },
 };
 
