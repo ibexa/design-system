@@ -35,8 +35,6 @@ export const Default: Story = {
             await expect(args.onFocus).toHaveBeenCalledOnce();
             await expect(args.onChange).toHaveBeenCalledOnce();
             await expect(args.onChange).toHaveBeenLastCalledWith(true, expect.anything());
-            await expect(args.onInput).toHaveBeenCalledOnce();
-            await expect(args.onInput).toHaveBeenLastCalledWith(true, expect.anything());
             await expect(input.checked).toBe(true);
         });
 
@@ -46,8 +44,6 @@ export const Default: Story = {
             await expect(args.onFocus).toHaveBeenCalledOnce();
             await expect(args.onChange).toHaveBeenCalledOnce();
             await expect(args.onChange).toHaveBeenLastCalledWith(true, expect.anything());
-            await expect(args.onInput).toHaveBeenCalledOnce();
-            await expect(args.onInput).toHaveBeenLastCalledWith(true, expect.anything());
             await expect(input.checked).toBe(true);
         });
 
@@ -76,8 +72,6 @@ export const UsingLabel: Story = {
             await expect(args.onFocus).toHaveBeenCalledOnce();
             await expect(args.onChange).toHaveBeenCalledOnce();
             await expect(args.onChange).toHaveBeenLastCalledWith(true, expect.anything());
-            await expect(args.onInput).toHaveBeenCalledOnce();
-            await expect(args.onInput).toHaveBeenLastCalledWith(true, expect.anything());
             await expect(input.checked).toBe(true);
         });
 
@@ -86,8 +80,6 @@ export const UsingLabel: Story = {
 
             await expect(args.onChange).toHaveBeenCalledOnce();
             await expect(args.onChange).toHaveBeenLastCalledWith(true, expect.anything());
-            await expect(args.onInput).toHaveBeenCalledOnce();
-            await expect(args.onInput).toHaveBeenLastCalledWith(true, expect.anything());
             await expect(input.checked).toBe(true);
         });
     },

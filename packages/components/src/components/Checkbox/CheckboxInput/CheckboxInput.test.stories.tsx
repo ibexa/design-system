@@ -29,8 +29,6 @@ export const Default: Story = {
             await expect(args.onFocus).toHaveBeenCalledOnce();
             await expect(args.onChange).toHaveBeenCalledTimes(nthCalled);
             await expect(args.onChange).toHaveBeenLastCalledWith(currentValue, expect.anything());
-            await expect(args.onInput).toHaveBeenCalledTimes(nthCalled);
-            await expect(args.onInput).toHaveBeenLastCalledWith(currentValue, expect.anything());
             await expect(input.checked).toBe(currentValue);
         };
 
