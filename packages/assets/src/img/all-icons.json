@@ -380,6 +380,8 @@
   "product-clock",
   "product-collection",
   "product-discard",
+  "product-embed-inline",
+  "product-embed",
   "product-search",
   "product-settings",
   "product-tag",
