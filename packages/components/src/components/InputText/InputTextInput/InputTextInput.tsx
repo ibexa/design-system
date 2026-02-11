@@ -44,8 +44,8 @@ export const InputTextInput = ({
     const componentOnFocus = (event: React.FocusEvent<HTMLInputElement>) => {
         onFocus(event);
     };
-    const componentOnInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-        onInput(event.target.value, event);
+    const componentOnInput = (event: React.InputEvent<HTMLInputElement>) => {
+        onInput(event);
     };
     const actions = useMemo((): ComponentEntryDataType[] => {
         const baseActions: ComponentEntryDataType[] = [];

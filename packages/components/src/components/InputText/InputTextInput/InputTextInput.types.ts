@@ -16,7 +16,7 @@ export interface InputTextInputProps extends BaseComponentAriaAttributes {
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
     onChange?: (value: string, event?: React.ChangeEvent<HTMLInputElement>) => void;
     onFocus?: React.FocusEventHandler<HTMLInputElement>;
-    onInput?: (value: string, event?: React.ChangeEvent<HTMLInputElement>) => void;
+    onInput?: React.InputEventHandler<HTMLInputElement>;
     disabled?: boolean;
     error?: boolean;
     id?: string;

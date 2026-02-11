@@ -42,7 +42,6 @@ export const ToggleButtonInput = ({
         inputRef.current?.focus();
 
         onChange(!checked);
-        onInput(!checked);
     };
     const onInputFocus = (event: React.FocusEvent<HTMLInputElement>) => {
         setIsFocused(true);
