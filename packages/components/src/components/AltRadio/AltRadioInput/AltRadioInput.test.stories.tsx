@@ -35,8 +35,6 @@ export const Default: Story = {
             await expect(args.onFocus).toHaveBeenCalledOnce();
             await expect(args.onChange).toHaveBeenCalledOnce();
             await expect(args.onChange).toHaveBeenCalledWith(true);
-            await expect(args.onInput).toHaveBeenCalledOnce();
-            await expect(args.onInput).toHaveBeenCalledWith(true);
         });
 
         await step('Click outside tile', async () => {

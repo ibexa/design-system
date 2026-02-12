@@ -32,10 +32,8 @@ export const Default: Story = {
 
             if (expectAdditionalParam) {
                 await expect(args.onChange).toHaveBeenNthCalledWith(numberOfClicks, currValue, expect.anything());
-                await expect(args.onInput).toHaveBeenNthCalledWith(numberOfClicks, currValue, expect.anything());
             } else {
                 await expect(args.onChange).toHaveBeenNthCalledWith(numberOfClicks, currValue);
-                await expect(args.onInput).toHaveBeenNthCalledWith(numberOfClicks, currValue);
             }
 
             if (currValue) {

@@ -31,8 +31,6 @@ export const Default: Story = {
         const checkInputHandlers = async (nthCalled: number, currentValue: boolean) => {
             await expect(args.onChange).toHaveBeenCalledTimes(nthCalled);
             await expect(args.onChange).toHaveBeenLastCalledWith(currentValue, expect.anything());
-            await expect(args.onInput).toHaveBeenCalledTimes(nthCalled);
-            await expect(args.onInput).toHaveBeenLastCalledWith(currentValue, expect.anything());
             await expect(input.checked).toBe(currentValue);
         };
 

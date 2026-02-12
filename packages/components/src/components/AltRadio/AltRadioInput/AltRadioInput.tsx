@@ -7,7 +7,7 @@ import { withStateChecked } from '@ids-hoc/withStateChecked';
 import { AltRadioInputProps } from './AltRadioInput.types';
 
 export const AltRadioInput = ({ className = '', label, tileClassName = '', title = '', ...inputProps }: AltRadioInputProps) => {
-    const { checked = false, disabled = false, error = false, onBlur, onChange, onFocus, onInput } = inputProps;
+    const { checked = false, disabled = false, error = false, onBlur, onChange, onFocus } = inputProps;
     const inputRef = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
     const altRadioClassName = createCssClassNames({
@@ -27,7 +27,6 @@ export const AltRadioInput = ({ className = '', label, tileClassName = '', title
 
         if (!checked) {
             onChange?.(true);
-            onInput?.(true);
         }
     };
     const onInputFocus = (event: React.FocusEvent<HTMLInputElement>) => {

@@ -36,8 +36,8 @@ export const BaseChoiceInput = ({
     const componentOnFocus = (event: React.FocusEvent<HTMLInputElement>) => {
         onFocus(event);
     };
-    const componentOnInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-        onInput(event.target.checked, event);
+    const componentOnInput = (event: React.InputEvent<HTMLInputElement>) => {
+        onInput(event);
     };
 
     return (

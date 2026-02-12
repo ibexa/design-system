@@ -37,8 +37,6 @@ export const Default: Story = {
             await expect(args.onFocus).toHaveBeenCalledOnce();
             await expect(args.onChange).toHaveBeenCalledOnce();
             await expect(args.onChange).toHaveBeenCalledWith(true, expect.anything());
-            await expect(args.onInput).toHaveBeenCalledOnce();
-            await expect(args.onInput).toHaveBeenCalledWith(true, expect.anything());
         });
 
         await step('Click outside radio button', async () => {

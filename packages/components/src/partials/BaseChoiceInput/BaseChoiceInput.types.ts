@@ -13,7 +13,7 @@ export interface BaseChoiceInputProps extends BaseComponentAriaAttributes {
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
     onChange?: (value: boolean, event?: React.ChangeEvent<HTMLInputElement>) => void;
     onFocus?: React.FocusEventHandler<HTMLInputElement>;
-    onInput?: (value: boolean, event?: React.ChangeEvent<HTMLInputElement>) => void;
+    onInput?: React.InputEventHandler<HTMLInputElement>;
     checked?: boolean;
     disabled?: boolean;
     error?: boolean;
