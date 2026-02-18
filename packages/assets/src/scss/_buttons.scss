@@ -204,10 +204,9 @@ $btns-sizes: (
         border-color: var(--ids-active-border-color);
     }
 
-    &.ids-btn--disabled,
-    &.disabled,
     &[disabled],
-    &:disabled {
+    &:disabled,
+    &[aria-disabled="true"] {
         color: var(--ids-disabled-text-color);
         fill: var(--ids-disabled-text-color);
         background: var(--ids-disabled-bg-color);
