@@ -20,6 +20,7 @@ export enum LinkVariant {
 
 interface LinkBaseProps extends BaseComponentAriaAttributes {
     ariaLabel?: string;
+    disabled?: boolean;
     href: string;
     target?: string;
     rel?: string;

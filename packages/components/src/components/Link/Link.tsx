@@ -14,6 +14,7 @@ export const Link = ({
     onClick,
     children = null,
     ariaLabel,
+    disabled = false,
     href,
     target,
     rel,
@@ -27,9 +28,18 @@ export const Link = ({
 }: LinkProps) => {
     const computedRel = target === '_blank' && !rel ? 'noopener noreferrer' : rel;
 
+    const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
+        if (disabled) {
+            e.preventDefault();
+            return;
+        }
+        onClick?.(e);
+    };
+
     if (variant === LinkVariant.Text) {
         const componentClassName = createCssClassNames({
             'ids-link': true,
+            'ids-link--disabled': disabled,
             [className]: !!className,
         });
 
@@ -38,7 +48,7 @@ export const Link = ({
                 aria-label={ariaLabel}
                 className={componentClassName}
                 href={href}
-                onClick={onClick}
+                onClick={handleClick}
                 rel={computedRel}
                 target={target}
                 title={title}
@@ -55,6 +65,7 @@ export const Link = ({
         [`ids-btn--${type}`]: true,
         [`ids-btn--${size}`]: true,
         'ids-btn--icon-only': iconOnly,
+        'ids-link--disabled': disabled,
         [className]: !!className,
     });
 
@@ -95,7 +106,7 @@ export const Link = ({
             aria-label={getLinkAriaLabel()}
             className={componentClassName}
             href={href}
-            onClick={onClick}
+            onClick={handleClick}
             rel={computedRel}
             role="link"
             target={target}
