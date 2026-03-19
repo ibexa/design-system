@@ -13,6 +13,11 @@ export enum ButtonType {
     TertiaryAlt = 'tertiary-alt',
 }
 
+export enum IconPosition {
+    Start = 'start',
+    End = 'end',
+}
+
 interface ButtonSharedProps extends BaseComponentAriaAttributes {
     ariaLabel?: string;
     onClick: React.MouseEventHandler<HTMLButtonElement>;
@@ -20,6 +25,7 @@ interface ButtonSharedProps extends BaseComponentAriaAttributes {
     isFocusable?: boolean;
     size?: ButtonSize;
     type?: ButtonType;
+    iconPosition?: IconPosition;
 }
 
 interface ButtonNoTextProps extends ButtonSharedProps {
