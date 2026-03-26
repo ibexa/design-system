@@ -14,6 +14,7 @@
         top: calculateRem(2px);
         left: calculateRem(2px);
         display: block;
+        box-sizing: content-box;
         width: calculateRem(8px);
         height: calculateRem(5px);
         border-left: calculateRem(2px) solid transparent;
