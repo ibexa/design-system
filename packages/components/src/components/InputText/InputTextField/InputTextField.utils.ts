@@ -44,6 +44,6 @@ export const useValidateInput = ({
             return { isValid: true, messages: [] };
         }
 
-        return validateInput<InputTextFieldValueType>(value, validators);
+        return validateInput(value, validators);
     }, [initialValue.current, value, validators]);
 };

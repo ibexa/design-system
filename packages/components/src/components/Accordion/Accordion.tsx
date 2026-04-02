@@ -11,8 +11,8 @@ const FAKE_TIMEOUT_RERENDER = 1;
 export const Accordion = ({ children, header, initiallyExpanded = false, onHandleExpand = () => void 0 }: AccordionProps) => {
     const Translator = useContext(TranslatorContext);
     const accordionContentRef = useRef<HTMLDivElement>(null);
-    const [isExpanded, setIsExpanded] = useState<boolean>(initiallyExpanded);
-    const [isAnimating, setIsAnimating] = useState<boolean>(false);
+    const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
+    const [isAnimating, setIsAnimating] = useState(false);
     const collapseLabel = Translator.trans(/*@Desc("Hide")*/ 'ibexa.expander.label.collapse');
     const expandLabel = Translator.trans(/*@Desc("Show")*/ 'ibexa.expander.label.expand');
     const changeExpanded = (nextIsExpanded: boolean): void => {
