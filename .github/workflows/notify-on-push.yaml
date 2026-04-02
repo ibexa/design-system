@@ -1,0 +1,19 @@
+name: Trigger sync on push to main
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger sync workflow
+        run: |
+          curl -f -X POST \
+            -H "Authorization: Bearer ${{ secrets.EZROBOT_PAT }}" \
+            -H "Accept: application/vnd.github+json" \
+            "${{ vars.SYNC_WEBHOOK_URL }}" \
+            -d "{\"ref\":\"${{ vars.SYNC_TARGET_BRANCH }}\"}"
