@@ -16,6 +16,7 @@ check_command "yarn"
 
 ASSETS_DIR="packages/assets"
 COMPONENTS_DIR="packages/components"
+CORE_DIR="packages/core"
 
 echo "# Removing the assets"
 yarn run packages:remove-dist
@@ -34,6 +35,10 @@ check_process "clean storybook dev"
 echo "# Removing components dev files"
 rm -rf "$COMPONENTS_DIR/scripts" "$COMPONENTS_DIR/src" "$COMPONENTS_DIR/.babelrc" "$COMPONENTS_DIR/tsconfig.build.json" "$COMPONENTS_DIR/tsconfig.json"
 check_process "clean components dev"
+
+echo "# Removing core dev files"
+rm -rf "$CORE_DIR/src" "$CORE_DIR/tsconfig.build.json" "$CORE_DIR/tsconfig.json"
+check_process "clean core dev"
 
 echo "# Removing assets dev files"
 rm -rf "$ASSETS_DIR/src"
