@@ -15,5 +15,5 @@ jobs:
           curl -f -X POST \
             -H "Authorization: Bearer ${{ secrets.EZROBOT_PAT }}" \
             -H "Accept: application/vnd.github+json" \
-            "${{ secrets.SYNC_WEBHOOK_URL }}" \
-            -d '{"ref":"main"}'
+            "${{ vars.SYNC_WEBHOOK_URL }}" \
+            -d "{\"ref\":\"${{ vars.SYNC_TARGET_BRANCH }}\"}"
