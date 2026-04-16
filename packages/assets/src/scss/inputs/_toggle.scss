@@ -48,7 +48,7 @@
             }
 
             &__indicator {
-                transform: translateX(calculateRem(19px));
+                transform: translateX(calculateRem(26px));
             }
         }
     }
@@ -91,7 +91,7 @@
             }
         }
 
-        #{$self}--checked {
+        &#{$self}--checked {
             #{$self} {
                 &__indicator {
                     transform: translateX(calculateRem(19px));
