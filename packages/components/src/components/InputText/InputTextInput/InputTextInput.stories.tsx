@@ -90,6 +90,15 @@ export const FilledPassword: Story = {
     },
 };
 
+export const FilledPasswordWithSearchFlag: Story = {
+    name: 'Filled (Password + Search Flag)',
+    args: {
+        hasSearchAction: true,
+        value: 'qwerty123',
+        type: 'password',
+    },
+};
+
 export const FilledEmail: Story = {
     name: 'Filled (Email)',
     args: {
@@ -117,6 +126,17 @@ export const FilledPhone: Story = {
 export const FilledSearch: Story = {
     name: 'Filled (Search)',
     args: {
+        hasSearchAction: true,
+        value: 'Lorem Ipsum',
+        type: 'search',
+    },
+};
+
+export const FilledSearchButton: Story = {
+    name: 'Filled (Search Button)',
+    args: {
+        hasSearchAction: true,
+        searchButtonType: 'button',
         value: 'Lorem Ipsum',
         type: 'search',
     },
