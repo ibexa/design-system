@@ -18,13 +18,11 @@ export const BaseChoiceInput = ({
     error = false,
     extraAria = {},
     id,
-    inputClassName = '',
     ref,
     title = '',
     value = '',
 }: BaseChoiceInputProps) => {
     const componentClassName = createCssClassNames({
-        'ids-choice-input': true,
         [className]: !!className,
     });
     const componentOnBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -41,26 +39,24 @@ export const BaseChoiceInput = ({
     };
 
     return (
-        <div className={componentClassName}>
-            <BaseInput
-                className={inputClassName}
-                disabled={disabled}
-                error={error}
-                extraInputAttrs={{
-                    checked,
-                    onBlur: componentOnBlur,
-                    onChange: componentOnChange,
-                    onFocus: componentOnFocus,
-                    onInput: componentOnInput,
-                    ...extraAria,
-                }}
-                id={id}
-                name={name}
-                ref={ref}
-                title={title}
-                type={type}
-                value={value}
-            />
-        </div>
+        <BaseInput
+            className={componentClassName}
+            disabled={disabled}
+            error={error}
+            extraInputAttrs={{
+                checked,
+                onBlur: componentOnBlur,
+                onChange: componentOnChange,
+                onFocus: componentOnFocus,
+                onInput: componentOnInput,
+                ...extraAria,
+            }}
+            id={id}
+            name={name}
+            ref={ref}
+            title={title}
+            type={type}
+            value={value}
+        />
     );
 };
