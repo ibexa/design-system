@@ -23,13 +23,13 @@ $color-primary_alt-100: oklch(0.4211 0.1942 292.32) !default;
 $color-primary_alt-90: oklch(0.4712 0.2193 292.16) !default;
 $color-primary_alt-80: oklch(0.5255 0.212 294.46) !default;
 $color-primary_alt-70: oklch(0.5761 0.1907 296.61) !default;
-$color-primary_alt-60: oklch(0.5761 0.1907 296.61) !default; //blad!
-$color-primary_alt-50: oklch(0.6271 0.1681 297.99) !default;
-$color-primary_alt-40: oklch(0.6792 0.1428 299.21) !default;
-$color-primary_alt-30: oklch(0.7328 0.1183 299.96) !default;
-$color-primary_alt-20: oklch(0.785 0.0955 300.9) !default;
-$color-primary_alt-10: oklch(0.8391 0.0713 301.32) !default;
-$color-primary_alt-5: oklch(0.9032 0.0421 302.22) !default;
+$color-primary_alt-60: oklch(0.6271 0.1681 297.99) !default;
+$color-primary_alt-50: oklch(0.6792 0.1428 299.21) !default;
+$color-primary_alt-40: oklch(0.7328 0.1183 299.96) !default;
+$color-primary_alt-30: oklch(0.785 0.0955 300.9) !default;
+$color-primary_alt-20: oklch(0.8391 0.0713 301.32) !default;
+$color-primary_alt-10: oklch(0.87 0.0568 302.3) !default;
+$color-primary_alt-5: oklch(0.9136 0.0378 302.46) !default;
 $color-primary_alt-0: oklch(0.9513 0.0206 301.14) !default;
 
 $color-neutral-240: oklch(0.1798 0.0104 248.41) !default;
@@ -125,7 +125,7 @@ $color-warning-10: oklch(0.9578 0.0265 74.76) !default;
 $color-warning-5: oklch(0.9736 0.0158 73.68) !default;
 $color-warning-0: oklch(0.9868 0.0079 73.75) !default;
 
-$gradient-primary-1: linear-gradient(90deg, oklch(0.4047 0.1894 289.97) 40%, oklch(0.6792 0.1428 299.21) 100%) !default;
-$gradient-primary-2: linear-gradient(90deg, oklch(0.6792 0.1428 299.21) 0%, oklch(0.4047 0.1894 289.97) 45%) !default;
+$gradient-primary-1: linear-gradient(90deg, $color-primary-80 40%, $color-primary_alt-40 100%) !default;
+$gradient-primary-2: linear-gradient(90deg, $color-primary_alt-40 0%, $color-primary-80 45%) !default;
 $gradient-complementary-primary-1: linear-gradient(315.6deg, #275799 0%, #619cff 132.49%) !default;
 $gradient-complementary-primary-2: linear-gradient(316.62deg, #619eff -74.77%, #275799 100%) !default;
