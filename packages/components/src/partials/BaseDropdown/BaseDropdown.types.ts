@@ -23,6 +23,7 @@ export interface BaseDropdownProps<T extends BaseDropdownItem> extends BaseCompo
     getNextFocusableItem?: GetNextFocusableItemType;
     maxVisibleItems?: number;
     onDropdownItemClick: (item: T, extraParams: ExtraDropdownItemClickParamsType) => void;
+    placeholder?: string | null;
     renderEmptySelectionInfo?: () => React.ReactNode;
     renderItem?: (item: T) => React.ReactNode;
     renderSelectedItems?: () => React.ReactNode;
