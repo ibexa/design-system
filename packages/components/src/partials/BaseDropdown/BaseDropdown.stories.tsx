@@ -73,6 +73,20 @@ export const EmptyError: Story = {
     },
 };
 
+export const EmptyCustomPlaceholder: Story = {
+    name: 'Empty (Custom Placeholder)',
+    args: {
+        placeholder: 'Custom placeholder',
+    },
+};
+
+export const EmptyPlaceholderFallbackAll: Story = {
+    name: 'Empty (Placeholder Fallback All)',
+    args: {
+        placeholder: '   ',
+    },
+};
+
 export const LongItems: Story = {
     name: 'Long items',
     args: {

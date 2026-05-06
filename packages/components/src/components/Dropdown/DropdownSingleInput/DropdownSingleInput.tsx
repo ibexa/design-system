@@ -24,7 +24,7 @@ export const DropdownSingleInput = ({
         onChange(id);
         closeDropdown();
     };
-    const selectedItem = value ? items.find((item) => item.id === value) : null;
+    const selectedItem = items.find((item) => item.id === value) ?? null;
     const isItemSelected = (item: DropdownSingleInputItem) => item.id === value;
     const renderItem = (item: DropdownSingleInputItem) => {
         return (
