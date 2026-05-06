@@ -23,7 +23,6 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
 }: ItemsContainerProps<T>) => {
     const searchRef = useRef<HTMLInputElement>(null);
     const itemsRef = useRef<HTMLUListElement>(null);
-    const originalItemsMaxHeightRef = useRef(0);
     const [isTopPlacementForced, setIsTopPlacementForced] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
@@ -62,6 +61,13 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
         return itemsStyles;
     };
     const popperPlacement = attributes.popper?.['data-popper-placement'] === 'top-start' ? 'top' : 'bottom';
+    const getNaturalItemsHeight = useCallback(() => {
+        if (!itemsRef.current) {
+            return 0;
+        }
+
+        return itemsRef.current.scrollHeight;
+    }, []);
     const calculateMaxAvailableItemsHeight = useCallback(
         (availableHeight: number) => {
             if (!isOpen || !popperElement || !itemsRef.current) {
@@ -119,8 +125,6 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
     useLayoutEffect(() => {
         if (isOpen && referenceElement) {
             setItemsContainerWidth(referenceElement.offsetWidth);
-
-            originalItemsMaxHeightRef.current = itemsRef.current?.offsetHeight ?? 0;
         } else {
             setItemsMaxHeight(0);
         }
@@ -140,7 +144,8 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
             };
             const availableHeight = getAvailableHeight();
             const availableItemsHeight = calculateMaxAvailableItemsHeight(availableHeight);
-            const originalDropdownFitsInViewport = availableItemsHeight > originalItemsMaxHeightRef.current;
+            const naturalItemsHeight = getNaturalItemsHeight();
+            const originalDropdownFitsInViewport = availableItemsHeight > naturalItemsHeight;
 
             if (originalDropdownFitsInViewport) {
                 setItemsMaxHeight(0);
@@ -148,7 +153,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
                 setItemsMaxHeight(availableItemsHeight);
             }
         }
-    }, [styles.popper.transform, popperPlacement, referenceElement]);
+    }, [styles.popper.transform, popperPlacement, referenceElement, calculateMaxAvailableItemsHeight, filteredItems, getNaturalItemsHeight]);
 
     useLayoutEffect(() => {
         if (isOpen && referenceElement) {
@@ -163,13 +168,14 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
 
             const availableSpaceAbove = referenceTop;
             const availableSpaceBelow = windowHeight - referenceBottom;
-            const originalDropdownFitsInViewport = availableSpaceBelow > originalItemsMaxHeightRef.current;
+            const naturalItemsHeight = getNaturalItemsHeight();
+            const originalDropdownFitsInViewport = availableSpaceBelow > naturalItemsHeight;
             const moreSpaceAbove = availableSpaceAbove > availableSpaceBelow;
             const showDropdownAbove = moreSpaceAbove && !originalDropdownFitsInViewport;
 
             setIsTopPlacementForced(showDropdownAbove);
         }
-    }, [isOpen, referenceElement, styles.popper.transform]);
+    }, [isOpen, referenceElement, styles.popper.transform, filteredItems, getNaturalItemsHeight]);
 
     useKeyDown(
         ['Enter', ' '],
