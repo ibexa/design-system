@@ -49,14 +49,14 @@
 
     &__search:not([hidden]) + .ids-dropdown__items {
         padding-top: 0;
-        max-height: calc(calculateRem(31px) * var(--max-visible-items, 10) + calculateRem(8px));
+        max-height: calc(calculateRem(32px) * var(--max-visible-items, 10) + calculateRem(8px));
     }
 
     &__items {
         list-style: none;
         margin: 0;
         padding: calculateRem(8px);
-        max-height: calc(calculateRem(31px) * var(--max-visible-items, 10) + calculateRem(16px));
+        max-height: calc(calculateRem(32px) * var(--max-visible-items, 10) + calculateRem(16px));
         overflow-y: auto;
         box-sizing: border-box;
     }
