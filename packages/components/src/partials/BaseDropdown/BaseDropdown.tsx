@@ -22,6 +22,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
     getNextFocusableItem = () => null,
     maxVisibleItems = MAX_VISIBLE_ITEMS,
     onDropdownItemClick,
+    placeholder,
     renderEmptySelectionInfo,
     renderItem = (item) => item.label,
     renderSelectedItems = () => null,
@@ -55,9 +56,12 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
                 return renderEmptySelectionInfo();
             }
 
-            const placeholder = Translator.trans(/*@Desc("Select an item")*/ 'ids.dropdown.placeholder');
+            const placeholderText =
+                placeholder === undefined || placeholder === null
+                    ? Translator.trans(/*@Desc("Select an item")*/ 'ids.dropdown.placeholder')
+                    : placeholder.trim() || Translator.trans(/*@Desc("All")*/ 'ids.dropdown.placeholder.all');
 
-            return <div className="ids-dropdown__placeholder">{placeholder}</div>;
+            return <div className="ids-dropdown__placeholder">{placeholderText}</div>;
         }
 
         return <div className="ids-dropdown__selection-info-items">{renderSelectedItems()}</div>;

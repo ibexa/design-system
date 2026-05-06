@@ -9,5 +9,6 @@ export interface DropdownSingleInputProps extends BaseComponentAttributes {
     error?: boolean;
     items?: DropdownSingleInputItem[];
     onChange?: (value: string) => void;
+    placeholder?: string | null;
     value?: string;
 }
