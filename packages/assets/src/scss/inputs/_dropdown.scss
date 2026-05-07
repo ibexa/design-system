@@ -26,14 +26,9 @@
     }
 
     &__selection-info {
-        min-width: 0;
-        min-width: 0;
         flex-grow: 1;
-        user-select: none;
-
-    &__selection-info-items {
         min-width: 0;
-    }
+        user-select: none;
     }
 
     &__selection-info-items {
@@ -150,13 +145,12 @@
                 &:focus-within {
                     color: $color-primary-80;
                 }
-                    min-width: 0;
             }
 
             &__selection-info {
                 .ids-overflow-list {
-                    margin: calculateRem(-4px);
                     min-width: 0;
+                    margin: calculateRem(-4px);
 
                     .ids-chip {
                         margin: calculateRem(4px);
