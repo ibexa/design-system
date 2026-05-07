@@ -13,7 +13,7 @@
 
     &__widget {
         min-width: calculateRem(160px);
-        padding: calculateRem(12px) calculateRem(16px);
+        padding: calculateRem(8.5px) calculateRem(12px);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -29,10 +29,12 @@
         flex-grow: 1;
         min-width: 0;
         user-select: none;
+        height: calculateRem(21px);
     }
 
     &__selection-info-items {
         min-width: 0;
+        font-size: $text-font-size-m;
     }
 
     &__placeholder {
@@ -70,6 +72,7 @@
         display: flex;
         align-items: center;
         padding: calculateRem(4px) calculateRem(8px) calculateRem(5px);
+        font-size: $text-font-size-m;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -153,7 +156,7 @@
                     margin: calculateRem(-4px);
 
                     .ids-chip {
-                        margin: calculateRem(4px);
+                        margin: 0 calculateRem(4px) 0;
                     }
                 }
             }
