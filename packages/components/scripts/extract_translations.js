@@ -3,10 +3,12 @@ const { parse } = require('@babel/parser');
 const { default: traverse } = require('@babel/traverse');
 const { jsToXliff12 } = require('xliff');
 
+const OUTPUT_FILE = './assets/ibexa_ds_components.en.xliff';
+
 const files = fs.globSync('./src/**/*.{ts,tsx,js,jsx}');
 const translations = {
     resources: {
-        ibexa_react_components: {},
+        ibexa_ds_components: {},
     },
     sourceLanguage: 'en',
     targetLanguage: 'en',
@@ -54,7 +56,7 @@ files.forEach((filepath) => {
                 }
             }
 
-            translations.resources.ibexa_react_components[translationEntry.key] = {
+            translations.resources.ibexa_ds_components[translationEntry.key] = {
                 source: translationEntry.message,
                 target: translationEntry.message,
             };
@@ -63,7 +65,12 @@ files.forEach((filepath) => {
 });
 
 jsToXliff12(translations).then((xliffFileContent) => {
-    fs.writeFileSync('./assets/translations.xliff', xliffFileContent, 'utf-8');
+    const normalizedXliffFileContent = xliffFileContent.replace(
+        /<trans-unit id="([^"]+)">/g,
+        '<trans-unit id="$1" resname="$1">'
+    );
+
+    fs.writeFileSync(OUTPUT_FILE, normalizedXliffFileContent, 'utf-8');
 
     console.log('Updated translations.'); // eslint-disable-line no-console
 });
