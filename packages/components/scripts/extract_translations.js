@@ -3,12 +3,12 @@ const { parse } = require('@babel/parser');
 const { default: traverse } = require('@babel/traverse');
 const { jsToXliff12 } = require('xliff');
 
-const OUTPUT_FILE = './assets/ibexa_ds_components.en.xliff';
+const OUTPUT_FILE = './assets/ibexa_design_system.en.xliff';
 
 const files = fs.globSync('./src/**/*.{ts,tsx,js,jsx}');
 const translations = {
     resources: {
-        ibexa_ds_components: {},
+        ibexa_design_system: {},
     },
     sourceLanguage: 'en',
     targetLanguage: 'en',
@@ -56,7 +56,7 @@ files.forEach((filepath) => {
                 }
             }
 
-            translations.resources.ibexa_ds_components[translationEntry.key] = {
+            translations.resources.ibexa_design_system[translationEntry.key] = {
                 source: translationEntry.message,
                 target: translationEntry.message,
             };
