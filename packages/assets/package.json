@@ -16,6 +16,8 @@
     "build:css": "sass src/scss/styles.scss dist/css/styles.css --style=compressed --no-source-map",
     "build:scss": "cp -rf src/scss dist",
     "build": "yarn build:clear && yarn build:copy && yarn build:css",
-    "watch": "nodemon --watch ./src --ext .scss --exec \"yarn build:scss\""
+    "watch:css": "sass --watch src/scss/styles.scss:dist/css/styles.css --style=compressed --no-source-map",
+    "watch:scss": "nodemon --watch ./src/scss --ext scss --exec \"yarn build:scss\"",
+    "watch": "yarn build:clear && yarn build:copy && (yarn watch:css & yarn watch:scss)"
   }
 }
