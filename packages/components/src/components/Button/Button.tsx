@@ -3,7 +3,7 @@ import React from 'react';
 import { Icon, IconSize } from '@ids-components/Icon';
 import { createCssClassNames } from '@ids-core';
 
-import { ButtonProps, ButtonSize, ButtonType } from './Button.types';
+import { ButtonProps, ButtonSize, ButtonType, IconPosition } from './Button.types';
 
 const ICON_SIZE_MAPPING: Record<ButtonSize, IconSize> = {
     [ButtonSize.Medium]: IconSize.Small,
@@ -22,6 +22,7 @@ export const Button = ({
     size = ButtonSize.Medium,
     title = '',
     type = ButtonType.Primary,
+    iconPosition = IconPosition.Start,
 }: ButtonProps) => {
     const iconOnly = !!icon && !children;
     const componentClassName = createCssClassNames({
@@ -62,6 +63,8 @@ export const Button = ({
         return null;
     };
 
+    const isIconEnd = iconPosition === IconPosition.End;
+
     return (
         <button
             aria-disabled={disabled}
@@ -75,8 +78,9 @@ export const Button = ({
             type="button"
             {...extraAria}
         >
-            {renderIcon()}
+            {!isIconEnd && renderIcon()}
             {renderLabel()}
+            {isIconEnd && renderIcon()}
         </button>
     );
 };

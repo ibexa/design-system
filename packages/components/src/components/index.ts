@@ -11,6 +11,7 @@ export * from './HelperText';
 export * from './Icon';
 export * from './InputText';
 export * from './Label';
+export * from './Link';
 export * from './RadioButton';
 export * from './Tag';
 export * from './ToggleButton';

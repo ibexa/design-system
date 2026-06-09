@@ -8,17 +8,13 @@ import { CheckboxInputProps } from './CheckboxInput.types';
 
 export const CheckboxInput = ({ className = '', indeterminate = false, ...restProps }: CheckboxInputProps) => {
     const checkboxClassName = createCssClassNames({
-        'ids-checkbox': true,
-        [className]: true,
-    });
-    const inputClassName = createCssClassNames({
+        [className]: !!className,
         'ids-input--indeterminate': indeterminate,
     });
 
     return (
         <BaseChoiceInput
             className={checkboxClassName}
-            inputClassName={inputClassName}
             ref={(node) => {
                 if (node) {
                     node.indeterminate = indeterminate; // eslint-disable-line no-param-reassign
