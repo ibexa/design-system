@@ -2,7 +2,7 @@ import { ContextDecorator } from '@ids-sb-decorators/ContextDecorator';
 
 import './styles.scss';
 
-/** @type { import('@storybook/react').Preview } */
+/** @type { import('@storybook/react-webpack5').Preview } */
 const preview = {
     decorators: [ContextDecorator],
     parameters: {

@@ -12,5 +12,6 @@ export * from './Icon';
 export * from './InputText';
 export * from './Label';
 export * from './RadioButton';
+export * from './RestrictedItem';
 export * from './Tag';
 export * from './ToggleButton';

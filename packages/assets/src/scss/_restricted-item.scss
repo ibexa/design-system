@@ -1,0 +1,53 @@
+@use 'variables' as *;
+@use 'functions' as *;
+
+.ids-restricted-item {
+    background: $color-neutral-30;
+    border: 1px solid $color-neutral-70;
+    border-left: 3px solid $color-neutral-100;
+    border-radius: $border-radius-medium;
+    overflow: hidden;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: calculateRem(6px);
+        padding: calculateRem(10px) calculateRem(14px);
+    }
+
+    &__name {
+        font-size: $text-font-size-s;
+        font-weight: 600;
+        color: $color-neutral-150;
+        filter: blur(4px);
+        user-select: none;
+        flex: 1;
+    }
+
+    &__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: calculateRem(3px);
+        padding: calculateRem(1px) calculateRem(6px);
+        background: $color-neutral-40;
+        border: 1px solid $color-neutral-70;
+        border-radius: calculateRem(4px);
+        font-size: $text-font-size-xs;
+        font-weight: 600;
+        color: $color-neutral-150;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        gap: calculateRem(6px);
+        padding: calculateRem(8px) calculateRem(14px);
+        border-top: 1px solid $color-neutral-70;
+        background: $color-neutral-40;
+        color: $color-neutral-150;
+        fill: $color-neutral-150;
+        font-size: $text-font-size-xs;
+    }
+}

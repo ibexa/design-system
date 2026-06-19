@@ -1,5 +1,5 @@
 import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
-import path from 'path';
+import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const currDir = path.dirname(fileURLToPath(import.meta.url));
@@ -9,12 +9,12 @@ const config = {
     stories: ['../packages/**/*.stories.@(js|jsx|mjs|ts|tsx)', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
     staticDirs: ['../packages/assets/src/', '../assets/'],
     addons: [
-        '@storybook/addon-docs',
-        '@storybook/addon-webpack5-compiler-swc',
-        '@storybook/addon-a11y',
-        'storybook-addon-pseudo-states',
+        getAbsolutePath("@storybook/addon-docs"),
+        getAbsolutePath("@storybook/addon-webpack5-compiler-swc"),
+        getAbsolutePath("@storybook/addon-a11y"),
+        getAbsolutePath("storybook-addon-pseudo-states"),
         {
-            name: '@storybook/addon-coverage',
+            name: getAbsolutePath("@storybook/addon-coverage"),
             options: {
                 istanbul: {
                     exclude: ['**/.storybook/**', '**/*.stories.*', '**/storybook-static/**', '**/storybook/**'],
@@ -22,7 +22,7 @@ const config = {
             },
         },
         {
-            name: '@storybook/addon-styling-webpack',
+            name: getAbsolutePath("@storybook/addon-styling-webpack"),
             options: {
                 rules: [
                     {
@@ -33,11 +33,14 @@ const config = {
             },
         },
         path.resolve(currDir, '../src/storybook/addons/framework-selector/index.ts'),
-        '@chromatic-com/storybook',
+        getAbsolutePath("@chromatic-com/storybook"),
     ],
     framework: {
-        name: '@storybook/react-webpack5',
+        name: getAbsolutePath("@storybook/react-webpack5"),
         options: {},
+    },
+    core: {
+        allowedHosts: true,
     },
     typescript: {
         check: true,
@@ -69,3 +72,7 @@ const config = {
 };
 
 export default config;
+
+function getAbsolutePath(value) {
+    return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { Icon, IconSize } from '../packages/components/src/components/Icon';
 import iconsList from '../packages/assets/src/img/all-icons.json';
