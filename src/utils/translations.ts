@@ -1,6 +1,6 @@
 import { xliff12ToJs } from 'xliff';
 
-import xliffContent from '../../packages/components/assets/translations.xliff';
+import xliffContent from '../../packages/components/assets/ibexa_design_system.en.xliff';
 
 let translations = {};
 
@@ -11,13 +11,13 @@ interface TranslationEntryType {
 
 interface XliffContentType {
     resources: {
-        ibexa_react_components?: Record<string, TranslationEntryType>;
+        ibexa_design_system?: Record<string, TranslationEntryType>;
     };
 }
 
 void xliff12ToJs(xliffContent).then(({ resources }: XliffContentType) => {
-    if (resources.ibexa_react_components) {
-        translations = resources.ibexa_react_components;
+    if (resources.ibexa_design_system) {
+        translations = resources.ibexa_design_system;
     }
 });
 

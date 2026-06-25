@@ -3,5 +3,6 @@
 .ids-choice-input-label {
     color: $color-neutral-240;
     font-size: $text-font-size-m;
+    margin-bottom: calculateRem(9px);
     cursor: pointer;
 }
