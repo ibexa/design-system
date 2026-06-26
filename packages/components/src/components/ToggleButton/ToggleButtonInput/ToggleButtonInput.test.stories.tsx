@@ -23,7 +23,6 @@ type Story = StoryObj<typeof ToggleButtonInputStateful>;
 
 export const Default: Story = {
     name: 'Default',
-    // eslint-disable-next-line ibexa/max-lines-per-function-jsx
     play: async ({ canvasElement, step, args }) => {
         const canvas = within(canvasElement);
         const toggler = canvas.getByRole('button');
