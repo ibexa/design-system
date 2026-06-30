@@ -102,3 +102,23 @@ export const TestExternalLinkWithExplicitRel: Story = {
         });
     },
 };
+
+export const TestButtonVariantIconUrl: Story = {
+    name: 'Button variant icon URL',
+    args: {
+        variant: LinkVariant.Button,
+        type: LinkType.TertiaryAlt,
+        iconUrl: '/assets/icons.svg#calendar-schedule',
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+
+        await step('Link button renders icon URL in icon slot', async () => {
+            const link = canvas.getByRole('link');
+            const iconUse = link.querySelector('.ids-btn__icon use');
+
+            await expect(iconUse).not.toBeNull();
+            await expect(iconUse).toHaveAttribute('xlink:href', '/assets/icons.svg#calendar-schedule');
+        });
+    },
+};

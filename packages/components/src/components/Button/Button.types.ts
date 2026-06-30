@@ -28,13 +28,41 @@ interface ButtonSharedProps extends BaseComponentAriaAttributes {
     iconPosition?: IconPosition;
 }
 
-interface ButtonNoTextProps extends ButtonSharedProps {
+interface ButtonNameIconProps {
     icon: string;
+    iconUrl?: never;
+}
+
+interface ButtonUrlIconProps {
+    icon?: never;
+    iconUrl: string;
+}
+
+interface ButtonNoTextNameIconProps extends ButtonSharedProps, ButtonNameIconProps {
     children?: never;
 }
-interface ButtonTextProps extends ButtonSharedProps {
-    icon?: string;
+
+interface ButtonNoTextUrlIconProps extends ButtonSharedProps, ButtonUrlIconProps {
+    children?: never;
+}
+
+interface ButtonTextNoIconProps extends ButtonSharedProps {
+    icon?: never;
+    iconUrl?: never;
     children: React.ReactNode;
 }
 
-export type ButtonProps = ButtonNoTextProps | ButtonTextProps;
+interface ButtonTextNameIconProps extends ButtonSharedProps, ButtonNameIconProps {
+    children: React.ReactNode;
+}
+
+interface ButtonTextUrlIconProps extends ButtonSharedProps, ButtonUrlIconProps {
+    children: React.ReactNode;
+}
+
+export type ButtonProps =
+    | ButtonNoTextNameIconProps
+    | ButtonNoTextUrlIconProps
+    | ButtonTextNoIconProps
+    | ButtonTextNameIconProps
+    | ButtonTextUrlIconProps;

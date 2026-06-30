@@ -18,13 +18,15 @@ export const Button = ({
     extraAria = {},
     className = '',
     icon,
+    iconUrl,
     isFocusable = true,
     size = ButtonSize.Medium,
     title = '',
     type = ButtonType.Primary,
     iconPosition = IconPosition.Start,
 }: ButtonProps) => {
-    const iconOnly = !!icon && !children;
+    const hasIcon = !!icon || !!iconUrl;
+    const iconOnly = hasIcon && !children;
     const componentClassName = createCssClassNames({
         'ids-btn': true,
         [`ids-btn--${type}`]: true,
@@ -37,12 +39,26 @@ export const Button = ({
         if (ariaLabel) {
             return ariaLabel;
         } else if (iconOnly) {
+            if (iconUrl !== undefined) {
+                return iconUrl;
+            }
+
             return icon;
         }
 
         return typeof children === 'string' ? children : '';
     };
     const renderIcon = () => {
+        if (iconUrl) {
+            const iconSize = ICON_SIZE_MAPPING[size];
+
+            return (
+                <div className="ids-btn__icon">
+                    <Icon path={iconUrl} size={iconSize} />
+                </div>
+            );
+        }
+
         if (icon) {
             const iconSize = ICON_SIZE_MAPPING[size];
 

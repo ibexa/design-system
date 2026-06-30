@@ -34,17 +34,44 @@ interface LinkButtonSharedProps extends LinkBaseProps {
     type?: LinkType;
 }
 
-interface LinkButtonNoTextProps extends LinkButtonSharedProps {
+interface LinkButtonNameIconProps {
     icon: string;
+    iconUrl?: never;
+}
+
+interface LinkButtonUrlIconProps {
+    icon?: never;
+    iconUrl: string;
+}
+
+interface LinkButtonNoTextNameIconProps extends LinkButtonSharedProps, LinkButtonNameIconProps {
     children?: never;
 }
 
-interface LinkButtonTextProps extends LinkButtonSharedProps {
-    icon?: string;
+interface LinkButtonNoTextUrlIconProps extends LinkButtonSharedProps, LinkButtonUrlIconProps {
+    children?: never;
+}
+
+interface LinkButtonTextNoIconProps extends LinkButtonSharedProps {
+    icon?: never;
+    iconUrl?: never;
     children: React.ReactNode;
 }
 
-type LinkButtonProps = LinkButtonNoTextProps | LinkButtonTextProps;
+interface LinkButtonTextNameIconProps extends LinkButtonSharedProps, LinkButtonNameIconProps {
+    children: React.ReactNode;
+}
+
+interface LinkButtonTextUrlIconProps extends LinkButtonSharedProps, LinkButtonUrlIconProps {
+    children: React.ReactNode;
+}
+
+type LinkButtonProps =
+    | LinkButtonNoTextNameIconProps
+    | LinkButtonNoTextUrlIconProps
+    | LinkButtonTextNoIconProps
+    | LinkButtonTextNameIconProps
+    | LinkButtonTextUrlIconProps;
 
 interface LinkTextProps extends LinkBaseProps {
     variant: LinkVariant.Text;
@@ -52,6 +79,7 @@ interface LinkTextProps extends LinkBaseProps {
     size?: never;
     type?: never;
     icon?: never;
+    iconUrl?: never;
 }
 
 export type LinkProps = LinkButtonProps | LinkTextProps;
