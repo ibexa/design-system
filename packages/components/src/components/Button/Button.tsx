@@ -20,6 +20,7 @@ export const Button = ({
     icon,
     iconUrl,
     isFocusable = true,
+    ref = null,
     size = ButtonSize.Medium,
     title = '',
     type = ButtonType.Primary,
@@ -88,6 +89,7 @@ export const Button = ({
             className={componentClassName}
             disabled={disabled}
             onClick={onClick}
+            ref={ref}
             role="button"
             tabIndex={isFocusable && !disabled ? 0 : -1}
             title={title}
