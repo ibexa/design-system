@@ -25,6 +25,7 @@ export const Button = ({
     title = '',
     type = ButtonType.Primary,
     iconPosition = IconPosition.Start,
+    ...nativeButtonProps
 }: ButtonProps) => {
     const hasIcon = !!icon || !!iconUrl;
     const iconOnly = hasIcon && !children;
@@ -84,6 +85,7 @@ export const Button = ({
 
     return (
         <button
+            {...nativeButtonProps}
             aria-disabled={disabled}
             aria-label={getBtnAriaLabel()}
             className={componentClassName}

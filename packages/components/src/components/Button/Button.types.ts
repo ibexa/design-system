@@ -1,3 +1,5 @@
+import type { ButtonHTMLAttributes } from 'react';
+
 import { BaseComponentAriaAttributes } from '@ids-types/general';
 
 export enum ButtonSize {
@@ -18,7 +20,9 @@ export enum IconPosition {
     End = 'end',
 }
 
-interface ButtonSharedProps extends BaseComponentAriaAttributes {
+type NativeButtonAttributes = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'className' | 'disabled' | 'onClick' | 'type'>;
+
+interface ButtonSharedProps extends BaseComponentAriaAttributes, NativeButtonAttributes {
     ariaLabel?: string;
     onClick: React.MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
