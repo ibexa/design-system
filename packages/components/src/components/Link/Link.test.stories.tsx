@@ -1,7 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
+import type { MouseEvent } from 'react';
 
 import { Link, LinkType, LinkVariant } from './';
+
+const onClick = fn((event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+});
 
 const meta: Meta<typeof Link> = {
     component: Link,
@@ -9,7 +14,7 @@ const meta: Meta<typeof Link> = {
     args: {
         href: 'https://example.com',
         children: 'Link label',
-        onClick: fn(),
+        onClick,
     },
 };
 
