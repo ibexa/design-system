@@ -1,7 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
+import type { MouseEvent } from 'react';
 
 import { Link, LinkType, LinkVariant } from './';
+
+const onClick = fn((event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+});
 
 const meta: Meta<typeof Link> = {
     component: Link,
@@ -9,7 +14,7 @@ const meta: Meta<typeof Link> = {
     args: {
         href: 'https://example.com',
         children: 'Link label',
-        onClick: fn(),
+        onClick,
     },
 };
 
@@ -99,6 +104,26 @@ export const TestExternalLinkWithExplicitRel: Story = {
 
             await expect(link).toHaveAttribute('target', '_blank');
             await expect(link).toHaveAttribute('rel', 'external');
+        });
+    },
+};
+
+export const TestButtonVariantIconUrl: Story = {
+    name: 'Button variant icon URL',
+    args: {
+        variant: LinkVariant.Button,
+        type: LinkType.TertiaryAlt,
+        iconUrl: '/assets/icons.svg#calendar-schedule',
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+
+        await step('Link button renders icon URL in icon slot', async () => {
+            const link = canvas.getByRole('link');
+            const iconUse = link.querySelector('.ids-btn__icon use');
+
+            await expect(iconUse).not.toBeNull();
+            await expect(iconUse).toHaveAttribute('xlink:href', '/assets/icons.svg#calendar-schedule');
         });
     },
 };

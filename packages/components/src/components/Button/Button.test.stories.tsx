@@ -55,3 +55,21 @@ export const TestDisabled: Story = {
         });
     },
 };
+
+export const TestIconUrl: Story = {
+    name: 'Icon URL',
+    args: {
+        iconUrl: '/assets/icons.svg#calendar-schedule',
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+
+        await step('Button renders icon URL in icon slot', async () => {
+            const button = canvas.getByRole('button');
+            const iconUse = button.querySelector('.ids-btn__icon use');
+
+            await expect(iconUse).not.toBeNull();
+            await expect(iconUse).toHaveAttribute('xlink:href', '/assets/icons.svg#calendar-schedule');
+        });
+    },
+};
