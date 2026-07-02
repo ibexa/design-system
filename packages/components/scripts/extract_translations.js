@@ -65,10 +65,7 @@ files.forEach((filepath) => {
 });
 
 jsToXliff12(translations).then((xliffFileContent) => {
-    const normalizedXliffFileContent = xliffFileContent.replace(
-        /<trans-unit id="([^"]+)">/g,
-        '<trans-unit id="$1" resname="$1">'
-    );
+    const normalizedXliffFileContent = xliffFileContent.replace(/<trans-unit id="([^"]+)">/g, '<trans-unit id="$1" resname="$1">');
 
     fs.writeFileSync(OUTPUT_FILE, normalizedXliffFileContent, 'utf-8');
 
