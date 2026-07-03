@@ -3,9 +3,9 @@ import React from 'react';
 import { Icon, IconSize } from '@ids-components/Icon';
 import { createCssClassNames } from '@ids-core';
 
-import { TagGhostType, TagProps, TagSize, TagType } from './Tag.types';
+import { type TagCustomColorsStyle, TagGhostType, type TagProps, TagSize, type TagType } from './Tag.types';
 
-export const Tag = ({ children, className = '', isDark = false, icon, size = TagSize.Medium, type }: TagProps) => {
+export const Tag = ({ children, className = '', customColors, isDark = false, icon, size = TagSize.Medium, type }: TagProps) => {
     const isGhostType = (tagType: TagType | TagGhostType): tagType is TagGhostType => {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
         return Object.values(TagGhostType).includes(tagType as TagGhostType);
@@ -16,8 +16,16 @@ export const Tag = ({ children, className = '', isDark = false, icon, size = Tag
         [`ids-tag--${type}`]: true,
         [`ids-tag--${size}`]: true,
         [`ids-tag--dark`]: isDark,
+        'ids-tag--custom-colors': !!customColors,
         [className]: !!className,
     });
+    const customColorsStyle: TagCustomColorsStyle | undefined = customColors
+        ? {
+              '--ids-tag-custom-bg-color': customColors.background,
+              '--ids-tag-custom-border-color': customColors.border ?? customColors.text,
+              '--ids-tag-custom-text-color': customColors.text,
+          }
+        : undefined;
 
     const renderDot = () => {
         if (isGhost) {
@@ -40,7 +48,7 @@ export const Tag = ({ children, className = '', isDark = false, icon, size = Tag
     };
 
     return (
-        <div className={componentClassName}>
+        <div className={componentClassName} style={customColorsStyle}>
             {renderDot()}
             {renderIcon()}
             <div className="ids-tag__content">{children}</div>
