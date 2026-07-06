@@ -37,14 +37,15 @@ var Link = exports.Link = function Link(_ref) {
     size = _ref$size === void 0 ? _Link.LinkSize.Medium : _ref$size,
     _ref$type = _ref.type,
     type = _ref$type === void 0 ? _Link.LinkType.Tertiary : _ref$type,
-    icon = _ref.icon;
+    icon = _ref.icon,
+    iconUrl = _ref.iconUrl;
   var computedRel = target === '_blank' && !rel ? 'noopener noreferrer' : rel;
-  var handleClick = function handleClick(e) {
+  var handleClick = function handleClick(event) {
     if (disabled) {
-      e.preventDefault();
+      event.preventDefault();
       return;
     }
-    onClick === null || onClick === void 0 || onClick(e);
+    onClick === null || onClick === void 0 || onClick(event);
   };
   if (variant === _Link.LinkVariant.Text) {
     var _componentClassName = (0, _idsCore.createCssClassNames)(_defineProperty({
@@ -61,7 +62,8 @@ var Link = exports.Link = function Link(_ref) {
       title: title
     }, extraAria), children);
   }
-  var iconOnly = !!icon && !children;
+  var hasIcon = !!icon || !!iconUrl;
+  var iconOnly = hasIcon && !children;
   var componentClassName = (0, _idsCore.createCssClassNames)(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty({
     'ids-btn': true
   }, "ids-btn--".concat(type), true), "ids-btn--".concat(size), true), 'ids-btn--icon-only', iconOnly), 'ids-link--disabled', disabled), className, !!className));
@@ -69,18 +71,30 @@ var Link = exports.Link = function Link(_ref) {
     if (ariaLabel) {
       return ariaLabel;
     } else if (iconOnly) {
+      if (iconUrl !== undefined) {
+        return iconUrl;
+      }
       return icon;
     }
     return typeof children === 'string' ? children : '';
   };
   var renderIcon = function renderIcon() {
-    if (icon) {
+    if (iconUrl) {
       var iconSize = ICON_SIZE_MAPPING[size];
       return /*#__PURE__*/_react["default"].createElement("div", {
         className: "ids-btn__icon"
       }, /*#__PURE__*/_react["default"].createElement(_Icon.Icon, {
-        name: icon,
+        path: iconUrl,
         size: iconSize
+      }));
+    }
+    if (icon) {
+      var _iconSize = ICON_SIZE_MAPPING[size];
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        className: "ids-btn__icon"
+      }, /*#__PURE__*/_react["default"].createElement(_Icon.Icon, {
+        name: icon,
+        size: _iconSize
       }));
     }
     return null;

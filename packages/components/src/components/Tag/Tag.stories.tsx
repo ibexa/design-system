@@ -100,3 +100,14 @@ export const ErrorGhost: Story = {
         type: TagGhostType.ErrorGhost,
     },
 };
+
+export const CustomColors: Story = {
+    name: 'Custom Colors',
+    args: {
+        customColors: {
+            text: '#6d1d00',
+            background: '#fff0e6',
+        },
+        type: TagType.Neutral,
+    },
+};
