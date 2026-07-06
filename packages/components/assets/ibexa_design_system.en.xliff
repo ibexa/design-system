@@ -21,6 +21,14 @@
         <source>Off</source>
         <target>Off</target>
       </trans-unit>
+      <trans-unit id="ids.search-button.label" resname="ids.search-button.label">
+        <source>Search</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="ids.show-password.label" resname="ids.show-password.label">
+        <source>Toggle password visibility</source>
+        <target>Toggle password visibility</target>
+      </trans-unit>
       <trans-unit id="ibexa.chip.delete-btn.label" resname="ibexa.chip.delete-btn.label">
         <source>Delete</source>
         <target>Delete</target>
