@@ -29,7 +29,6 @@ const getIframeSrc = (id: string, args: argsType, storyCustomParameters: Record<
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const storyProperties = Object.entries(args).reduce((accumulator: argsType, [propertyName, propertyValue]: [string, any]) => {
-        /* eslint-disable @typescript-eslint/no-unsafe-assignment */
         if (typeof propertyValue === 'function') {
             return accumulator;
         }
@@ -42,7 +41,6 @@ const getIframeSrc = (id: string, args: argsType, storyCustomParameters: Record<
         }
 
         return { ...accumulator, [propertyName]: propertyFinalValue };
-        /* eslint-enable @typescript-eslint/no-unsafe-assignment */
     }, {});
     const storyPropertiesStringified = JSON.stringify(storyProperties);
     const storyCustomParametersStringified = JSON.stringify(storyCustomParameters);
@@ -79,7 +77,6 @@ const getCustomParameters = (context: StoryContext) => {
     return customParameters;
 };
 
-// eslint-disable-next-line ibexa/max-lines-per-function-jsx
 const FrameworkSelectorDecorator = (StoryFn: StoryFunction, context: StoryContext): Renderer['storyResult'] | React.JSX.Element => {
     const [globals] = useGlobals();
     const [args] = useArgs();
@@ -117,10 +114,10 @@ const FrameworkSelectorDecorator = (StoryFn: StoryFunction, context: StoryContex
         const { data }: { data: IframeMessageData } = event;
 
         if (data.method) {
-            const callback = args[data.method]; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+            const callback = args[data.method];
 
             if (callback) {
-                callback(...data.args); // eslint-disable-line @typescript-eslint/no-unsafe-call
+                callback(...data.args);
             }
         }
     };

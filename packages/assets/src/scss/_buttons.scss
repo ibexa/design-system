@@ -207,7 +207,7 @@ $btns-sizes: (
 
     &[disabled],
     &:disabled,
-    &[aria-disabled="true"] {
+    &[aria-disabled='true'] {
         color: var(--ids-disabled-text-color);
         fill: var(--ids-disabled-text-color);
         background: var(--ids-disabled-bg-color);

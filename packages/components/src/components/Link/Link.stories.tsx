@@ -282,3 +282,14 @@ export const VariaButtonHTMLChildren: Story = {
         ),
     },
 };
+
+export const VariaButtonIconUrl: Story = {
+    name: 'Varia / Button with icon URL',
+    args: {
+        variant: LinkVariant.Button,
+        type: LinkType.TertiaryAlt,
+        size: LinkSize.Small,
+        iconUrl: '/assets/icons.svg#calendar-schedule',
+        children: 'Reschedule',
+    },
+};

@@ -25,15 +25,16 @@ export const Link = ({
     size = LinkSize.Medium,
     type = LinkType.Tertiary,
     icon,
+    iconUrl,
 }: LinkProps) => {
     const computedRel = target === '_blank' && !rel ? 'noopener noreferrer' : rel;
 
-    const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
+    const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
         if (disabled) {
-            e.preventDefault();
+            event.preventDefault();
             return;
         }
-        onClick?.(e);
+        onClick?.(event);
     };
 
     if (variant === LinkVariant.Text) {
@@ -59,7 +60,8 @@ export const Link = ({
         );
     }
 
-    const iconOnly = !!icon && !children;
+    const hasIcon = !!icon || !!iconUrl;
+    const iconOnly = hasIcon && !children;
     const componentClassName = createCssClassNames({
         'ids-btn': true,
         [`ids-btn--${type}`]: true,
@@ -73,6 +75,10 @@ export const Link = ({
         if (ariaLabel) {
             return ariaLabel;
         } else if (iconOnly) {
+            if (iconUrl !== undefined) {
+                return iconUrl;
+            }
+
             return icon;
         }
 
@@ -80,6 +86,16 @@ export const Link = ({
     };
 
     const renderIcon = () => {
+        if (iconUrl) {
+            const iconSize = ICON_SIZE_MAPPING[size];
+
+            return (
+                <div className="ids-btn__icon">
+                    <Icon path={iconUrl} size={iconSize} />
+                </div>
+            );
+        }
+
         if (icon) {
             const iconSize = ICON_SIZE_MAPPING[size];
 
