@@ -18,10 +18,14 @@ jobs:
           installation_id: ${{ secrets.AUTOMATION_CLIENT_INSTALLATION }}
           private_key: ${{ secrets.AUTOMATION_CLIENT_SECRET }}
 
-      - name: Trigger sync workflow
+      - name: Trigger sync workflows
         run: |
-          curl -f -X POST \
-            -H "Authorization: Bearer ${{ steps.generate_token.outputs.token }}" \
-            -H "Accept: application/vnd.github+json" \
-            "${{ vars.SYNC_WEBHOOK_URL }}" \
-            -d "{\"ref\":\"${{ vars.SYNC_TARGET_BRANCH }}\"}"
+          status=0
+          for branch in 5.0 6.0; do
+            curl -f -X POST \
+              -H "Authorization: Bearer ${{ steps.generate_token.outputs.token }}" \
+              -H "Accept: application/vnd.github+json" \
+              "${{ vars.SYNC_WEBHOOK_URL }}" \
+              -d "{\"ref\":\"$branch\"}" || { echo "::error::Failed to trigger sync for $branch"; status=1; }
+          done
+          exit $status
