@@ -10,10 +10,22 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger sync workflow
+      - name: Authenticate as GitHub app
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.AUTOMATION_CLIENT_ID }}
+          installation_id: ${{ secrets.AUTOMATION_CLIENT_INSTALLATION }}
+          private_key: ${{ secrets.AUTOMATION_CLIENT_SECRET }}
+
+      - name: Trigger sync workflows
         run: |
-          curl -f -X POST \
-            -H "Authorization: Bearer ${{ secrets.EZROBOT_PAT }}" \
-            -H "Accept: application/vnd.github+json" \
-            "${{ vars.SYNC_WEBHOOK_URL }}" \
-            -d "{\"ref\":\"${{ vars.SYNC_TARGET_BRANCH }}\"}"
+          status=0
+          for branch in 5.0 6.0; do
+            curl -f -X POST \
+              -H "Authorization: Bearer ${{ steps.generate_token.outputs.token }}" \
+              -H "Accept: application/vnd.github+json" \
+              "${{ vars.SYNC_WEBHOOK_URL }}" \
+              -d "{\"ref\":\"$branch\"}" || { echo "::error::Failed to trigger sync for $branch"; status=1; }
+          done
+          exit $status
