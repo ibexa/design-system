@@ -32,6 +32,19 @@ Then: Read `_reference.png` and each capture, compare using the rubric in
 re-run. **Hard cap: 3 iterations**, then present both images side by side to the user and
 let them call it — do not chase pixel noise.
 
+## Style audit (after the visual loop passes)
+
+```bash
+node .claude/skills/ids-component-verify/scripts/audit-styles.mjs <Name>
+```
+
+Toggles every CSS declaration targeting `.ids-<name>` off in the live CSSOM and
+pixel-compares across all preview stories. `REDUNDANT?` entries had no visual effect
+anywhere — typically values restating `_root.scss` globals or unused shorthand longhands
+(narrow `background:` to `background-color:` etc.). Remove/narrow them, then re-run the
+visual check. `UNCHECKED` (pseudo-class/state rules) need manual `--hover`/`--focus`
+verification; `SKIPPED as shared` selectors serve other components — leave them alone.
+
 ## Static checks
 
 React repo root:

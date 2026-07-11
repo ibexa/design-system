@@ -16,8 +16,12 @@ Work through in order; exemplars beat prose — when unsure, open the named file
 - [ ] Classes via `createCssClassNames` (`@ids-core`) with a `{ 'ids-…': condition }` map —
       root block + one entry per modifier from spec §2. Exemplar: `Badge.tsx`.
 - [ ] Compose existing IDS components (`@ids-components/<Name>`) instead of re-emitting
-      their markup. Translations come in as props (see `TranslatorContext` usage in
-      `Accordion.tsx` only for context-provided strings).
+      their markup.
+- [ ] Consumer-passed strings arrive translated via props; the component's own default
+      user-facing strings use `TranslatorContext`:
+      `Translator.trans(/*@Desc("Clear")*/ 'ids.<component>.<key>')` — never hardcoded
+      English defaults. Exemplar: `ui/ClearBtn/ClearBtn.tsx`. Then run
+      `yarn components:extract-translations`.
 - [ ] No magic numbers (ESLint enforces; extract named constants).
 - [ ] **Secondary surfaces (menus, popovers) need a full keyboard/ARIA plan**, not just
       mouse handlers: focus moves in on open, arrows traverse, Escape closes and restores
@@ -46,6 +50,10 @@ Work through in order; exemplars beat prose — when unsure, open the named file
       `inputs/`: `'../variables'`).
 - [ ] `.ids-<name> { … }` with `&--modifier` / `&__element` nesting mirroring spec §2.
       Values: tokens from spec §5 + `calculateRem(<px>)`. Exemplar: `_expander.scss`.
+- [ ] No declarations that restate inherited globals (`_root.scss` already sets
+      font-family, letter-spacing, …) or CSS initial values. After the visual loop passes,
+      run `node .claude/skills/ids-component-verify/scripts/audit-styles.mjs <Name>` and
+      remove/narrow the confirmed-redundant declarations (re-run the visual check after).
 - [ ] Register: `@use '<name>';` in `styles.scss` (alphabetical-ish placement with the rest).
 
 ## 6. Stories

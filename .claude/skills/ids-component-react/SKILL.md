@@ -29,8 +29,15 @@ target's complexity (`Expander/` for stateful, `Dropdown/` for multi-part with s
 - Enums (in `<Name>.types.ts`), not string unions; props interface extends
   `BaseComponentAttributes` from `@ids-types/general` where applicable.
 - SCSS: `@use 'variables' as *; @use 'functions' as *;` — tokens + `calculateRem(<px>)`
-  only, no raw hex, no raw px.
-- No translation calls inside DS components — translated strings arrive via props.
+  only, no raw hex, no raw px. Don't restate values inherited from the global base
+  (`packages/assets/src/scss/_root.scss` — font, letter-spacing, …).
+- Translations, two rules: strings the CONSUMER passes (labels, items) arrive already
+  translated via props — no `trans` calls for those. But a component's own built-in
+  user-facing defaults (a "More"/"Clear" label) must NOT be hardcoded English: use
+  `TranslatorContext` — `Translator.trans(/*@Desc("More")*/ 'ids.<component>.<key>')` —
+  and run `yarn components:extract-translations`. Exemplars: `ui/ClearBtn/ClearBtn.tsx`,
+  `ToggleButtonInput.tsx`. (Twig mirrors this with constructor-injected
+  `TranslatorInterface` + `@Desc`.)
 - Stories: CSF3, one per spec §4 matrix cell marked ●; tests are `play` functions in
   `*.test.stories.tsx` (the `.test.` infix is what the test-runner picks up).
 
