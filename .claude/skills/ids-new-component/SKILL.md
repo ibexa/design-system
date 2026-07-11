@@ -1,6 +1,6 @@
 ---
 name: ids-new-component
-description: End-to-end pipeline for adding a NEW Ibexa Design System component from a design — screenshot(s) or Figma frame in, React component (design-system-60) + Twig component (design-system-twig) + stories + tests + visual verification out. Use whenever asked to create/implement/build a new DS/IDS component from a design, mockup, screenshot, or Figma link.
+description: End-to-end pipeline for adding a NEW Ibexa Design System component from a design — screenshot(s) or Figma frame in, React component (@ibexa/design-system repo) + Twig component (design-system-twig) + stories + tests + visual verification out. Use whenever asked to create/implement/build a new DS/IDS component from a design, mockup, screenshot, or Figma link.
 ---
 
 # New IDS component pipeline

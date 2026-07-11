@@ -5,7 +5,7 @@ docs, or specs — resolve them at runtime with this procedure and refer to them
 
 | Name | What it is | How to recognize it |
 |---|---|---|
-| `IDS_REACT_ROOT` | React design system (this repo, `design-system-60`) | root `package.json` with `"name": "@ibexa/design-system"` |
+| `IDS_REACT_ROOT` | React design system (this repo — checkout folder name varies per developer) | root `package.json` with `"name": "@ibexa/design-system"` |
 | `IDS_TWIG_ROOT` | Twig design system bundle | `composer.json` with `"name": "ibexa/design-system-twig"` |
 | `IDS_DXP_ROOT` | Ibexa DXP project (composer root with `vendor/ibexa/*`) | has `vendor/ibexa/admin-ui` and `vendor/ibexa/design-system-twig` |
 

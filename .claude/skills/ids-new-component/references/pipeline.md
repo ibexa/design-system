@@ -40,7 +40,7 @@ the design didn't show). The procedure is always:
 ## Branching
 
 Standard flow: feature branch `IBX-<ticket>-<slug>` cut from `ds-development`, same name in
-each touched repo (design-system-60, design-system-twig, and the DXP package for Gate 3).
+each touched repo (the React DS repo, design-system-twig, and the DXP package for Gate 3).
 Create branches only with user confirmation (asked once in "Before anything").
 
 ## Director mode (future)

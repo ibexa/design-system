@@ -1,6 +1,6 @@
 ---
 name: ids-component-react
-description: Implement an Ibexa Design System React component in design-system-60 from an approved spec — 5-file component set, SCSS partial in packages/assets, Storybook stories and play tests. Use when implementing/changing React DS components, or as phase 2 of ids-new-component.
+description: Implement an Ibexa Design System React component in the React DS repo (@ibexa/design-system) from an approved spec — 5-file component set, SCSS partial in packages/assets, Storybook stories and play tests. Use when implementing/changing React DS components, or as phase 2 of ids-new-component.
 ---
 
 # React DS component implementation

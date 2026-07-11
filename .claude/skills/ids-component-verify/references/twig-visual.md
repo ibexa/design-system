@@ -30,7 +30,7 @@ sub-elements, asset issues).
 3. `php bin/console cache:clear`, then verify:
    `curl -sk https://localhost:8060/storybook/status` → **204**.
 
-## One-time design-system-60 setup
+## One-time React-repo setup
 
 Set the DXP base URL in the **gitignored** `.env.local` (the tracked `.env` keeps the
 default; don't commit machine URLs):
