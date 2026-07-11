@@ -19,6 +19,14 @@ Work through in order; exemplars beat prose — when unsure, open the named file
       their markup. Translations come in as props (see `TranslatorContext` usage in
       `Accordion.tsx` only for context-provided strings).
 - [ ] No magic numbers (ESLint enforces; extract named constants).
+- [ ] **Secondary surfaces (menus, popovers) need a full keyboard/ARIA plan**, not just
+      mouse handlers: focus moves in on open, arrows traverse, Escape closes and restores
+      focus, and child roles are valid for the container role (`role="menu"` accepts
+      `menuitem*` children — never nest `role="radio"` in it). If the root role requires an
+      accessible name, expose a prop for it (spec §7) — `title` is not an accessible name.
+- [ ] No side effects during render: never write refs/state inside a render prop of a child
+      (values arriving via render props become state via effects/handlers, or are computed
+      at interaction time from the DOM).
 
 ## 3. Sub-components (only if spec §2 defines independent parts)
 
@@ -50,6 +58,9 @@ Work through in order; exemplars beat prose — when unsure, open the named file
       `expect/fn/userEvent/within` from `storybook/test`, `tags: ['!dev']`, spies for
       callback props. Exemplar: `Accordion.test.stories.tsx`. Static components (like
       Badge) legitimately have none.
+- [ ] Play tests must cover the spec §6 behaviors end-to-end — the intricate paths
+      (multi-step interactions, keyboard wrapping, close-on-outside, state promotion), not
+      just "the element becomes visible". If §6 describes it, a play test exercises it.
 
 ## 7. Path aliases
 

@@ -43,6 +43,21 @@ docs, or specs — resolve them at runtime with this procedure and refer to them
 Do **not** scan the filesystem (`find / …`) and do not commit machine-specific paths to any
 tracked file.
 
+## Fewer permission prompts (one-time, per developer)
+
+Repo-independent commands (yarn/composer checks, the skill scripts) are pre-allowed in each
+repo's committed `.claude/settings.json`. Cross-repo file access can't be committed (paths
+are machine-specific) — add it to your `.claude/settings.local.json` `permissions.allow`
+alongside the `env` block, e.g. working from the React repo:
+
+```json
+"Read(//<IDS_DXP_ROOT>/**)",
+"Edit(//<IDS_TWIG_ROOT>/**)",
+"Write(//<IDS_TWIG_ROOT>/**)"
+```
+
+(with the placeholders expanded to your real absolute paths).
+
 ## Preflight (before each pipeline phase)
 
 For every repo the phase will touch:

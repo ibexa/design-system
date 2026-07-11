@@ -10,6 +10,9 @@
   side by side (file paths so the user can open them). State what intentionally differs
   (viewport padding, placeholder content). Approving locks the contract for the Twig phase.
   The user may skip this gate by asking for "fast mode" — note the skip in the final report.
+  Optional but recommended: publish an HTML comparison page as an Artifact (reference vs
+  React vs Twig captures embedded as data URIs, one row per story) — a far better review
+  surface than a list of file paths.
 - **Gate 3 — DXP usage example.** Only after explicit confirmation of: target package
   (e.g. `admin-ui`), the concrete view/template to touch, and the branch. Follow the
   conventions of that package; run its `yarn test` after. Translations happen HERE
@@ -30,6 +33,9 @@ the design didn't show). The procedure is always:
 - Per repo: branch + list of created/modified files.
 - Checks run and their results (verbatim failures — never paraphrase a failing test as "minor").
 - Anything deferred, skipped, or flagged.
+- Hygiene sweep: no stray artifacts in repo roots (`.playwright-mcp/`, logs, scratch
+  scripts) — captures and temp files belong in the session scratchpad; anything mutated
+  outside the two DS repos (e.g. DXP built assets) is called out explicitly.
 
 ## Branching
 

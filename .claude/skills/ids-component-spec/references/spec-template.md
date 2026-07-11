@@ -26,7 +26,10 @@ is "none" — an explicit "none" is part of the contract.
 ## 2. Anatomy & class plan
 
 > The `ids-*` BEM class plan IS the React↔Twig parity contract — both implementations must
-> emit exactly these classes. DOM outline with block/elements/modifiers:
+> emit exactly these classes. Include EVERY element the component can ever render — also
+> secondary surfaces that only appear on interaction (menus, popovers, tooltips). Rule of
+> thumb: if §6 mentions an element, its class must be here and its visual values in §5.
+> DOM outline with block/elements/modifiers:
 
 ```
 .ids-<name>                          <root element, tag: <div|button|...>>
@@ -42,8 +45,14 @@ Modifiers: .ids-<name>--<variant>, .ids-<name>--<size>, ...
 | `size` | `<Name>Size` enum | `size` | `small` \| `medium` (default) | no | |
 
 > Rules: enums, not string unions, in `<Name>.types.ts`. Twig mirrors allowed values via
-> OptionsResolver in `#[PreMount]`. React `children`/ReactNode props map to Twig blocks
-> (the framework-selector serializes ReactNode args with `renderToString`). List separately:
+> OptionsResolver in `#[PreMount]`. **Twig prop names are the PHP public properties —
+> camelCase, identical to the React names** (`selectedValue`, not `selected_value`);
+> snake_case exists only for `#[ExposeInTemplate]` computed values. This matters: an unknown
+> prop on a Twig component does NOT error — it silently passes through as an HTML attribute,
+> so a wrongly-documented name becomes a silent no-op for consumers. Array-shaped props must
+> document the item shape (it becomes a nested OptionsResolver in Twig). React
+> `children`/ReactNode props map to Twig blocks (the framework-selector serializes ReactNode
+> args with `renderToString`). List separately:
 
 - React-only props (event handlers, render props): <...>
 - Twig-only surface (`data-ids-*` attributes, block names, `#[ExposeInTemplate]` computed values): <...>
@@ -77,8 +86,12 @@ Modifiers: .ids-<name>--<variant>, .ids-<name>--<size>, ...
 ## 7. Accessibility
 
 - Root role / semantics: <...>
+- Accessible name: which §3 prop supplies it (React e.g. `ariaLabel`/`extraAria`; Twig via
+  plain `aria-label` attribute passthrough) — if the role requires a name, the prop MUST
+  exist in §3, not just be assumed.
 - ARIA attributes and their prop sources: <...>
-- Focus behavior / tab order: <...>
+- Focus behavior / tab order: <...> (secondary surfaces like menus need their own plan:
+  focus entry on open, arrow traversal, Escape-to-close, valid ARIA child roles)
 - Contrast notes (token pairs used on top of each other): <...>
 
 ## 8. Test plan

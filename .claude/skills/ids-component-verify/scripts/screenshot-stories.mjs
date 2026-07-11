@@ -147,11 +147,13 @@ const main = async () => {
 
     const [width, height] = args.viewport.split('x').map(Number);
     const browser = await chromium.launch();
-    // ignoreHTTPSErrors: the Twig preview DXP typically runs on https with a self-signed cert.
-    const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: Number(args.scale), ignoreHTTPSErrors: true });
     const failures = [];
 
     for (const entry of entries) {
+        // Fresh page per story: Storybook's SPA remembers the last story and can interrupt
+        // a same-page navigation with a redirect back to it (races the goto).
+        // ignoreHTTPSErrors: the Twig preview DXP typically runs on https with a self-signed cert.
+        const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: Number(args.scale), ignoreHTTPSErrors: true });
         const storyUrl = new URL(`${args.url}/iframe.html`);
 
         storyUrl.searchParams.set('id', entry.id);
@@ -169,6 +171,7 @@ const main = async () => {
             await page.waitForSelector('#storybook-root > *', { timeout: 30_000 });
         } catch {
             failures.push(`${entry.id}: #storybook-root stayed empty (broken story or wrong id)`);
+            await page.close();
             continue;
         }
 
@@ -181,6 +184,7 @@ const main = async () => {
 
         if (errorText) {
             failures.push(`${entry.id}: Storybook error overlay — ${errorText.split('\n')[0]}`);
+            await page.close();
             continue;
         }
 
@@ -195,6 +199,7 @@ const main = async () => {
 
             if (!twigContent) {
                 failures.push(`${entry.id}: Twig preview iframe empty — is the DXP running and the preview route available?`);
+                await page.close();
                 continue;
             }
         }
@@ -225,6 +230,8 @@ const main = async () => {
         if (args.focus) {
             await capture('.focus', () => page.focus(args.focus));
         }
+
+        await page.close();
     }
 
     await browser.close();

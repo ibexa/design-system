@@ -44,6 +44,13 @@ yarn test-storybook <Name>        # play tests; needs Storybook running
 git diff --check
 ```
 
+Known breakage (as of 2026-07): `yarn test-storybook` fails at baseline with
+`__test is not defined` / "Execution context was destroyed" (Storybook 10.4.x vs
+test-runner 0.24.x incompatibility). Before blaming your code, run it against a known-good
+component (`yarn test-storybook Accordion`) — if that fails identically, the harness is
+broken, not your tests: note it in the phase report and verify the §6 behaviors manually
+in the browser (drive the story iframe and assert DOM/aria state) instead.
+
 (If a full `yarn packages:test` fails in files you didn't touch, check whether the failure
 pre-dates your change before reacting — never "fix" unrelated files as a drive-by.)
 

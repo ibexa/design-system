@@ -15,6 +15,10 @@ the Twig side legitimately adds `data-ids-*` hooks and server-side concerns.
 - [ ] `#[PreMount] public function validate(array $props): array` using `OptionsResolver`:
       `->define('<prop>')->allowedValues(...)` mirroring the React enum values exactly;
       return `$resolver->resolve($props) + $props`. Exemplar: `Tag.php`.
+- [ ] **Array-shaped props get a nested OptionsResolver** validating each item's shape
+      (required keys, types, defaults) — React gets this for free from TypeScript; PreMount
+      is Twig's only guard, and a malformed item otherwise dies as an opaque Twig render
+      error. Exemplars: `OverflowList.php`, `AbstractDropdown::configureItemsResolver`.
 - [ ] Computed values for the template via `#[ExposeInTemplate('<snake_name>')]` methods.
 - [ ] Services glob (`src/bundle/Resources/config/services/twig.yaml`) auto-registers the
       class — no config edits. Constructor-inject `TranslatorInterface` only for
@@ -41,7 +45,18 @@ the Twig side legitimately adds `data-ids-*` hooks and server-side concerns.
 - [ ] Auto-init in `init_components.ts`: query
       `.ids-<name>:not([data-ids-custom-init])`, instantiate, `.init()`.
 - [ ] Config through `data-ids-*` attributes emitted by the template — document each in
-      spec §3 (Twig-only surface).
+      spec §3 (Twig-only surface). Emit ONLY what the TS behavior actually reads; an unused
+      `data-ids-*` attribute is a parity deviation, not future-proofing.
+- [ ] **Replicate React's exact state semantics, not an approximation.** If React derives
+      state (e.g. "at most one promoted item, original order restored"), the TS behavior
+      must produce the same observable sequence — re-read the React source for the
+      algorithm, don't re-invent it from the spec prose.
+- [ ] Document/window-level listeners follow add-on-open / remove-on-close (see
+      `partials/base_dropdown/base_dropdown.ts`) — never a permanent document listener from
+      `init()`. Bind handlers in the constructor so they are removable.
+- [ ] Expose event names as `static EVENTS = { CHANGE: 'ids:<name>:change' }` (exemplar:
+      `toggle_button_input.ts`) — consumers need a constant, not a magic string. Don't fire
+      change events when the value did not actually change (mirror React's guard).
 - [ ] New standalone Encore entry (`src/bundle/Resources/encore/ibexa.config.js`) only if
       the behavior must load outside the main bundle — usually not.
 

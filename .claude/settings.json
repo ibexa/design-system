@@ -1,0 +1,21 @@
+{
+    "permissions": {
+        "allow": [
+            "Bash(yarn components:test)",
+            "Bash(yarn components:build)",
+            "Bash(yarn core:test)",
+            "Bash(yarn core:build)",
+            "Bash(yarn assets:test)",
+            "Bash(yarn assets:build)",
+            "Bash(yarn packages:build)",
+            "Bash(yarn infra:test)",
+            "Bash(yarn prettier --check *)",
+            "Bash(yarn test-storybook *)",
+            "Bash(yarn storybook --ci *)",
+            "Bash(node .claude/skills/ids-component-spec/scripts/list-tokens.mjs *)",
+            "Bash(node .claude/skills/ids-component-verify/scripts/screenshot-stories.mjs *)",
+            "Bash(node scripts/icons.js test-icons)",
+            "Bash(node scripts/icons.js generate-all-icons)"
+        ]
+    }
+}
