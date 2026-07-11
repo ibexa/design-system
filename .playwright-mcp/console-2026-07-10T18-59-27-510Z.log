@@ -1,0 +1,3 @@
+[    5129ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:28067
+[ 5737869ms] [ERROR] Failed to load resource: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:6006/__webpack_hmr:0
+[40155722ms] [ERROR] Failed to load resource: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:6006/__webpack_hmr:0

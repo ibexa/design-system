@@ -1,0 +1,4 @@
+- radiogroup [ref=f898e3]:
+  - radio "List" [ref=f898e4] [cursor=pointer]
+  - radio "Grid" [checked] [active] [ref=f898e6] [cursor=pointer]
+  - radio "Tree" [ref=f898e8] [cursor=pointer]

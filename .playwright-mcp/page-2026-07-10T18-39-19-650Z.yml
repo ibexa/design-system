@@ -1,0 +1,15 @@
+- radiogroup [ref=f897e4]:
+  - generic [ref=f897e6]:
+    - radio "Very long label 1" [checked] [ref=f897e7] [cursor=pointer]
+    - radio "Very long label 2" [ref=f897e9] [cursor=pointer]
+    - generic [ref=f897e17]:
+      - button "More arrow-double-right" [expanded] [ref=f897e18] [cursor=pointer]:
+        - generic [ref=f897e19]: More
+        - img "arrow-double-right" [ref=f897e21]
+      - menu [ref=f897e23]:
+        - radio "Very long label 3" [ref=f897e24] [cursor=pointer]
+        - radio "Very long label 4" [ref=f897e26] [cursor=pointer]
+        - radio "Very long label 5" [ref=f897e28] [cursor=pointer]
+        - radio "Very long label 6" [ref=f897e30] [cursor=pointer]
+        - radio "Very long label 7" [ref=f897e32] [cursor=pointer]
+        - radio "Very long label 8" [ref=f897e34] [cursor=pointer]

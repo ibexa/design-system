@@ -1,0 +1,7 @@
+- radiogroup [ref=f902e6]:
+  - generic [ref=f902e8]:
+    - radio "Very long label 1" [ref=f902e9] [cursor=pointer]
+    - radio "Very long label 2" [ref=f902e11] [cursor=pointer]
+    - button "More arrow-double-right" [ref=f902e13] [cursor=pointer]:
+      - generic [ref=f902e14]: More
+      - img "arrow-double-right" [ref=f902e16]

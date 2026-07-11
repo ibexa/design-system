@@ -1,0 +1,29 @@
+[     358ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:28067
+[    3363ms] [ERROR] %o
+
+%s
+
+%s
+ Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+    at getRootForUpdatedFiber (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:4688:11)
+    at enqueueConcurrentHookUpdate (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:4648:14)
+    at dispatchSetStateInternal (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:9231:18)
+    at dispatchSetState (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:9191:7)
+    at recalculateVisibleItems (http://localhost:6006/packages_components_src_components_OverflowList_index_ts.iframe.bundle.js:1494:7)
+    at http://localhost:6006/packages_components_src_components_OverflowList_index_ts.iframe.bundle.js:1547:60
+    at Object.react_stack_bottom_frame (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:26053:20)
+    at runWithFiberInDEV (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:936:30)
+    at commitHookEffectListMount (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:13313:29)
+    at commitHookLayoutEffects (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:13277:11) The above error occurred in the <OverflowList> component. React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary. @ http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:9473
+[    3571ms] [ERROR] Error rendering story 'components-src-components-switcher--overflow': @ http://localhost:6006/sb-preview/runtime.js:12164
+[    3572ms] [ERROR] Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+    at getRootForUpdatedFiber (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:4688:11)
+    at enqueueConcurrentHookUpdate (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:4648:14)
+    at dispatchSetStateInternal (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:9231:18)
+    at dispatchSetState (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:9191:7)
+    at recalculateVisibleItems (http://localhost:6006/packages_components_src_components_OverflowList_index_ts.iframe.bundle.js:1494:7)
+    at http://localhost:6006/packages_components_src_components_OverflowList_index_ts.iframe.bundle.js:1547:60
+    at Object.react_stack_bottom_frame (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:26053:20)
+    at runWithFiberInDEV (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:936:30)
+    at commitHookEffectListMount (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:13313:29)
+    at commitHookLayoutEffects (http://localhost:6006/vendors-node_modules_storybook_react-dom-shim_dist_react-18_js.iframe.bundle.js:13277:11) @ http://localhost:6006/sb-preview/runtime.js:12164
