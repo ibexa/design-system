@@ -43,6 +43,7 @@
     "jsdom": "^27.3.0",
     "nodemon": "^3.1.10",
     "node-polyfill-webpack-plugin": "^4.1.0",
+    "playwright": "^1.61.1",
     "prop-types": "^15.8.1",
     "raw-loader": "^4.0.2",
     "react": "^19.1.0",
