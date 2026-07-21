@@ -19,7 +19,7 @@ $text-font-weight-normal: 400 !default;
 $text-font-weight-semi: 600 !default;
 
 $font-family:
-    'Manrope',
+    'Mulish',
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
@@ -28,3 +28,5 @@ $font-family:
     Arial,
     sans-serif !default;
 $font-family-alt: 'Manrope', 'Futura', 'Avenir Next', 'Trebuchet MS', 'Verdana', sans-serif !default;
+$font-family-code:
+    'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
