@@ -92,5 +92,6 @@
     "react-popper": "^2.3.0"
   },
   "resolutions": {
+    "@testing-library/jest-dom": "6.9.1"
   }
 }
