@@ -90,8 +90,5 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "react-popper": "^2.3.0"
-  },
-  "resolutions": {
-    "@testing-library/jest-dom": "6.9.1"
   }
 }
