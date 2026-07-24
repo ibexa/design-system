@@ -19,12 +19,14 @@ export interface InputTextInputProps extends BaseComponentAriaAttributes {
     onInput?: React.InputEventHandler<HTMLInputElement>;
     disabled?: boolean;
     error?: boolean;
+    hasSearchAction?: boolean;
     id?: string;
     placeholder?: string;
     processActions?: (actions: ComponentEntryDataType[]) => ComponentEntryDataType[];
     readOnly?: boolean;
     ref?: React.Ref<HTMLInputElement>;
     required?: boolean;
+    searchButtonType?: 'button' | 'reset' | 'submit';
     size?: InputTextInputSize;
     type?: InputTextInputType;
     value?: string | number;

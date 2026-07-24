@@ -3,7 +3,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import { Button, ButtonSize, ButtonType } from './';
+import { Button, ButtonSize, ButtonType, IconPosition } from './';
 
 const meta: Meta<typeof Button> = {
     component: Button,
@@ -238,5 +238,26 @@ export const VariaHTMLChildren: Story = {
                 <b>Button</b>&nbsp;<i>label</i>
             </>
         ),
+    },
+};
+
+export const VariaIconEnd: Story = {
+    name: 'Varia / Icon end (trailing)',
+    args: {
+        type: ButtonType.TertiaryAlt,
+        size: ButtonSize.Small,
+        icon: 'caret-next',
+        iconPosition: IconPosition.End,
+        children: 'Show variants',
+    },
+};
+
+export const VariaIconUrl: Story = {
+    name: 'Varia / Icon URL',
+    args: {
+        type: ButtonType.TertiaryAlt,
+        size: ButtonSize.Small,
+        iconUrl: '/assets/icons.svg#calendar-schedule',
+        children: 'Reschedule',
     },
 };

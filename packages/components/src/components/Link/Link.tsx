@@ -3,41 +3,75 @@ import React from 'react';
 import { Icon, IconSize } from '@ids-components/Icon';
 import { createCssClassNames } from '@ids-core';
 
-import { ButtonProps, ButtonSize, ButtonType, IconPosition } from './Button.types';
+import { LinkProps, LinkSize, LinkType, LinkVariant } from './Link.types';
 
-const ICON_SIZE_MAPPING: Record<ButtonSize, IconSize> = {
-    [ButtonSize.Medium]: IconSize.Small,
-    [ButtonSize.Small]: IconSize.TinySmall,
+const ICON_SIZE_MAPPING: Record<LinkSize, IconSize> = {
+    [LinkSize.Medium]: IconSize.Small,
+    [LinkSize.Small]: IconSize.TinySmall,
 } as const;
 
-export const Button = ({
+export const Link = ({
     onClick,
     children = null,
     ariaLabel,
     disabled = false,
-    extraAria = {},
+    href,
+    target,
+    rel,
     className = '',
+    extraAria = {},
+    title = '',
+    variant = LinkVariant.Button,
+    size = LinkSize.Medium,
+    type = LinkType.Tertiary,
     icon,
     iconUrl,
-    isFocusable = true,
-    ref = null,
-    size = ButtonSize.Medium,
-    title = '',
-    type = ButtonType.Primary,
-    iconPosition = IconPosition.Start,
-    ...nativeButtonProps
-}: ButtonProps) => {
+}: LinkProps) => {
+    const computedRel = target === '_blank' && !rel ? 'noopener noreferrer' : rel;
+
+    const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
+        if (disabled) {
+            event.preventDefault();
+            return;
+        }
+        onClick?.(event);
+    };
+
+    if (variant === LinkVariant.Text) {
+        const componentClassName = createCssClassNames({
+            'ids-link': true,
+            'ids-link--disabled': disabled,
+            [className]: !!className,
+        });
+
+        return (
+            <a
+                aria-label={ariaLabel}
+                className={componentClassName}
+                href={href}
+                onClick={handleClick}
+                rel={computedRel}
+                target={target}
+                title={title}
+                {...extraAria}
+            >
+                {children}
+            </a>
+        );
+    }
+
     const hasIcon = !!icon || !!iconUrl;
     const iconOnly = hasIcon && !children;
     const componentClassName = createCssClassNames({
         'ids-btn': true,
         [`ids-btn--${type}`]: true,
         [`ids-btn--${size}`]: true,
-        'ids-btn--disabled': disabled,
         'ids-btn--icon-only': iconOnly,
+        'ids-link--disabled': disabled,
         [className]: !!className,
     });
-    const getBtnAriaLabel = () => {
+
+    const getLinkAriaLabel = () => {
         if (ariaLabel) {
             return ariaLabel;
         } else if (iconOnly) {
@@ -50,6 +84,7 @@ export const Button = ({
 
         return typeof children === 'string' ? children : '';
     };
+
     const renderIcon = () => {
         if (iconUrl) {
             const iconSize = ICON_SIZE_MAPPING[size];
@@ -73,6 +108,7 @@ export const Button = ({
 
         return null;
     };
+
     const renderLabel = () => {
         if (!iconOnly) {
             return <div className="ids-btn__label">{children}</div>;
@@ -81,26 +117,20 @@ export const Button = ({
         return null;
     };
 
-    const isIconEnd = iconPosition === IconPosition.End;
-
     return (
-        <button
-            {...nativeButtonProps}
-            aria-disabled={disabled}
-            aria-label={getBtnAriaLabel()}
+        <a
+            aria-label={getLinkAriaLabel()}
             className={componentClassName}
-            disabled={disabled}
-            onClick={onClick}
-            ref={ref}
-            role="button"
-            tabIndex={isFocusable && !disabled ? 0 : -1}
+            href={href}
+            onClick={handleClick}
+            rel={computedRel}
+            role="link"
+            target={target}
             title={title}
-            type="button"
             {...extraAria}
         >
-            {!isIconEnd && renderIcon()}
+            {renderIcon()}
             {renderLabel()}
-            {isIconEnd && renderIcon()}
-        </button>
+        </a>
     );
 };
