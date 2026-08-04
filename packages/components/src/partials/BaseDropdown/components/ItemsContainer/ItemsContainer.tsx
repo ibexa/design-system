@@ -153,7 +153,14 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
                 setItemsMaxHeight(availableItemsHeight);
             }
         }
-    }, [styles.popper.transform, popperPlacement, referenceElement, calculateMaxAvailableItemsHeight, filteredItems, getNaturalItemsHeight]);
+    }, [
+        styles.popper.transform,
+        popperPlacement,
+        referenceElement,
+        calculateMaxAvailableItemsHeight,
+        filteredItems,
+        getNaturalItemsHeight,
+    ]);
 
     useLayoutEffect(() => {
         if (isOpen && referenceElement) {
