@@ -14,6 +14,6 @@ export interface DropdownMultiInputProps extends BaseComponentAttributes {
     error?: boolean;
     items?: DropdownMultiInputItem[];
     onChange?: (value: string[], itemValue: string, action: DropdownMultiInputAction) => void;
-    placeholder?: string | null;
+    placeholder?: string;
     value?: string[];
 }

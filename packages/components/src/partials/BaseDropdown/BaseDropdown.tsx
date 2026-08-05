@@ -57,7 +57,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
             }
 
             const placeholderText =
-                placeholder === undefined || placeholder === null
+                placeholder === undefined
                     ? Translator.trans(/*@Desc("Select an item")*/ 'ids.dropdown.placeholder')
                     : placeholder.trim() || Translator.trans(/*@Desc("All")*/ 'ids.dropdown.placeholder.all');
 
