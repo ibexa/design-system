@@ -261,3 +261,61 @@ export const VariaIconUrl: Story = {
         children: 'Reschedule',
     },
 };
+
+/***** Dark mode *****/
+
+export const DarkPrimary: Story = {
+    name: 'Dark mode / Primary',
+    globals: {
+        theme: 'dark',
+    },
+    args: {
+        type: ButtonType.Primary,
+        icon: 'edit',
+    },
+};
+
+export const DarkSecondary: Story = {
+    name: 'Dark mode / Secondary',
+    globals: {
+        theme: 'dark',
+    },
+    args: {
+        type: ButtonType.Secondary,
+        icon: 'edit',
+    },
+};
+
+export const DarkSecondaryAlt: Story = {
+    name: 'Dark mode / Secondary Alt',
+    globals: {
+        theme: 'dark',
+    },
+    args: {
+        type: ButtonType.SecondaryAlt,
+        icon: 'edit',
+    },
+};
+
+export const DarkTertiaryAlt: Story = {
+    name: 'Dark mode / Tertiary Alt',
+    globals: {
+        theme: 'dark',
+    },
+    args: {
+        type: ButtonType.TertiaryAlt,
+        icon: 'edit',
+    },
+};
+
+export const DarkSecondaryDisabled: Story = {
+    name: 'Dark mode / Secondary Disabled',
+    globals: {
+        theme: 'dark',
+    },
+    args: {
+        type: ButtonType.Secondary,
+        icon: 'edit',
+        disabled: true,
+    },
+};

@@ -4,6 +4,7 @@
 @use 'functions' as *;
 @use 'variables' as *;
 @use 'mixins/buttons' as mixins;
+@use 'mixins/theming';
 
 $btn-focus-bs-color: color.change($color-primary-80, $alpha: 0.25);
 $btn-focus-bs-lengths: 0 0 0 calculateRem(4px);
@@ -153,6 +154,127 @@ $btns-types: (
     ),
 );
 
+// Dark-mode counterparts of $btns-types, applied when an ancestor sets `--ids-mode: dark`.
+// The map is sparse on purpose: variants absent here have no dark styling and keep
+// their default (light) look. States missing from a variant's dark map fall back to
+// the light custom-property values of that variant.
+// TODO(IBX-12056): placeholder values derived from the legacy page-builder menu-bar
+// overrides — replace with the dark tokens from Figma.
+$btns-types-dark: (
+    'primary': (
+        'default': (
+            'text': $color-neutral-10,
+            'bg': $gradient-primary-1,
+            'border': transparent,
+        ),
+        'hover': (
+            'text': $color-neutral-10,
+            'bg': $gradient-primary-2,
+            'border': transparent,
+        ),
+        'active': (
+            'text': $color-neutral-10,
+            'bg': $fake-bg-gradient,
+            'border': transparent,
+        ),
+        'focus': (
+            'text': $color-neutral-10,
+            'bg': $gradient-primary-2,
+            'border': transparent,
+            'box-shadow': $box-shadow-focus-dark_surface,
+        ),
+        'disabled': (
+            'text': $color-neutral-120,
+            'bg': $color-neutral-40,
+            'border': transparent,
+        ),
+    ),
+    'secondary': (
+        'default': (
+            'text': $color-neutral-10,
+            'bg': transparent,
+            'border': $color-neutral-10,
+        ),
+        'hover': (
+            'text': $color-neutral-10,
+            'bg': color.change($color-neutral-10, $alpha: 0.1),
+            'border': $color-neutral-10,
+        ),
+        'active': (
+            'text': $color-neutral-10,
+            'bg': transparent,
+            'border': $color-neutral-10,
+        ),
+        'focus': (
+            'text': $color-neutral-10,
+            'bg': transparent,
+            'border': $color-neutral-10,
+            'box-shadow': $box-shadow-focus-dark_surface,
+        ),
+        'disabled': (
+            'text': $color-neutral-150,
+            'bg': transparent,
+            'border': $color-neutral-150,
+        ),
+    ),
+    'secondary-alt': (
+        'default': (
+            'text': $color-neutral-10,
+            'bg': transparent,
+            'border': $color-neutral-100,
+        ),
+        'hover': (
+            'text': $color-primary-40,
+            'bg': transparent,
+            'border': $color-neutral-100,
+        ),
+        'active': (
+            'text': $color-primary-30,
+            'bg': transparent,
+            'border': $color-neutral-100,
+        ),
+        'focus': (
+            'text': $color-primary-40,
+            'bg': transparent,
+            'border': $color-primary-40,
+            'box-shadow': $box-shadow-focus-dark_surface,
+        ),
+        'disabled': (
+            'text': $color-neutral-150,
+            'bg': transparent,
+            'border': $color-neutral-150,
+        ),
+    ),
+    'tertiary-alt': (
+        'default': (
+            'text': $color-neutral-10,
+            'bg': transparent,
+            'border': transparent,
+        ),
+        'hover': (
+            'text': $color-primary-40,
+            'bg': transparent,
+            'border': transparent,
+        ),
+        'active': (
+            'text': $color-primary-30,
+            'bg': transparent,
+            'border': transparent,
+        ),
+        'focus': (
+            'text': $color-neutral-10,
+            'bg': transparent,
+            'border': transparent,
+            'box-shadow': $box-shadow-focus-dark_surface,
+        ),
+        'disabled': (
+            'text': $color-neutral-150,
+            'bg': transparent,
+            'border': transparent,
+        ),
+    ),
+);
+
 $btns-sizes: (
     'medium': (
         'height': calculateRem(40px),
@@ -238,6 +360,20 @@ $btns-sizes: (
                 map.get($states, 'focus'),
                 map.get($states, 'disabled')
             );
+
+            $dark-states: map.get($btns-types-dark, $name);
+
+            @if $dark-states {
+                @include theming.on-dark {
+                    @include mixins.button-variant(
+                        map.get($dark-states, 'default'),
+                        map.get($dark-states, 'hover'),
+                        map.get($dark-states, 'active'),
+                        map.get($dark-states, 'focus'),
+                        map.get($dark-states, 'disabled')
+                    );
+                }
+            }
         }
     }
 

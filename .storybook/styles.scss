@@ -1,3 +1,9 @@
 @use '../packages/assets/src/scss/styles' with (
     $assets-base-path: '../packages/assets/src/'
 );
+
+// Dark canvas for the addon-themes toolbar switcher.
+// TODO(IBX-12056): placeholder surface color — replace with the dark surface token from Figma.
+body.ids-mode-dark {
+    background-color: styles.$color-neutral-240;
+}
