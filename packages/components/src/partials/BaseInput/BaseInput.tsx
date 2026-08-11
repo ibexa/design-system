@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { InputHTMLAttributes } from 'react';
 
 import { createCssClassNames } from '@ids-core';
 import { useGetOrCreateId } from '@ids-hooks/generators';
@@ -20,6 +20,7 @@ export const BaseInput = ({
     value = '',
 }: BaseInputProps) => {
     const componentId = useGetOrCreateId(id);
+    const { className: extraInputClassName = '', ...restExtraInputAttrs } = extraInputAttrs as InputHTMLAttributes<HTMLInputElement>;
     const componentClassName = createCssClassNames({
         'ids-input': true,
         [`ids-input--${type}`]: true,
@@ -28,6 +29,7 @@ export const BaseInput = ({
         'ids-input--error': error,
         'ids-input--required': required,
         [className]: !!className,
+        [extraInputClassName]: !!extraInputClassName,
     });
 
     return (
@@ -42,7 +44,7 @@ export const BaseInput = ({
             title={title}
             type={type}
             value={value}
-            {...extraInputAttrs}
+            {...restExtraInputAttrs}
         />
     );
 };
