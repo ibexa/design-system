@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from 'react';
+import React from 'react';
 
 import { createCssClassNames } from '@ids-core';
 import { useGetOrCreateId } from '@ids-hooks/generators';
@@ -20,7 +20,7 @@ export const BaseInput = ({
     value = '',
 }: BaseInputProps) => {
     const componentId = useGetOrCreateId(id);
-    const { className: extraInputClassName = '', ...restExtraInputAttrs } = extraInputAttrs as InputHTMLAttributes<HTMLInputElement>;
+    const { className: extraInputClassName = '', ...restExtraInputAttrs } = extraInputAttrs;
     const componentClassName = createCssClassNames({
         'ids-input': true,
         [`ids-input--${type}`]: true,
