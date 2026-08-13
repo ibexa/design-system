@@ -1,5 +1,5 @@
 import { BaseComponentAriaAttributes, ComponentEntryDataType } from '@ids-types/general';
-import { BaseInputType } from '@ids-partials/BaseInput/BaseInput.types';
+import { BaseInputProps, BaseInputType } from '@ids-partials/BaseInput/BaseInput.types';
 import React from 'react';
 
 export enum InputTextInputSize {
@@ -19,6 +19,7 @@ export interface InputTextInputProps extends BaseComponentAriaAttributes {
     onInput?: React.InputEventHandler<HTMLInputElement>;
     disabled?: boolean;
     error?: boolean;
+    extraInputAttrs?: BaseInputProps['extraInputAttrs'];
     hasSearchAction?: boolean;
     id?: string;
     placeholder?: string;
