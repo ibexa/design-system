@@ -19,6 +19,7 @@ export const InputTextInput = ({
     disabled = false,
     error = false,
     extraAria = {},
+    extraInputAttrs = {},
     hasSearchAction = false,
     className = '',
     id,
@@ -176,6 +177,7 @@ export const InputTextInput = ({
                         readOnly,
                         style: { paddingRight: `${sourcePadding}px` },
                         ...extraAria,
+                        ...extraInputAttrs,
                     }}
                     id={id}
                     name={name}

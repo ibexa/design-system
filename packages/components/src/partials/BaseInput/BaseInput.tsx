@@ -20,6 +20,7 @@ export const BaseInput = ({
     value = '',
 }: BaseInputProps) => {
     const componentId = useGetOrCreateId(id);
+    const { className: extraInputClassName = '', ...restExtraInputAttrs } = extraInputAttrs;
     const componentClassName = createCssClassNames({
         'ids-input': true,
         [`ids-input--${type}`]: true,
@@ -28,6 +29,7 @@ export const BaseInput = ({
         'ids-input--error': error,
         'ids-input--required': required,
         [className]: !!className,
+        [extraInputClassName]: !!extraInputClassName,
     });
 
     return (
@@ -42,7 +44,7 @@ export const BaseInput = ({
             title={title}
             type={type}
             value={value}
-            {...extraInputAttrs}
+            {...restExtraInputAttrs}
         />
     );
 };
