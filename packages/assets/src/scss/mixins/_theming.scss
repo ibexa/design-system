@@ -1,5 +1,3 @@
-// The class selector exists because a style query cannot match the element's own computed
-// style — `--ids-mode: dark` only works when set on an ancestor.
 @mixin on-dark {
     @container style(--ids-mode: dark) {
         @content;

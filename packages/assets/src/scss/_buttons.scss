@@ -154,7 +154,6 @@ $btns-types: (
     ),
 );
 
-// Omitted states fall back to the variant's LIGHT values, so "unchanged on hover" must be spelled out.
 // TODO(IBX-12056): the design only covers `secondary` on a dark surface; the others mirror it for now.
 $btns-types-dark: (
     'primary': (
