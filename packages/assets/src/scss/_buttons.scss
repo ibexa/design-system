@@ -154,18 +154,8 @@ $btns-types: (
     ),
 );
 
-// Dark-mode counterparts of $btns-types, applied when an ancestor sets `--ids-mode: dark`.
-// The map is sparse on purpose: variants absent here have no dark styling and keep
-// their default (light) look. States missing from a variant's dark map fall back to
-// the light custom-property values of that variant.
-//
-// `secondary` follows the "Secondary Reversed" row of the Buttons design (Figma node
-// 946-5041): white label and border on a transparent background, unchanged on hover and
-// when active, a 25% white focus ring and a $color-neutral-160 disabled state.
-// The design has no reversed row for the remaining variants, so `secondary-alt` and
-// `tertiary-alt` reuse that same pattern and `primary` keeps its light appearance.
-// TODO(IBX-12056): revisit primary / secondary-alt / tertiary-alt once the design covers
-// them on a dark surface.
+// Omitted states fall back to the variant's LIGHT values, so "unchanged on hover" must be spelled out.
+// TODO(IBX-12056): the design only covers `secondary` on a dark surface; the others mirror it for now.
 $btns-types-dark: (
     'primary': (
         'default': (

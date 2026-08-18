@@ -1,12 +1,5 @@
-// Applies @content when the component is rendered in dark mode.
-//
-// Dark mode is opted into by setting `--ids-mode: dark` on any ancestor of the
-// component (the custom property inherits, so any container works) or by
-// putting the `.ids-mode-dark` class on the component element itself — a style
-// query cannot match against the element's own computed style, hence the extra
-// class-based selector.
-// A nested container declaring `--ids-mode: light` reverts its subtree to the
-// default (light) styling.
+// The class selector exists because a style query cannot match the element's own computed
+// style — `--ids-mode: dark` only works when set on an ancestor.
 @mixin on-dark {
     @container style(--ids-mode: dark) {
         @content;
