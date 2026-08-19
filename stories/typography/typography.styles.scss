@@ -1,6 +1,7 @@
 @use '../../packages/assets/src/scss/functions/calculate.rem' as *;
 @use '../../packages/assets/src/scss/variables/colors' as *;
 @use '../../packages/assets/src/scss/variables/typography' as *;
+@use '../../packages/assets/src/scss/headers' as headers;
 
 $font-sizes-base: (
     '2xl': $text-font-size-2xl,
@@ -8,29 +9,31 @@ $font-sizes-base: (
     'l': $text-font-size-l,
     'm': $text-font-size-m,
     's': $text-font-size-s,
-    'xs': $text-font-size-xs
+    'xs': $text-font-size-xs,
 );
 $font-sizes-highlighted: (
-    '3xl': $text-font-size-3xl,
-    '2xl': $text-font-size-2xl,
-    'xl': $text-font-size-xl,
-    'l': $text-font-size-l,
-    'm': $text-font-size-m,
-    's': $text-font-size-s
+    '6xl': $text-highlighted-font-size-6xl,
+    '5xl': $text-highlighted-font-size-5xl,
+    '4xl': $text-highlighted-font-size-4xl,
+    '3xl': $text-highlighted-font-size-3xl,
+    'xl': $text-highlighted-font-size-xl,
+    'l': $text-highlighted-font-size-l,
+    'm': $text-highlighted-font-size-m,
+    's': $text-highlighted-font-size-s,
 );
 $font-sizes-links: (
     'l': $text-font-size-l,
     'm': $text-font-size-m,
     's': $text-font-size-s,
-    'xs': $text-font-size-xs
+    'xs': $text-font-size-xs,
 );
 $font-weights: (
     'normal': $text-font-weight-normal,
-    'semi': $text-font-weight-semi
+    'semi': $text-font-weight-semi,
 );
 $font-styles: (
     'normal': normal,
-    'italic': italic
+    'italic': italic,
 );
 
 .dev-typography-container {
@@ -69,15 +72,38 @@ $font-styles: (
         }
     }
 
-    @each $weight-name, $weight in $font-weights {
-        @each $size-name, $size in $font-sizes-highlighted {
-            .base-#{$size-name}-#{$weight-name}-normal {
-                font-size: $size;
-                font-weight: $weight;
-                font-style: normal;
-                font-family: $font-family-alt;
-            }
+    @each $size-name, $size in $font-sizes-highlighted {
+        .highlighted-#{$size-name} {
+            font-size: $size;
+            font-weight: $text-font-weight-semi;
+            font-style: normal;
+            font-family: $font-family-alt;
+            line-height: $heading-line-height;
         }
+    }
+
+    .dev-h1 {
+        @include headers.h1;
+    }
+
+    .dev-h2 {
+        @include headers.h2;
+    }
+
+    .dev-h3 {
+        @include headers.h3;
+    }
+
+    .dev-h4 {
+        @include headers.h4;
+    }
+
+    .dev-h5 {
+        @include headers.h5;
+    }
+
+    .dev-h6 {
+        @include headers.h6;
     }
 
     @each $weight-name, $weight in $font-weights {
