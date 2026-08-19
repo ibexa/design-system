@@ -156,34 +156,6 @@ $btns-types: (
 
 // TODO(IBX-12056): the design only covers `secondary` on a dark surface; the others mirror it for now.
 $btns-types-dark: (
-    'primary': (
-        'default': (
-            'text': $color-neutral-10,
-            'bg': $gradient-primary-1,
-            'border': transparent,
-        ),
-        'hover': (
-            'text': $color-neutral-10,
-            'bg': $gradient-primary-2,
-            'border': transparent,
-        ),
-        'active': (
-            'text': $color-neutral-10,
-            'bg': $fake-bg-gradient,
-            'border': transparent,
-        ),
-        'focus': (
-            'text': $color-neutral-10,
-            'bg': $gradient-primary-2,
-            'border': transparent,
-            'box-shadow': $box-shadow-focus-dark_surface,
-        ),
-        'disabled': (
-            'text': $color-neutral-120,
-            'bg': $color-neutral-40,
-            'border': transparent,
-        ),
-    ),
     'secondary': (
         'default': (
             'text': $color-neutral-10,
