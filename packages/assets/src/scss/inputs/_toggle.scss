@@ -38,8 +38,6 @@
     }
 
     &__label {
-        // .ids-choice-input-label spaces stacked checkbox/radio options; in the toggle's own row
-        // that bottom margin offsets the label's optical center against the widget
         margin-bottom: 0;
         padding-left: calculateRem(8px);
     }
