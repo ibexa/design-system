@@ -7,7 +7,7 @@ import { ButtonProps, ButtonSize, ButtonType, IconPosition } from './Button.type
 
 const ICON_SIZE_MAPPING: Record<ButtonSize, IconSize> = {
     [ButtonSize.Medium]: IconSize.Small,
-    [ButtonSize.Small]: IconSize.TinySmall,
+    [ButtonSize.Small]: IconSize.Small,
 } as const;
 
 export const Button = ({
