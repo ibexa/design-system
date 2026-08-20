@@ -26,7 +26,6 @@ $input-sizes: (
         --ids-input-active-border-color: #{$color-neutral-170};
         --ids-input-focus-border-color: #{$color-neutral-80};
         --ids-input-focus-box-shadow: #{$box-shadow-focus-dark_surface};
-        // The dark design renders disabled identically to enabled (user decision, IBX-12207)
         --ids-input-disabled-text-color: #{$color-neutral-10};
         --ids-input-disabled-bg-color: #{$color-neutral-220};
         --ids-input-disabled-border-color: #{$color-neutral-210};

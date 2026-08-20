@@ -7,7 +7,6 @@
     color: var(--ids-label-default-text-color, #{$color-neutral-240});
 
     @include theming.on-dark {
-        // The dark design keeps the label white in every state, error included
         --ids-label-default-text-color: #{$color-neutral-10};
         --ids-label-error-text-color: #{$color-neutral-10};
     }
