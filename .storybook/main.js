@@ -12,6 +12,7 @@ const config = {
         '@storybook/addon-docs',
         '@storybook/addon-webpack5-compiler-swc',
         '@storybook/addon-a11y',
+        '@storybook/addon-themes',
         'storybook-addon-pseudo-states',
         {
             name: '@storybook/addon-coverage',

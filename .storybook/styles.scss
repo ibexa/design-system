@@ -1,3 +1,7 @@
 @use '../packages/assets/src/scss/styles' with (
     $assets-base-path: '../packages/assets/src/'
 );
+
+body.ids-mode-dark {
+    background-color: styles.$color-neutral-240;
+}

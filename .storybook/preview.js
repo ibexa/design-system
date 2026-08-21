@@ -1,10 +1,22 @@
+import { withThemeByClassName } from '@storybook/addon-themes';
+
 import { ContextDecorator } from '@ids-sb-decorators/ContextDecorator';
 
 import './styles.scss';
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
-    decorators: [ContextDecorator],
+    decorators: [
+        ContextDecorator,
+        withThemeByClassName({
+            themes: {
+                light: 'ids-mode-light',
+                dark: 'ids-mode-dark',
+            },
+            defaultTheme: 'light',
+            parentSelector: 'body',
+        }),
+    ],
     parameters: {
         layout: 'centered',
         controls: {
