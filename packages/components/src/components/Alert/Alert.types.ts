@@ -22,7 +22,7 @@ export enum AlertRole {
 
 export interface AlertProps extends Omit<BaseComponentAttributes, 'title'> {
     type: AlertType;
-    title?: string;
+    title?: ReactNode;
     variant?: AlertVariant;
     children?: ReactNode;
     actions?: ReactNode;

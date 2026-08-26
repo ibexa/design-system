@@ -51,7 +51,7 @@ Modifiers (root): .ids-alert--floating | .ids-alert--local | .ids-alert--toast
 |---|---|---|---|---|---|
 | `type` | `AlertType` enum | `type` | `success` \| `warning` \| `error` \| `info` | **yes** | drives colours, default icon and `role` |
 | `variant` | `AlertVariant` enum | `variant` | `floating` (default) \| `local` \| `toast` | no | |
-| `title` | `string` | `title` | `''` | no | the bold first line; `__title` is not rendered when empty (description-only alerts — 2 legacy sites carry markup with no title). React: `AlertProps` extends `Omit<BaseComponentAttributes, 'title'>` so the HTML `title` attribute is not exposed (conflicts with this prop) |
+| `title` | `ReactNode` | `title` (`string\|Stringable` — `Twig\Markup` renders unescaped, like the legacy `{{- title -}}`) | `''` | no | the bold first line, may carry inline markup (icons — admin-ui distraction-free hint); `__title` is not rendered when empty (description-only alerts — 2 legacy sites carry markup with no title). React: `AlertProps` extends `Omit<BaseComponentAttributes, 'title'>` so the HTML `title` attribute is not exposed (conflicts with this prop) |
 | `children` | `ReactNode` | block `content` | none | no | description under the title; rich content allowed (links, `<br>`, spans) |
 | `actions` | `ReactNode` | block `actions` | none | no | buttons/links row rendered under the description inside `__content` |
 | `icon` | `string` | `icon` | default per type: success → `check-circle`, warning → `alert-warning`, error → `alert-error`, info → `info-rounded` | no | icon **name** override |
@@ -193,6 +193,8 @@ Resolved with the user on 2026-08-26 (Gate 1 passed):
 7. **`role`** — a prop (`alert` | `status`) with a type-derived default. ✅
 8. **Toast with description / actions** — allowed (legacy toasts inject links into the message). ✅
 10. Close button hover/focus = DS `Button` tertiary-alt small, no override. ✅
+12. **`title` may carry markup** (found by the regression meta-PR, 2026-08-26): admin-ui's distraction-free-mode hint passes a `{% set %}`-captured
+    title with an inline SVG — a `Twig\Markup`; the string-only prop 500ed every content edit page. Twig accepts `string|Stringable`, React `ReactNode`. ✅
 11. **`title` optional** (spec drift found in the admin-ui shim, 2026-08-26): reset-password success and the invitation-modal
     bad-file warning have no title and carry markup — description-only alerts are allowed, `__title` is skipped when empty. ✅
 
