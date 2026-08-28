@@ -156,3 +156,60 @@ export const WithDefinedId: Story = {
         id: 'defined-id',
     },
 };
+
+/***** Dark mode *****/
+
+export const DarkEmptyPlaceholder: Story = {
+    name: 'Dark mode / Empty (Placeholder)',
+    globals: {
+        theme: 'dark',
+    },
+    args: {
+        placeholder: 'Placeholder text',
+    },
+};
+
+export const DarkFilled: Story = {
+    name: 'Dark mode / Filled',
+    globals: {
+        theme: 'dark',
+    },
+    args: {
+        value: 'Lorem Ipsum',
+    },
+};
+
+export const DarkFilledDisabled: Story = {
+    name: 'Dark mode / Filled (Disabled)',
+    globals: {
+        theme: 'dark',
+    },
+    args: {
+        value: 'Lorem Ipsum',
+        disabled: true,
+    },
+};
+
+export const DarkFilledError: Story = {
+    name: 'Dark mode / Filled (Error)',
+    globals: {
+        theme: 'dark',
+    },
+    args: {
+        value: 'Lorem Ipsum',
+        error: true,
+    },
+};
+
+export const DarkFilledSearchButton: Story = {
+    name: 'Dark mode / Filled (Search Button)',
+    globals: {
+        theme: 'dark',
+    },
+    args: {
+        hasSearchAction: true,
+        searchButtonType: 'button',
+        value: 'Lorem Ipsum',
+        type: 'search',
+    },
+};
