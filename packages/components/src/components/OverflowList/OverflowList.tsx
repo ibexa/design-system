@@ -6,6 +6,7 @@ import { useDebounce } from '@ids-hooks/useDebounce';
 import { OverflowListCalculateAction as Actions, OverflowListProps } from './OverflowList.types';
 
 const RESIZE_TIMEOUT = 200;
+const MIN_VISIBLE_ITEMS = 1;
 
 export const OverflowList = <ItemProps extends { id: string }>({
     className = '',
@@ -18,10 +19,15 @@ export const OverflowList = <ItemProps extends { id: string }>({
     const [itemsWidth, setItemsWidth] = useState(0);
     const [currentAction, setCurrentAction] = useState(Actions.None);
     const [numberOfVisibleItems, setNumberOfVisibleItems] = useState(items.length);
+    const [shouldShrinkFirstItem, setShouldShrinkFirstItem] = useState(false);
     const debounce = useDebounce(RESIZE_TIMEOUT);
     const componentClassName = createCssClassNames({
         'ids-overflow-list': true,
         [className]: !!className,
+    });
+    const itemsClassName = createCssClassNames({
+        'ids-overflow-list__items': true,
+        'ids-overflow-list__items--shrink-first': shouldShrinkFirstItem,
     });
     const recalculateVisibleItems = () => {
         if (!itemsRef.current) {
@@ -30,23 +36,27 @@ export const OverflowList = <ItemProps extends { id: string }>({
 
         const itemsNodes = Array.from(itemsRef.current.children);
         const { right: listRightPosition } = itemsRef.current.getBoundingClientRect();
-        const newNumberOfVisibleItems = itemsNodes.findIndex((itemNode) => {
+        const firstOverflowingItemIndex = itemsNodes.findIndex((itemNode) => {
             const { right: itemRightPosition } = itemNode.getBoundingClientRect();
 
             return itemRightPosition > listRightPosition;
         });
 
-        if (newNumberOfVisibleItems === -1 || newNumberOfVisibleItems === items.length) {
+        if (firstOverflowingItemIndex === -1 || firstOverflowingItemIndex === items.length) {
+            setShouldShrinkFirstItem(false);
+
             return true;
         }
 
-        if (newNumberOfVisibleItems === numberOfVisibleItems) {
-            setNumberOfVisibleItems(newNumberOfVisibleItems - 1); // eslint-disable-line no-magic-numbers
-        } else {
-            setNumberOfVisibleItems(newNumberOfVisibleItems);
-        }
+        const newNumberOfVisibleItems =
+            firstOverflowingItemIndex === numberOfVisibleItems ? firstOverflowingItemIndex - MIN_VISIBLE_ITEMS : firstOverflowingItemIndex;
 
-        return false;
+        // Not even a single item fits at its natural width - keep the first one visible and let it shrink instead of
+        // showing the overflow counter alone.
+        setNumberOfVisibleItems(Math.max(newNumberOfVisibleItems, MIN_VISIBLE_ITEMS));
+        setShouldShrinkFirstItem(newNumberOfVisibleItems < MIN_VISIBLE_ITEMS);
+
+        return newNumberOfVisibleItems <= MIN_VISIBLE_ITEMS;
     };
     const listResizeObserver = useMemo(
         () =>
@@ -54,6 +64,7 @@ export const OverflowList = <ItemProps extends { id: string }>({
                 debounce(() => {
                     setItemsWidth(listRef.current?.offsetWidth ?? 0);
                     setNumberOfVisibleItems(items.length);
+                    setShouldShrinkFirstItem(false);
                     setCurrentAction(Actions.CalculateItems);
                 });
             }),
@@ -105,7 +116,7 @@ export const OverflowList = <ItemProps extends { id: string }>({
 
     return (
         <div className={componentClassName} ref={listRef}>
-            <div className="ids-overflow-list__items" ref={itemsRef} style={{ width: `${itemsWidth}px` }}>
+            <div className={itemsClassName} ref={itemsRef} style={{ width: `${itemsWidth}px` }}>
                 {renderItems()}
                 {renderOverflow()}
             </div>

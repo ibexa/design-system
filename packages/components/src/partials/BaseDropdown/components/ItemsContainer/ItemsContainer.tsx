@@ -47,7 +47,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
     };
     const itemsContainerStyles = {
         ...styles.popper,
-        width: itemsContainerWidth ? `${itemsContainerWidth}px` : 'auto',
+        minWidth: itemsContainerWidth ? `${itemsContainerWidth}px` : 'auto',
     };
     const getItemsStyles = () => {
         const itemsStyles: ItemsContainerItemsStylesType = {

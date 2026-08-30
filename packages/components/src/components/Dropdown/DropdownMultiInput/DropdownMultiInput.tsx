@@ -43,7 +43,7 @@ export const DropdownMultiInput = ({
         return (
             <>
                 <CheckboxInput checked={isItemSelected(item)} name={`${name}-checkbox`} value={item.id} />
-                {item.label}
+                <span className="ids-dropdown__item-label">{item.label}</span>
             </>
         );
     };
