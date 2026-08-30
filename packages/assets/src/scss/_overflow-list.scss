@@ -9,5 +9,10 @@
         & > * {
             flex-shrink: 0;
         }
+
+        &--shrink-first > *:not([hidden]):first-child {
+            flex-shrink: 1;
+            min-width: 0;
+        }
     }
 }

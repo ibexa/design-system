@@ -19,6 +19,13 @@ const generateItems = (length: number) =>
         };
     });
 
+const LONG_CONTENT_ITEMS_LENGTH = 3;
+const NARROW_WRAPPER_WIDTH = 150;
+const LONG_CONTENT_ITEMS = generateItems(LONG_CONTENT_ITEMS_LENGTH).map((item) => ({
+    ...item,
+    content: `Control unit${item.id} | germany | 7 | physical`,
+}));
+
 const meta: Meta<typeof OverflowList<ItemType>> = {
     component: OverflowList,
     tags: ['autodocs', 'foundation'],
@@ -97,5 +104,15 @@ export const FontLoading: Story = {
     name: 'Font Loading',
     parameters: {
         wrapperWidth: 250,
+    },
+};
+
+export const FirstItemTooWide: Story = {
+    name: 'First item wider than the container',
+    args: {
+        items: LONG_CONTENT_ITEMS,
+    },
+    parameters: {
+        wrapperWidth: NARROW_WRAPPER_WIDTH,
     },
 };
