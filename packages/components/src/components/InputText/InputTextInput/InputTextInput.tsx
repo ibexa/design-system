@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
 import { Icon, IconSize } from '@ids-components/Icon';
 import { BaseInput } from '@ids-partials/BaseInput';
@@ -152,11 +152,36 @@ export const InputTextInput = ({
         );
     };
 
-    useLayoutEffect(() => {
+    const updateSourcePadding = () => {
         const actionsWidth = actionsRef.current?.offsetWidth ?? 0;
 
+        if (actionsWidth === 0) {
+            return;
+        }
+
         setSourcePadding(actionsWidth);
+    };
+    const actionsResizeObserver = useMemo(
+        () =>
+            new ResizeObserver(() => {
+                updateSourcePadding();
+            }),
+        [],
+    );
+
+    useLayoutEffect(() => {
+        updateSourcePadding();
     }, [actions, value]);
+
+    useEffect(() => {
+        if (actionsRef.current) {
+            actionsResizeObserver.observe(actionsRef.current);
+        }
+
+        return () => {
+            actionsResizeObserver.disconnect();
+        };
+    }, []);
 
     useEffect(() => {
         setResolvedType(type);
