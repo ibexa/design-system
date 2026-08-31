@@ -30,8 +30,8 @@ export const Default: Story = {
         await step('Select first and last item on list', async () => {
             await userEvent.click(dropdownWidget);
 
-            const firstItem = canvas.getByText('Item 1', { selector: 'li' });
-            const lastItem = canvas.getByText('Item 3', { selector: 'li' });
+            const firstItem = canvas.getByText('Item 1', { selector: '.ids-dropdown__item-label' });
+            const lastItem = canvas.getByText('Item 3', { selector: '.ids-dropdown__item-label' });
 
             await userEvent.click(firstItem);
             await userEvent.click(lastItem);
@@ -50,7 +50,7 @@ export const Default: Story = {
         await step('Uncheck last item on list', async () => {
             await userEvent.click(dropdownWidget);
 
-            const lastItem = canvas.getByText('Item 3', { selector: 'li' });
+            const lastItem = canvas.getByText('Item 3', { selector: '.ids-dropdown__item-label' });
 
             await userEvent.click(lastItem);
 
