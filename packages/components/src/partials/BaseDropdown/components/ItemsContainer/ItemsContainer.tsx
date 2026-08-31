@@ -5,7 +5,12 @@ import { Search } from '../Search';
 import { createCssClassNames } from '@ids-core';
 import { useKeyDown } from '@ids-hooks/useKeyEvent';
 
-import { ItemsContainerItemsStylesType, ItemsContainerMoveActiveFocusDirection, ItemsContainerProps } from './ItemsContainer.types';
+import {
+    ItemsContainerItemsStylesType,
+    ItemsContainerMoveActiveFocusDirection,
+    ItemsContainerProps,
+    ItemsContainerStylesType,
+} from './ItemsContainer.types';
 import { BaseDropdownItem } from '../../BaseDropdown.types';
 
 const VIEWPORT_MARGIN = 16;
@@ -29,7 +34,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
     const [searchTerm, setSearchTerm] = useState('');
     const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
     const [itemsContainerWidth, setItemsContainerWidth] = useState(0);
-    const [itemsContainerMaxWidth, setItemsContainerMaxWidth] = useState(0);
+    const [itemsContainerAvailableWidth, setItemsContainerAvailableWidth] = useState(0);
     const [itemsMaxHeight, setItemsMaxHeight] = useState(0);
     const { styles, attributes } = usePopper(referenceElement, popperElement, {
         placement: isTopPlacementForced ? 'top-start' : 'bottom-start',
@@ -48,9 +53,9 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
             closeDropdown,
         });
     };
-    const itemsContainerStyles = {
+    const itemsContainerStyles: ItemsContainerStylesType = {
         ...styles.popper,
-        maxWidth: itemsContainerMaxWidth ? `${itemsContainerMaxWidth}px` : 'none',
+        '--ids-dropdown-available-width': itemsContainerAvailableWidth ? `${itemsContainerAvailableWidth}px` : undefined,
         minWidth: itemsContainerWidth ? `${itemsContainerWidth}px` : 'auto',
     };
     const getItemsStyles = () => {
@@ -132,7 +137,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
             const availableWidth = document.documentElement.clientWidth - referenceLeft - VIEWPORT_MARGIN;
 
             setItemsContainerWidth(referenceElement.offsetWidth);
-            setItemsContainerMaxWidth(Math.max(availableWidth, referenceElement.offsetWidth));
+            setItemsContainerAvailableWidth(availableWidth);
         } else {
             setItemsMaxHeight(0);
         }
