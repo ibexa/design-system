@@ -51,8 +51,6 @@ export const OverflowList = <ItemProps extends { id: string }>({
         const newNumberOfVisibleItems =
             firstOverflowingItemIndex === numberOfVisibleItems ? firstOverflowingItemIndex - MIN_VISIBLE_ITEMS : firstOverflowingItemIndex;
 
-        // Not even a single item fits at its natural width - keep the first one visible and let it shrink instead of
-        // showing the overflow counter alone.
         setNumberOfVisibleItems(Math.max(newNumberOfVisibleItems, MIN_VISIBLE_ITEMS));
         setShouldShrinkFirstItem(newNumberOfVisibleItems < MIN_VISIBLE_ITEMS);
 
