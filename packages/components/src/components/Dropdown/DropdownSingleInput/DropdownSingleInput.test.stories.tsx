@@ -29,10 +29,10 @@ export const Default: Story = {
         const selectItemAndAssert = async (itemLabel: string) => {
             await userEvent.click(dropdownWidget);
 
-            const dropdownItem = canvas.getByText(itemLabel, { selector: 'li' });
-            const firstItem = canvas.getByText('Item 1', { selector: 'li' });
+            const dropdownItem = canvas.getByText(itemLabel, { selector: '.ids-dropdown__item-label' });
+            const firstItem = canvas.getByText('Item 1', { selector: '.ids-dropdown__item-label' });
 
-            await expect(document.activeElement).toBe(firstItem);
+            await expect(document.activeElement).toBe(firstItem.closest('li'));
 
             await userEvent.click(dropdownItem);
 
@@ -55,12 +55,12 @@ export const Default: Story = {
         await step('Open dropdown and close without choosing item', async () => {
             await userEvent.click(dropdownWidget);
 
-            const dropdownItem = canvas.getByText('Item 1', { selector: 'li' });
+            const dropdownItem = canvas.getByText('Item 1', { selector: '.ids-dropdown__item-label' });
 
             await expect(dropdownItem).toBeVisible();
             await userEvent.click(canvasElement);
             await expect(() => {
-                canvas.getByText('Item 1', { selector: 'li' });
+                canvas.getByText('Item 1', { selector: '.ids-dropdown__item-label' });
             }).toThrowError();
         });
     },
@@ -94,7 +94,7 @@ export const ManyItems: Story = {
         await step('Search for items with "Item 1"', async () => {
             await userEvent.click(dropdownWidget);
 
-            const visibleItemsAll = canvas.queryAllByText('Item ', { selector: 'li', exact: false });
+            const visibleItemsAll = canvas.queryAllByText('Item ', { selector: '.ids-dropdown__item-label', exact: false });
             const searchInput = canvas.getByRole('textbox');
 
             await expect(document.activeElement).toBe(searchInput);
@@ -102,7 +102,7 @@ export const ManyItems: Story = {
 
             await userEvent.type(searchInput, 'Item 1');
 
-            const visibleItemsFiltered = canvas.queryAllByText('Item ', { selector: 'li', exact: false });
+            const visibleItemsFiltered = canvas.queryAllByText('Item ', { selector: '.ids-dropdown__item-label', exact: false });
 
             await expect(visibleItemsFiltered).toHaveLength(ITEMS_WITH_1_COUNT);
         });
@@ -111,7 +111,7 @@ export const ManyItems: Story = {
             await userEvent.click(canvasElement);
             await userEvent.click(dropdownWidget);
 
-            const visibleItemsAll = canvas.queryAllByText('Item ', { selector: 'li', exact: false });
+            const visibleItemsAll = canvas.queryAllByText('Item ', { selector: '.ids-dropdown__item-label', exact: false });
             const searchInput = canvas.getByRole('textbox');
 
             await expect(visibleItemsAll).toHaveLength(ALL_ITEMS_COUNT);
