@@ -42,6 +42,7 @@
     }
 
     &__items-container {
+        max-width: min(calculateRem(560px), var(--ids-dropdown-available-width, 100vw));
         border-radius: $border-radius-medium;
         border: calculateRem(1px) solid $color-neutral-80;
         background-color: $color-neutral-10;
