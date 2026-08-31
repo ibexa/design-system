@@ -6,6 +6,14 @@
         display: flex;
         flex-wrap: nowrap;
 
+        // The number of visible items is derived from measured widths, so nothing in here may
+        // animate its geometry - a transition still in flight is measured at an intermediate
+        // width and makes the calculation pick the wrong item count.
+        &,
+        & * {
+            transition: none;
+        }
+
         & > * {
             flex-shrink: 0;
         }
