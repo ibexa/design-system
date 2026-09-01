@@ -11,10 +11,12 @@ const TypographyBase = () => {
         { lineHeight: 15, name: 'xs', size: 10 },
     ];
     const fontSizesHighlighted = [
+        { lineHeight: 72, name: '6xl', size: 48 },
+        { lineHeight: 60, name: '5xl', size: 40 },
+        { lineHeight: 48, name: '4xl', size: 32 },
         { lineHeight: 36, name: '3xl', size: 24 },
-        { lineHeight: 30, name: '2xl', size: 20 },
-        { lineHeight: 28, name: 'xl', size: 18 },
-        { lineHeight: 24, name: 'l', size: 16 },
+        { lineHeight: 24, name: 'xl', size: 16 },
+        { lineHeight: 22.5, name: 'l', size: 15 },
         { lineHeight: 21, name: 'm', size: 14 },
         { lineHeight: 18, name: 's', size: 12 },
     ];
@@ -58,14 +60,12 @@ const TypographyBase = () => {
                 {fontWeights.map(({ name: weightName, weight }) => {
                     return fontStyles.map(({ name: styleName, style }) => {
                         return fontSizesBase.map(({ name: sizeName, size, lineHeight }) => {
-                            return renderRow(`base-${sizeName}-${weightName}-${styleName}`, 'Noto sans', style, weight, size, lineHeight);
+                            return renderRow(`base-${sizeName}-${weightName}-${styleName}`, 'Mulish', style, weight, size, lineHeight);
                         });
                     });
                 })}
-                {fontWeights.map(({ name: weightName, weight }) => {
-                    return fontSizesHighlighted.map(({ name: sizeName, size, lineHeight }) => {
-                        return renderRow(`base-${sizeName}-${weightName}-normal`, 'Work sans', 'normal', weight, size, lineHeight);
-                    });
+                {fontSizesHighlighted.map(({ name: sizeName, size, lineHeight }) => {
+                    return renderRow(`highlighted-${sizeName}`, 'Manrope', 'normal', '600', size, lineHeight);
                 })}
             </tbody>
         </table>

@@ -15,7 +15,7 @@ const TypographyLinks = () => {
 
     return (
         <table className="ids-table">
-            <caption className="ids-table__caption">Header</caption>
+            <caption className="ids-table__caption">Links</caption>
             <thead className="ids-table__header">
                 <tr className="ids-table__row">
                     <th className="ids-table__header-cell">Sentence</th>
@@ -38,7 +38,7 @@ const TypographyLinks = () => {
                                         {sentence}
                                     </a>
                                 </td>
-                                <td className="ids-table__cell">Work sans</td>
+                                <td className="ids-table__cell">Manrope</td>
                                 <td className="ids-table__cell">normal</td>
                                 <td className="ids-table__cell">{weight}</td>
                                 <td className="ids-table__cell">{size}px</td>
