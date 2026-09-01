@@ -55,5 +55,9 @@ $input-sizes: (
 
     &--text {
         height: calculateRem(40px);
+
+        &.ids-input--small {
+            height: calculateRem(32px);
+        }
     }
 }
