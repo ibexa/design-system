@@ -11,7 +11,7 @@ $input-sizes: (
     ),
     'medium': (
         'font-size': $text-font-size-m,
-        'padding': calculateRem(9px) calculateRem(8px) calculateRem(10px) calculateRem(12px),
+        'padding': calculateRem(8px) calculateRem(8px) calculateRem(8px) calculateRem(12px),
     ),
 );
 
