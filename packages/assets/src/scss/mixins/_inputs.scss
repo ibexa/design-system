@@ -24,13 +24,13 @@
     &[disabled],
     &:disabled {
         color: var(--ids-input-disabled-text-color, #{$color-neutral-150});
-        background: var(--ids-input-disabled-bg-color, #{$color-neutral-40});
+        background: var(--ids-input-disabled-bg-color, #{$color-neutral-50});
         border-color: var(--ids-input-disabled-border-color, #{$color-neutral-80});
         pointer-events: none;
     }
 
     &:hover:not(&--disabled) {
-        border-color: var(--ids-input-hover-border-color, #{$color-primary-80});
+        border-color: var(--ids-input-hover-border-color, #{$color-neutral-120});
     }
 
     &:active {
