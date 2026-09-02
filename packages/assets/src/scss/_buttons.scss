@@ -127,12 +127,12 @@ $btns-types: (
             'border': transparent,
         ),
         'hover': (
-            'text': $color-primary-80,
+            'text': $color-neutral-240,
             'bg': transparent,
             'border': transparent,
         ),
         'active': (
-            'text': $color-primary-80,
+            'text': $color-neutral-240,
             'bg': transparent,
             'border': transparent,
         ),
@@ -270,15 +270,15 @@ $btns-sizes: (
     transition: all $transition-duration $transition-timing-function;
 
     &:focus {
-        color: var(--ids-focus-text-color);
-        fill: var(--ids-focus-text-color);
-        background: var(--ids-focus-bg-color);
-        border-color: var(--ids-focus-border-color);
         outline: none;
         box-shadow: none;
     }
 
     &:focus-visible {
+        color: var(--ids-focus-text-color);
+        fill: var(--ids-focus-text-color);
+        background: var(--ids-focus-bg-color);
+        border-color: var(--ids-focus-border-color);
         box-shadow: var(--ids-focus-box-shadow);
     }
 
@@ -359,10 +359,5 @@ $btns-sizes: (
 
     &--primary {
         border: 0;
-    }
-
-    &--tertiary,
-    &--tertiary-alt {
-        border-radius: $border-radius-small;
     }
 }
