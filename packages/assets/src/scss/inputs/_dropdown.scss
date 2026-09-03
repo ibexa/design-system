@@ -59,9 +59,13 @@ $item-gap: calculateRem(4px);
         padding: calculateRem(8px);
     }
 
+    &__search:not([hidden]) {
+        padding-bottom: $item-gap;
+    }
+
     &__search:not([hidden]) + .ids-dropdown__items {
-        padding-top: 0;
-        max-height: calc(($item-height + $item-gap) * var(--max-visible-items, 10) + calculateRem(4px));
+        padding-top: $item-gap;
+        max-height: calc(($item-height + $item-gap) * var(--max-visible-items, 10) + calculateRem(8px));
     }
 
     &__items {
@@ -73,6 +77,7 @@ $item-gap: calculateRem(4px);
         padding: calculateRem(8px);
         max-height: calc(($item-height + $item-gap) * var(--max-visible-items, 10) + calculateRem(12px));
         overflow-y: auto;
+        scroll-padding-block: calculateRem(8px);
         box-sizing: border-box;
     }
 
