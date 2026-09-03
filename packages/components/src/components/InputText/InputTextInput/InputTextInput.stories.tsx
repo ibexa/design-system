@@ -1,6 +1,9 @@
+import React from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from 'storybook/actions';
 
+import { Button, ButtonSize, ButtonType } from '@ids-components/Button';
 import { InputTextInputSize, InputTextInputStateful } from '.';
 
 const meta: Meta<typeof InputTextInputStateful> = {
@@ -154,6 +157,29 @@ export const WithDefinedId: Story = {
     name: 'With defined ID',
     args: {
         id: 'defined-id',
+    },
+};
+
+export const FilledWithCustomAction: Story = {
+    name: 'Filled (Custom Action)',
+    args: {
+        processActions: (actions) => [
+            ...actions,
+            {
+                component: (
+                    <Button
+                        ariaLabel="Custom action"
+                        icon="ai"
+                        onClick={action('on-custom-action')}
+                        size={ButtonSize.Small}
+                        title="Custom action"
+                        type={ButtonType.Primary}
+                    />
+                ),
+                id: 'custom',
+            },
+        ],
+        value: 'Lorem Ipsum',
     },
 };
 
