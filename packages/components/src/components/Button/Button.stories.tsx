@@ -161,6 +161,45 @@ export const SecondaryAltDisabled: Story = {
     },
 };
 
+/***** Secondary Small *****/
+
+export const SecondarySmall: Story = {
+    name: 'Secondary Small / Default',
+    args: {
+        type: ButtonType.Secondary,
+        size: ButtonSize.Small,
+        icon: 'edit',
+    },
+};
+
+export const SecondarySmallTextOnly: Story = {
+    name: 'Secondary Small / Text only',
+    args: {
+        type: ButtonType.Secondary,
+        size: ButtonSize.Small,
+    },
+};
+
+export const SecondarySmallIconOnly: Story = {
+    name: 'Secondary Small / Icon only',
+    args: {
+        type: ButtonType.Secondary,
+        size: ButtonSize.Small,
+        icon: 'edit',
+        children: undefined,
+    },
+};
+
+export const SecondarySmallDisabled: Story = {
+    name: 'Secondary Small / Disabled',
+    args: {
+        type: ButtonType.Secondary,
+        size: ButtonSize.Small,
+        icon: 'edit',
+        disabled: true,
+    },
+};
+
 /***** Secondary Alt Small *****/
 
 export const SecondaryAltSmall: Story = {

@@ -7,7 +7,7 @@ import { LinkProps, LinkSize, LinkType, LinkVariant } from './Link.types';
 
 const ICON_SIZE_MAPPING: Record<LinkSize, IconSize> = {
     [LinkSize.Medium]: IconSize.Small,
-    [LinkSize.Small]: IconSize.TinySmall,
+    [LinkSize.Small]: IconSize.Small,
 } as const;
 
 export const Link = ({
