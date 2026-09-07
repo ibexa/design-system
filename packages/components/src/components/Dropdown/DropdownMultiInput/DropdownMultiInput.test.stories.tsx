@@ -63,3 +63,54 @@ export const Default: Story = {
         });
     },
 };
+
+export const Grouped: Story = {
+    name: 'Grouped',
+    args: {
+        items: [
+            { id: 'ungrouped', label: 'Ungrouped item' },
+            {
+                id: 'fruits',
+                items: [
+                    { id: 'apple', label: 'Apple' },
+                    { id: 'banana', label: 'Banana' },
+                ],
+                label: 'Fruits',
+            },
+            {
+                id: 'vegetables',
+                items: [{ id: 'carrot', label: 'Carrot' }],
+                label: 'Vegetables',
+            },
+        ],
+    },
+    play: async ({ canvasElement, step }) => {
+        const GROUPS_COUNT = 2;
+        const canvas = within(canvasElement);
+        const dropdownWidget = canvas.getByText('Select an item');
+
+        await step('Groups render with group semantics and checkbox items inside', async () => {
+            await userEvent.click(dropdownWidget);
+
+            const groups = canvasElement.querySelectorAll('.ids-dropdown__items .ids-dropdown__group');
+            const fruitsLabel = canvas.getByText('Fruits', { selector: '.ids-dropdown__group-label' });
+
+            await expect(groups).toHaveLength(GROUPS_COUNT);
+            await expect(groups[0]).toHaveAttribute('aria-labelledby', fruitsLabel.id);
+            await expect(groups[0].querySelectorAll('.ids-input--checkbox')).toHaveLength(GROUPS_COUNT);
+        });
+
+        await step('Selecting a grouped item shows its chip and keeps the optgroup in the source select', async () => {
+            const appleItem = canvas.getByText('Apple', { selector: '.ids-dropdown__item-label' });
+
+            await userEvent.click(appleItem);
+            await userEvent.click(canvasElement);
+
+            const selectedChip = canvas.getByText('Apple', { selector: 'div' });
+            const groupedOption = canvasElement.querySelector('select optgroup[label="Fruits"] option[value="apple"]');
+
+            await expect(selectedChip).toBeVisible();
+            await expect(groupedOption).not.toBeNull();
+        });
+    },
+};

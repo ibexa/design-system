@@ -1,8 +1,10 @@
-import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 
+import { filterDropdownEntries, flattenDropdownItems } from '../../utils/items';
+import { ItemsList } from '../ItemsList';
 import { Search } from '../Search';
-import { createCssClassNames } from '@ids-core';
+import { TranslatorContext } from '@ids-context/Translator';
 import { useKeyDown } from '@ids-hooks/useKeyEvent';
 
 import {
@@ -28,6 +30,8 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
     referenceElement,
     renderItem,
 }: ItemsContainerProps<T>) => {
+    const Translator = useContext(TranslatorContext);
+    const groupIdPrefix = useId();
     const searchRef = useRef<HTMLInputElement>(null);
     const itemsRef = useRef<HTMLUListElement>(null);
     const [isTopPlacementForced, setIsTopPlacementForced] = useState(false);
@@ -40,14 +44,12 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
         placement: isTopPlacementForced ? 'top-start' : 'bottom-start',
         strategy: 'fixed',
     });
-    const hasSearchInput = items.length > maxVisibleItems;
-    const filteredItems = useMemo(() => {
-        if (!searchTerm) {
-            return items;
-        }
-
-        return items.filter((item) => filterFunction(item, searchTerm));
-    }, [items, searchTerm, filterFunction]);
+    const flatItems = useMemo(() => flattenDropdownItems(items), [items]);
+    const hasSearchInput = flatItems.length > maxVisibleItems;
+    const filteredEntries = useMemo(() => filterDropdownEntries(items, searchTerm, filterFunction), [items, searchTerm, filterFunction]);
+    const filteredItems = useMemo(() => flattenDropdownItems(filteredEntries), [filteredEntries]);
+    const hasNoResults = !!searchTerm && filteredItems.length === 0;
+    const firstFocusableItemId = hasSearchInput ? undefined : filteredItems[0]?.id;
     const onItemClick = (item: T) => {
         onDropdownItemClick(item, {
             closeDropdown,
@@ -245,33 +247,21 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
         <div className="ids-dropdown__items-container" ref={setPopperElement} style={itemsContainerStyles} {...attributes.popper}>
             <Search isVisible={hasSearchInput} searchRef={searchRef} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <ul className="ids-dropdown__items" ref={itemsRef} style={getItemsStyles()}>
-                {filteredItems.map((item, index) => {
-                    const dropdownItemClassName = createCssClassNames({
-                        'ids-dropdown__item': true,
-                        'ids-dropdown__item--selected': isItemSelected(item),
-                    });
-
-                    return (
-                        <li
-                            className={dropdownItemClassName}
-                            key={item.id}
-                            onClick={() => {
-                                onItemClick(item);
-                            }}
-                            ref={(node) => {
-                                if (index === 0 && !hasSearchInput && node) {
-                                    node.focus();
-                                }
-                            }}
-                            role="button"
-                            tabIndex={0}
-                            {...getItemAttributes(item)}
-                        >
-                            {renderItem(item)}
-                        </li>
-                    );
-                })}
+                <ItemsList
+                    entries={filteredEntries}
+                    firstFocusableItemId={firstFocusableItemId}
+                    getItemAttributes={getItemAttributes}
+                    groupIdPrefix={groupIdPrefix}
+                    isItemSelected={isItemSelected}
+                    onItemClick={onItemClick}
+                    renderItem={renderItem}
+                />
             </ul>
+            {hasNoResults && (
+                <div aria-live="polite" className="ids-dropdown__no-results">
+                    {Translator.trans(/*@Desc("No results found")*/ 'ids.dropdown.search.no_results')}
+                </div>
+            )}
         </div>
     );
 };
