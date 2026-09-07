@@ -19,15 +19,19 @@ const VIEWPORT_MARGIN = 16;
 
 export const ItemsContainer = <T extends BaseDropdownItem>({
     closeDropdown,
+    containerAttributes = {},
     filterFunction,
     getItemAttributes,
     getNextFocusableItem,
+    hasSearch,
     isItemSelected,
     isOpen,
     items,
     maxVisibleItems,
+    minWidth = 0,
     onDropdownItemClick,
     referenceElement,
+    renderFooter,
     renderItem,
 }: ItemsContainerProps<T>) => {
     const Translator = useContext(TranslatorContext);
@@ -45,7 +49,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
         strategy: 'fixed',
     });
     const flatItems = useMemo(() => flattenDropdownItems(items), [items]);
-    const hasSearchInput = flatItems.length > maxVisibleItems;
+    const hasSearchInput = hasSearch ?? flatItems.length > maxVisibleItems;
     const filteredEntries = useMemo(() => filterDropdownEntries(items, searchTerm, filterFunction), [items, searchTerm, filterFunction]);
     const filteredItems = useMemo(() => flattenDropdownItems(filteredEntries), [filteredEntries]);
     const hasNoResults = !!searchTerm && filteredItems.length === 0;
@@ -58,7 +62,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
     const itemsContainerStyles: ItemsContainerStylesType = {
         ...styles.popper,
         '--ids-dropdown-available-width': itemsContainerAvailableWidth ? `${itemsContainerAvailableWidth}px` : undefined,
-        minWidth: itemsContainerWidth ? `${itemsContainerWidth}px` : 'auto',
+        minWidth: itemsContainerWidth || minWidth ? `${Math.max(itemsContainerWidth, minWidth)}px` : 'auto',
     };
     const getItemsStyles = () => {
         const itemsStyles: ItemsContainerItemsStylesType = {
@@ -244,8 +248,20 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
     }
 
     return (
-        <div className="ids-dropdown__items-container" ref={setPopperElement} style={itemsContainerStyles} {...attributes.popper}>
-            <Search isVisible={hasSearchInput} searchRef={searchRef} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <div
+            className="ids-dropdown__items-container"
+            ref={setPopperElement}
+            style={itemsContainerStyles}
+            {...containerAttributes}
+            {...attributes.popper}
+        >
+            <Search
+                hasSearchIcon={hasSearch === true}
+                isVisible={hasSearchInput}
+                searchRef={searchRef}
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+            />
             <ul className="ids-dropdown__items" ref={itemsRef} style={getItemsStyles()}>
                 <ItemsList
                     entries={filteredEntries}
@@ -262,6 +278,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
                     {Translator.trans(/*@Desc("No results found")*/ 'ids.dropdown.search.no_results')}
                 </div>
             )}
+            {renderFooter?.()}
         </div>
     );
 };

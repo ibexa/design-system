@@ -5,7 +5,7 @@ import { TranslatorContext } from '@ids-context/Translator';
 
 import { SearchProps } from './Search.types';
 
-export const Search = ({ isVisible, setSearchTerm, searchRef, searchTerm }: SearchProps) => {
+export const Search = ({ isVisible, setSearchTerm, searchRef, searchTerm, hasSearchIcon = false }: SearchProps) => {
     const Translator = useContext(TranslatorContext);
 
     if (!isVisible) {
@@ -17,10 +17,12 @@ export const Search = ({ isVisible, setSearchTerm, searchRef, searchTerm }: Sear
     return (
         <div className="ids-dropdown__search">
             <InputTextInput
+                hasSearchAction={hasSearchIcon}
                 name="dropdown-search"
                 onChange={setSearchTerm}
                 placeholder={placeholderText}
                 ref={searchRef}
+                searchButtonType="button"
                 size={InputTextInputSize.Small}
                 value={searchTerm}
             />
