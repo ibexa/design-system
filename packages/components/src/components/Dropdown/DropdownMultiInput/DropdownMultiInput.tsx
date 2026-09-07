@@ -1,7 +1,7 @@
 import React from 'react';
 
+import { BaseDropdown, flattenDropdownItems, isDropdownItemGroup } from '@ids-partials/BaseDropdown';
 import { ExtraParamsType, getNextFocusableItem } from '../utils/focus';
-import { BaseDropdown } from '@ids-partials/BaseDropdown';
 import { CheckboxInput } from '@ids-components/Checkbox';
 import { Chip } from '@ids-components/Chip';
 import { OverflowList } from '@ids-components/OverflowList';
@@ -47,7 +47,8 @@ export const DropdownMultiInput = ({
             </>
         );
     };
-    const selectedItems = value.length ? items.filter((item) => value.includes(item.id)) : [];
+    const flatItems = flattenDropdownItems(items);
+    const selectedItems = value.length ? flatItems.filter((item) => value.includes(item.id)) : [];
     const renderSelectedItems = () => (
         <OverflowList
             items={selectedItems}
@@ -64,21 +65,30 @@ export const DropdownMultiInput = ({
             renderMore={({ hiddenCount }) => <Chip isDeletable={false}>+{hiddenCount}</Chip>}
         />
     );
+    const renderOption = (item: DropdownMultiInputItem) => (
+        <option key={item.id} value={item.id}>
+            {item.label}
+        </option>
+    );
     const renderSource = () => {
         return (
             <select defaultValue={value} multiple name={name} tabIndex={-1}>
-                {items.map((item) => (
-                    <option key={item.id} value={item.id}>
-                        {item.label}
-                    </option>
-                ))}
+                {items.map((entry) =>
+                    isDropdownItemGroup(entry) ? (
+                        <optgroup key={entry.id ?? entry.label} label={entry.label}>
+                            {entry.items.map(renderOption)}
+                        </optgroup>
+                    ) : (
+                        renderOption(entry)
+                    ),
+                )}
             </select>
         );
     };
     const getFocusableElements = ({ itemsList, search }: ExtraParamsType): HTMLElement[] => {
         const focusableElements = [
             ...(search instanceof HTMLElement ? [search] : []),
-            ...Array.from(itemsList.children).reduce((acc: HTMLElement[], child) => {
+            ...Array.from(itemsList.querySelectorAll('.ids-dropdown__item')).reduce((acc: HTMLElement[], child) => {
                 if (child instanceof HTMLElement) {
                     const checkbox = child.querySelector('.ids-input--checkbox');
 

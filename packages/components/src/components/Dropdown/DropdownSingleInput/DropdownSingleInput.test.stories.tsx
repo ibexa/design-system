@@ -2,6 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
 import { DropdownSingleInputStateful } from '.';
+import { generateItemsArray } from '@ids-sb-utils/generators';
+
+const SEARCH_ITEMS_PER_GROUP = 5;
+const SEARCH_GROUPS_COUNT = 3;
+const SINGLE_MATCHING_GROUP_COUNT = 1;
 
 const meta: Meta<typeof DropdownSingleInputStateful> = {
     component: DropdownSingleInputStateful,
@@ -116,6 +121,140 @@ export const ManyItems: Story = {
 
             await expect(visibleItemsAll).toHaveLength(ALL_ITEMS_COUNT);
             await expect(searchInput).toHaveValue('');
+        });
+    },
+};
+
+export const Grouped: Story = {
+    name: 'Grouped',
+    args: {
+        items: [
+            { id: 'ungrouped', label: 'Ungrouped item' },
+            {
+                id: 'fruits',
+                items: [
+                    { id: 'apple', label: 'Apple' },
+                    { id: 'banana', label: 'Banana' },
+                ],
+                label: 'Fruits',
+            },
+            {
+                id: 'vegetables',
+                items: [{ id: 'carrot', label: 'Carrot' }],
+                label: 'Vegetables',
+            },
+        ],
+    },
+    play: async ({ canvasElement, step }) => {
+        const GROUPS_COUNT = 2;
+        const canvas = within(canvasElement);
+        const dropdownWidget = canvas.getByText('Select an item');
+
+        await step('Groups render with group semantics and headers are not focusable', async () => {
+            await userEvent.click(dropdownWidget);
+
+            const groups = canvasElement.querySelectorAll('.ids-dropdown__items .ids-dropdown__group');
+            const fruitsLabel = canvas.getByText('Fruits', { selector: '.ids-dropdown__group-label' });
+            const ungroupedItem = canvas.getByText('Ungrouped item', { selector: '.ids-dropdown__item-label' });
+
+            await expect(groups).toHaveLength(GROUPS_COUNT);
+            await expect(groups[0]).toHaveAttribute('aria-labelledby', fruitsLabel.id);
+            await expect(fruitsLabel).not.toHaveAttribute('tabindex');
+            await expect(document.activeElement).toBe(ungroupedItem.closest('li'));
+        });
+
+        await step('ArrowDown from the last ungrouped item lands on the first grouped item', async () => {
+            await userEvent.keyboard('{ArrowDown}');
+
+            const appleItem = canvas.getByText('Apple', { selector: '.ids-dropdown__item-label' });
+
+            await expect(document.activeElement).toBe(appleItem.closest('li'));
+        });
+
+        await step('Enter selects the grouped item and the source select keeps its optgroup', async () => {
+            await userEvent.keyboard('{Enter}');
+
+            const selectedInfo = canvas.getByText('Apple', { selector: 'div' });
+            const groupedOption = canvasElement.querySelector('select optgroup[label="Fruits"] option[value="apple"]');
+
+            await expect(selectedInfo).toBeVisible();
+            await expect(groupedOption).not.toBeNull();
+        });
+    },
+};
+
+export const GroupedSearch: Story = {
+    name: 'Grouped Search',
+    args: {
+        items: [
+            {
+                id: 'colors',
+                items: generateItemsArray(SEARCH_ITEMS_PER_GROUP, { label: 'Color' }).map((item) => ({
+                    ...item,
+                    id: `color-${item.id}`,
+                    label: `Color ${item.id}`,
+                })),
+                label: 'Colors',
+            },
+            {
+                id: 'shapes',
+                items: generateItemsArray(SEARCH_ITEMS_PER_GROUP, { label: 'Shape' }).map((item) => ({
+                    ...item,
+                    id: `shape-${item.id}`,
+                    label: `Shape ${item.id}`,
+                })),
+                label: 'Shapes',
+            },
+            {
+                id: 'sizes',
+                items: generateItemsArray(SEARCH_ITEMS_PER_GROUP, { label: 'Size' }).map((item) => ({
+                    ...item,
+                    id: `size-${item.id}`,
+                    label: `Size ${item.id}`,
+                })),
+                label: 'Sizes',
+            },
+        ],
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+        const dropdownWidget = canvas.getByText('Select an item');
+
+        await step('Search keeps only the groups with a matching item', async () => {
+            await userEvent.click(dropdownWidget);
+
+            const searchInput = canvas.getByRole('textbox');
+
+            await expect(canvasElement.querySelectorAll('.ids-dropdown__items .ids-dropdown__group')).toHaveLength(SEARCH_GROUPS_COUNT);
+
+            await userEvent.type(searchInput, 'Shape');
+
+            await expect(canvasElement.querySelectorAll('.ids-dropdown__items .ids-dropdown__group')).toHaveLength(
+                SINGLE_MATCHING_GROUP_COUNT,
+            );
+            await expect(canvas.getByText('Shapes', { selector: '.ids-dropdown__group-label' })).toBeVisible();
+        });
+
+        await step('A term matching nothing shows the no-results message', async () => {
+            const searchInput = canvas.getByRole('textbox');
+
+            await userEvent.clear(searchInput);
+            await userEvent.type(searchInput, 'zzz');
+
+            const noResults = canvasElement.querySelector('.ids-dropdown__no-results');
+
+            await expect(canvasElement.querySelectorAll('.ids-dropdown__items .ids-dropdown__group')).toHaveLength(0);
+            await expect(noResults).not.toBeNull();
+            await expect(noResults?.textContent).not.toBe('');
+        });
+
+        await step('Clearing the term restores every group', async () => {
+            const searchInput = canvas.getByRole('textbox');
+
+            await userEvent.clear(searchInput);
+
+            await expect(canvasElement.querySelectorAll('.ids-dropdown__items .ids-dropdown__group')).toHaveLength(SEARCH_GROUPS_COUNT);
+            await expect(canvasElement.querySelector('.ids-dropdown__no-results')).toBeNull();
         });
     },
 };
