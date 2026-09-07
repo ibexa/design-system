@@ -1,4 +1,4 @@
-import { BaseDropdownItem, ExtraDropdownItemClickParamsType } from '../../BaseDropdown.types';
+import { BaseDropdownEntry, BaseDropdownItem, ExtraDropdownItemClickParamsType } from '../../BaseDropdown.types';
 
 export enum ItemsContainerMoveActiveFocusDirection {
     Up = 'up',
@@ -26,7 +26,7 @@ export interface ItemsContainerProps<T extends BaseDropdownItem> {
     getNextFocusableItem: GetNextFocusableItemType;
     isItemSelected: (item: T) => boolean;
     isOpen: boolean;
-    items: T[];
+    items: BaseDropdownEntry<T>[];
     maxVisibleItems: number;
     onDropdownItemClick: (item: T, extraParams: ExtraDropdownItemClickParamsType) => void;
     referenceElement: HTMLDivElement | null;
