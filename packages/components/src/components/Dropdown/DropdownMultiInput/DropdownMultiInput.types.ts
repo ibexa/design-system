@@ -1,7 +1,9 @@
+import { BaseDropdownEntry, BaseDropdownItem, BaseDropdownItemGroup } from '@ids-partials/BaseDropdown';
 import { BaseComponentAttributes } from '@ids-types/general';
-import { BaseDropdownItem } from '@ids-partials/BaseDropdown';
 
 export type DropdownMultiInputItem = BaseDropdownItem;
+export type DropdownMultiInputItemGroup = BaseDropdownItemGroup<DropdownMultiInputItem>;
+export type DropdownMultiInputEntry = BaseDropdownEntry<DropdownMultiInputItem>;
 
 export enum DropdownMultiInputAction {
     Check = 'check',
@@ -12,7 +14,7 @@ export interface DropdownMultiInputProps extends BaseComponentAttributes {
     name: string;
     disabled?: boolean;
     error?: boolean;
-    items?: DropdownMultiInputItem[];
+    items?: DropdownMultiInputEntry[];
     onChange?: (value: string[], itemValue: string, action: DropdownMultiInputAction) => void;
     placeholder?: string;
     value?: string[];

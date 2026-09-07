@@ -2,13 +2,20 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from 'storybook/test';
 import { action } from 'storybook/actions';
 
+import { generateGroupedItemsArray, generateItemsArray } from '@ids-sb-utils/generators';
 import { DropdownDecorator } from '@ids-sb-decorators/DropdownDecorator';
 import { DropdownSingleInputStateful } from '.';
-import { generateItemsArray } from '@ids-sb-utils/generators';
 
 const DEFAULT_ITEMS_LENGTH = 5;
 const MANY_ITEMS_LENGTH = 50;
 const WRAPPER_HEIGHT_FOR_LONG_LIST = 500;
+const GROUPED_GROUPS_COUNT = 3;
+const GROUPED_ITEMS_PER_GROUP = 3;
+const GROUPED_UNGROUPED_COUNT = 1;
+const MANY_GROUPED_GROUPS_COUNT = 6;
+const MANY_GROUPED_ITEMS_PER_GROUP = 8;
+const GROUPED_ITEMS = generateGroupedItemsArray(GROUPED_GROUPS_COUNT, GROUPED_ITEMS_PER_GROUP, GROUPED_UNGROUPED_COUNT);
+const MANY_GROUPED_ITEMS = generateGroupedItemsArray(MANY_GROUPED_GROUPS_COUNT, MANY_GROUPED_ITEMS_PER_GROUP, GROUPED_UNGROUPED_COUNT);
 
 const meta: Meta<typeof DropdownSingleInputStateful> = {
     component: DropdownSingleInputStateful,
@@ -109,6 +116,68 @@ export const ManyItemsOpenedMenu: Story = {
     tags: ['!dev'],
     args: {
         items: generateItemsArray(MANY_ITEMS_LENGTH),
+    },
+    parameters: {
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const dropdownWidget = canvas.getByText('Select an item');
+
+        await userEvent.click(dropdownWidget);
+    },
+};
+
+export const Grouped: Story = {
+    name: 'Grouped',
+    args: {
+        items: GROUPED_ITEMS,
+    },
+    parameters: {
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
+    },
+};
+
+export const GroupedOpenedMenu: Story = {
+    name: 'Grouped (Opened Menu)',
+    tags: ['!dev'],
+    args: {
+        items: GROUPED_ITEMS,
+    },
+    parameters: {
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const dropdownWidget = canvas.getByText('Select an item');
+
+        await userEvent.click(dropdownWidget);
+    },
+};
+
+export const GroupedSelectedOpenedMenu: Story = {
+    name: 'Grouped / Selected (Opened Menu)',
+    tags: ['!dev'],
+    args: {
+        items: GROUPED_ITEMS,
+        value: 'group-2-item-1',
+    },
+    parameters: {
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const dropdownWidget = canvas.getByText('Group 2 item 1', { selector: '.ids-dropdown__selection-info-items' });
+
+        await userEvent.click(dropdownWidget);
+    },
+};
+
+export const GroupedManyItemsOpenedMenu: Story = {
+    name: 'Grouped / Many Items (Opened Menu)',
+    tags: ['!dev'],
+    args: {
+        items: MANY_GROUPED_ITEMS,
     },
     parameters: {
         wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
