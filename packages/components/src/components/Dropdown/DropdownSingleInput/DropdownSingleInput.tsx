@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BaseDropdown, ExtraDropdownItemClickParamsType } from '@ids-partials/BaseDropdown';
+import { BaseDropdown, ExtraDropdownItemClickParamsType, flattenDropdownItems, isDropdownItemGroup } from '@ids-partials/BaseDropdown';
 import { ExtraParamsType, getNextFocusableItem } from '../utils/focus';
 import { Icon, IconSize } from '@ids-components/Icon';
 import { createCssClassNames } from '@ids-core';
@@ -24,7 +24,8 @@ export const DropdownSingleInput = ({
         onChange(id);
         closeDropdown();
     };
-    const selectedItem = items.find((item) => item.id === value) ?? null;
+    const flatItems = flattenDropdownItems(items);
+    const selectedItem = flatItems.find((item) => item.id === value) ?? null;
     const isItemSelected = (item: DropdownSingleInputItem) => item.id === value;
     const renderItem = (item: DropdownSingleInputItem) => {
         return (
@@ -34,21 +35,32 @@ export const DropdownSingleInput = ({
             </>
         );
     };
+    const renderOption = (item: DropdownSingleInputItem) => (
+        <option key={item.id} value={item.id}>
+            {item.label}
+        </option>
+    );
     const renderSource = () => {
         return (
             <select defaultValue={value} name={name} tabIndex={-1}>
-                {items.map((item) => (
-                    <option key={item.id} value={item.id}>
-                        {item.label}
-                    </option>
-                ))}
+                {items.map((entry) =>
+                    isDropdownItemGroup(entry) ? (
+                        <optgroup key={entry.id ?? entry.label} label={entry.label}>
+                            {entry.items.map(renderOption)}
+                        </optgroup>
+                    ) : (
+                        renderOption(entry)
+                    ),
+                )}
             </select>
         );
     };
     const getFocusableElements = ({ itemsList, search }: ExtraParamsType): HTMLElement[] => {
         const focusableElements = [
             ...(search ? [search] : []),
-            ...Array.from(itemsList.children).filter((child) => !child.classList.contains('ids-dropdown__item--selected')),
+            ...Array.from(itemsList.querySelectorAll('.ids-dropdown__item')).filter(
+                (child) => !child.classList.contains('ids-dropdown__item--selected'),
+            ),
         ];
 
         return focusableElements.filter((element): element is HTMLElement => element instanceof HTMLElement);
