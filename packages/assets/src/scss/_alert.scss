@@ -92,6 +92,8 @@ $alert-line-height: calculateRem(21px);
     }
 
     &__close-btn.ids-btn.ids-btn--icon-only {
+        --ids-default-text-color: #{$color-neutral-200};
+
         width: calculateRem(20px);
         height: $alert-line-height;
         padding: 0;
