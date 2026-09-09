@@ -29,7 +29,7 @@ export const DropdownSingleInput = ({
     const renderItem = (item: DropdownSingleInputItem) => {
         return (
             <>
-                {item.label}
+                <span className="ids-dropdown__item-label">{item.label}</span>
                 {isItemSelected(item) && <Icon name="check-circle" size={IconSize.TinySmall} />}
             </>
         );

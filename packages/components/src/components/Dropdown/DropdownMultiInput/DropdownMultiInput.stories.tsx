@@ -9,6 +9,11 @@ import { generateItemsArray } from '@ids-sb-utils/generators';
 const DEFAULT_ITEMS_LENGTH = 5;
 const MANY_ITEMS_LENGTH = 50;
 const WRAPPER_HEIGHT_FOR_LONG_LIST = 500;
+const NARROW_WRAPPER_WIDTH = 220;
+const LONG_LABEL_ITEMS = generateItemsArray(DEFAULT_ITEMS_LENGTH).map((item) => ({
+    ...item,
+    label: `Control unit${item.id} | germany | 7 | physical`,
+}));
 
 const meta: Meta<typeof DropdownMultiInputStateful> = {
     component: DropdownMultiInputStateful,
@@ -149,5 +154,34 @@ export const ManyItemsManySelectedOpenedMenu: Story = {
         if (dropdownWidget) {
             await userEvent.click(dropdownWidget);
         }
+    },
+};
+
+export const NarrowLongLabels: Story = {
+    name: 'Narrow / Long Labels',
+    args: {
+        items: LONG_LABEL_ITEMS,
+        value: ['1', '2'],
+    },
+    parameters: {
+        styles: { width: NARROW_WRAPPER_WIDTH },
+    },
+};
+
+export const NarrowLongLabelsOpenedMenu: Story = {
+    name: 'Narrow / Long Labels (Opened Menu)',
+    tags: ['!dev'],
+    args: {
+        items: LONG_LABEL_ITEMS,
+        value: ['1', '2'],
+    },
+    parameters: {
+        styles: { width: NARROW_WRAPPER_WIDTH },
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const dropdownWidget = canvas.getByText('+1', { selector: '.ids-dropdown__selection-info-items' });
+
+        await userEvent.click(dropdownWidget);
     },
 };
