@@ -10,36 +10,36 @@ on:
 jobs:
     infra-tests:
         name: Infrastructure Setup Tests
-        runs-on: 'ubuntu-24.04'
+        runs-on: 'ubuntu-26.04'
         timeout-minutes: 5
 
         steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-node@v4
+            - uses: actions/checkout@v7
+            - uses: actions/setup-node@v7
               with:
                   node-version: '22'
             - run: yarn install
             - run: yarn infra:test
     assets-tests:
         name: Assets Tests
-        runs-on: 'ubuntu-24.04'
+        runs-on: 'ubuntu-26.04'
         timeout-minutes: 5
 
         steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-node@v4
+            - uses: actions/checkout@v7
+            - uses: actions/setup-node@v7
               with:
                   node-version: '22'
             - run: yarn install
             - run: yarn assets:test
     components-tests:
         name: Components Tests
-        runs-on: 'ubuntu-24.04'
+        runs-on: 'ubuntu-26.04'
         timeout-minutes: 5
 
         steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-node@v4
+            - uses: actions/checkout@v7
+            - uses: actions/setup-node@v7
               with:
                   node-version: '22'
             - run: yarn install
