@@ -103,6 +103,7 @@ $alert-line-height: calculateRem(21px);
 
         width: calculateRem(16px);
         height: $alert-line-height;
+        margin-left: calculateRem(8px);
         padding: 0;
     }
 }
