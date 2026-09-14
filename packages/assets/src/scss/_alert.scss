@@ -83,6 +83,14 @@ $alert-line-height: calculateRem(21px);
         overflow-wrap: break-word;
     }
 
+    &__title,
+    &__description {
+        a {
+            text-decoration: underline;
+            color: inherit;
+        }
+    }
+
     &__actions {
         display: flex;
         align-items: center;
