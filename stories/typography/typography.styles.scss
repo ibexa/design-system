@@ -1,39 +1,26 @@
 @use '../../packages/assets/src/scss/functions/calculate.rem' as *;
 @use '../../packages/assets/src/scss/variables/colors' as *;
 @use '../../packages/assets/src/scss/variables/typography' as *;
+@use '../../packages/assets/src/scss/body' as body;
+@use '../../packages/assets/src/scss/code' as code;
 @use '../../packages/assets/src/scss/headers' as headers;
 
-$font-sizes-base: (
-    '2xl': $text-font-size-2xl,
-    'xl': $text-font-size-xl,
-    'l': $text-font-size-l,
-    'm': $text-font-size-m,
-    's': $text-font-size-s,
-    'xs': $text-font-size-xs,
-);
 $font-sizes-highlighted: (
     '6xl': $text-highlighted-font-size-6xl,
     '5xl': $text-highlighted-font-size-5xl,
     '4xl': $text-highlighted-font-size-4xl,
     '3xl': $text-highlighted-font-size-3xl,
+    '2xl': $text-highlighted-font-size-2xl,
     'xl': $text-highlighted-font-size-xl,
     'l': $text-highlighted-font-size-l,
     'm': $text-highlighted-font-size-m,
     's': $text-highlighted-font-size-s,
 );
-$font-sizes-links: (
-    'l': $text-font-size-l,
-    'm': $text-font-size-m,
-    's': $text-font-size-s,
-    'xs': $text-font-size-xs,
-);
-$font-weights: (
-    'normal': $text-font-weight-normal,
-    'semi': $text-font-weight-semi,
-);
-$font-styles: (
-    'normal': normal,
-    'italic': italic,
+$body-variants: (
+    'regular' $text-font-weight-normal normal,
+    'italic' $text-font-weight-normal italic,
+    'semibold' $text-font-weight-semi normal,
+    'semibold-italic' $text-font-weight-semi italic
 );
 
 .dev-typography-container {
@@ -54,32 +41,9 @@ $font-styles: (
     }
 
     .ids-table .ids-table__caption {
+        @include headers.h2;
+
         caption-side: top;
-        font-size: $text-font-size-2xl;
-        font-weight: $text-font-weight-semi;
-    }
-
-    @each $weight-name, $weight in $font-weights {
-        @each $style-name, $style in $font-styles {
-            @each $size-name, $size in $font-sizes-base {
-                .base-#{$size-name}-#{$weight-name}-#{$style-name} {
-                    font-size: $size;
-                    font-weight: $weight;
-                    font-style: $style;
-                    font-family: $font-family;
-                }
-            }
-        }
-    }
-
-    @each $size-name, $size in $font-sizes-highlighted {
-        .highlighted-#{$size-name} {
-            font-size: $size;
-            font-weight: $text-font-weight-semi;
-            font-style: normal;
-            font-family: $font-family-alt;
-            line-height: $heading-line-height;
-        }
     }
 
     .dev-h1 {
@@ -106,13 +70,47 @@ $font-styles: (
         @include headers.h6;
     }
 
-    @each $weight-name, $weight in $font-weights {
-        @each $size-name, $size in $font-sizes-links {
-            .link-#{$size-name}-#{$weight-name} {
-                font-size: $size;
-                font-weight: $weight;
-                font-family: $font-family-alt;
-            }
+    @each $size-name, $size in $font-sizes-highlighted {
+        .dev-highlighted-#{$size-name} {
+            font-size: $size;
+            font-weight: $text-font-weight-semi;
+            font-style: normal;
+            font-family: $font-family-alt;
+            line-height: $heading-line-height;
         }
+    }
+
+    @each $variant, $weight, $style in $body-variants {
+        .dev-body-xl-#{$variant} {
+            @include body.body-xl($weight, $style);
+        }
+
+        .dev-body-l-#{$variant} {
+            @include body.body-l($weight, $style);
+        }
+
+        .dev-body-m-#{$variant} {
+            @include body.body-m($weight, $style);
+        }
+
+        .dev-body-s-#{$variant} {
+            @include body.body-s($weight, $style);
+        }
+
+        .dev-body-xs-#{$variant} {
+            @include body.body-xs($weight, $style);
+        }
+    }
+
+    .dev-code-l {
+        @include code.code-l;
+    }
+
+    .dev-code-m {
+        @include code.code-m;
+    }
+
+    .dev-code-s {
+        @include code.code-s;
     }
 }

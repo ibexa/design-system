@@ -2,9 +2,10 @@ import React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import TypographyBase from './TypographyBase';
+import TypographyBody from './TypographyBody';
+import TypographyCode from './TypographyCode';
 import TypographyHeaders from './TypographyHeaders';
-import TypographyLinks from './TypographyLinks';
+import TypographyHighlighted from './TypographyHighlighted';
 
 import './typography.styles.scss';
 
@@ -12,8 +13,9 @@ const Typography = () => {
     return (
         <div className="dev-typography-container">
             <TypographyHeaders />
-            <TypographyBase />
-            <TypographyLinks />
+            <TypographyHighlighted />
+            <TypographyBody />
+            <TypographyCode />
         </div>
     );
 };

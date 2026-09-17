@@ -17,8 +17,8 @@ const TypographyHeaders = () => {
             <thead className="ids-table__header">
                 <tr className="ids-table__row">
                     <th className="ids-table__header-cell">Sentence</th>
-                    <th className="ids-table__header-cell">Tag</th>
                     <th className="ids-table__header-cell">Name</th>
+                    <th className="ids-table__header-cell">Family</th>
                     <th className="ids-table__header-cell">Style</th>
                     <th className="ids-table__header-cell">Weight</th>
                     <th className="ids-table__header-cell">Size</th>
@@ -33,7 +33,7 @@ const TypographyHeaders = () => {
                             <td className="ids-table__cell">{name}</td>
                             <td className="ids-table__cell">Manrope</td>
                             <td className="ids-table__cell">normal</td>
-                            <td className="ids-table__cell">semi-bold</td>
+                            <td className="ids-table__cell">600</td>
                             <td className="ids-table__cell">{size}px</td>
                             <td className="ids-table__cell">{lineHeight}px</td>
                         </tr>
