@@ -60,4 +60,11 @@ $input-sizes: (
             height: calculateRem(32px);
         }
     }
+
+    &--search {
+        // the clear button is provided by the component's actions
+        &::-webkit-search-cancel-button {
+            display: none;
+        }
+    }
 }
