@@ -43,10 +43,8 @@
         }
     }
 
-    &:has(.ids-input--number) &__action {
-        position: absolute;
-        top: 50%;
-        right: calculateRem(31px);
-        transform: translateY(-50%);
+    &:has(.ids-input--number) &__action--hidden {
+        display: block;
+        visibility: hidden;
     }
 }
