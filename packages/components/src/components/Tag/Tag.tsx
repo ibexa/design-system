@@ -7,8 +7,7 @@ import { type TagCustomColorsStyle, TagGhostType, type TagProps, TagSize, type T
 
 export const Tag = ({ children, className = '', customColors, isDark = false, icon, size = TagSize.Medium, type }: TagProps) => {
     const isGhostType = (tagType: TagType | TagGhostType): tagType is TagGhostType => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
-        return Object.values(TagGhostType).includes(tagType as TagGhostType);
+        return Object.values<string>(TagGhostType).includes(tagType);
     };
     const isGhost = isGhostType(type);
     const componentClassName = createCssClassNames({
