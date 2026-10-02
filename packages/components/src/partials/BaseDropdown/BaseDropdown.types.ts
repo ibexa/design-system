@@ -7,13 +7,21 @@ export interface BaseDropdownItem {
     label: string;
 }
 
+export interface BaseDropdownItemGroup<T extends BaseDropdownItem> {
+    items: T[];
+    label: string;
+    id?: string;
+}
+
+export type BaseDropdownEntry<T extends BaseDropdownItem> = T | BaseDropdownItemGroup<T>;
+
 export interface ExtraDropdownItemClickParamsType {
     closeDropdown: () => void;
 }
 
 export interface BaseDropdownProps<T extends BaseDropdownItem> extends BaseComponentAttributes {
     isItemSelected: (item: T) => boolean;
-    items: T[];
+    items: BaseDropdownEntry<T>[];
     children?: React.ReactNode;
     disabled?: boolean;
     error?: boolean;
