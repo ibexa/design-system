@@ -370,7 +370,7 @@ $btns-sizes: (
         border: 0;
         border-radius: $border-radius-small;
 
-        &:focus-visible {
+        &:focus-visible:not([disabled], [aria-disabled='true']) {
             box-shadow:
                 0 0 0 calculateRem(1px) var(--ids-focus-border-color),
                 var(--ids-focus-box-shadow);
