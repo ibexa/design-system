@@ -5,6 +5,7 @@ import { BaseComponentAriaAttributes } from '@ids-types/general';
 export enum ButtonSize {
     Medium = 'medium',
     Small = 'small',
+    Inline = 'inline',
 }
 
 export enum ButtonType {

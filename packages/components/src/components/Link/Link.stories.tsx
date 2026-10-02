@@ -229,6 +229,27 @@ export const ButtonTertiaryAltSmallIconOnly: Story = {
     },
 };
 
+/***** Button Variant - Inline Size *****/
+
+export const ButtonTertiaryInline: Story = {
+    name: 'Button / Tertiary Inline / Default',
+    args: {
+        variant: LinkVariant.Button,
+        type: LinkType.Tertiary,
+        size: LinkSize.Inline,
+        icon: 'edit',
+    },
+};
+
+export const ButtonTertiaryInlineTextOnly: Story = {
+    name: 'Button / Tertiary Inline / Text only',
+    args: {
+        variant: LinkVariant.Button,
+        type: LinkType.Tertiary,
+        size: LinkSize.Inline,
+    },
+};
+
 /***** Text Variant *****/
 
 export const TextDefault: Story = {
