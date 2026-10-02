@@ -258,6 +258,25 @@ export const TertiaryAltSmallIconOnly: Story = {
     },
 };
 
+/***** Tertiary Inline *****/
+
+export const TertiaryInline: Story = {
+    name: 'Tertiary Inline / Default',
+    args: {
+        type: ButtonType.Tertiary,
+        size: ButtonSize.Inline,
+        icon: 'edit',
+    },
+};
+
+export const TertiaryInlineTextOnly: Story = {
+    name: 'Tertiary Inline / Text only',
+    args: {
+        type: ButtonType.Tertiary,
+        size: ButtonSize.Inline,
+    },
+};
+
 /***** Varia *****/
 
 export const VariaLongChildren: Story = {
