@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BaseDropdown, flattenDropdownItems, isDropdownItemGroup } from '@ids-partials/BaseDropdown';
+import { BaseDropdown, BaseDropdownItemGroup, flattenDropdownItems, isDropdownItemGroup } from '@ids-partials/BaseDropdown';
 import { ExtraParamsType, getNextFocusableItem } from '../utils/focus';
 import { CheckboxInput } from '@ids-components/Checkbox';
 import { Chip } from '@ids-components/Chip';
@@ -70,18 +70,15 @@ export const DropdownMultiInput = ({
             {item.label}
         </option>
     );
+    const renderOptionGroup = (group: BaseDropdownItemGroup<DropdownMultiInputItem>) => (
+        <optgroup key={group.id ?? group.label} label={group.label}>
+            {flattenDropdownItems(group.items).map(renderOption)}
+        </optgroup>
+    );
     const renderSource = () => {
         return (
             <select defaultValue={value} multiple name={name} tabIndex={-1}>
-                {items.map((entry) =>
-                    isDropdownItemGroup(entry) ? (
-                        <optgroup key={entry.id ?? entry.label} label={entry.label}>
-                            {entry.items.map(renderOption)}
-                        </optgroup>
-                    ) : (
-                        renderOption(entry)
-                    ),
-                )}
+                {items.map((entry) => (isDropdownItemGroup(entry) ? renderOptionGroup(entry) : renderOption(entry)))}
             </select>
         );
     };

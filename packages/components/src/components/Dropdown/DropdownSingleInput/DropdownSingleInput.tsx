@@ -1,6 +1,12 @@
 import React from 'react';
 
-import { BaseDropdown, ExtraDropdownItemClickParamsType, flattenDropdownItems, isDropdownItemGroup } from '@ids-partials/BaseDropdown';
+import {
+    BaseDropdown,
+    BaseDropdownItemGroup,
+    ExtraDropdownItemClickParamsType,
+    flattenDropdownItems,
+    isDropdownItemGroup,
+} from '@ids-partials/BaseDropdown';
 import { ExtraParamsType, getNextFocusableItem } from '../utils/focus';
 import { Icon, IconSize } from '@ids-components/Icon';
 import { createCssClassNames } from '@ids-core';
@@ -40,18 +46,15 @@ export const DropdownSingleInput = ({
             {item.label}
         </option>
     );
+    const renderOptionGroup = (group: BaseDropdownItemGroup<DropdownSingleInputItem>) => (
+        <optgroup key={group.id ?? group.label} label={group.label}>
+            {flattenDropdownItems(group.items).map(renderOption)}
+        </optgroup>
+    );
     const renderSource = () => {
         return (
             <select defaultValue={value} name={name} tabIndex={-1}>
-                {items.map((entry) =>
-                    isDropdownItemGroup(entry) ? (
-                        <optgroup key={entry.id ?? entry.label} label={entry.label}>
-                            {entry.items.map(renderOption)}
-                        </optgroup>
-                    ) : (
-                        renderOption(entry)
-                    ),
-                )}
+                {items.map((entry) => (isDropdownItemGroup(entry) ? renderOptionGroup(entry) : renderOption(entry)))}
             </select>
         );
     };
