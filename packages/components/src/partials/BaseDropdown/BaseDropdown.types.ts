@@ -8,7 +8,7 @@ export interface BaseDropdownItem {
 }
 
 export interface BaseDropdownItemGroup<T extends BaseDropdownItem> {
-    items: T[];
+    items: BaseDropdownEntry<T>[];
     label: string;
     id?: string;
 }
