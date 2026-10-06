@@ -25,7 +25,7 @@
         align-items: center;
         gap: calculateRem(4px);
         height: calculateRem(40px);
-        padding: calculateRem(8px) calculateRem(24px) 0;
+        padding: calculateRem(8px) calculateRem(24px) calculateRem(11px);
         border: 0;
         background: transparent;
         color: $color-neutral-240;
