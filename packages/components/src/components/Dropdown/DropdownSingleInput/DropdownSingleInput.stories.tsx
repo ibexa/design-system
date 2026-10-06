@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from 'storybook/test';
 import { action } from 'storybook/actions';
 
-import { generateGroupedItemsArray, generateItemsArray } from '@ids-sb-utils/generators';
+import { generateGroupedItemsArray, generateItemsArray, generateNestedGroupedItemsArray } from '@ids-sb-utils/generators';
 import { DropdownDecorator } from '@ids-sb-decorators/DropdownDecorator';
 import { DropdownSingleInputStateful } from '.';
 
@@ -16,6 +16,10 @@ const MANY_GROUPED_GROUPS_COUNT = 6;
 const MANY_GROUPED_ITEMS_PER_GROUP = 8;
 const GROUPED_ITEMS = generateGroupedItemsArray(GROUPED_GROUPS_COUNT, GROUPED_ITEMS_PER_GROUP, GROUPED_UNGROUPED_COUNT);
 const MANY_GROUPED_ITEMS = generateGroupedItemsArray(MANY_GROUPED_GROUPS_COUNT, MANY_GROUPED_ITEMS_PER_GROUP, GROUPED_UNGROUPED_COUNT);
+const NESTED_GROUPS_COUNT = 2;
+const NESTED_SUBGROUPS_PER_GROUP = 2;
+const NESTED_ITEMS_PER_GROUP = 2;
+const NESTED_GROUPED_ITEMS = generateNestedGroupedItemsArray(NESTED_GROUPS_COUNT, NESTED_SUBGROUPS_PER_GROUP, NESTED_ITEMS_PER_GROUP);
 
 const meta: Meta<typeof DropdownSingleInputStateful> = {
     component: DropdownSingleInputStateful,
@@ -178,6 +182,33 @@ export const GroupedManyItemsOpenedMenu: Story = {
     tags: ['!dev'],
     args: {
         items: MANY_GROUPED_ITEMS,
+    },
+    parameters: {
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const dropdownWidget = canvas.getByText('Select an item');
+
+        await userEvent.click(dropdownWidget);
+    },
+};
+
+export const NestedGroups: Story = {
+    name: 'Nested Groups',
+    args: {
+        items: NESTED_GROUPED_ITEMS,
+    },
+    parameters: {
+        wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,
+    },
+};
+
+export const NestedGroupsOpenedMenu: Story = {
+    name: 'Nested Groups (Opened Menu)',
+    tags: ['!dev'],
+    args: {
+        items: NESTED_GROUPED_ITEMS,
     },
     parameters: {
         wrapperHeight: WRAPPER_HEIGHT_FOR_LONG_LIST,

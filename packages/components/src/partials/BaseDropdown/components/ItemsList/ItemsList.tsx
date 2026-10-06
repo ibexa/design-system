@@ -1,9 +1,9 @@
 import React from 'react';
 
+import { flattenDropdownItems, isDropdownItemGroup } from '../../utils/items';
 import { createCssClassNames } from '@ids-core';
-import { isDropdownItemGroup } from '../../utils/items';
 
-import { BaseDropdownItem } from '../../BaseDropdown.types';
+import { BaseDropdownEntry, BaseDropdownItem } from '../../BaseDropdown.types';
 import { ItemsListProps } from './ItemsList.types';
 
 export const ItemsList = <T extends BaseDropdownItem>({
@@ -42,28 +42,27 @@ export const ItemsList = <T extends BaseDropdownItem>({
         );
     };
 
-    return (
-        <>
-            {entries.map((entry, index) => {
-                if (!isDropdownItemGroup(entry)) {
-                    return renderDropdownItem(entry);
-                }
+    const renderEntries = (entriesToRender: BaseDropdownEntry<T>[], idPrefix: string): React.ReactNode[] =>
+        entriesToRender.map((entry, index) => {
+            if (!isDropdownItemGroup(entry)) {
+                return renderDropdownItem(entry);
+            }
 
-                if (entry.items.length === 0) {
-                    return null;
-                }
+            if (flattenDropdownItems(entry.items).length === 0) {
+                return null;
+            }
 
-                const groupId = entry.id ?? `${groupIdPrefix}-group-${index}`;
+            const groupId = entry.id ?? `${idPrefix}-group-${index}`;
 
-                return (
-                    <li aria-labelledby={groupId} className="ids-dropdown__group" key={groupId} role="group">
-                        <div className="ids-dropdown__group-label" id={groupId}>
-                            {entry.label}
-                        </div>
-                        <ul className="ids-dropdown__group-items">{entry.items.map(renderDropdownItem)}</ul>
-                    </li>
-                );
-            })}
-        </>
-    );
+            return (
+                <li aria-labelledby={groupId} className="ids-dropdown__group" key={groupId} role="group">
+                    <div className="ids-dropdown__group-label" id={groupId}>
+                        {entry.label}
+                    </div>
+                    <ul className="ids-dropdown__group-items">{renderEntries(entry.items, groupId)}</ul>
+                </li>
+            );
+        });
+
+    return <>{renderEntries(entries, groupIdPrefix)}</>;
 };

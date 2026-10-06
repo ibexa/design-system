@@ -4,7 +4,7 @@ export const isDropdownItemGroup = <T extends BaseDropdownItem>(entry: BaseDropd
     'items' in entry && Array.isArray(entry.items);
 
 export const flattenDropdownItems = <T extends BaseDropdownItem>(entries: BaseDropdownEntry<T>[]): T[] =>
-    entries.flatMap((entry) => (isDropdownItemGroup(entry) ? entry.items : [entry]));
+    entries.flatMap((entry) => (isDropdownItemGroup(entry) ? flattenDropdownItems(entry.items) : [entry]));
 
 export const filterDropdownEntries = <T extends BaseDropdownItem>(
     entries: BaseDropdownEntry<T>[],
@@ -17,10 +17,10 @@ export const filterDropdownEntries = <T extends BaseDropdownItem>(
 
     return entries.reduce<BaseDropdownEntry<T>[]>((filteredEntries, entry) => {
         if (isDropdownItemGroup(entry)) {
-            const matchingItems = entry.items.filter((item) => filterFunction(item, searchTerm));
+            const matchingEntries = filterDropdownEntries(entry.items, searchTerm, filterFunction);
 
-            if (matchingItems.length > 0) {
-                filteredEntries.push({ ...entry, items: matchingItems });
+            if (matchingEntries.length > 0) {
+                filteredEntries.push({ ...entry, items: matchingEntries });
             }
 
             return filteredEntries;
