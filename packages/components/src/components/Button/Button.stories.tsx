@@ -258,22 +258,22 @@ export const TertiaryAltSmallIconOnly: Story = {
     },
 };
 
-/***** Tertiary Inline *****/
+/***** Tertiary None *****/
 
-export const TertiaryInline: Story = {
-    name: 'Tertiary Inline / Default',
+export const TertiaryNone: Story = {
+    name: 'Tertiary None / Default',
     args: {
         type: ButtonType.Tertiary,
-        size: ButtonSize.Inline,
+        size: ButtonSize.None,
         icon: 'edit',
     },
 };
 
-export const TertiaryInlineTextOnly: Story = {
-    name: 'Tertiary Inline / Text only',
+export const TertiaryNoneTextOnly: Story = {
+    name: 'Tertiary None / Text only',
     args: {
         type: ButtonType.Tertiary,
-        size: ButtonSize.Inline,
+        size: ButtonSize.None,
     },
 };
 
