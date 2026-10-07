@@ -7,7 +7,9 @@ import { LabelProps } from '@ids-components/Label/Label.types';
 
 export { CheckboxesListFieldDirection };
 
-export type CheckboxesListFieldItem = Omit<CheckboxFieldProps, 'name' | 'checked'>;
+export type CheckboxesListFieldItem = Omit<CheckboxFieldProps, 'name' | 'checked'> & {
+    value: string;
+};
 
 export enum CheckboxesListFieldAction {
     Check = 'check',
