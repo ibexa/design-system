@@ -19,7 +19,6 @@ export enum FilterDropdownAction {
 export interface FilterDropdownProps extends BaseComponentAttributes {
     label: string;
     name: string;
-    disabled?: boolean;
     hasSearch?: boolean;
     items?: FilterDropdownItem[];
     onChange?: (value: string[], itemId: string, action: FilterDropdownAction) => void;

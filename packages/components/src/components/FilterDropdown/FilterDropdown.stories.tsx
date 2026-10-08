@@ -103,13 +103,6 @@ export const MoreFiltersSmall: Story = {
     },
 };
 
-export const Disabled: Story = {
-    name: 'Disabled',
-    args: {
-        disabled: true,
-    },
-};
-
 export const WithoutSearch: Story = {
     name: 'Without Search (Opened Menu)',
     tags: ['!dev'],
