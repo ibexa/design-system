@@ -81,19 +81,19 @@ export const DashboardValue: Story = {
     },
 };
 
-export const WithoutSearchAndDisabled: Story = {
-    name: 'Without search and disabled',
+export const WithoutSearch: Story = {
+    name: 'Without search',
     args: {
-        disabled: true,
         hasSearch: false,
     },
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
 
-        await step('A disabled trigger does not open the panel', async () => {
+        await step('The panel opens without a search box', async () => {
             await userEvent.click(canvas.getByRole('button', { name: 'Filter' }));
 
-            await expect(canvasElement.querySelector('.ids-dropdown__items-container')).toBeNull();
+            await expect(canvasElement.querySelector('.ids-dropdown__items-container')).not.toBeNull();
+            await expect(canvas.queryByRole('textbox')).toBeNull();
         });
     },
 };
