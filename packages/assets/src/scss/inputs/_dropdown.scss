@@ -125,7 +125,7 @@ $item-gap: calculateRem(4px);
         margin: 0;
         padding: 0;
 
-        &:not(:first-child) {
+        :not([hidden]) ~ & {
             margin-top: $item-gap;
         }
     }
