@@ -54,7 +54,7 @@ export const OverflowList = <ItemProps extends { id: string }>({
         setNumberOfVisibleItems(Math.max(newNumberOfVisibleItems, MIN_VISIBLE_ITEMS));
         setShouldShrinkFirstItem(newNumberOfVisibleItems < MIN_VISIBLE_ITEMS);
 
-        return newNumberOfVisibleItems <= MIN_VISIBLE_ITEMS;
+        return newNumberOfVisibleItems < MIN_VISIBLE_ITEMS;
     };
     const listResizeObserver = useMemo(
         () =>
@@ -98,6 +98,7 @@ export const OverflowList = <ItemProps extends { id: string }>({
     useEffect(() => {
         if (currentAction === Actions.None) {
             setNumberOfVisibleItems(items.length);
+            setShouldShrinkFirstItem(false);
             setCurrentAction(Actions.CalculateItems);
         }
     }, [items]);
