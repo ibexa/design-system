@@ -51,6 +51,7 @@ export const Default: Story = {
             await expect(args.onChange).toHaveBeenLastCalledWith([], '', FilterDropdownAction.Clear);
             await expect(canvasElement.querySelector('.ids-dropdown__items-container')).not.toBeNull();
             await expect(canvas.getByRole('button', { name: 'Clear' })).toBeDisabled();
+            await expect(document.activeElement).toBe(canvas.getByRole('textbox'));
         });
 
         await step('A search with no match shows the no-results row', async () => {

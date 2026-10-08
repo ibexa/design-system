@@ -53,8 +53,14 @@ export const FilterDropdown = ({
 
         onChange(newValue, id, isSelected ? FilterDropdownAction.Uncheck : FilterDropdownAction.Check);
     };
-    const clearValue = () => {
+    const clearValue = (event: React.MouseEvent<HTMLButtonElement>) => {
+        const panelNode = event.currentTarget.closest('.ids-dropdown__items-container');
+        const firstFocusableNode = panelNode?.querySelector<HTMLElement>(
+            '.ids-dropdown__search input, .ids-dropdown__item .ids-input--checkbox',
+        );
+
         onChange([], '', FilterDropdownAction.Clear);
+        firstFocusableNode?.focus();
     };
     const isItemSelected = (item: FilterDropdownItem) => value.includes(item.id);
     const getItemAttributes = () => ({
@@ -96,7 +102,6 @@ export const FilterDropdown = ({
             <button
                 aria-controls={panelId}
                 aria-expanded={isOpen}
-                aria-haspopup="true"
                 aria-label={isIconOnly ? label : undefined}
                 className="ids-dropdown__trigger"
                 onClick={toggleDropdown}
