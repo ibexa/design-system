@@ -52,7 +52,7 @@ export const ItemsList = <T extends BaseDropdownItem>({
                 return null;
             }
 
-            const groupId = entry.id ?? `${idPrefix}-group-${index}`;
+            const groupId = `${idPrefix}-${entry.id ?? `group-${index}`}`;
 
             return (
                 <li aria-labelledby={groupId} className="ids-dropdown__group" key={groupId} role="group">
