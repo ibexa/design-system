@@ -70,15 +70,15 @@ export const DropdownMultiInput = ({
             {item.label}
         </option>
     );
-    const renderOptionGroup = (group: BaseDropdownItemGroup<DropdownMultiInputItem>) => (
-        <optgroup key={group.id ?? group.label} label={group.label}>
+    const renderOptionGroup = (group: BaseDropdownItemGroup<DropdownMultiInputItem>, index: number) => (
+        <optgroup key={`group-${group.id ?? index.toString()}`} label={group.label}>
             {flattenDropdownItems(group.items).map(renderOption)}
         </optgroup>
     );
     const renderSource = () => {
         return (
             <select defaultValue={value} multiple name={name} tabIndex={-1}>
-                {items.map((entry) => (isDropdownItemGroup(entry) ? renderOptionGroup(entry) : renderOption(entry)))}
+                {items.map((entry, index) => (isDropdownItemGroup(entry) ? renderOptionGroup(entry, index) : renderOption(entry)))}
             </select>
         );
     };
