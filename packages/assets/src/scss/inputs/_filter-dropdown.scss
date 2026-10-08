@@ -37,12 +37,6 @@ $trigger-height-compact: calculateRem(32px);
             box-shadow: $box-shadow-focus-primary;
         }
 
-        &:disabled {
-            border-color: $color-neutral-50;
-            color: $color-neutral-160;
-            cursor: default;
-        }
-
         .ids-icon {
             fill: currentColor;
         }

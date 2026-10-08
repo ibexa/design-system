@@ -19,7 +19,6 @@ export const FilterDropdown = ({
     label,
     name,
     className = '',
-    disabled = false,
     hasSearch = true,
     items = [],
     onChange = () => undefined,
@@ -39,7 +38,6 @@ export const FilterDropdown = ({
     const showsValue = type === FilterDropdownType.Dashboard && selectedItems.length === SINGLE_SELECTION_COUNT;
     const rootClassName = createCssClassNames({
         'ids-dropdown': true,
-        'ids-dropdown--disabled': disabled,
         'ids-dropdown--filter': true,
         [`ids-dropdown--filter-${type}`]: true,
         'ids-dropdown--open': isOpen,
@@ -47,9 +45,7 @@ export const FilterDropdown = ({
         [className]: !!className,
     });
     const toggleDropdown = () => {
-        if (!disabled) {
-            setIsOpen(!isOpen);
-        }
+        setIsOpen(!isOpen);
     };
     const changeValue = (id: string) => {
         const isSelected = value.includes(id);
@@ -103,7 +99,6 @@ export const FilterDropdown = ({
                 aria-haspopup="true"
                 aria-label={isIconOnly ? label : undefined}
                 className="ids-dropdown__trigger"
-                disabled={disabled}
                 onClick={toggleDropdown}
                 ref={setReferenceElement}
                 type="button"
