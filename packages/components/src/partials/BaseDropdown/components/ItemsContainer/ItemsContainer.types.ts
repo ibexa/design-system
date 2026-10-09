@@ -31,7 +31,7 @@ export interface ItemsContainerProps<T extends BaseDropdownItem> {
     onDropdownItemClick: (item: T, extraParams: ExtraDropdownItemClickParamsType) => void;
     referenceElement: HTMLElement | null;
     renderItem: (item: T) => React.ReactNode;
-    containerAttributes?: React.HTMLAttributes<HTMLDivElement>;
+    containerAttributes?: Pick<React.HTMLAttributes<HTMLDivElement>, 'aria-label' | 'id' | 'role'>;
     hasSearch?: boolean;
     minWidth?: number;
     renderFooter?: () => React.ReactNode;
