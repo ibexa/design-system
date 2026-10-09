@@ -3,13 +3,20 @@ import React, { useContext, useId, useState } from 'react';
 import { Button, ButtonSize, ButtonType } from '@ids-components/Button';
 import { ExtraParamsType, getNextFocusableItem } from '../Dropdown/utils/focus';
 import { Icon, IconSize } from '@ids-components/Icon';
+import { flattenDropdownItems, isDropdownItemGroup } from '@ids-partials/BaseDropdown';
 import { CheckboxInput } from '@ids-components/Checkbox';
 import { ItemsContainer } from '@ids-partials/BaseDropdown/components/ItemsContainer';
 import { TranslatorContext } from '@ids-context/Translator';
 import { createCssClassNames } from '@ids-core';
 import { withStateValue } from '@ids-hoc/withStateValue';
 
-import { FilterDropdownAction, FilterDropdownItem, FilterDropdownProps, FilterDropdownType } from './FilterDropdown.types';
+import {
+    FilterDropdownAction,
+    FilterDropdownItem,
+    FilterDropdownItemGroup,
+    FilterDropdownProps,
+    FilterDropdownType,
+} from './FilterDropdown.types';
 
 const MAX_VISIBLE_ITEMS = 10;
 const PANEL_MIN_WIDTH = 200;
@@ -30,7 +37,7 @@ export const FilterDropdown = ({
     const panelId = useId();
     const [referenceElement, setReferenceElement] = useState<HTMLButtonElement | null>(null);
     const [isOpen, setIsOpen] = useState(false);
-    const selectedItems = items.filter((item) => value.includes(item.id));
+    const selectedItems = flattenDropdownItems(items).filter((item) => value.includes(item.id));
     const hasSelection = selectedItems.length > 0;
     const isIconOnly = type === FilterDropdownType.MoreFiltersSmall;
     const hasTriggerIcon = type === FilterDropdownType.MoreFilters || isIconOnly;
@@ -81,6 +88,16 @@ export const FilterDropdown = ({
             </Button>
         </div>
     );
+    const renderOption = (item: FilterDropdownItem) => (
+        <option key={item.id} value={item.id}>
+            {item.label}
+        </option>
+    );
+    const renderOptionGroup = (group: FilterDropdownItemGroup, index: number) => (
+        <optgroup key={`group-${group.id ?? index.toString()}`} label={group.label}>
+            {flattenDropdownItems(group.items).map(renderOption)}
+        </optgroup>
+    );
     const getFocusableElements = ({ itemsList, search }: ExtraParamsType): HTMLElement[] => {
         const checkboxes = Array.from(itemsList.querySelectorAll<HTMLElement>('.ids-dropdown__item .ids-input--checkbox'));
         const clearBtn = itemsList.parentElement?.querySelector<HTMLElement>('.ids-dropdown__footer .ids-btn');
@@ -92,11 +109,7 @@ export const FilterDropdown = ({
         <div className={rootClassName} {...restProps}>
             <div className="ids-dropdown__source">
                 <select defaultValue={value} multiple name={name} tabIndex={-1}>
-                    {items.map((item) => (
-                        <option key={item.id} value={item.id}>
-                            {item.label}
-                        </option>
-                    ))}
+                    {items.map((entry, index) => (isDropdownItemGroup(entry) ? renderOptionGroup(entry, index) : renderOption(entry)))}
                 </select>
             </div>
             <button

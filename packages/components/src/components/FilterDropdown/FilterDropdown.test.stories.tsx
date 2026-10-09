@@ -98,3 +98,33 @@ export const WithoutSearch: Story = {
         });
     },
 };
+
+export const NestedGroups: Story = {
+    name: 'Nested groups',
+    args: {
+        items: [
+            { id: 'value1', label: 'Item 1' },
+            {
+                label: 'Fruits',
+                items: [
+                    { id: 'apple', label: 'Apple' },
+                    { label: 'Berries', items: [{ id: 'cherry', label: 'Cherry' }] },
+                ],
+            },
+        ],
+        value: ['cherry'],
+    },
+    play: async ({ canvasElement, step }) => {
+        const FRUITS_OPTIONS_COUNT = 2;
+
+        await step('A selection inside a nested group is counted', async () => {
+            await expect(canvasElement.querySelector('.ids-dropdown__counter')).toHaveTextContent('1');
+        });
+
+        await step('The source select flattens nested groups into the top-level optgroup', async () => {
+            await expect(canvasElement.querySelectorAll('optgroup optgroup')).toHaveLength(0);
+            await expect(canvasElement.querySelectorAll('optgroup[label="Fruits"] > option')).toHaveLength(FRUITS_OPTIONS_COUNT);
+            await expect(canvasElement.querySelector<HTMLOptionElement>('option[value="cherry"]')?.selected).toBe(true);
+        });
+    },
+};
