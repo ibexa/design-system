@@ -255,13 +255,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
             {...containerAttributes}
             {...attributes.popper}
         >
-            <Search
-                hasSearchIcon={hasSearch === true}
-                isVisible={hasSearchInput}
-                searchRef={searchRef}
-                searchTerm={searchTerm}
-                setSearchTerm={setSearchTerm}
-            />
+            <Search isVisible={hasSearchInput} searchRef={searchRef} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <ul className="ids-dropdown__items" ref={itemsRef} style={getItemsStyles()}>
                 <ItemsList
                     entries={filteredEntries}

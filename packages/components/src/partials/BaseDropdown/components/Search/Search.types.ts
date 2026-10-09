@@ -3,5 +3,4 @@ export interface SearchProps {
     setSearchTerm: (value: string) => void;
     searchRef: React.RefObject<HTMLInputElement | null>;
     searchTerm: string;
-    hasSearchIcon?: boolean;
 }
