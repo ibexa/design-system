@@ -1,7 +1,9 @@
+import { BaseDropdownEntry, BaseDropdownItem, BaseDropdownItemGroup } from '@ids-partials/BaseDropdown';
 import { BaseComponentAttributes } from '@ids-types/general';
-import { BaseDropdownItem } from '@ids-partials/BaseDropdown';
 
 export type FilterDropdownItem = BaseDropdownItem;
+export type FilterDropdownItemGroup = BaseDropdownItemGroup<FilterDropdownItem>;
+export type FilterDropdownEntry = BaseDropdownEntry<FilterDropdownItem>;
 
 export enum FilterDropdownType {
     Default = 'default',
@@ -20,7 +22,7 @@ export interface FilterDropdownProps extends BaseComponentAttributes {
     label: string;
     name: string;
     hasSearch?: boolean;
-    items?: FilterDropdownItem[];
+    items?: FilterDropdownEntry[];
     onChange?: (value: string[], itemId: string, action: FilterDropdownAction) => void;
     type?: FilterDropdownType;
     value?: string[];
