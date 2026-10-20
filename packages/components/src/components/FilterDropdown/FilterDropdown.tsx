@@ -1,4 +1,4 @@
-import React, { useContext, useId, useState } from 'react';
+import React, { useContext, useEffect, useId, useState } from 'react';
 
 import { Button, ButtonSize, ButtonType } from '@ids-components/Button';
 import { ExtraParamsType, getNextFocusableItem } from '../Dropdown/utils/focus';
@@ -51,6 +51,13 @@ export const FilterDropdown = ({
         'ids-dropdown--selected': hasSelection,
         [className]: !!className,
     });
+
+    useEffect(() => {
+        if (isOpen && !hasSearch) {
+            document.getElementById(panelId)?.querySelector<HTMLElement>('.ids-dropdown__item .ids-input--checkbox')?.focus();
+        }
+    }, [isOpen, hasSearch, panelId]);
+
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };

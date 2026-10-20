@@ -96,6 +96,21 @@ export const WithoutSearch: Story = {
             await expect(canvasElement.querySelector('.ids-dropdown__items-container')).not.toBeNull();
             await expect(canvas.queryByRole('textbox')).toBeNull();
         });
+
+        await step('The first checkbox takes the focus, so Escape closes the panel', async () => {
+            await expect(document.activeElement).toBe(canvas.getAllByRole('checkbox')[0]);
+
+            await userEvent.keyboard('{Escape}');
+
+            await expect(canvasElement.querySelector('.ids-dropdown__items-container')).toBeNull();
+            await expect(document.activeElement).toBe(canvas.getByRole('button', { name: 'Filter' }));
+        });
+
+        await step('Opening from the keyboard focuses the first checkbox', async () => {
+            await userEvent.keyboard('{Enter}');
+
+            await expect(document.activeElement).toBe(canvas.getAllByRole('checkbox')[0]);
+        });
     },
 };
 
