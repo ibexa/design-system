@@ -38,11 +38,3 @@ export const Required: Story = {
         required: true,
     },
 };
-
-export const Error: Story = {
-    name: 'Error',
-    args: {
-        error: true,
-        required: true,
-    },
-};
