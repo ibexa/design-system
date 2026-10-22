@@ -3,6 +3,7 @@ import { BaseComponentAriaAttributes } from '@ids-types/general';
 export enum LinkSize {
     Medium = 'medium',
     Small = 'small',
+    None = 'none',
 }
 
 export enum LinkType {

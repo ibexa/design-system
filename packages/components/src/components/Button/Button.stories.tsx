@@ -258,6 +258,25 @@ export const TertiaryAltSmallIconOnly: Story = {
     },
 };
 
+/***** Tertiary None *****/
+
+export const TertiaryNone: Story = {
+    name: 'Tertiary None / Default',
+    args: {
+        type: ButtonType.Tertiary,
+        size: ButtonSize.None,
+        icon: 'edit',
+    },
+};
+
+export const TertiaryNoneTextOnly: Story = {
+    name: 'Tertiary None / Text only',
+    args: {
+        type: ButtonType.Tertiary,
+        size: ButtonSize.None,
+    },
+};
+
 /***** Varia *****/
 
 export const VariaLongChildren: Story = {
