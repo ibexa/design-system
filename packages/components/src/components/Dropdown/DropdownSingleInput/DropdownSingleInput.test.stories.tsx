@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
+import { DropdownSize, DropdownType } from '@ids-partials/BaseDropdown';
 import { DropdownSingleInputStateful } from '.';
-import { DropdownSize } from '@ids-partials/BaseDropdown';
 import { generateItemsArray } from '@ids-sb-utils/generators';
 
 const SEARCH_ITEMS_PER_GROUP = 5;
@@ -412,6 +412,38 @@ export const Small: Story = {
             await expect(dropdown).toHaveClass('ids-dropdown--small');
             await expect(widget).toHaveClass('ids-input');
             await expect(widget?.getBoundingClientRect().height).toBe(SMALL_WIDGET_HEIGHT);
+        });
+    },
+};
+
+export const Chip: Story = {
+    name: 'Chip',
+    args: {
+        icon: 'translation-language',
+        label: 'Language:',
+        size: DropdownSize.Small,
+        type: DropdownType.Chip,
+        value: 'value1',
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+        const dropdown = canvasElement.querySelector('.ids-dropdown');
+        const widget = canvasElement.querySelector('.ids-dropdown__widget');
+
+        await step('Chip renders its modifiers, icon and label without the input chrome', async () => {
+            await expect(dropdown).toHaveClass('ids-dropdown--chip');
+            await expect(dropdown).toHaveClass('ids-dropdown--small');
+            await expect(widget).not.toHaveClass('ids-input');
+            await expect(canvasElement.querySelector('.ids-dropdown__icon')).toHaveAttribute('aria-hidden', 'true');
+            await expect(canvasElement.querySelector('.ids-dropdown__icon .ids-icon')).toHaveClass('ids-icon--tiny');
+            await expect(canvas.getByText('Language:')).toHaveClass('ids-dropdown__label');
+        });
+
+        await step('Chip opens the list and selects an item', async () => {
+            await userEvent.click(canvas.getByText('Item 1', { selector: '.ids-dropdown__selection-info-items' }));
+            await userEvent.click(canvas.getByText('Item 2', { selector: '.ids-dropdown__item-label' }));
+
+            await expect(canvas.getByText('Item 2', { selector: '.ids-dropdown__selection-info-items' })).toBeVisible();
         });
     },
 };

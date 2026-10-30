@@ -2,9 +2,20 @@ import { BaseComponentAttributes } from '@ids-types/general';
 
 import { GetNextFocusableItemType } from './components/ItemsContainer/ItemsContainer.types';
 
+export enum DropdownType {
+    Input = 'input',
+    Chip = 'chip',
+}
+
 export enum DropdownSize {
     Medium = 'medium',
     Small = 'small',
+}
+
+export interface DropdownAppearanceProps {
+    icon?: string;
+    label?: string;
+    type?: DropdownType;
 }
 
 export interface BaseDropdownItem {
@@ -24,7 +35,7 @@ export interface ExtraDropdownItemClickParamsType {
     closeDropdown: () => void;
 }
 
-export interface BaseDropdownProps<T extends BaseDropdownItem> extends BaseComponentAttributes {
+export interface BaseDropdownProps<T extends BaseDropdownItem> extends BaseComponentAttributes, DropdownAppearanceProps {
     isItemSelected: (item: T) => boolean;
     items: BaseDropdownEntry<T>[];
     children?: React.ReactNode;
