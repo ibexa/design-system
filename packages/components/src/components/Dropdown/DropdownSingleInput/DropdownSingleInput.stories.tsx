@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from 'storybook/test';
 import { action } from 'storybook/actions';
 
+import { DropdownSize, DropdownType } from '@ids-partials/BaseDropdown';
 import { generateGroupedItemsArray, generateItemsArray, generateNestedGroupedItemsArray } from '@ids-sb-utils/generators';
 import { DropdownDecorator } from '@ids-sb-decorators/DropdownDecorator';
 import { DropdownSingleInputStateful } from '.';
@@ -20,6 +21,11 @@ const NESTED_GROUPS_COUNT = 2;
 const NESTED_SUBGROUPS_PER_GROUP = 2;
 const NESTED_ITEMS_PER_GROUP = 2;
 const NESTED_GROUPED_ITEMS = generateNestedGroupedItemsArray(NESTED_GROUPS_COUNT, NESTED_SUBGROUPS_PER_GROUP, NESTED_ITEMS_PER_GROUP);
+const LANGUAGE_ITEMS = [
+    { id: 'eng-GB', label: 'English (United Kingdom)' },
+    { id: 'ger-DE', label: 'German' },
+    { id: 'pol-PL', label: 'Polish' },
+];
 
 const meta: Meta<typeof DropdownSingleInputStateful> = {
     component: DropdownSingleInputStateful,
@@ -218,5 +224,57 @@ export const NestedGroupsOpenedMenu: Story = {
         const dropdownWidget = canvas.getByText('Select an item');
 
         await userEvent.click(dropdownWidget);
+    },
+};
+
+export const Chip: Story = {
+    name: 'Chip',
+    args: {
+        icon: 'translation-language',
+        items: LANGUAGE_ITEMS,
+        label: 'Language:',
+        type: DropdownType.Chip,
+        value: 'eng-GB',
+    },
+};
+
+export const ChipOpenedMenu: Story = {
+    name: 'Chip (Opened Menu)',
+    tags: ['!dev'],
+    args: {
+        ...Chip.args,
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const dropdownWidget = canvas.getByText('English (United Kingdom)', { selector: '.ids-dropdown__selection-info-items' });
+
+        await userEvent.click(dropdownWidget);
+    },
+};
+
+export const ChipDisabled: Story = {
+    name: 'Chip (Disabled)',
+    args: {
+        ...Chip.args,
+        disabled: true,
+    },
+};
+
+export const ChipSmall: Story = {
+    name: 'Chip / Small',
+    args: {
+        icon: 'translation-language',
+        items: LANGUAGE_ITEMS,
+        size: DropdownSize.Small,
+        type: DropdownType.Chip,
+        value: 'eng-GB',
+    },
+};
+
+export const ChipSmallDisabled: Story = {
+    name: 'Chip / Small (Disabled)',
+    args: {
+        ...ChipSmall.args,
+        disabled: true,
     },
 };
