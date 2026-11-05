@@ -6,6 +6,7 @@
 
 $item-height: calculateRem(32px);
 $item-gap: calculateRem(4px);
+$chip-item-height: calculateRem(21px);
 $chip-sizes: (
     'medium': (
         'height': calculateRem(24px),
@@ -357,6 +358,43 @@ $chip-sizes: (
             padding: 0;
             border: 0;
             fill: inherit;
+        }
+
+        #{$self}__items-container {
+            border-radius: $border-radius-large;
+            box-shadow: none;
+        }
+
+        #{$self}__items {
+            padding: calculateRem(4px) calculateRem(8px);
+            max-height: calc(($chip-item-height + $item-gap) * var(--max-visible-items, 10) + calculateRem(4px));
+        }
+
+        #{$self}__item {
+            justify-content: flex-start;
+            gap: calculateRem(4px);
+            min-height: $chip-item-height;
+            padding: 0;
+            border: 0;
+            border-radius: $border-radius-small;
+            color: $color-neutral-200;
+            font-weight: $text-font-weight-semi;
+            line-height: $chip-item-height;
+
+            &--selected {
+                background-color: transparent;
+                color: $color-success-80;
+                fill: $color-success-80;
+            }
+
+            &:not(#{$self}__item--selected) #{$self}__item-check {
+                display: none;
+            }
+        }
+
+        #{$self}__item-check {
+            display: flex;
+            flex-shrink: 0;
         }
 
         &#{$self}--disabled {
