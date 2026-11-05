@@ -5,6 +5,7 @@ import { action } from 'storybook/actions';
 import { generateGroupedItemsArray, generateItemsArray } from '@ids-sb-utils/generators';
 import { DropdownDecorator } from '@ids-sb-decorators/DropdownDecorator';
 import { DropdownMultiInputStateful } from '.';
+import { DropdownSize } from '@ids-partials/BaseDropdown';
 
 const DEFAULT_ITEMS_LENGTH = 5;
 const MANY_ITEMS_LENGTH = 50;
@@ -253,5 +254,53 @@ export const GroupedManyItemsOpenedMenu: Story = {
         const dropdownWidget = canvas.getByText('Select an item');
 
         await userEvent.click(dropdownWidget);
+    },
+};
+
+export const Small: Story = {
+    name: 'Small',
+    args: {
+        size: DropdownSize.Small,
+    },
+};
+
+export const SmallManySelected: Story = {
+    name: 'Small / Many Selected',
+    args: {
+        size: DropdownSize.Small,
+        value: ['1', '2', '3'],
+    },
+};
+
+export const SmallManySelectedOpenedMenu: Story = {
+    name: 'Small / Many Selected (Opened Menu)',
+    tags: ['!dev'],
+    args: {
+        size: DropdownSize.Small,
+        value: ['1', '2', '3'],
+    },
+    play: async ({ canvasElement }) => {
+        const dropdownWidget = canvasElement.querySelector('.ids-dropdown__widget');
+
+        if (dropdownWidget) {
+            await userEvent.click(dropdownWidget);
+        }
+    },
+};
+
+export const SmallDisabled: Story = {
+    name: 'Small (Disabled)',
+    args: {
+        disabled: true,
+        size: DropdownSize.Small,
+        value: ['2'],
+    },
+};
+
+export const SmallError: Story = {
+    name: 'Small (Error)',
+    args: {
+        error: true,
+        size: DropdownSize.Small,
     },
 };

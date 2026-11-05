@@ -10,6 +10,7 @@ const SEARCH_GROUPS_COUNT = 3;
 const SINGLE_MATCHING_GROUP_COUNT = 1;
 const CHIP_ITEMS_COUNT = 12;
 const CHIP_SELECTED_ITEMS_COUNT = 1;
+const SMALL_WIDGET_HEIGHT = 32;
 
 const meta: Meta<typeof DropdownSingleInputStateful> = {
     component: DropdownSingleInputStateful,
@@ -395,6 +396,33 @@ export const GroupedSearch: Story = {
 
             await expect(canvasElement.querySelectorAll('.ids-dropdown__items .ids-dropdown__group')).toHaveLength(SEARCH_GROUPS_COUNT);
             await expect(canvasElement.querySelector('.ids-dropdown__no-results')).toBeNull();
+        });
+    },
+};
+
+export const Small: Story = {
+    name: 'Small',
+    args: {
+        size: DropdownSize.Small,
+        value: 'value1',
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+        const dropdown = canvasElement.querySelector('.ids-dropdown');
+        const widget = canvasElement.querySelector('.ids-dropdown__widget');
+
+        await step('Small input dropdown keeps the input chrome at 32px', async () => {
+            await expect(dropdown).toHaveClass('ids-dropdown--small');
+            await expect(dropdown).not.toHaveClass('ids-dropdown--chip');
+            await expect(widget).toHaveClass('ids-input');
+            await expect(widget?.getBoundingClientRect().height).toBe(SMALL_WIDGET_HEIGHT);
+        });
+
+        await step('Small input dropdown opens the list and selects an item', async () => {
+            await userEvent.click(canvas.getByText('Item 1', { selector: '.ids-dropdown__selection-info-items' }));
+            await userEvent.click(canvas.getByText('Item 2', { selector: '.ids-dropdown__item-label' }));
+
+            await expect(canvas.getByText('Item 2', { selector: '.ids-dropdown__selection-info-items' })).toBeVisible();
         });
     },
 };
