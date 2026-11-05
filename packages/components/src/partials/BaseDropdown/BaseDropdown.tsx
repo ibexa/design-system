@@ -129,6 +129,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
                 filterFunction={filterFunction}
                 getItemAttributes={getItemAttributes}
                 getNextFocusableItem={getNextFocusableItem}
+                hasSearch={isChip ? false : undefined}
                 isItemSelected={isItemSelected}
                 isOpen={isOpen}
                 items={items}
