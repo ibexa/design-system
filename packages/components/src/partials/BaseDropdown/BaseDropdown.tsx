@@ -45,7 +45,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
     const dropdownClassName = createCssClassNames({
         'ids-dropdown': true,
         'ids-dropdown--chip': isChip,
-        [`ids-dropdown--${size}`]: isChip,
+        [`ids-dropdown--${size}`]: true,
         'ids-dropdown--disabled': disabled,
         'ids-dropdown--error': error,
         [className]: !!className,
