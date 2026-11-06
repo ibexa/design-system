@@ -22,6 +22,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
     filterFunction,
     getItemAttributes,
     getNextFocusableItem,
+    hasSearch,
     isItemSelected,
     isOpen,
     items,
@@ -45,7 +46,7 @@ export const ItemsContainer = <T extends BaseDropdownItem>({
         strategy: 'fixed',
     });
     const flatItems = useMemo(() => flattenDropdownItems(items), [items]);
-    const hasSearchInput = flatItems.length > maxVisibleItems;
+    const hasSearchInput = hasSearch && flatItems.length > maxVisibleItems;
     const filteredEntries = useMemo(() => filterDropdownEntries(items, searchTerm, filterFunction), [items, searchTerm, filterFunction]);
     const filteredItems = useMemo(() => flattenDropdownItems(filteredEntries), [filteredEntries]);
     const hasNoResults = !!searchTerm && filteredItems.length === 0;
