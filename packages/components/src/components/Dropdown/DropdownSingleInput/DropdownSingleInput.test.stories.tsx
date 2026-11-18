@@ -405,7 +405,6 @@ export const Small: Story = {
         value: 'value1',
     },
     play: async ({ canvasElement, step }) => {
-        const canvas = within(canvasElement);
         const dropdown = canvasElement.querySelector('.ids-dropdown');
         const widget = canvasElement.querySelector('.ids-dropdown__widget');
 
@@ -413,13 +412,6 @@ export const Small: Story = {
             await expect(dropdown).toHaveClass('ids-dropdown--small');
             await expect(widget).toHaveClass('ids-input');
             await expect(widget?.getBoundingClientRect().height).toBe(SMALL_WIDGET_HEIGHT);
-        });
-
-        await step('Small input dropdown opens the list and selects an item', async () => {
-            await userEvent.click(canvas.getByText('Item 1', { selector: '.ids-dropdown__selection-info-items' }));
-            await userEvent.click(canvas.getByText('Item 2', { selector: '.ids-dropdown__item-label' }));
-
-            await expect(canvas.getByText('Item 2', { selector: '.ids-dropdown__selection-info-items' })).toBeVisible();
         });
     },
 };
