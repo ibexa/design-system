@@ -2,6 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
 import { DropdownMultiInputStateful } from '.';
+import { DropdownSize } from '@ids-partials/BaseDropdown';
+
+const SMALL_WIDGET_HEIGHT = 32;
 
 const meta: Meta<typeof DropdownMultiInputStateful> = {
     component: DropdownMultiInputStateful,
@@ -111,6 +114,29 @@ export const Grouped: Story = {
 
             await expect(selectedChip).toBeVisible();
             await expect(groupedOption).not.toBeNull();
+        });
+    },
+};
+
+export const Small: Story = {
+    name: 'Small',
+    args: {
+        size: DropdownSize.Small,
+        value: ['value1'],
+    },
+    play: async ({ canvasElement, step }) => {
+        const dropdown = canvasElement.querySelector('.ids-dropdown');
+        const widget = canvasElement.querySelector('.ids-dropdown__widget');
+        const chip = canvasElement.querySelector('.ids-dropdown__selection-info-items .ids-chip');
+
+        await step('Small multi dropdown keeps the input chrome at 32px and does not clip the chip', async () => {
+            const widgetRect = widget?.getBoundingClientRect();
+            const chipRect = chip?.getBoundingClientRect();
+
+            await expect(dropdown).toHaveClass('ids-dropdown--small');
+            await expect(widgetRect?.height).toBe(SMALL_WIDGET_HEIGHT);
+            await expect(chipRect?.top).toBeGreaterThan(widgetRect?.top ?? 0);
+            await expect(chipRect?.bottom).toBeLessThan(widgetRect?.bottom ?? 0);
         });
     },
 };

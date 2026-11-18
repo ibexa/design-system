@@ -6,7 +6,7 @@ import { TranslatorContext } from '@ids-context/Translator';
 import { createCssClassNames } from '@ids-core';
 import { useKeyDown } from '@ids-hooks/useKeyEvent';
 
-import { BaseDropdownItem, BaseDropdownProps } from './BaseDropdown.types';
+import { BaseDropdownItem, BaseDropdownProps, DropdownSize } from './BaseDropdown.types';
 
 const MAX_VISIBLE_ITEMS = 10;
 
@@ -17,6 +17,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
     items,
     disabled = false,
     error = false,
+    size = DropdownSize.Medium,
     filterFunction = (item, searchTerm) => item.label.toLowerCase().includes(searchTerm.toLowerCase()),
     getItemAttributes = () => ({}),
     getNextFocusableItem = () => null,
@@ -34,6 +35,7 @@ export const BaseDropdown = <T extends BaseDropdownItem>({
     const [isOpen, setIsOpen] = useState(false);
     const dropdownClassName = createCssClassNames({
         'ids-dropdown': true,
+        [`ids-dropdown--${size}`]: true,
         'ids-dropdown--disabled': disabled,
         'ids-dropdown--error': error,
         [className]: !!className,
