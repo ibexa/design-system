@@ -118,6 +118,10 @@ $sizes: (
         font-weight: $text-font-weight-semi;
         line-height: $item-height;
 
+        &:focus-visible {
+            box-shadow: $box-shadow-focus-primary;
+        }
+
         &:not(#{$self}__item--selected) {
             &:hover {
                 color: $color-primary-80;
@@ -126,10 +130,6 @@ $sizes: (
 
             &:active {
                 color: $color-primary-100;
-            }
-
-            &:focus-visible {
-                box-shadow: $box-shadow-focus-primary;
             }
         }
 
