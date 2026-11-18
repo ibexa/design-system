@@ -3,7 +3,6 @@ import React from 'react';
 import {
     BaseDropdown,
     BaseDropdownItemGroup,
-    DropdownType,
     ExtraDropdownItemClickParamsType,
     flattenDropdownItems,
     isDropdownItemGroup,
@@ -20,7 +19,6 @@ export const DropdownSingleInput = ({
     className = '',
     items = [],
     onChange = () => undefined,
-    type,
     value = '',
     ...restProps
 }: DropdownSingleInputProps) => {
@@ -35,22 +33,11 @@ export const DropdownSingleInput = ({
     const flatItems = flattenDropdownItems(items);
     const selectedItem = flatItems.find((item) => item.id === value) ?? null;
     const isItemSelected = (item: DropdownSingleInputItem) => item.id === value;
-    const renderSelectedItemIcon = () => {
-        if (type === DropdownType.Chip) {
-            return (
-                <span aria-hidden="true" className="ids-dropdown__item-check">
-                    <Icon name="form-check" size={IconSize.TinySmall} />
-                </span>
-            );
-        }
-
-        return <Icon name="check-circle" size={IconSize.TinySmall} />;
-    };
     const renderItem = (item: DropdownSingleInputItem) => {
         return (
             <>
                 <span className="ids-dropdown__item-label">{item.label}</span>
-                {isItemSelected(item) && renderSelectedItemIcon()}
+                {isItemSelected(item) && <Icon name="check-circle" size={IconSize.TinySmall} />}
             </>
         );
     };
@@ -94,7 +81,6 @@ export const DropdownSingleInput = ({
             renderItem={renderItem}
             renderSelectedItems={() => selectedItem?.label ?? ''}
             renderSource={renderSource}
-            type={type}
         />
     );
 };
