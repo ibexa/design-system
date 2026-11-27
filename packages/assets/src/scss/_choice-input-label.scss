@@ -1,7 +1,12 @@
 @use 'variables' as *;
 
+:root {
+    --ids-choice-input-line-height: #{$text-font-size-m * $base-line-height};
+}
+
 .ids-choice-input-label {
     color: $color-neutral-240;
     font-size: $text-font-size-m;
+    line-height: var(--ids-choice-input-line-height);
     cursor: pointer;
 }

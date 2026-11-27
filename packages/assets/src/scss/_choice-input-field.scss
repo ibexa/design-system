@@ -6,11 +6,13 @@
     --ids-input-hover-text-color: var(--ids-input-hover-color, #{$color-primary-80});
 
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: calculateRem(8px);
 
     &__input-wrapper {
         display: flex;
+        align-items: center;
+        height: var(--ids-choice-input-line-height);
     }
 
     &--disabled {
